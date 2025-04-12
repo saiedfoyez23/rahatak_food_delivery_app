@@ -370,7 +370,9 @@ class LoginScreenWidget extends GetxController {
                       ),
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                        onPressed: () async {},
+                        onPressed: () async {
+                          Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        },
                         child: Center(
                           child: Text(
                             "Login",

@@ -4,3 +4,8 @@ export 'login_screen_widget.dart';
 export 'forgot_password_screen_widget.dart';
 export 'create_password_screen_widget.dart';
 export 'registration_screen_widget.dart';
+export 'home_screen_widget.dart';
+export 'cart_screen_widget.dart';
+export 'profile_screen_widget.dart';
+export 'search_screen_widget.dart';
+export 'order_track_screen_widget.dart';

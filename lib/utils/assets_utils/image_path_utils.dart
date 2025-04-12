@@ -11,5 +11,37 @@ class ImagePathUtils {
   static String authorizationBackButtonImagePath = "images/authorization_backbutton.png";
   static String newPasswordScreenImagePath = "images/new_password_screen_image.png";
   static String signUpScreenImagePath = "images/sign_up_screen_image.png";
+  static String homeIconUnfocusImagePath = "images/home_icon_unfocus.png";
+  static String homeIconFocusImagePath = "images/home_icon_focus.png";
+  static String orderTrackIconFocusImagePath = "images/order_track_icon_focus.png";
+  static String orderTrackIconUnfocusImagePath = "images/order_track_icon_unfocus.png";
+  static String profileFocusIconImagePath = "images/profile_focus_icon.png";
+  static String profileUnfocusIconImagePath = "images/profile_unfocus_icon.png";
+  static String searchIconFocusImagePath = "images/search_icon_focus.png";
+  static String searchIconUnfocusImagePath = "images/search_icon_unfocus.png";
+  static String cartIconFocusImagePath = "images/cart_icon_focus.png";
+  static String cartIconUnfocusImagePath = "images/cart_icon_unfocus.png";
+
+
+  static String extraImageGrid_0 = "images/extra_image/grid_0.png";
+  static String extraImageGrid_1 = "images/extra_image/grid_1.png";
+  static String extraImageGrid_2 = "images/extra_image/grid_2.png";
+  static String extraImageGrid_3 = "images/extra_image/grid_3.png";
+  static String extraImageGrid_4 = "images/extra_image/grid_4.png";
+  static String extraImageGrid_5 = "images/extra_image/grid_5.png";
+
+
+  static String extraImageList_1 = "images/extra_image/list_1.png";
+  static String extraImageList_2 = "images/extra_image/list_2.png";
+  static String extraImageList_3 = "images/extra_image/list_3.png";
+  static String extraImageList_4 = "images/extra_image/list_4.png";
+  static String extraImageList_5 = "images/extra_image/list_5.png";
+  static String extraImageList_6 = "images/extra_image/list_6.png";
+  static String extraImageList_7 = "images/extra_image/list_7.png";
+  static String extraImageList_8 = "images/extra_image/list_8.png";
+
+
+
+
   
 }

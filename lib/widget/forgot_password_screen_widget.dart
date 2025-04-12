@@ -182,7 +182,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                                   horizontal: MediaQuery.sizeOf(context).width > 500 ? 158.hpmt(context) : 16.hpmm(context),
                                 ),
                                 child: Container(
-                                  width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wt(context),
+                                  width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wm(context),
                                   height: MediaQuery.sizeOf(context).height > 1000 ? 270.ht(context) : 310.hm(context),
                                   decoration: BoxDecoration(
                                     color: ColorUtils.white255,
@@ -197,7 +197,7 @@ class ForgotPasswordScreenWidget extends GetxController {
 
 
                                       Container(
-                                        width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wt(context),
+                                        width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wm(context),
                                         alignment: Alignment.center,
                                         child: Text(
                                           "A reset link has been sent!",
@@ -221,9 +221,9 @@ class ForgotPasswordScreenWidget extends GetxController {
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
                                             fontStyle: FontStyle.normal,
-                                            fontSize:  MediaQuery.sizeOf(context).height > 1000 ? 18.spm(context) : 16.spm(context),
+                                            fontSize:  MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 16.spm(context),
                                             color: ColorUtils.black33,
-                                            height: MediaQuery.sizeOf(context).height > 1000 ? (35.ht(context) / 18.spt(context)) : 35.hm(context) / 16.spm(context),
+                                            height: MediaQuery.sizeOf(context).height > 1000 ? (35.ht(context) / 18.spt(context)) : (35.hm(context) / 16.spm(context)),
                                           ),
                                         ),
                                       ),

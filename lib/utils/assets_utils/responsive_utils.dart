@@ -19,7 +19,7 @@ class ResponsiveUtils {
     if(MediaQuery.of(context).orientation.name == "portrait" && MediaQuery.sizeOf(context).height == 1133) {
       return (1133 * (MediaQuery.sizeOf(context).height / DesignUtils.designHeightTab(context: context)));
     } else if(MediaQuery.of(context).orientation.name == "landscape" && MediaQuery.sizeOf(context).height == 1133) {
-      return (1133 * (MediaQuery.sizeOf(context).height / DesignUtils.designHeightTab(context: context)));
+      return (744 * (MediaQuery.sizeOf(context).height / DesignUtils.designHeightTab(context: context)));
     }  else {
       return (height * (MediaQuery.sizeOf(context).height / DesignUtils.designHeightTab(context: context)));
     }
