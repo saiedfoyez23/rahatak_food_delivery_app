@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
 
 Future<void> main() async {
@@ -18,6 +19,24 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rahatak Food Delivery App',
+      builder: (context,child) {
+        return Directionality(
+          textDirection: Get.locale.toString() == "en" ?
+          TextDirection.ltr :
+          TextDirection.rtl,
+          child: child!,
+        );
+      },
+      locale: Locale("en"),
+      localizationsDelegates: [
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [
+        Locale("ar"),
+        Locale("en")
+      ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
