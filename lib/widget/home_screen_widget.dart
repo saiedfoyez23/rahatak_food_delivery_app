@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 class HomeScreenWidget extends GetxController {
+
+  Rx<TextEditingController> searchController = TextEditingController().obs;
 
   RxList<GridImageList> firstImageList = <GridImageList>[
     GridImageList(image: ImagePathUtils.extraImageGrid_0, rating: "4.5", address: "3.2 km near you", restaurant: "Kuco", status: "Available"),
@@ -31,9 +34,9 @@ class HomeScreenWidget extends GetxController {
     GridImageList(image: ImagePathUtils.extraImageGrid_3, rating: "4.5", address: "3.2 km near you", restaurant: "Asoum Burger", status: "Crowded"),
     GridImageList(image: ImagePathUtils.extraImageGrid_4, rating: "1.2", address: "3.2 km near you", restaurant: "Volare Pizzeria", status: "Temporarily Closed"),
     GridImageList(image: ImagePathUtils.extraImageGrid_5, rating: "3.9", address: "3.2 km near you", restaurant: "Delicato Kitchen", status: "Available"),
-    GridImageList(image: ImagePathUtils.extraImageGrid_0, rating: "3.9", address: "3.2 km near you", restaurant: "Kuco", status: "Available"),
-    GridImageList(image: ImagePathUtils.extraImageGrid_1, rating: "4.2", address: "3.2 km near you", restaurant: "Italian Barista Cafe", status: "Crowded"),
-    GridImageList(image: ImagePathUtils.extraImageGrid_2, rating: "4.5", address: "3.2 km near you", restaurant: "Shawarmak", status: "Temporarily Closed"),
+    GridImageList(image: ImagePathUtils.extraImageGrid_0, rating: "3.9", address: "3.2 km near you", restaurant: "Kuco(Dhaka Branch)", status: "Available"),
+    GridImageList(image: ImagePathUtils.extraImageGrid_1, rating: "4.2", address: "3.2 km near you", restaurant: "Italian Barista Cafe(Dhaka Branch)", status: "Crowded"),
+    GridImageList(image: ImagePathUtils.extraImageGrid_2, rating: "4.5", address: "3.2 km near you", restaurant: "Shawarmak(Dhaka Branch)", status: "Temporarily Closed"),
   ].obs;
 
   
@@ -46,8 +49,793 @@ class HomeScreenWidget extends GetxController {
         decoration: BoxDecoration(
           color: ColorUtils.white248,
         ),
-        child: Center(
-          child: Text("Home"),
+        child: CustomScrollView(
+          slivers: [
+
+            SliverAppBar(
+              expandedHeight: 97.ht(context),
+              collapsedHeight: 97.ht(context),
+              primary: true,
+              pinned: true,
+              automaticallyImplyLeading: false,
+              floating: false,
+              flexibleSpace: Container(
+                height: 142.ht(context),
+                width: 744.wt(context),
+                decoration: BoxDecoration(
+                    color: ColorUtils.white255
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+
+                    SpacerWidget.spacerWidget(spaceHeight: 65.ht(context)),
+
+                    Row(
+                      children: [
+
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+
+                              Container(
+                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
+                                child: Text(
+                                  "Hello, Muhammad Ali",
+                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                  style: GoogleFonts.tajawal(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 14.spt(context),
+                                    color: ColorUtils.black33,
+                                  ),
+                                ),
+                              ),
+
+
+                              Container(
+                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
+                                child: Text(
+                                  "What do you want to eat today?",
+                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                  style: GoogleFonts.tajawal(
+                                    fontWeight: FontWeight.w700,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 18.spt(context),
+                                    color: ColorUtils.blue192,
+                                  ),
+                                ),
+                              ),
+
+
+
+
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          height: 28.ht(context),
+                          width: 28.wt(context),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          child: TextButton(
+                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                            onPressed: () {
+
+                            },
+                            child: FittedBox(
+                              fit: BoxFit.cover,
+                              child: Image.asset(
+                                ImagePathUtils.notificationIconImagePath,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                          ),
+                        ),
+
+
+                      ],
+                    ),
+
+
+                  ],
+                ),
+              ),
+            ),
+
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+                child: Column(
+                  children: [
+
+                    SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+
+                    TextFormField(
+                      controller: searchController.value,
+                      textAlign: TextAlign.start,
+                      cursorColor: ColorUtils.blue192,
+                      style: GoogleFonts.openSans(
+                        fontSize: 16.spt(context),
+                        fontStyle: FontStyle.normal,
+                        color: ColorUtils.black51,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      cursorHeight: 20.ht(context),
+                      textAlignVertical: TextAlignVertical.top,
+                      decoration: InputDecoration(
+                        alignLabelWithHint: true,
+                        hintText: "Search for a restaurant, dish...",
+                        hintStyle: GoogleFonts.openSans(
+                          fontSize: 16.spt(context),
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.normal,
+                          color: ColorUtils.gray136,
+                        ),
+                        filled: true,
+                        prefixIconConstraints: BoxConstraints(
+                          maxHeight: 48.ht(context),
+                          minWidth: 36.wt(context),
+                        ),
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.only(
+                              left: 12.lpmt(context),
+                              right: 10.rpmt(context),
+                              top: 17.33.tpmt(context),
+                              bottom: 17.33.bpmt(context)
+                          ),
+                          child: FittedBox(
+                            fit: BoxFit.cover,
+                            child: Image.asset(
+                              ImagePathUtils.searchIconImagePath,
+                              fit: BoxFit.cover,
+                              alignment: Alignment.center,
+                            ),
+                          ),
+                        ),
+                        suffixIcon: Container(
+                          height: 24.ht(context),
+                          width: 24.wt(context),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 13.hpmt(context),
+                            vertical: 13.vpmt(context),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.transparent
+                          ),
+                          child: TextButton(
+                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                            onPressed: () {},
+                            child: FittedBox(
+                              fit: BoxFit.cover,
+                              child: Image.asset(
+                                ImagePathUtils.filterIconImagePath,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                        fillColor: ColorUtils.white255,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 12.hpmt(context),
+                          vertical: 12.vpmt(context),
+                        ),
+                        constraints: BoxConstraints(
+                          maxWidth: 589.wt(context),
+                          maxHeight: 52.ht(context),
+                        ),
+                        border:  OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.rt(context)),
+                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.rt(context)),
+                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.rt(context)),
+                          borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                        ),
+
+                      ),
+                    ),
+
+                    SpacerWidget.spacerWidget(spaceHeight: 36.ht(context)),
+
+
+                    Container(
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                      child: Text(
+                        "Top Rated Restaurants",
+                        textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
+                        style: GoogleFonts.tajawal(
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 20.spt(context),
+                          color: ColorUtils.black30,
+                        ),
+                      ),
+                    ),
+
+                    SpacerWidget.spacerWidget(spaceHeight: 17.ht(context)),
+
+
+
+                  ],
+                ),
+              ),
+            ),
+
+            
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+              sliver: SliverGrid.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 17.ht(context),
+                  mainAxisSpacing: 12.wt(context),
+                  childAspectRatio: 188.wt(context) / 216.ht(context),
+                ),
+                itemBuilder: (context, int index) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 9.hpmt(context),
+                      vertical: 15.vpmt(context),
+                    ),
+                    decoration: BoxDecoration(
+                      color: ColorUtils.white255,
+                      border: Border.all(color: ColorUtils.white217,width: 1),
+                      borderRadius: BorderRadius.circular(12.rm(context)),
+                    ),
+                    margin: EdgeInsets.only(
+                      bottom: 17.bpmm(context),
+                    ),
+                    child: Column(
+                      children: [
+
+                        Container(
+                          height: 108.hm(context),
+                          width: 100.wm(context),
+                          decoration: BoxDecoration(
+                              color: Colors.transparent
+                          ),
+                          child: Column(
+                            children: [
+
+                              Container(
+                                height: 35.hm(context),
+                                width: 100.wm(context),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10.rm(context)),
+                                    topRight: Radius.circular(10.rm(context)),
+                                  ),
+                                  color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                  firstImageList[index].status == "Available" ? ColorUtils.green142 :
+                                  ColorUtils.red211,
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                alignment: Alignment.center,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "${firstImageList[index].status}",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w700,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 12.spm(context),
+                                      color: ColorUtils.white255,
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Expanded(
+                                child: Container(
+                                  height: 73.hm(context),
+                                  width: 100.wm(context),
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                      left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                      bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(10.rm(context)),
+                                      bottomRight: Radius.circular(10.rm(context)),
+                                    ),
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.fill,
+                                    child: Image.asset(
+                                      firstImageList[index].image!,
+                                      fit: BoxFit.fill,
+                                      alignment: Alignment.center,
+                                    ),
+                                  ),
+                                ),
+                              )
+
+
+
+
+                            ],
+                          ),
+                        ),
+
+                        SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
+
+
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+
+                              Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "${firstImageList[index].restaurant}",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.tajawal(
+                                    fontWeight: FontWeight.w700,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 18.spt(context),
+                                    color: ColorUtils.black30,
+                                  ),
+                                ),
+                              ),
+
+
+                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+
+
+                                  Container(
+                                    height: 18.ht(context),
+                                    width: 17.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.cover,
+                                      child: Image.asset(
+                                        ImagePathUtils.starIconImagePath,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+
+                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "${firstImageList[index].rating}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 14.spt(context),
+                                        color: ColorUtils.black30,
+                                      ),
+                                    ),
+                                  ),
+
+
+                                ],
+                              ),
+
+
+                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+
+
+                                  Container(
+                                    height: 18.ht(context),
+                                    width: 17.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.cover,
+                                      child: Image.asset(
+                                        ImagePathUtils.locationIconImagePath,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+
+                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "${firstImageList[index].address}",
+                                      textAlign: TextAlign.start,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 14.spt(context),
+                                        color: ColorUtils.black30,
+                                      ),
+                                    ),
+                                  ),
+
+
+                                ],
+                              ),
+
+
+
+
+
+                            ],
+                          ),
+                        )
+
+
+                      ],
+                    ),
+                  );
+                },
+                itemCount: firstImageList.length,
+              ),
+            ),
+
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+                child: Column(
+                  children: [
+
+                    SpacerWidget.spacerWidget(spaceHeight: 36.ht(context)),
+
+
+                    Container(
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                      child: Text(
+                        "All Restaurants",
+                        textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
+                        style: GoogleFonts.tajawal(
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 20.spt(context),
+                          color: ColorUtils.black30,
+                        ),
+                      ),
+                    ),
+
+
+                    SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+                    Container(
+                      height: 97.ht(context),
+                      width: 744.wt(context),
+                      decoration: BoxDecoration(
+                          color: Colors.transparent
+                      ),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listImageList.length,
+                        itemBuilder: (context,int index) {
+                          return Container(
+                            width: 80.wt(context),
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 60.ht(context),
+                                  width: 60.wt(context),
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(8.rm(context)),
+                                  ),
+                                  margin: EdgeInsets.only(
+                                    right: 12.rpmt(context),
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.fill,
+                                    child: Image.asset(
+                                      listImageList[index].image!,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+
+                                SpacerWidget.spacerWidget(spaceHeight: 8.ht(context)),
+
+                                Expanded(
+                                  child: Container(
+                                    width: 80.wt(context),
+                                    alignment: Alignment.topCenter,
+                                    child: Text(
+                                      "${listImageList[index].name}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16.spt(context),
+                                        color: ColorUtils.black255,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    SpacerWidget.spacerWidget(spaceHeight: 18.ht(context)),
+
+
+                  ],
+                ),
+              ),
+            ),
+
+
+
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+              sliver: SliverGrid.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 17.ht(context),
+                  mainAxisSpacing: 12.wt(context),
+                  childAspectRatio: 188.wt(context) / 216.ht(context),
+                ),
+                itemBuilder: (context, int index) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 9.hpmt(context),
+                      vertical: 15.vpmt(context),
+                    ),
+                    decoration: BoxDecoration(
+                      color: ColorUtils.white255,
+                      border: Border.all(color: ColorUtils.white217,width: 1),
+                      borderRadius: BorderRadius.circular(12.rm(context)),
+                    ),
+                    margin: EdgeInsets.only(
+                      bottom: 17.bpmm(context),
+                    ),
+                    child: Column(
+                      children: [
+
+                        Container(
+                          height: 108.hm(context),
+                          width: 100.wm(context),
+                          decoration: BoxDecoration(
+                              color: Colors.transparent
+                          ),
+                          child: Column(
+                            children: [
+
+                              Container(
+                                height: 35.hm(context),
+                                width: 100.wm(context),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10.rm(context)),
+                                    topRight: Radius.circular(10.rm(context)),
+                                  ),
+                                  color: secondImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                  secondImageList[index].status == "Available" ? ColorUtils.green142 :
+                                  ColorUtils.red211,
+                                ),
+                                padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                alignment: Alignment.center,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "${secondImageList[index].status}",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w700,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 12.spm(context),
+                                      color: ColorUtils.white255,
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Expanded(
+                                child: Container(
+                                  height: 73.hm(context),
+                                  width: 100.wm(context),
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                      left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                      bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(10.rm(context)),
+                                      bottomRight: Radius.circular(10.rm(context)),
+                                    ),
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.fill,
+                                    child: Image.asset(
+                                      firstImageList[index].image!,
+                                      fit: BoxFit.fill,
+                                      alignment: Alignment.center,
+                                    ),
+                                  ),
+                                ),
+                              )
+
+
+
+
+                            ],
+                          ),
+                        ),
+
+                        SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
+
+
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+
+                              Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "${secondImageList[index].restaurant}",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.tajawal(
+                                    fontWeight: FontWeight.w700,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 18.spt(context),
+                                    color: ColorUtils.black30,
+                                  ),
+                                ),
+                              ),
+
+
+                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+
+
+                                  Container(
+                                    height: 18.ht(context),
+                                    width: 17.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.cover,
+                                      child: Image.asset(
+                                        ImagePathUtils.starIconImagePath,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+
+                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "${secondImageList[index].rating}",
+                                      textAlign: TextAlign.start,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 14.spt(context),
+                                        color: ColorUtils.black30,
+                                      ),
+                                    ),
+                                  ),
+
+
+                                ],
+                              ),
+
+
+                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+
+
+                                  Container(
+                                    height: 18.ht(context),
+                                    width: 17.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.cover,
+                                      child: Image.asset(
+                                        ImagePathUtils.locationIconImagePath,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+
+                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "${secondImageList[index].address}",
+                                      textAlign: TextAlign.start,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 14.spt(context),
+                                        color: ColorUtils.black30,
+                                      ),
+                                    ),
+                                  ),
+
+
+                                ],
+                              ),
+
+
+
+
+
+                            ],
+                          ),
+                        )
+
+
+                      ],
+                    ),
+                  );
+                },
+                itemCount: secondImageList.length,
+              ),
+            ),
+
+
+
+
+
+          ],
         ),
       );
     } else {
@@ -62,19 +850,788 @@ class HomeScreenWidget extends GetxController {
 
 
             SliverAppBar(
-              expandedHeight: 205.hm(context),
+              expandedHeight: 180.hm(context),
+              collapsedHeight: 180.hm(context),
               primary: true,
               pinned: true,
               automaticallyImplyLeading: false,
               floating: false,
               flexibleSpace: Container(
-                height: 203.hm(context),
+                height: 210.hm(context),
                 width: 390.wm(context),
                 decoration: BoxDecoration(
                   color: ColorUtils.white255
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    
+                    SpacerWidget.spacerWidget(spaceHeight: 76.hm(context)),
+
+                    Row(
+                      children: [
+
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+
+                              Container(
+                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
+                                child: Text(
+                                  "Hello, Muhammad Ali",
+                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                  style: GoogleFonts.tajawal(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 14.spm(context),
+                                    color: ColorUtils.black33,
+                                  ),
+                                ),
+                              ),
+
+
+                              Container(
+                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
+                                child: Text(
+                                  "What do you want to eat today?",
+                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                  style: GoogleFonts.tajawal(
+                                    fontWeight: FontWeight.w700,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 18.spm(context),
+                                    color: ColorUtils.blue192,
+                                  ),
+                                ),
+                              ),
+
+
+
+
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          height: 28.hm(context),
+                          width: 28.wm(context),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          child: TextButton(
+                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                            onPressed: () {
+
+                            },
+                            child: FittedBox(
+                              fit: BoxFit.cover,
+                              child: Image.asset(
+                                ImagePathUtils.notificationIconImagePath,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                          ),
+                        ),
+
+
+                      ],
+                    ),
+
+                    SpacerWidget.spacerWidget(spaceHeight: 27.hm(context)),
+
+
+                    TextFormField(
+                      controller: searchController.value,
+                      textAlign: TextAlign.start,
+                      cursorColor: ColorUtils.blue192,
+                      style: GoogleFonts.openSans(
+                        fontSize: 16.spm(context),
+                        fontStyle: FontStyle.normal,
+                        color: ColorUtils.black51,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      cursorHeight: 20.hm(context),
+                      textAlignVertical: TextAlignVertical.top,
+                      decoration: InputDecoration(
+                        alignLabelWithHint: true,
+                        hintText: "Search for a restaurant, dish...",
+                        hintStyle: GoogleFonts.openSans(
+                          fontSize: 16.spm(context),
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.normal,
+                          color: ColorUtils.gray136,
+                        ),
+                        filled: true,
+                        prefixIconConstraints: BoxConstraints(
+                          maxHeight: 48.hm(context),
+                          minWidth: 36.wm(context),
+                        ),
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.only(
+                            left: 12.lpmm(context),
+                            right: 10.rpmm(context),
+                            top: 17.33.tpmm(context),
+                            bottom: 17.33.bpmm(context),
+                          ),
+                          child: FittedBox(
+                            fit: BoxFit.cover,
+                            child: Image.asset(
+                              ImagePathUtils.searchIconImagePath,
+                              fit: BoxFit.cover,
+                              alignment: Alignment.center,
+                            ),
+                          ),
+                        ),
+                        suffixIcon: Container(
+                          height: 24.hm(context),
+                          width: 24.wm(context),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 13.hpmm(context),
+                            vertical: 13.vpmm(context),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.transparent
+                          ),
+                          child: TextButton(
+                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                            onPressed: () {},
+                            child: FittedBox(
+                              fit: BoxFit.cover,
+                              child: Image.asset(
+                                ImagePathUtils.filterIconImagePath,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                        fillColor: ColorUtils.white255,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 12.hpmm(context),
+                          vertical: 12.vpmm(context),
+                        ),
+                        constraints: BoxConstraints(
+                          maxWidth: 358.wm(context),
+                          maxHeight: 48.hm(context),
+                        ),
+                        border:  OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                        ),
+
+                      ),
+                    ),
+                    
+                    
+                    
+                  ],
+                ),
               ),
+            ),
+
+
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                child: Column(
+                  children: [
+
+                    SpacerWidget.spacerWidget(spaceHeight: 21.hm(context)),
+
+
+                    Container(
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                      child: Text(
+                        "Top Rated Restaurants",
+                        textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
+                        style: GoogleFonts.tajawal(
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 20.spm(context),
+                          color: ColorUtils.black30,
+                        ),
+                      ),
+                    ),
+
+                    SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
+
+
+
+                  ],
+                ),
+              ),
+            ),
+
+
+            SliverList(
+                delegate: SliverChildBuilderDelegate(
+                    (context,int index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 9.hpmm(context),
+                            vertical: 15.vpmm(context),
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorUtils.white255,
+                            border: Border.all(color: ColorUtils.white217,width: 1),
+                            borderRadius: BorderRadius.circular(12.rm(context)),
+                          ),
+                          margin: EdgeInsets.only(
+                            bottom: 17.bpmm(context),
+                          ),
+                          child: Row(
+                            children: [
+
+                              Container(
+                                height: 108.hm(context),
+                                width: 100.wm(context),
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent
+                                ),
+                                child: Column(
+                                  children: [
+
+                                    Container(
+                                      height: 35.hm(context),
+                                      width: 100.wm(context),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10.rm(context)),
+                                          topRight: Radius.circular(10.rm(context)),
+                                        ),
+                                        color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                        firstImageList[index].status == "Available" ? ColorUtils.green142 :
+                                        ColorUtils.red211,
+                                      ),
+                                      padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                      alignment: Alignment.center,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "${firstImageList[index].status}",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w700,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 12.spm(context),
+                                            color: ColorUtils.white255,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                    Expanded(
+                                      child: Container(
+                                        height: 73.hm(context),
+                                        width: 100.wm(context),
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                            left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                            bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                          ),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(10.rm(context)),
+                                            bottomRight: Radius.circular(10.rm(context)),
+                                          ),
+                                        ),
+                                        child: FittedBox(
+                                          fit: BoxFit.fill,
+                                          child: Image.asset(
+                                            firstImageList[index].image!,
+                                            fit: BoxFit.fill,
+                                            alignment: Alignment.center,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+
+
+
+
+                                  ],
+                                ),
+                              ),
+
+                              SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                              Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+
+
+                                      Container(
+                                        alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                        child: Text(
+                                          "${firstImageList[index].restaurant}",
+                                          textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w700,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 18.spm(context),
+                                            color: ColorUtils.black30,
+                                          ),
+                                        ),
+                                      ),
+
+
+                                      SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+
+
+                                          Container(
+                                            height: 18.hm(context),
+                                            width: 17.wm(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                ImagePathUtils.starIconImagePath,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                          Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "${firstImageList[index].rating}",
+                                              textAlign: TextAlign.start,
+                                              style: GoogleFonts.tajawal(
+                                                fontWeight: FontWeight.w500,
+                                                fontStyle: FontStyle.normal,
+                                                fontSize: 14.spm(context),
+                                                color: ColorUtils.black30,
+                                              ),
+                                            ),
+                                          ),
+
+
+                                        ],
+                                      ),
+
+
+                                      SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+
+
+                                          Container(
+                                            height: 18.hm(context),
+                                            width: 17.wm(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                ImagePathUtils.locationIconImagePath,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                          Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "${firstImageList[index].address}",
+                                              textAlign: TextAlign.start,
+                                              style: GoogleFonts.tajawal(
+                                                fontWeight: FontWeight.w500,
+                                                fontStyle: FontStyle.normal,
+                                                fontSize: 14.spm(context),
+                                                color: ColorUtils.black30,
+                                              ),
+                                            ),
+                                          ),
+
+
+                                        ],
+                                      ),
+
+
+
+
+
+                                    ],
+                                  ),
+                              )
+
+
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  childCount: firstImageList.length,
+                )
+            ),
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                child: Column(
+                  children: [
+
+                    SpacerWidget.spacerWidget(spaceHeight: 16.hm(context)),
+
+                    Container(
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                      child: Text(
+                        "All Restaurant",
+                        textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
+                        style: GoogleFonts.tajawal(
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 20.spm(context),
+                          color: ColorUtils.black30,
+                        ),
+                      ),
+                    ),
+
+                    SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
+
+
+
+                  ],
+                ),
+              ),
+            ),
+
+
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                child: Column(
+                  children: [
+
+                    SpacerWidget.spacerWidget(spaceHeight: 16.hm(context)),
+
+                    Container(
+                      height: 97.hm(context),
+                      width: 390.wm(context),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent
+                      ),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listImageList.length,
+                        itemBuilder: (context,int index) {
+                          return Container(
+                            width: 80.wm(context),
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 60.hm(context),
+                                  width: 60.wm(context),
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(8.rm(context)),
+                                  ),
+                                  margin: EdgeInsets.only(
+                                    right: 12.rpmm(context),
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.fill,
+                                    child: Image.asset(
+                                      listImageList[index].image!,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+
+                                SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
+
+                                Expanded(
+                                  child: Container(
+                                    alignment: Alignment.topCenter,
+                                    child: Text(
+                                      "${listImageList[index].name}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16.spm(context),
+                                        color: ColorUtils.black255,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
+
+
+
+                  ],
+                ),
+              ),
+            ),
+
+
+            SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (context,int index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 9.hpmm(context),
+                          vertical: 15.vpmm(context),
+                        ),
+                        decoration: BoxDecoration(
+                          color: ColorUtils.white255,
+                          border: Border.all(color: ColorUtils.white217,width: 1),
+                          borderRadius: BorderRadius.circular(12.rm(context)),
+                        ),
+                        margin: EdgeInsets.only(
+                          bottom: 17.bpmm(context),
+                        ),
+                        child: Row(
+                          children: [
+
+                            Container(
+                              height: 108.hm(context),
+                              width: 100.wm(context),
+                              decoration: BoxDecoration(
+                                  color: Colors.transparent
+                              ),
+                              child: Column(
+                                children: [
+
+                                  Container(
+                                    height: 35.hm(context),
+                                    width: 100.wm(context),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10.rm(context)),
+                                        topRight: Radius.circular(10.rm(context)),
+                                      ),
+                                      color: secondImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                      secondImageList[index].status == "Available" ? ColorUtils.green142 :
+                                      ColorUtils.red211,
+                                    ),
+                                    padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "${secondImageList[index].status}",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 12.spm(context),
+                                          color: ColorUtils.white255,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  Expanded(
+                                    child: Container(
+                                      height: 73.hm(context),
+                                      width: 100.wm(context),
+                                      decoration: BoxDecoration(
+                                        border: Border(
+                                          right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                          left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                          bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                        ),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.rm(context)),
+                                          bottomRight: Radius.circular(10.rm(context)),
+                                        ),
+                                      ),
+                                      child: FittedBox(
+                                        fit: BoxFit.fill,
+                                        child: Image.asset(
+                                          secondImageList[index].image!,
+                                          fit: BoxFit.fill,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+
+
+
+
+                                ],
+                              ),
+                            ),
+
+                            SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+
+                                  Container(
+                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                    child: Text(
+                                      "${secondImageList[index].restaurant}",
+                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w700,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 18.spm(context),
+                                        color: ColorUtils.black30,
+                                      ),
+                                    ),
+                                  ),
+
+
+                                  SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+
+
+                                      Container(
+                                        height: 18.hm(context),
+                                        width: 17.wm(context),
+                                        decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                        ),
+                                        child: FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Image.asset(
+                                            ImagePathUtils.starIconImagePath,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+
+                                      SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                      Container(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "${secondImageList[index].rating}",
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w500,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 14.spm(context),
+                                            color: ColorUtils.black30,
+                                          ),
+                                        ),
+                                      ),
+
+
+                                    ],
+                                  ),
+
+
+                                  SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+
+
+                                      Container(
+                                        height: 18.hm(context),
+                                        width: 17.wm(context),
+                                        decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                        ),
+                                        child: FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Image.asset(
+                                            ImagePathUtils.locationIconImagePath,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+
+                                      SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                      Container(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "${secondImageList[index].address}",
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w500,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 14.spm(context),
+                                            color: ColorUtils.black30,
+                                          ),
+                                        ),
+                                      ),
+
+
+                                    ],
+                                  ),
+
+
+
+
+
+                                ],
+                              ),
+                            )
+
+
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  childCount: secondImageList.length,
+                )
             ),
 
 

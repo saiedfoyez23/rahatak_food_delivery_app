@@ -21,6 +21,14 @@ class ImagePathUtils {
   static String searchIconUnfocusImagePath = "images/search_icon_unfocus.png";
   static String cartIconFocusImagePath = "images/cart_icon_focus.png";
   static String cartIconUnfocusImagePath = "images/cart_icon_unfocus.png";
+  static String searchIconImagePath = "images/search_icon.png";
+  static String notificationIconImagePath = "images/notification_icon.png";
+  static String filterIconImagePath = "images/filter_icon.png";
+  static String starIconImagePath = "images/star_icon.png";
+  static String locationIconImagePath = "images/location_icon.png";
+  static String timeIconImagePath = "images/time_icon.png";
+  static String listShowImagePath = "images/List_show.png";
+
 
 
   static String extraImageGrid_0 = "images/extra_image/grid_0.png";
@@ -39,6 +47,13 @@ class ImagePathUtils {
   static String extraImageList_6 = "images/extra_image/list_6.png";
   static String extraImageList_7 = "images/extra_image/list_7.png";
   static String extraImageList_8 = "images/extra_image/list_8.png";
+
+  static String pList_1 = "images/extra_image/p_list_1.png";
+  static String pList_2 = "images/extra_image/p_list_2.png";
+  static String pList_3 = "images/extra_image/p_list_3.png";
+  static String pList_4 = "images/extra_image/p_list_4.png";
+
+  static String restaurantImage = "images/resturant_image.png";
 
 
 
