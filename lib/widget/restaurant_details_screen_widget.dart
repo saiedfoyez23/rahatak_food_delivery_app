@@ -1,16 +1,1611 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:rahatak_food_delivery_app/screen/screen.dart';
+import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 class RestaurantDetailsScreenWidget extends GetxController {
 
-
-
+  RxList<FoodDetails> foodDetails = <FoodDetails>[
+    FoodDetails(
+      name: "Tanoor",
+      time: "10 Minutes",
+      amount: "1900 OMR",
+      description: "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.",
+      image: "images/extra_image/p_list_1.png",
+    ),
+    FoodDetails(image: "images/extra_image/p_list_2.png", name: "Sandwich Packet", time: "10 Minutes", amount: "2200 OMR", description: "An assortment of mini shawarma sandwiches, filled with various flavors and served with fries and appetizers."),
+    FoodDetails(image: "images/extra_image/p_list_3.png", name: "Chicken Fries", time: "10 Minutes", amount: "1500 OMR", description: "Crispy fries topped with shawarma pieces, melted cheese, and special sauces."),
+    FoodDetails(image: "images/extra_image/p_list_4.png", name: "Meal Name", time: "10 Minutes", amount: "3500 OMR", description: "Mini sandwich box with 3 delicious sauces such as garlic, hummus, and tahini, to add a rich flavor to your meal."),
+  ].obs;
 
 
   Widget restaurantDetailsScreenWidget({required BuildContext context}) {
-    return Container();
+    if(MediaQuery.sizeOf(context).height > 1000) {
+      return SafeArea(
+        child: Container(
+          height: 1133.ht(context),
+          width: 744.wt(context),
+          decoration: BoxDecoration(
+            color: ColorUtils.white248,
+          ),
+          child: CustomScrollView(
+            slivers: [
+
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 522.ht(context),
+                  width: 744.wt(context),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+
+
+                      SizedBox(
+                        height: 522.ht(context),
+                        width: 744.wt(context),
+                      ),
+
+
+                      Container(
+                        height: 522.ht(context),
+                        width: 744.wt(context),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+
+                            Container(
+                              height: 340.ht(context),
+                              width: 744.wt(context),
+                              decoration: BoxDecoration(
+                                  color: Colors.transparent
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Image.asset(
+                                  ImagePathUtils.restaurantImage,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+
+
+                          ],
+                        ),
+                      ),
+
+
+                      Container(
+                        height: 522.ht(context),
+                        width: 744.wt(context),
+                        decoration: BoxDecoration(
+                            color: Colors.transparent
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 37.hpmt(context)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
+                            Column(
+                              children: [
+
+                                SpacerWidget.spacerWidget(spaceHeight: 4.ht(context)),
+
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 40.ht(context),
+                                      width: 40.wt(context),
+                                      decoration: BoxDecoration(
+                                          color: Colors.transparent
+                                      ),
+                                      child: TextButton(
+                                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                        onPressed: () {
+                                          Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                        },
+                                        child: FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Image.asset(
+                                            ImagePathUtils.authorizationBackButtonImagePath,
+                                            fit: BoxFit.cover,
+                                            alignment: Alignment.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                              ],
+                            ),
+
+
+                            Container(
+                              width: 500.wt(context),
+                              decoration: BoxDecoration(
+                                color: ColorUtils.white255,
+                                borderRadius: BorderRadius.circular(10.rt(context)),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.vpmt(context),
+                                horizontal: 12.hpmt(context),
+                              ),
+                              child: Row(
+                                children: [
+
+                                  Container(
+                                    height: 120.ht(context),
+                                    width: 100.wt(context),
+                                    decoration: BoxDecoration(
+                                        color: Colors.transparent
+                                    ),
+                                    child: Column(
+                                      children: [
+
+                                        Container(
+                                          height: 35.ht(context),
+                                          width: 100.wt(context),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10.rt(context)),
+                                                topRight: Radius.circular(10.rt(context)),
+                                              ),
+                                              color: ColorUtils.yellow160
+                                          ),
+                                          padding: EdgeInsets.symmetric(vertical: 2.vpmt(context),horizontal: 2.hpmt(context)),
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "Crowded",
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.tajawal(
+                                                fontWeight: FontWeight.w700,
+                                                fontStyle: FontStyle.normal,
+                                                fontSize: 12.spm(context),
+                                                color: ColorUtils.white255,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+
+                                        Expanded(
+                                          child: Container(
+                                            height: 85.ht(context),
+                                            width: 100.wt(context),
+                                            decoration: BoxDecoration(
+                                              border: Border(
+                                                right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                                left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                                bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                              ),
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(10.rt(context)),
+                                                bottomRight: Radius.circular(10.rt(context)),
+                                              ),
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.fill,
+                                              child: Image.asset(
+                                                ImagePathUtils.extraImageGrid_2,
+                                                fit: BoxFit.fill,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+
+
+
+
+                                      ],
+                                    ),
+                                  ),
+
+                                  SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+
+
+                                        Container(
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Text(
+                                            "Shawarmac",
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 18.spt(context),
+                                              color: ColorUtils.black30,
+                                            ),
+                                          ),
+                                        ),
+
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                        Container(
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Text(
+                                            "Shawarma, fries, burgers",
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spt(context),
+                                              color: ColorUtils.gray117,
+                                            ),
+                                          ),
+                                        ),
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.ht(context)),
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  height: 18.ht(context),
+                                                  width: 17.wt(context),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  child: FittedBox(
+                                                    fit: BoxFit.cover,
+                                                    child: Image.asset(
+                                                      ImagePathUtils.starIconImagePath,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+
+                                                SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    "3.9",
+                                                    textAlign: TextAlign.start,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 14.spt(context),
+                                                      color: ColorUtils.black30,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+
+
+                                            SpacerWidget.spacerWidget(spaceWidth: 12.wt(context)),
+
+
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+
+
+                                                Container(
+                                                  height: 18.ht(context),
+                                                  width: 17.wt(context),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  child: FittedBox(
+                                                    fit: BoxFit.cover,
+                                                    child: Image.asset(
+                                                      ImagePathUtils.locationIconImagePath,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+
+                                                SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    "Muscat, Al Khoudh",
+                                                    textAlign: TextAlign.start,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 14.spt(context),
+                                                      color: ColorUtils.black30,
+                                                    ),
+                                                  ),
+                                                ),
+
+
+                                              ],
+                                            ),
+
+
+                                            SpacerWidget.spacerWidget(spaceWidth: 12.wt(context)),
+
+
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+
+
+                                                Container(
+                                                  height: 18.ht(context),
+                                                  width: 17.wt(context),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  child: FittedBox(
+                                                    fit: BoxFit.cover,
+                                                    child: Image.asset(
+                                                      ImagePathUtils.timeIconImagePath,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+
+                                                SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    "5:00 pm -11:00 pm",
+                                                    textAlign: TextAlign.start,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 14.spt(context),
+                                                      color: ColorUtils.black30,
+                                                    ),
+                                                  ),
+                                                ),
+
+
+                                              ],
+                                            ),
+
+                                          ],
+                                        ),
+
+
+                                      ],
+                                    ),
+                                  ),
+
+
+                                ],
+                              ),
+                            ),
+
+
+
+
+                          ],
+                        ),
+                      ),
+
+
+
+                    ],
+                  ),
+                ),
+              ),
+
+
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 78.hpmt(context)),
+                  child: Column(
+                    children: [
+                      SpacerWidget.spacerWidget(spaceHeight: 26.ht(context)),
+
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Menu",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.tajawal(
+                                fontWeight: FontWeight.w700,
+                                fontStyle: FontStyle.normal,
+                                fontSize: 20.spt(context),
+                                color: ColorUtils.black30,
+                              ),
+                            ),
+                          ),
+
+
+                          Container(
+                            height: 24.ht(context),
+                            width: 24.wt(context),
+                            decoration: BoxDecoration(
+                                color: Colors.transparent
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                showAdaptiveDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 580.tpmt(context),
+                                          bottom: 280.tpmt(context),
+                                          left: Get.locale.toString() == "en" ? 557.lpmt(context) : 78.rpmt(context),
+                                          right: Get.locale.toString() == "en" ? 78.rpmt(context) : 557.lpmt(context)
+                                      ),
+                                      child: Container(
+                                        height: 88.ht(context),
+                                        width: 150.wt(context),
+                                        decoration: BoxDecoration(
+                                          color: ColorUtils.white255,
+                                          borderRadius: BorderRadius.circular(10.rt(context)),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4,
+                                              spreadRadius: 0,
+                                              color: ColorUtils.black05,
+                                              offset: Offset(0, 0),
+                                            )
+                                          ],
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+
+                                            Container(
+                                              height: 42.ht(context),
+                                              width: 150.wt(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Burger",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spt(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.ht(context),
+                                              width: 150.wt(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Pasta",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spt(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.ht(context),
+                                              width: 150.wt(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Shawarma",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spt(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.ht(context),
+                                              width: 150.wt(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Fries",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spt(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.ht(context),
+                                              width: 150.wt(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Drinks",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spt(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image.asset(
+                                  ImagePathUtils.listShowImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                ),
+                              ),
+                            ),
+                          ),
+
+
+                        ],
+                      ),
+
+                      SpacerWidget.spacerWidget(spaceHeight: 18.ht(context)),
+                    ],
+                  ),
+                ),
+              ),
+
+
+              SliverPadding(
+                padding: EdgeInsets.symmetric(horizontal: 78.hpmt(context)),
+                sliver: SliverGrid.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 17.ht(context),
+                    mainAxisSpacing: 12.wt(context),
+                    childAspectRatio: 288.wt(context) / 330.ht(context),
+                  ),
+                  itemBuilder: (context, int index) {
+                    return Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 9.hpmt(context),
+                        vertical: 15.vpmt(context),
+                      ),
+                      decoration: BoxDecoration(
+                        color: ColorUtils.white255,
+                        border: Border.all(color: ColorUtils.white217,width: 1),
+                        borderRadius: BorderRadius.circular(12.rm(context)),
+                      ),
+                      child: TextButton(
+                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        onPressed: () async {
+                          Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        },
+                        child: Column(
+                          children: [
+
+
+                            Container(
+                              height: 150.ht(context),
+                              width: 150.wt(context),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.rt(context)),
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Image.asset(
+                                  foodDetails[index].image,
+                                  fit: BoxFit.fill,
+                                  alignment: Alignment.center,
+                                ),
+                              ),
+                            ),
+
+
+                            SpacerWidget.spacerWidget(spaceHeight: 10.ht(context)),
+
+                            Container(
+                              alignment: Get.locale.toString() == "en" ? Alignment.center : Alignment.center,
+                              child: Text(
+                                foodDetails[index].name,
+                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                style: GoogleFonts.tajawal(
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 18.spt(context),
+                                  color: ColorUtils.black30,
+                                ),
+                              ),
+                            ),
+
+
+                            SpacerWidget.spacerWidget(spaceHeight: 10.ht(context)),
+
+                            Container(
+                              alignment: Get.locale.toString() == "en" ? Alignment.center : Alignment.center,
+                              child: Text(
+                                foodDetails[index].description,
+                                textAlign: Get.locale.toString() == "en" ? TextAlign.center : TextAlign.center,
+                                style: GoogleFonts.tajawal(
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 14.spt(context),
+                                  color: ColorUtils.gray117,
+                                ),
+                              ),
+                            ),
+
+                            SpacerWidget.spacerWidget(spaceHeight: 10.ht(context)),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+
+
+                                Row(
+                                  children: [
+
+                                    Container(
+                                      height: 18.ht(context),
+                                      width: 17.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: FittedBox(
+                                        fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.timeIconImagePath,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+
+                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        foodDetails[index].time,
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.spt(context),
+                                          color: ColorUtils.black30,
+                                        ),
+                                      ),
+                                    ),
+
+
+                                  ],
+                                ),
+
+
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "${foodDetails[index].amount}",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 14.spt(context),
+                                      color: ColorUtils.black30,
+                                    ),
+                                  ),
+                                ),
+
+
+
+
+
+                              ],
+                            ),
+
+                            SpacerWidget.spacerWidget(spaceHeight: 10.ht(context)),
+
+
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  itemCount: foodDetails.length,
+                ),
+              ),
+
+
+
+
+            ],
+          ),
+        ),
+      );
+    } else {
+      return SafeArea(
+        child: Container(
+          height: 844.hm(context),
+          width: 390.wm(context),
+          decoration: BoxDecoration(
+            color: ColorUtils.white248,
+          ),
+          child: CustomScrollView(
+            slivers: [
+
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 404.hm(context),
+                  width: 390.wm(context),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+
+
+                      SizedBox(
+                        height: 404.hm(context),
+                        width: 390.wm(context),
+                      ),
+
+
+                      Container(
+                        height: 404.hm(context),
+                        width: 390.wm(context),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+
+                            Container(
+                              height: 265.hm(context),
+                              width: 390.wm(context),
+                              decoration: BoxDecoration(
+                                  color: Colors.transparent
+                              ),
+                              child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Image.asset(
+                                  ImagePathUtils.restaurantImage,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+
+
+                          ],
+                        ),
+                      ),
+
+
+                      Container(
+                        height: 404.hm(context),
+                        width: 390.wm(context),
+                        decoration: BoxDecoration(
+                            color: Colors.transparent
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
+                            Column(
+                              children: [
+
+                                SpacerWidget.spacerWidget(spaceHeight: 4.hm(context)),
+
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 40.hm(context),
+                                      width: 40.wm(context),
+                                      decoration: BoxDecoration(
+                                          color: Colors.transparent
+                                      ),
+                                      child: TextButton(
+                                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                        onPressed: () {
+                                          Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                        },
+                                        child: FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Image.asset(
+                                            ImagePathUtils.authorizationBackButtonImagePath,
+                                            fit: BoxFit.cover,
+                                            alignment: Alignment.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                              ],
+                            ),
+
+
+                            Container(
+                              width: 317.wm(context),
+                              decoration: BoxDecoration(
+                                color: ColorUtils.white255,
+                                borderRadius: BorderRadius.circular(10.rm(context)),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.vpmm(context),
+                                horizontal: 12.hpmm(context),
+                              ),
+                              child: Row(
+                                children: [
+
+                                  Container(
+                                    height: 120.hm(context),
+                                    width: 100.wm(context),
+                                    decoration: BoxDecoration(
+                                        color: Colors.transparent
+                                    ),
+                                    child: Column(
+                                      children: [
+
+                                        Container(
+                                          height: 35.hm(context),
+                                          width: 100.wm(context),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10.rm(context)),
+                                              topRight: Radius.circular(10.rm(context)),
+                                            ),
+                                            color: ColorUtils.yellow160
+                                          ),
+                                          padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "Crowded",
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.tajawal(
+                                                fontWeight: FontWeight.w700,
+                                                fontStyle: FontStyle.normal,
+                                                fontSize: 12.spm(context),
+                                                color: ColorUtils.white255,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+
+                                        Expanded(
+                                          child: Container(
+                                            height: 85.hm(context),
+                                            width: 100.wm(context),
+                                            decoration: BoxDecoration(
+                                              border: Border(
+                                                right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                                left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                                bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                              ),
+                                              borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(10.rm(context)),
+                                                bottomRight: Radius.circular(10.rm(context)),
+                                              ),
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.fill,
+                                              child: Image.asset(
+                                                ImagePathUtils.extraImageGrid_2,
+                                                fit: BoxFit.fill,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+
+
+
+
+                                      ],
+                                    ),
+                                  ),
+
+                                  SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+
+
+                                        Container(
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Text(
+                                            "Shawarmac",
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 18.spm(context),
+                                              color: ColorUtils.black30,
+                                            ),
+                                          ),
+                                        ),
+
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                        Container(
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Text(
+                                            "Shawarma, fries, burgers",
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spm(context),
+                                              color: ColorUtils.gray117,
+                                            ),
+                                          ),
+                                        ),
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+
+
+                                            Container(
+                                              height: 18.hm(context),
+                                              width: 17.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.starIconImagePath,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "3.9",
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.black30,
+                                                ),
+                                              ),
+                                            ),
+
+
+                                          ],
+                                        ),
+
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+
+
+                                            Container(
+                                              height: 18.hm(context),
+                                              width: 17.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.locationIconImagePath,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "Muscat, Al Khoudh",
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.black30,
+                                                ),
+                                              ),
+                                            ),
+
+
+                                          ],
+                                        ),
+
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+
+
+                                            Container(
+                                              height: 18.hm(context),
+                                              width: 17.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.timeIconImagePath,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "5:00 pm -11:00 pm",
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.black30,
+                                                ),
+                                              ),
+                                            ),
+
+
+                                          ],
+                                        ),
+
+
+
+
+
+                                      ],
+                                    ),
+                                  ),
+
+
+                                ],
+                              ),
+                            ),
+
+
+
+
+                          ],
+                        ),
+                      ),
+
+
+
+                    ],
+                  ),
+                ),
+              ),
+
+
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                  child: Column(
+                    children: [
+                      SpacerWidget.spacerWidget(spaceHeight: 19.hm(context)),
+
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Menu",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.tajawal(
+                                fontWeight: FontWeight.w700,
+                                fontStyle: FontStyle.normal,
+                                fontSize: 20.spm(context),
+                                color: ColorUtils.black30,
+                              ),
+                            ),
+                          ),
+
+
+                          Container(
+                            height: 24.hm(context),
+                            width: 24.wm(context),
+                            decoration: BoxDecoration(
+                                color: Colors.transparent
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                showAdaptiveDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 460.tpmm(context),
+                                          bottom: 124.tpmm(context),
+                                          left: Get.locale.toString() == "en" ? 277.lpmm(context) : 16.rpmm(context),
+                                          right: Get.locale.toString() == "en" ? 16.rpmm(context) : 277.lpmm(context)
+                                      ),
+                                      child: Container(
+                                        height: 88.hm(context),
+                                        width: 150.wm(context),
+                                        decoration: BoxDecoration(
+                                          color: ColorUtils.white255,
+                                          borderRadius: BorderRadius.circular(10.rm(context)),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4,
+                                              spreadRadius: 0,
+                                              color: ColorUtils.black05,
+                                              offset: Offset(0, 0),
+                                            )
+                                          ],
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+
+                                            Container(
+                                              height: 42.hm(context),
+                                              width: 150.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Burger",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spm(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.hm(context),
+                                              width: 150.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Pasta",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spm(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.hm(context),
+                                              width: 150.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Shawarma",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spm(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.hm(context),
+                                              width: 150.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Fries",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spm(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 42.hm(context),
+                                              width: 150.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  Get.back();
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "Drinks",
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spm(context),
+                                                      color: ColorUtils.black33,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image.asset(
+                                  ImagePathUtils.listShowImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                ),
+                              ),
+                            ),
+                          ),
+
+
+                        ],
+                      ),
+
+                      SpacerWidget.spacerWidget(spaceHeight: 18.hm(context)),
+                    ],
+                  ),
+                ),
+              ),
+
+
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (context,int index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12.hpmm(context),
+                              vertical: 12.vpmm(context),
+                            ),
+                            decoration: BoxDecoration(
+                              color: ColorUtils.white255,
+                              borderRadius: BorderRadius.circular(12.rm(context)),
+                              border: Border.all(color: ColorUtils.white217,width: 1),
+                            ),
+                            margin: EdgeInsets.only(
+                              bottom: 10.bpmm(context),
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () async {
+                                Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              child: Row(
+                                children: [
+
+                                  Container(
+                                    height: 100.hm(context),
+                                    width: 100.wm(context),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.rm(context)),
+                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.fill,
+                                      child: Image.asset(
+                                        foodDetails[index].image,
+                                        fit: BoxFit.fill,
+                                        alignment: Alignment.center,
+                                      ),
+                                    ),
+                                  ),
+
+
+                                  SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+
+
+                                        Container(
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Text(
+                                            foodDetails[index].name,
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 18.spm(context),
+                                              color: ColorUtils.black30,
+                                            ),
+                                          ),
+                                        ),
+
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                        Container(
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Text(
+                                            foodDetails[index].description,
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spm(context),
+                                              color: ColorUtils.gray117,
+                                            ),
+                                          ),
+                                        ),
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+
+
+                                            Row(
+                                              children: [
+
+                                                Container(
+                                                  height: 18.hm(context),
+                                                  width: 17.wm(context),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  child: FittedBox(
+                                                    fit: BoxFit.cover,
+                                                    child: Image.asset(
+                                                      ImagePathUtils.timeIconImagePath,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+
+                                                SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    foodDetails[index].time,
+                                                    textAlign: TextAlign.start,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 14.spm(context),
+                                                      color: ColorUtils.black30,
+                                                    ),
+                                                  ),
+                                                ),
+
+
+                                              ],
+                                            ),
+
+
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "${foodDetails[index].amount}",
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.black30,
+                                                ),
+                                              ),
+                                            ),
+
+
+
+
+
+                                          ],
+                                        ),
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                      ],
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                  childCount: foodDetails.length,
+                ),
+              ),
+
+
+            ],
+          ),
+        ),
+      );
+    }
   }
 
 
 
+}
+
+class FoodDetails {
+
+  String name;
+  String time;
+  String image;
+  String amount;
+  String description;
+
+  FoodDetails({
+    required this.name,
+    required this.time,
+    required this.image,
+    required this.amount,
+    required this.description,
+  });
 }

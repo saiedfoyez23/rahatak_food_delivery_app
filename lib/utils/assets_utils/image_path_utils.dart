@@ -28,6 +28,9 @@ class ImagePathUtils {
   static String locationIconImagePath = "images/location_icon.png";
   static String timeIconImagePath = "images/time_icon.png";
   static String listShowImagePath = "images/List_show.png";
+  static String minusIconImagePath = "images/minus_icon.png";
+  static String plusIconImagePath = "images/plus_icon.png";
+  static String cartPlusIconImagePath = "images/cart_plus_icon.png";
 
 
 
@@ -53,7 +56,12 @@ class ImagePathUtils {
   static String pList_3 = "images/extra_image/p_list_3.png";
   static String pList_4 = "images/extra_image/p_list_4.png";
 
-  static String restaurantImage = "images/resturant_image.png";
+
+  static String productImage_1 = "images/extra_image/product_image_1.png";
+  static String productImage_2 = "images/extra_image/product_image_2.png";
+  static String productImage_3 = "images/extra_image/product_image_3.png";
+
+  static String restaurantImage = "images/extra_image/resturant_image.png";
 
 
 

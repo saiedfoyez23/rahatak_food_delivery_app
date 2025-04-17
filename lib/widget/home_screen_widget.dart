@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 class HomeScreenWidget extends GetxController {
@@ -300,203 +301,209 @@ class HomeScreenWidget extends GetxController {
                     margin: EdgeInsets.only(
                       bottom: 17.bpmm(context),
                     ),
-                    child: Column(
-                      children: [
+                    child: TextButton(
+                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                      onPressed: () async {
+                        Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                      },
+                      child: Column(
+                        children: [
 
-                        Container(
-                          height: 108.hm(context),
-                          width: 100.wm(context),
-                          decoration: BoxDecoration(
-                              color: Colors.transparent
-                          ),
-                          child: Column(
-                            children: [
+                          Container(
+                            height: 108.hm(context),
+                            width: 100.wm(context),
+                            decoration: BoxDecoration(
+                                color: Colors.transparent
+                            ),
+                            child: Column(
+                              children: [
 
-                              Container(
-                                height: 35.hm(context),
-                                width: 100.wm(context),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10.rm(context)),
-                                    topRight: Radius.circular(10.rm(context)),
+                                Container(
+                                  height: 35.hm(context),
+                                  width: 100.wm(context),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.rm(context)),
+                                      topRight: Radius.circular(10.rm(context)),
+                                    ),
+                                    color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                    firstImageList[index].status == "Available" ? ColorUtils.green142 :
+                                    ColorUtils.red211,
                                   ),
-                                  color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
-                                  firstImageList[index].status == "Available" ? ColorUtils.green142 :
-                                  ColorUtils.red211,
+                                  padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${firstImageList[index].status}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w700,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 12.spm(context),
+                                        color: ColorUtils.white255,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
-                                alignment: Alignment.center,
-                                child: Container(
+
+                                Expanded(
+                                  child: Container(
+                                    height: 73.hm(context),
+                                    width: 100.wm(context),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                        left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                        bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                      ),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(10.rm(context)),
+                                        bottomRight: Radius.circular(10.rm(context)),
+                                      ),
+                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.fill,
+                                      child: Image.asset(
+                                        firstImageList[index].image!,
+                                        fit: BoxFit.fill,
+                                        alignment: Alignment.center,
+                                      ),
+                                    ),
+                                  ),
+                                )
+
+
+
+
+                              ],
+                            ),
+                          ),
+
+                          SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
+
+
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+
+                                Container(
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "${firstImageList[index].status}",
+                                    "${firstImageList[index].restaurant}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
                                       fontStyle: FontStyle.normal,
-                                      fontSize: 12.spm(context),
-                                      color: ColorUtils.white255,
+                                      fontSize: 18.spt(context),
+                                      color: ColorUtils.black30,
                                     ),
                                   ),
                                 ),
-                              ),
-
-                              Expanded(
-                                child: Container(
-                                  height: 73.hm(context),
-                                  width: 100.wm(context),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      right: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                      left: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                      bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                    ),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10.rm(context)),
-                                      bottomRight: Radius.circular(10.rm(context)),
-                                    ),
-                                  ),
-                                  child: FittedBox(
-                                    fit: BoxFit.fill,
-                                    child: Image.asset(
-                                      firstImageList[index].image!,
-                                      fit: BoxFit.fill,
-                                      alignment: Alignment.center,
-                                    ),
-                                  ),
-                                ),
-                              )
 
 
+                                SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
 
 
-                            ],
-                          ),
-                        ),
-
-                        SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
-
-
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-
-
-                              Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "${firstImageList[index].restaurant}",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.tajawal(
-                                    fontWeight: FontWeight.w700,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.spt(context),
-                                    color: ColorUtils.black30,
-                                  ),
-                                ),
-                              ),
-
-
-                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-
-
-                                  Container(
-                                    height: 18.ht(context),
-                                    width: 17.wt(context),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.starIconImagePath,
+                                    Container(
+                                      height: 18.ht(context),
+                                      width: 17.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.starIconImagePath,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
-                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
 
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "${firstImageList[index].rating}",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 14.spt(context),
-                                        color: ColorUtils.black30,
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "${firstImageList[index].rating}",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.spt(context),
+                                          color: ColorUtils.black30,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
 
-                                ],
-                              ),
+                                  ],
+                                ),
 
 
-                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+                                SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
 
 
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
 
 
-                                  Container(
-                                    height: 18.ht(context),
-                                    width: 17.wt(context),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.locationIconImagePath,
+                                    Container(
+                                      height: 18.ht(context),
+                                      width: 17.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.locationIconImagePath,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
-                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
 
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "${firstImageList[index].address}",
-                                      textAlign: TextAlign.start,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 14.spt(context),
-                                        color: ColorUtils.black30,
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "${firstImageList[index].address}",
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.spt(context),
+                                          color: ColorUtils.black30,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
 
-                                ],
-                              ),
-
-
+                                  ],
+                                ),
 
 
 
-                            ],
-                          ),
-                        )
 
 
-                      ],
+                              ],
+                            ),
+                          )
+
+
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -627,203 +634,209 @@ class HomeScreenWidget extends GetxController {
                     margin: EdgeInsets.only(
                       bottom: 17.bpmm(context),
                     ),
-                    child: Column(
-                      children: [
+                    child: TextButton(
+                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                      onPressed: () async {
+                        Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                      },
+                      child: Column(
+                        children: [
 
-                        Container(
-                          height: 108.hm(context),
-                          width: 100.wm(context),
-                          decoration: BoxDecoration(
-                              color: Colors.transparent
-                          ),
-                          child: Column(
-                            children: [
+                          Container(
+                            height: 108.hm(context),
+                            width: 100.wm(context),
+                            decoration: BoxDecoration(
+                                color: Colors.transparent
+                            ),
+                            child: Column(
+                              children: [
 
-                              Container(
-                                height: 35.hm(context),
-                                width: 100.wm(context),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10.rm(context)),
-                                    topRight: Radius.circular(10.rm(context)),
+                                Container(
+                                  height: 35.hm(context),
+                                  width: 100.wm(context),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.rm(context)),
+                                      topRight: Radius.circular(10.rm(context)),
+                                    ),
+                                    color: secondImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                    secondImageList[index].status == "Available" ? ColorUtils.green142 :
+                                    ColorUtils.red211,
                                   ),
-                                  color: secondImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
-                                  secondImageList[index].status == "Available" ? ColorUtils.green142 :
-                                  ColorUtils.red211,
+                                  padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${secondImageList[index].status}",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w700,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 12.spm(context),
+                                        color: ColorUtils.white255,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
-                                alignment: Alignment.center,
-                                child: Container(
+
+                                Expanded(
+                                  child: Container(
+                                    height: 73.hm(context),
+                                    width: 100.wm(context),
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                        left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                        bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                      ),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(10.rm(context)),
+                                        bottomRight: Radius.circular(10.rm(context)),
+                                      ),
+                                    ),
+                                    child: FittedBox(
+                                      fit: BoxFit.fill,
+                                      child: Image.asset(
+                                        firstImageList[index].image!,
+                                        fit: BoxFit.fill,
+                                        alignment: Alignment.center,
+                                      ),
+                                    ),
+                                  ),
+                                )
+
+
+
+
+                              ],
+                            ),
+                          ),
+
+                          SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
+
+
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+
+                                Container(
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "${secondImageList[index].status}",
+                                    "${secondImageList[index].restaurant}",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
                                       fontStyle: FontStyle.normal,
-                                      fontSize: 12.spm(context),
-                                      color: ColorUtils.white255,
+                                      fontSize: 18.spt(context),
+                                      color: ColorUtils.black30,
                                     ),
                                   ),
                                 ),
-                              ),
-
-                              Expanded(
-                                child: Container(
-                                  height: 73.hm(context),
-                                  width: 100.wm(context),
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      right: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                      left: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                      bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                    ),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10.rm(context)),
-                                      bottomRight: Radius.circular(10.rm(context)),
-                                    ),
-                                  ),
-                                  child: FittedBox(
-                                    fit: BoxFit.fill,
-                                    child: Image.asset(
-                                      firstImageList[index].image!,
-                                      fit: BoxFit.fill,
-                                      alignment: Alignment.center,
-                                    ),
-                                  ),
-                                ),
-                              )
 
 
+                                SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
 
 
-                            ],
-                          ),
-                        ),
-
-                        SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
-
-
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-
-
-                              Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "${secondImageList[index].restaurant}",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.tajawal(
-                                    fontWeight: FontWeight.w700,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.spt(context),
-                                    color: ColorUtils.black30,
-                                  ),
-                                ),
-                              ),
-
-
-                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-
-
-                                  Container(
-                                    height: 18.ht(context),
-                                    width: 17.wt(context),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.starIconImagePath,
+                                    Container(
+                                      height: 18.ht(context),
+                                      width: 17.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.starIconImagePath,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
-                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
 
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "${secondImageList[index].rating}",
-                                      textAlign: TextAlign.start,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 14.spt(context),
-                                        color: ColorUtils.black30,
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "${secondImageList[index].rating}",
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.spt(context),
+                                          color: ColorUtils.black30,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
 
-                                ],
-                              ),
+                                  ],
+                                ),
 
 
-                              SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+                                SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
 
 
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
 
 
-                                  Container(
-                                    height: 18.ht(context),
-                                    width: 17.wt(context),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.locationIconImagePath,
+                                    Container(
+                                      height: 18.ht(context),
+                                      width: 17.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.locationIconImagePath,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
-                                  SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
 
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "${secondImageList[index].address}",
-                                      textAlign: TextAlign.start,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 14.spt(context),
-                                        color: ColorUtils.black30,
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "${secondImageList[index].address}",
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.spt(context),
+                                          color: ColorUtils.black30,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
 
-                                ],
-                              ),
-
-
+                                  ],
+                                ),
 
 
 
-                            ],
-                          ),
-                        )
 
 
-                      ],
+                              ],
+                            ),
+                          )
+
+
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -1094,203 +1107,211 @@ class HomeScreenWidget extends GetxController {
                           margin: EdgeInsets.only(
                             bottom: 17.bpmm(context),
                           ),
-                          child: Row(
-                            children: [
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.zero,
+                            ),
+                            onPressed: () async {
+                              Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            },
+                            child: Row(
+                              children: [
 
-                              Container(
-                                height: 108.hm(context),
-                                width: 100.wm(context),
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent
-                                ),
-                                child: Column(
-                                  children: [
-
-                                    Container(
-                                      height: 35.hm(context),
-                                      width: 100.wm(context),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10.rm(context)),
-                                          topRight: Radius.circular(10.rm(context)),
-                                        ),
-                                        color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
-                                        firstImageList[index].status == "Available" ? ColorUtils.green142 :
-                                        ColorUtils.red211,
-                                      ),
-                                      padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          "${firstImageList[index].status}",
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.tajawal(
-                                            fontWeight: FontWeight.w700,
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 12.spm(context),
-                                            color: ColorUtils.white255,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Expanded(
-                                      child: Container(
-                                        height: 73.hm(context),
-                                        width: 100.wm(context),
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            right: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                            left: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                            bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                          ),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(10.rm(context)),
-                                            bottomRight: Radius.circular(10.rm(context)),
-                                          ),
-                                        ),
-                                        child: FittedBox(
-                                          fit: BoxFit.fill,
-                                          child: Image.asset(
-                                            firstImageList[index].image!,
-                                            fit: BoxFit.fill,
-                                            alignment: Alignment.center,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-
-
-
-
-                                  ],
-                                ),
-                              ),
-
-                              SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
-
-
-                              Expanded(
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                Container(
+                                  height: 108.hm(context),
+                                  width: 100.wm(context),
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent
+                                  ),
+                                  child: Column(
                                     children: [
 
-
                                       Container(
-                                        alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                        child: Text(
-                                          "${firstImageList[index].restaurant}",
-                                          textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                          style: GoogleFonts.tajawal(
-                                            fontWeight: FontWeight.w700,
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 18.spm(context),
-                                            color: ColorUtils.black30,
+                                        height: 35.hm(context),
+                                        width: 100.wm(context),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10.rm(context)),
+                                            topRight: Radius.circular(10.rm(context)),
+                                          ),
+                                          color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                          firstImageList[index].status == "Available" ? ColorUtils.green142 :
+                                          ColorUtils.red211,
+                                        ),
+                                        padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                        alignment: Alignment.center,
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "${firstImageList[index].status}",
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 12.spm(context),
+                                              color: ColorUtils.white255,
+                                            ),
                                           ),
                                         ),
                                       ),
 
-
-                                      SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-
-
-                                          Container(
-                                            height: 18.hm(context),
-                                            width: 17.wm(context),
-                                            decoration: BoxDecoration(
-                                              color: Colors.transparent,
+                                      Expanded(
+                                        child: Container(
+                                          height: 73.hm(context),
+                                          width: 100.wm(context),
+                                          decoration: BoxDecoration(
+                                            border: Border(
+                                              right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                              left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                              bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
                                             ),
-                                            child: FittedBox(
-                                              fit: BoxFit.cover,
-                                              child: Image.asset(
-                                                ImagePathUtils.starIconImagePath,
-                                                fit: BoxFit.cover,
-                                              ),
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(10.rm(context)),
+                                              bottomRight: Radius.circular(10.rm(context)),
                                             ),
                                           ),
-
-                                          SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-
-                                          Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              "${firstImageList[index].rating}",
-                                              textAlign: TextAlign.start,
-                                              style: GoogleFonts.tajawal(
-                                                fontWeight: FontWeight.w500,
-                                                fontStyle: FontStyle.normal,
-                                                fontSize: 14.spm(context),
-                                                color: ColorUtils.black30,
-                                              ),
+                                          child: FittedBox(
+                                            fit: BoxFit.fill,
+                                            child: Image.asset(
+                                              firstImageList[index].image!,
+                                              fit: BoxFit.fill,
+                                              alignment: Alignment.center,
                                             ),
                                           ),
-
-
-                                        ],
-                                      ),
-
-
-                                      SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-
-
-                                          Container(
-                                            height: 18.hm(context),
-                                            width: 17.wm(context),
-                                            decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                            ),
-                                            child: FittedBox(
-                                              fit: BoxFit.cover,
-                                              child: Image.asset(
-                                                ImagePathUtils.locationIconImagePath,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-
-                                          SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-
-                                          Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              "${firstImageList[index].address}",
-                                              textAlign: TextAlign.start,
-                                              style: GoogleFonts.tajawal(
-                                                fontWeight: FontWeight.w500,
-                                                fontStyle: FontStyle.normal,
-                                                fontSize: 14.spm(context),
-                                                color: ColorUtils.black30,
-                                              ),
-                                            ),
-                                          ),
-
-
-                                        ],
-                                      ),
-
+                                        ),
+                                      )
 
 
 
 
                                     ],
                                   ),
-                              )
+                                ),
+
+                                SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
 
 
-                            ],
+                                Expanded(
+                                  child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+
+
+                                        Container(
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                          child: Text(
+                                            "${firstImageList[index].restaurant}",
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 18.spm(context),
+                                              color: ColorUtils.black30,
+                                            ),
+                                          ),
+                                        ),
+
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+
+
+                                            Container(
+                                              height: 18.hm(context),
+                                              width: 17.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.starIconImagePath,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "${firstImageList[index].rating}",
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.black30,
+                                                ),
+                                              ),
+                                            ),
+
+
+                                          ],
+                                        ),
+
+
+                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+
+
+                                            Container(
+                                              height: 18.hm(context),
+                                              width: 17.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.locationIconImagePath,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "${firstImageList[index].address}",
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.black30,
+                                                ),
+                                              ),
+                                            ),
+
+
+                                          ],
+                                        ),
+
+
+
+
+
+                                      ],
+                                    ),
+                                )
+
+
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -1429,203 +1450,209 @@ class HomeScreenWidget extends GetxController {
                         margin: EdgeInsets.only(
                           bottom: 17.bpmm(context),
                         ),
-                        child: Row(
-                          children: [
+                        child: TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                          onPressed: () async {
+                            Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          },
+                          child: Row(
+                            children: [
 
-                            Container(
-                              height: 108.hm(context),
-                              width: 100.wm(context),
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent
-                              ),
-                              child: Column(
-                                children: [
+                              Container(
+                                height: 108.hm(context),
+                                width: 100.wm(context),
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent
+                                ),
+                                child: Column(
+                                  children: [
 
-                                  Container(
-                                    height: 35.hm(context),
-                                    width: 100.wm(context),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10.rm(context)),
-                                        topRight: Radius.circular(10.rm(context)),
+                                    Container(
+                                      height: 35.hm(context),
+                                      width: 100.wm(context),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10.rm(context)),
+                                          topRight: Radius.circular(10.rm(context)),
+                                        ),
+                                        color: secondImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+                                        secondImageList[index].status == "Available" ? ColorUtils.green142 :
+                                        ColorUtils.red211,
                                       ),
-                                      color: secondImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
-                                      secondImageList[index].status == "Available" ? ColorUtils.green142 :
-                                      ColorUtils.red211,
-                                    ),
-                                    padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
-                                    alignment: Alignment.center,
-                                    child: Container(
+                                      padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
                                       alignment: Alignment.center,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "${secondImageList[index].status}",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w700,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 12.spm(context),
+                                            color: ColorUtils.white255,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                    Expanded(
+                                      child: Container(
+                                        height: 73.hm(context),
+                                        width: 100.wm(context),
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                            left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                            bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                          ),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(10.rm(context)),
+                                            bottomRight: Radius.circular(10.rm(context)),
+                                          ),
+                                        ),
+                                        child: FittedBox(
+                                          fit: BoxFit.fill,
+                                          child: Image.asset(
+                                            secondImageList[index].image!,
+                                            fit: BoxFit.fill,
+                                            alignment: Alignment.center,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+
+
+
+
+                                  ],
+                                ),
+                              ),
+
+                              SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+
+                                    Container(
+                                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "${secondImageList[index].status}",
-                                        textAlign: TextAlign.center,
+                                        "${secondImageList[index].restaurant}",
+                                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
                                           fontStyle: FontStyle.normal,
-                                          fontSize: 12.spm(context),
-                                          color: ColorUtils.white255,
+                                          fontSize: 18.spm(context),
+                                          color: ColorUtils.black30,
                                         ),
                                       ),
                                     ),
-                                  ),
-
-                                  Expanded(
-                                    child: Container(
-                                      height: 73.hm(context),
-                                      width: 100.wm(context),
-                                      decoration: BoxDecoration(
-                                        border: Border(
-                                          right: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                          left: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                          bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                        ),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10.rm(context)),
-                                          bottomRight: Radius.circular(10.rm(context)),
-                                        ),
-                                      ),
-                                      child: FittedBox(
-                                        fit: BoxFit.fill,
-                                        child: Image.asset(
-                                          secondImageList[index].image!,
-                                          fit: BoxFit.fill,
-                                          alignment: Alignment.center,
-                                        ),
-                                      ),
-                                    ),
-                                  )
 
 
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
 
 
-                                ],
-                              ),
-                            ),
-
-                            SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
-
-
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-
-
-                                  Container(
-                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                    child: Text(
-                                      "${secondImageList[index].restaurant}",
-                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 18.spm(context),
-                                        color: ColorUtils.black30,
-                                      ),
-                                    ),
-                                  ),
-
-
-                                  SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-
-
-                                      Container(
-                                        height: 18.hm(context),
-                                        width: 17.wm(context),
-                                        decoration: BoxDecoration(
-                                          color: Colors.transparent,
-                                        ),
-                                        child: FittedBox(
-                                          fit: BoxFit.cover,
-                                          child: Image.asset(
-                                            ImagePathUtils.starIconImagePath,
+                                        Container(
+                                          height: 18.hm(context),
+                                          width: 17.wm(context),
+                                          decoration: BoxDecoration(
+                                            color: Colors.transparent,
+                                          ),
+                                          child: FittedBox(
                                             fit: BoxFit.cover,
+                                            child: Image.asset(
+                                              ImagePathUtils.starIconImagePath,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
 
-                                      SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+                                        SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
 
-                                      Container(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${secondImageList[index].rating}",
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.tajawal(
-                                            fontWeight: FontWeight.w500,
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 14.spm(context),
-                                            color: ColorUtils.black30,
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "${secondImageList[index].rating}",
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spm(context),
+                                              color: ColorUtils.black30,
+                                            ),
                                           ),
                                         ),
-                                      ),
 
 
-                                    ],
-                                  ),
+                                      ],
+                                    ),
 
 
-                                  SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
 
 
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
 
 
-                                      Container(
-                                        height: 18.hm(context),
-                                        width: 17.wm(context),
-                                        decoration: BoxDecoration(
-                                          color: Colors.transparent,
-                                        ),
-                                        child: FittedBox(
-                                          fit: BoxFit.cover,
-                                          child: Image.asset(
-                                            ImagePathUtils.locationIconImagePath,
+                                        Container(
+                                          height: 18.hm(context),
+                                          width: 17.wm(context),
+                                          decoration: BoxDecoration(
+                                            color: Colors.transparent,
+                                          ),
+                                          child: FittedBox(
                                             fit: BoxFit.cover,
+                                            child: Image.asset(
+                                              ImagePathUtils.locationIconImagePath,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
 
-                                      SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+                                        SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
 
-                                      Container(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${secondImageList[index].address}",
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.tajawal(
-                                            fontWeight: FontWeight.w500,
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 14.spm(context),
-                                            color: ColorUtils.black30,
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "${secondImageList[index].address}",
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spm(context),
+                                              color: ColorUtils.black30,
+                                            ),
                                           ),
                                         ),
-                                      ),
 
 
-                                    ],
-                                  ),
-
-
+                                      ],
+                                    ),
 
 
 
-                                ],
+
+
+                                  ],
+                                ),
                               ),
-                            )
 
 
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );

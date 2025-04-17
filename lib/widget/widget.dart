@@ -10,3 +10,4 @@ export 'profile_screen_widget.dart';
 export 'search_screen_widget.dart';
 export 'order_track_screen_widget.dart';
 export 'restaurant_details_screen_widget.dart';
+export 'product_details_screen_widget.dart';
