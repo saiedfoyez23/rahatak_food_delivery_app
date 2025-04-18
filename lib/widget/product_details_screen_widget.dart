@@ -467,7 +467,7 @@ class ProductDetailsScreenWidget extends GetxController {
                         child: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           onPressed: () async {
-                            Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                           },
                           child: Center(
                             child: Row(
@@ -936,7 +936,7 @@ class ProductDetailsScreenWidget extends GetxController {
 
                                   ],
                                 ),
-                              )
+                              ),
 
 
                             ],
@@ -975,7 +975,7 @@ class ProductDetailsScreenWidget extends GetxController {
                     child: TextButton(
                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                       onPressed: () async {
-                        Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                       },
                       child: Center(
                         child: Row(

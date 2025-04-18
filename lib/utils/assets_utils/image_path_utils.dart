@@ -31,7 +31,13 @@ class ImagePathUtils {
   static String minusIconImagePath = "images/minus_icon.png";
   static String plusIconImagePath = "images/plus_icon.png";
   static String cartPlusIconImagePath = "images/cart_plus_icon.png";
-
+  static String mdiCartOffIconImagePath = "images/mdi_cart_off_icon.png";
+  static String borderIconImagePath = "images/border_icon.png";
+  static String crossIconImagePath = "images/cross_icon.png";
+  static String editIconImagePath = "images/edit_icon.png";
+  static String findLocationIconImagePath = "images/find_location_icon.png";
+  static String arrowBackIconImagePath = "images/arrow_back_icon.png";
+  static String addIconImagePath = "images/add_icon.png";
 
 
   static String extraImageGrid_0 = "images/extra_image/grid_0.png";
@@ -60,6 +66,7 @@ class ImagePathUtils {
   static String productImage_1 = "images/extra_image/product_image_1.png";
   static String productImage_2 = "images/extra_image/product_image_2.png";
   static String productImage_3 = "images/extra_image/product_image_3.png";
+  static String productImage_4 = "images/extra_image/product_image_4.png";
 
   static String restaurantImage = "images/extra_image/resturant_image.png";
 
