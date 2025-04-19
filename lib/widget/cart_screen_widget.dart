@@ -65,10 +65,10 @@ class CartScreenWidget extends GetxController {
 
 
                         Container(
-                          alignment: Alignment.centerLeft,
+                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                           child: Text(
                             "Orders ( 5 )",
-                            textAlign: TextAlign.start,
+                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
@@ -472,11 +472,12 @@ class CartScreenWidget extends GetxController {
                           child: Column(
                             children: [
 
+
                               Container(
-                                alignment: Alignment.centerLeft,
+                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                 child: Text(
                                   "Order Details",
-                                  textAlign: TextAlign.start,
+                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
                                     fontStyle: FontStyle.normal,

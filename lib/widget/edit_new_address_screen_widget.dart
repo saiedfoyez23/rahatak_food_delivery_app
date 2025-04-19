@@ -1,12 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rahatak_food_delivery_app/screen/order_address_screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
-class AddNewAddressScreenWidget extends GetxController {
+import '../screen/screen.dart';
+
+class EditNewAddressScreenWidget extends GetxController {
 
   GoogleMapController? googleMapController;
   RxDouble updatedLat = 0.0.obs;
@@ -73,8 +75,7 @@ class AddNewAddressScreenWidget extends GetxController {
 
 
 
-
-  Widget addNewAddressScreenWidget({required BuildContext context}) {
+  Widget editNewAddressScreenWidget({required BuildContext context}) {
     if(MediaQuery.sizeOf(context).height > 1000) {
       return Container(
         height: 1133.ht(context),
@@ -140,7 +141,7 @@ class AddNewAddressScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "Add new address",
+                                      "Edit Address",
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -362,7 +363,7 @@ class AddNewAddressScreenWidget extends GetxController {
                                   children: [
 
                                     Container(
-                                      alignment: Alignment.centerRight,
+                                      alignment: Alignment.centerLeft,
                                       child: Text(
                                         "City",
                                         textAlign: TextAlign.start,
@@ -516,6 +517,17 @@ class AddNewAddressScreenWidget extends GetxController {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
                           ],
                         ),
                       ),
@@ -570,9 +582,7 @@ class AddNewAddressScreenWidget extends GetxController {
         ),
       ));
     }
-
   }
-
 
 
 }

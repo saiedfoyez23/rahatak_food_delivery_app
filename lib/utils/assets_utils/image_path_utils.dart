@@ -38,6 +38,14 @@ class ImagePathUtils {
   static String findLocationIconImagePath = "images/find_location_icon.png";
   static String arrowBackIconImagePath = "images/arrow_back_icon.png";
   static String addIconImagePath = "images/add_icon.png";
+  static String dotBorderIconImagePath = "images/dot_border_icon.png";
+  static String mastercardIconImagePath = "images/mastercard_icon.png";
+  static String visaIconImagePath = "images/visa_icon.png";
+  static String errorIconImagePath = "images/error_icon.png";
+  static String phoneNumberIconImagePath = "images/Frame 46.png";
+  static String verticalLineIconImagePath = "images/Line 2.png";
+  static String dotIconImagePath = "images/Frame 94.png";
+
 
 
   static String extraImageGrid_0 = "images/extra_image/grid_0.png";

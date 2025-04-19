@@ -173,7 +173,7 @@ class OrderAddressScreenWidget extends GetxController {
                                     child: TextButton(
                                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                       onPressed: () {
-                                        //Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                        Get.off(()=>EditNewAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                                       },
                                       child: FittedBox(
                                         fit: BoxFit.cover,
@@ -196,76 +196,84 @@ class OrderAddressScreenWidget extends GetxController {
                             SpacerWidget.spacerWidget(spaceHeight: 16.hm(context),),
 
                             Container(
+                              width: 390.wm(context),
+                              height: 56.hm(context),
                               padding: EdgeInsets.symmetric(vertical: 10.vpmm(context),horizontal: 10.hpmm(context)),
                               decoration: BoxDecoration(
                                 border: Border.all(width: 0.5,color: ColorUtils.gray190),
                                 borderRadius: BorderRadius.circular(10.rm(context)),
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
+                              child: TextButton(
+                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                onPressed: () async {
+                                  Get.off(()=>PaymentScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
 
 
-                                  Container(
-                                    height: 24.hm(context),
-                                    width: 24.wm(context),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.findLocationIconImagePath,
-                                        fit: BoxFit.cover,
-                                        alignment: Alignment.center,
+                                    Container(
+                                      height: 24.hm(context),
+                                      width: 24.wm(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
                                       ),
-                                    ),
-                                  ),
-
-
-                                  SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
-
-
-                                  Expanded(
-                                    child: Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        "Use my current location",
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.tajawal(
-                                          fontWeight: FontWeight.w500,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16.spm(context),
-                                          color: ColorUtils.black255,
+                                      child: FittedBox(
+                                        fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.findLocationIconImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
                                         ),
                                       ),
                                     ),
-                                  ),
-
-                                  SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
 
 
-                                  Container(
-                                    height: 24.hm(context),
-                                    width: 24.wm(context),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.arrowBackIconImagePath,
-                                        fit: BoxFit.cover,
-                                        alignment: Alignment.center,
+                                    SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
+
+
+                                    Expanded(
+                                      child: Container(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "Use my current location",
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w500,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 16.spm(context),
+                                            color: ColorUtils.black255,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
+
+                                    SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
+
+
+                                    Container(
+                                      height: 24.hm(context),
+                                      width: 24.wm(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: FittedBox(
+                                        fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.arrowBackIconImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                    ),
 
 
 
 
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
 
@@ -386,7 +394,7 @@ class OrderAddressScreenWidget extends GetxController {
                   child: TextButton(
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                     onPressed: () async {
-                      //Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                      Get.off(()=>PaymentScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                     },
                     child: Center(
                       child: Text(

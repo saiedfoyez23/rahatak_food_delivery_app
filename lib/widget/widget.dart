@@ -13,3 +13,5 @@ export 'restaurant_details_screen_widget.dart';
 export 'product_details_screen_widget.dart';
 export 'order_address_screen_widget.dart';
 export 'add_new_address_screen_widget.dart';
+export 'edit_new_address_screen_widget.dart';
+export 'payment_screen_widget.dart';

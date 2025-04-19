@@ -33,6 +33,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.7.2
   google_fonts: ^6.2.1
+  geocoding:
+  google_maps_flutter:
+  geolocator:
   flutter_localizations:
     sdk: flutter
 
