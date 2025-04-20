@@ -240,7 +240,7 @@ class BottomNavigationBarWidget {
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           fontSize: 12.spt(context),
-                          color: isTrackOrderFocus == true ? ColorUtils.blue210 : ColorUtils.black33,
+                          color: isCartFocus == true ? ColorUtils.blue210 : ColorUtils.black33,
                         ),
                       ),
 

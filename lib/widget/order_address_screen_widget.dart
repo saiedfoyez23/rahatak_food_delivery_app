@@ -11,12 +11,406 @@ class OrderAddressScreenWidget extends GetxController {
 
   Widget orderAddressScreenWidget({required BuildContext context}) {
     if(MediaQuery.sizeOf(context).height > 1000) {
-      return Container(
-        height: 1133.ht(context),
-        width: 744.wt(context),
-        decoration: BoxDecoration(
-          color: ColorUtils.white255,
-        ),
+      return SafeArea(
+        child: Container(
+            height: 1133.ht(context),
+            width: 744.wt(context),
+            decoration: BoxDecoration(
+              color: ColorUtils.white255,
+            ),
+            child: Column(
+              children: [
+
+
+                Expanded(
+                  child: CustomScrollView(
+                    slivers: [
+
+
+                      SliverToBoxAdapter(
+                        child: Column(
+                          children: [
+
+                            SpacerWidget.spacerWidget(spaceHeight: 11.ht(context),),
+
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 37.hpmt(context)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+
+                                  Container(
+                                    height: 40.ht(context),
+                                    width: 40.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: FittedBox(
+                                        fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.authorizationBackButtonImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Specify the address",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.spt(context),
+                                          color: ColorUtils.black255,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+
+
+
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 138.hpmt(context)),
+                              child: Column(
+                                children: [
+                              
+                                  SpacerWidget.spacerWidget(spaceHeight: 26.ht(context),),
+
+
+                                  Container(
+                                    padding: EdgeInsets.symmetric(vertical: 10.vpmt(context),horizontal: 10.hpmt(context)),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(width: 0.5,color: ColorUtils.gray190),
+                                      borderRadius: BorderRadius.circular(10.rt(context)),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+
+
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+
+                                              Container(
+                                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                child: Text(
+                                                  "My Home",
+                                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                  style: GoogleFonts.tajawal(
+                                                    fontWeight: FontWeight.w700,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 18.spt(context),
+                                                    color: ColorUtils.black51,
+                                                  ),
+                                                ),
+                                              ),
+
+
+                                              SpacerWidget.spacerWidget(spaceHeight: 6.ht(context)),
+
+                                              Container(
+                                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                child: Text(
+                                                  "Muscat, Al Khoud",
+                                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                  style: GoogleFonts.tajawal(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 12.spt(context),
+                                                    color: ColorUtils.gray136,
+                                                  ),
+                                                ),
+                                              ),
+
+                                              SpacerWidget.spacerWidget(spaceHeight: 6.ht(context)),
+
+                                              Container(
+                                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                child: Text(
+                                                  "+968 95ْْXXXXXX",
+                                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                  style: GoogleFonts.tajawal(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 12.spt(context),
+                                                    color: ColorUtils.gray136,
+                                                  ),
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
+
+
+                                        Container(
+                                          height: 24.ht(context),
+                                          width: 24.wt(context),
+                                          decoration: BoxDecoration(
+                                            color: Colors.transparent,
+                                          ),
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                            onPressed: () {
+                                              Get.off(()=>EditNewAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                            },
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                ImagePathUtils.editIconImagePath,
+                                                fit: BoxFit.cover,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+
+
+
+
+                                      ],
+                                    ),
+                                  ),
+
+                                  SpacerWidget.spacerWidget(spaceHeight: 16.ht(context),),
+
+                                  Container(
+                                    width: 468.wt(context),
+                                    height: 56.ht(context),
+                                    padding: EdgeInsets.symmetric(vertical: 10.vpmt(context),horizontal: 10.hpmt(context)),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(width: 0.5,color: ColorUtils.gray190),
+                                      borderRadius: BorderRadius.circular(10.rt(context)),
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () async {
+                                        Get.off(()=>PaymentScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+
+
+                                          Container(
+                                            height: 24.ht(context),
+                                            width: 24.wt(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                ImagePathUtils.findLocationIconImagePath,
+                                                fit: BoxFit.cover,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                          ),
+
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
+
+
+                                          Expanded(
+                                            child: Container(
+                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                              child: Text(
+                                                "Use my current location",
+                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 16.spt(context),
+                                                  color: ColorUtils.black255,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
+
+
+                                          Container(
+                                            height: 24.ht(context),
+                                            width: 24.wt(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                Get.locale.toString() == "en" ? ImagePathUtils.arrowBackIconImagePath : ImagePathUtils.arrowForwordIconImagePath,
+                                                fit: BoxFit.cover,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                          ),
+
+
+
+
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+
+                                  SpacerWidget.spacerWidget(spaceHeight: 16.ht(context),),
+
+                                  Container(
+                                    width: 468.wt(context),
+                                    height: 56.ht(context),
+                                    padding: EdgeInsets.symmetric(vertical: 10.vpmt(context),horizontal: 10.hpmt(context)),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(width: 0.5,color: ColorUtils.gray190),
+                                      borderRadius: BorderRadius.circular(10.rt(context)),
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        Get.off(()=>AddNewAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+
+
+                                          Container(
+                                            height: 24.ht(context),
+                                            width: 24.wt(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                ImagePathUtils.addIconImagePath,
+                                                fit: BoxFit.cover,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                          ),
+
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
+
+
+                                          Expanded(
+                                            child: Container(
+                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                              child: Text(
+                                                "Add a new address",
+                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 16.spt(context),
+                                                  color: ColorUtils.black255,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
+
+
+                                          Container(
+                                            height: 24.ht(context),
+                                            width: 24.wt(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                Get.locale.toString() == "en" ? ImagePathUtils.arrowBackIconImagePath : ImagePathUtils.arrowForwordIconImagePath,
+                                                fit: BoxFit.cover,
+                                                alignment: Alignment.center,
+                                              ),
+                                            ),
+                                          ),
+
+
+
+
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+
+
+                                  SpacerWidget.spacerWidget(spaceHeight: 32.ht(context),),
+
+
+                                  Container(
+                                    height: 48.ht(context),
+                                    width: 358.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: ColorUtils.blue192,
+                                      borderRadius: BorderRadius.circular(8.rt(context)),
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () async {
+                                        Get.off(()=>PaymentScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          "Save Address",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w700,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 18.spt(context),
+                                            color: ColorUtils.white255,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+
+                                ],
+                              ),
+                            )
+
+
+
+                          ],
+                        ),
+                      )
+
+
+                    ],
+                  ),
+                ),
+
+
+              ],
+            ),
+          ),
       );
     } else {
       return SafeArea(
@@ -113,10 +507,10 @@ class OrderAddressScreenWidget extends GetxController {
                                       children: [
 
                                         Container(
-                                          alignment: Alignment.centerLeft,
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
                                             "My Home",
-                                            textAlign: TextAlign.start,
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
                                               fontStyle: FontStyle.normal,
@@ -130,10 +524,10 @@ class OrderAddressScreenWidget extends GetxController {
                                         SpacerWidget.spacerWidget(spaceHeight: 6.hm(context)),
 
                                         Container(
-                                          alignment: Alignment.centerLeft,
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
                                             "Muscat, Al Khoud",
-                                            textAlign: TextAlign.start,
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
                                               fontStyle: FontStyle.normal,
@@ -146,10 +540,10 @@ class OrderAddressScreenWidget extends GetxController {
                                         SpacerWidget.spacerWidget(spaceHeight: 6.hm(context)),
 
                                         Container(
-                                          alignment: Alignment.centerLeft,
+                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
                                             "+968 95ْْXXXXXX",
-                                            textAlign: TextAlign.start,
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
                                               fontStyle: FontStyle.normal,
@@ -236,10 +630,10 @@ class OrderAddressScreenWidget extends GetxController {
 
                                     Expanded(
                                       child: Container(
-                                        alignment: Alignment.centerLeft,
+                                        alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
                                           "Use my current location",
-                                          textAlign: TextAlign.start,
+                                          textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
                                             fontStyle: FontStyle.normal,
@@ -262,7 +656,7 @@ class OrderAddressScreenWidget extends GetxController {
                                       child: FittedBox(
                                         fit: BoxFit.cover,
                                         child: Image.asset(
-                                          ImagePathUtils.arrowBackIconImagePath,
+                                          Get.locale.toString() == "en" ? ImagePathUtils.arrowBackIconImagePath : ImagePathUtils.arrowForwordIconImagePath,
                                           fit: BoxFit.cover,
                                           alignment: Alignment.center,
                                         ),
@@ -321,10 +715,10 @@ class OrderAddressScreenWidget extends GetxController {
 
                                     Expanded(
                                       child: Container(
-                                        alignment: Alignment.centerLeft,
+                                        alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
                                           "Add a new address",
-                                          textAlign: TextAlign.start,
+                                          textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
                                             fontStyle: FontStyle.normal,
@@ -347,7 +741,7 @@ class OrderAddressScreenWidget extends GetxController {
                                       child: FittedBox(
                                         fit: BoxFit.cover,
                                         child: Image.asset(
-                                          ImagePathUtils.arrowBackIconImagePath,
+                                          Get.locale.toString() == "en" ? ImagePathUtils.arrowBackIconImagePath : ImagePathUtils.arrowForwordIconImagePath,
                                           fit: BoxFit.cover,
                                           alignment: Alignment.center,
                                         ),

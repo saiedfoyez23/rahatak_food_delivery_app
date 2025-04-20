@@ -45,6 +45,15 @@ class ImagePathUtils {
   static String phoneNumberIconImagePath = "images/Frame 46.png";
   static String verticalLineIconImagePath = "images/Line 2.png";
   static String dotIconImagePath = "images/Frame 94.png";
+  static String arrowFilledBackIconImagePath = "images/arrow_filled_back_icon.png";
+  static String arrowFilledIconImagePath = "images/arrow_filled_icon.png";
+  static String lightLocationIconImagePath = "images/light_location_icon.png";
+  static String lightTimeLineIconImagePath = "images/light_time_line_icon.png";
+  static String checkIconImagePath = "images/check_icon.png";
+  static String deliveryFilledIconImagePath = "images/delivery_filled_icon.png";
+  static String bxsErrorIconImagePath = "images/bxs_error_icon.png";
+  static String passwordResetIconImagePath = "images/password_reset_icon.png";
+  static String arrowForwordIconImagePath = "images/arrow_forword_icon.png";
 
 
 

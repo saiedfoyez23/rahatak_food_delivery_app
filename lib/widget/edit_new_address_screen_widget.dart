@@ -77,13 +77,498 @@ class EditNewAddressScreenWidget extends GetxController {
 
   Widget editNewAddressScreenWidget({required BuildContext context}) {
     if(MediaQuery.sizeOf(context).height > 1000) {
-      return Container(
-        height: 1133.ht(context),
-        width: 744.wt(context),
-        decoration: BoxDecoration(
-          color: ColorUtils.white255,
+      return Obx(()=>SafeArea(
+        child: Container(
+          height: 1133.ht(context),
+          width: 744.wt(context),
+          decoration: BoxDecoration(
+            color: ColorUtils.white255,
+          ),
+          child: Column(
+            children: [
+        
+        
+              Expanded(
+                child: CustomScrollView(
+                  slivers: [
+        
+        
+                    SliverToBoxAdapter(
+                      child: Column(
+                        children: [
+        
+        
+                          SpacerWidget.spacerWidget(spaceHeight: 11.ht(context),),
+        
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 37.hpmt(context)),
+                            child: Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+
+                                  Container(
+                                    height: 40.ht(context),
+                                    width: 40.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: FittedBox(
+                                        fit: BoxFit.cover,
+                                        child: Image.asset(
+                                          ImagePathUtils.authorizationBackButtonImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Edit Address",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.spt(context),
+                                          color: ColorUtils.black255,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ),
+        
+        
+        
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 138.hpmt(context)),
+                            child: Column(
+                              children: [
+        
+        
+                                SpacerWidget.spacerWidget(spaceHeight: 26.ht(context),),
+        
+        
+                                Container(
+                                  alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                  child: Text(
+                                    "Select Location",
+                                    textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w700,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 16.spt(context),
+                                      color: ColorUtils.black255,
+                                      height: (20.ht(context) / 16.spt(context)),
+                                    ),
+                                  ),
+                                ),
+        
+        
+                                SpacerWidget.spacerWidget(spaceHeight: 32.ht(context),),
+        
+                                Container(
+                                  height: 358.ht(context),
+                                  width: 468.wt(context),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.rt(context)),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12.rt(context)),
+                                    child: GoogleMap(
+                                      initialCameraPosition: const CameraPosition(
+                                          bearing: 192.8334901395799,
+                                          target: LatLng(37.42796133580664, -122.085749655962),
+                                          tilt: 59.440717697143555,
+                                          zoom: 19.151926040649414
+                                      ),
+                                      markers: {
+                                        Marker(
+                                          markerId: const MarkerId('currentLocation'),
+                                          position: LatLng(updatedLat.value, updatedLong.value),
+                                        )
+                                      },
+                                      zoomControlsEnabled: false,
+                                      mapType: MapType.normal,
+                                      onMapCreated: (GoogleMapController controller) {
+                                        googleMapController = controller;
+                                      },
+                                    ),
+                                  ),
+                                ),
+        
+        
+                                SpacerWidget.spacerWidget(spaceHeight: 32.ht(context),),
+        
+        
+                                Container(
+                                  alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                  child: Text(
+                                    "Governorate",
+                                    textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 16.spt(context),
+                                      color: ColorUtils.black255,
+                                    ),
+                                  ),
+                                ),
+        
+                                SpacerWidget.spacerWidget(spaceHeight: 12.ht(context),),
+        
+        
+                                TextFormField(
+                                  controller: governorateController.value,
+                                  textAlign: TextAlign.start,
+                                  cursorColor: ColorUtils.blue192,
+                                  cursorHeight: 20.ht(context),
+                                  style: GoogleFonts.tajawal(
+                                    fontSize: 16.spt(context),
+                                    fontStyle: FontStyle.normal,
+                                    color: ColorUtils.black51,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  textAlignVertical: TextAlignVertical.center,
+                                  decoration: InputDecoration(
+                                    hintText: "Enter Governorate",
+                                    hintStyle: GoogleFonts.tajawal(
+                                      fontSize: 16.spt(context),
+                                      fontWeight: FontWeight.w400,
+                                      fontStyle: FontStyle.normal,
+                                      color: ColorUtils.gray136,
+                                    ),
+                                    filled: true,
+                                    fillColor: ColorUtils.white255,
+                                    contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 12.hpmt(context),
+                                      vertical: 12.vpmt(context),
+                                    ),
+                                    constraints: BoxConstraints(
+                                      maxHeight: 48.hm(context),
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.rt(context)),
+                                      borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.rt(context)),
+                                      borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.rt(context)),
+                                      borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                    ),
+        
+                                  ),
+                                ),
+        
+        
+                                SpacerWidget.spacerWidget(spaceHeight: 12.ht(context),),
+        
+        
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+        
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+        
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "state",
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 16.spt(context),
+                                              color: ColorUtils.black255,
+                                            ),
+                                          ),
+                                        ),
+        
+                                        SpacerWidget.spacerWidget(spaceHeight: 12.ht(context),),
+        
+        
+                                        TextFormField(
+                                          controller: stateController.value,
+                                          textAlign: TextAlign.start,
+                                          cursorColor: ColorUtils.blue192,
+                                          cursorHeight: 20.ht(context),
+                                          style: GoogleFonts.tajawal(
+                                            fontSize: 16.spt(context),
+                                            fontStyle: FontStyle.normal,
+                                            color: ColorUtils.black51,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                          textAlignVertical: TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                            hintText: "Enter State",
+                                            hintStyle: GoogleFonts.tajawal(
+                                              fontSize: 16.spt(context),
+                                              fontWeight: FontWeight.w400,
+                                              fontStyle: FontStyle.normal,
+                                              color: ColorUtils.gray136,
+                                            ),
+                                            filled: true,
+                                            fillColor: ColorUtils.white255,
+                                            contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 12.hpmt(context),
+                                              vertical: 12.vpmt(context),
+                                            ),
+                                            constraints: BoxConstraints(
+                                              maxWidth: 230.wt(context),
+                                              maxHeight: 48.ht(context),
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(8.rt(context)),
+                                              borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(8.rt(context)),
+                                              borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(8.rt(context)),
+                                              borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                            ),
+        
+                                          ),
+                                        ),
+        
+        
+                                      ],
+                                    ),
+        
+        
+                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+        
+        
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+        
+                                        Container(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            "City",
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 16.spt(context),
+                                              color: ColorUtils.black255,
+                                            ),
+                                          ),
+                                        ),
+        
+                                        SpacerWidget.spacerWidget(spaceHeight: 12.ht(context),),
+        
+        
+                                        TextFormField(
+                                          controller: cityController.value,
+                                          textAlign: TextAlign.start,
+                                          cursorColor: ColorUtils.blue192,
+                                          cursorHeight: 20.ht(context),
+                                          style: GoogleFonts.tajawal(
+                                            fontSize: 16.spt(context),
+                                            fontStyle: FontStyle.normal,
+                                            color: ColorUtils.black51,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                          textAlignVertical: TextAlignVertical.center,
+                                          decoration: InputDecoration(
+                                            hintText: "Enter City",
+                                            hintStyle: GoogleFonts.tajawal(
+                                              fontSize: 16.spt(context),
+                                              fontWeight: FontWeight.w400,
+                                              fontStyle: FontStyle.normal,
+                                              color: ColorUtils.gray136,
+                                            ),
+                                            filled: true,
+                                            fillColor: ColorUtils.white255,
+                                            contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 12.hpmt(context),
+                                              vertical: 12.vpmt(context),
+                                            ),
+                                            constraints: BoxConstraints(
+                                              maxWidth: 230.wt(context),
+                                              maxHeight: 48.ht(context),
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(8.rt(context)),
+                                              borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(8.rt(context)),
+                                              borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(8.rt(context)),
+                                              borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                            ),
+        
+                                          ),
+                                        ),
+        
+        
+                                      ],
+                                    ),
+        
+        
+        
+        
+        
+        
+                                  ],
+                                ),
+        
+        
+                                SpacerWidget.spacerWidget(spaceHeight: 32.ht(context),),
+        
+        
+        
+                                Container(
+                                  height: 25.ht(context),
+                                  width: 468.wt(context),
+                                  decoration: BoxDecoration(
+                                      color: Colors.transparent
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                    onPressed: () {
+                                      if(isCheckIn.value == true) {
+                                        isCheckIn.value = false;
+                                      } else {
+                                        isCheckIn.value = true;
+                                      }
+                                    },
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+        
+                                        Container(
+                                          height: 18.ht(context),
+                                          width: 18.wt(context),
+                                          decoration: BoxDecoration(
+                                              color: Colors.transparent
+                                          ),
+                                          child: FittedBox(
+                                            fit: BoxFit.cover,
+                                            child: Image.asset(
+                                              isCheckIn.value == true ?
+                                              ImagePathUtils.checkBoxImagePath :
+                                              ImagePathUtils.uncheckBoxImagePath,
+                                              fit: BoxFit.cover,
+                                              alignment: Alignment.center,
+                                            ),
+                                          ),
+                                        ),
+        
+                                        SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+        
+                                        RichText(
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(
+                                            text: "Save location ",
+                                            style: GoogleFonts.tajawal(
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spt(context),
+                                              color: ColorUtils.black51,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                            children: [
+                                              TextSpan(
+                                                text: "data for later use",
+                                                style: GoogleFonts.tajawal(
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spt(context),
+                                                  color: ColorUtils.black51,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+        
+        
+                                      ],
+                                    ),
+                                  ),
+                                ),
+        
+                                SpacerWidget.spacerWidget(spaceHeight: 32.ht(context),),
+        
+        
+                                Container(
+                                  height: 48.ht(context),
+                                  width: 358.wt(context),
+                                  decoration: BoxDecoration(
+                                    color: ColorUtils.blue192,
+                                    borderRadius: BorderRadius.circular(8.rt(context)),
+                                  ),
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                    onPressed: () async {
+                                      Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                    },
+                                    child: Center(
+                                      child: Text(
+                                        "Save Address",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 18.spt(context),
+                                          color: ColorUtils.white255,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+        
+        
+                              ],
+                            ),
+                          )
+        
+        
+        
+        
+        
+        
+                        ],
+                      ),
+                    )
+        
+        
+                  ],
+                ),
+              ),
+        
+        
+            ],
+          ),
         ),
-      );
+      ));
     } else {
       return Obx(()=>SafeArea(
         child: Container(
@@ -110,50 +595,53 @@ class EditNewAddressScreenWidget extends GetxController {
 
                             SpacerWidget.spacerWidget(spaceHeight: 11.hm(context),),
 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
 
-                                Container(
-                                  height: 40.hm(context),
-                                  width: 40.wm(context),
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: TextButton(
-                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                    onPressed: () {
-                                      Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                    },
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.authorizationBackButtonImagePath,
+                                  Container(
+                                    height: 40.hm(context),
+                                    width: 40.wm(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
-                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          ImagePathUtils.authorizationBackButtonImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
 
 
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "Edit Address",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 16.spm(context),
-                                        color: ColorUtils.black255,
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Edit Address",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.spm(context),
+                                          color: ColorUtils.black255,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
 
-                              ],
+                                ],
+                              ),
                             ),
 
 
