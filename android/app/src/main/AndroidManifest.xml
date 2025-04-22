@@ -19,7 +19,8 @@
     <application
         android:label="Rahatak Food Delivery App"
         android:name="${applicationName}"
-        android:icon="@drawable/logo">
+        android:icon="@drawable/logo"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"
             android:exported="true"

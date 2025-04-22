@@ -16,3 +16,5 @@ export 'add_new_address_screen_widget.dart';
 export 'edit_new_address_screen_widget.dart';
 export 'payment_screen_widget.dart';
 export 'notification_screen_widget.dart';
+export 'filter_search_screen_widget.dart';
+export 'search_result_screen_widget.dart';

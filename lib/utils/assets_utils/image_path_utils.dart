@@ -56,6 +56,19 @@ class ImagePathUtils {
   static String arrowForwordIconImagePath = "images/arrow_forword_icon.png";
 
 
+  static String editImageIconImagePath = "images/profile_screen_image/edit_image_icon.png";
+  static String languageChangeIconImagePath = "images/profile_screen_image/language_change_icon.png";
+  static String manageAddressIconImagePath = "images/profile_screen_image/manage_address_icon.png";
+  static String changePasswordIconImagePath = "images/profile_screen_image/change_password_icon.png";
+  static String helpCenterIconImagePath = "images/profile_screen_image/help_center_icon.png";
+  static String noImageIconImagePath = "images/profile_screen_image/no_image_icon.png";
+  static String paymentMethodIconImagePath = "images/profile_screen_image/payment_method_icon.png";
+  static String profileInformationIconImagePath = "images/profile_screen_image/profile_information_icon.png";
+  static String ratingAndReviewIconImagePath = "images/profile_screen_image/rating_and_review_icon.png";
+  static String termsAndConditionIconImagePath = "images/profile_screen_image/terms_and_condition_icon.png";
+
+
+
 
   static String extraImageGrid_0 = "images/extra_image/grid_0.png";
   static String extraImageGrid_1 = "images/extra_image/grid_1.png";
@@ -73,6 +86,8 @@ class ImagePathUtils {
   static String extraImageList_6 = "images/extra_image/list_6.png";
   static String extraImageList_7 = "images/extra_image/list_7.png";
   static String extraImageList_8 = "images/extra_image/list_8.png";
+  static String extraImageList_9 = "images/extra_image/list_9.png";
+  static String extraImageList_10 = "images/extra_image/list_10.png";
 
   static String pList_1 = "images/extra_image/p_list_1.png";
   static String pList_2 = "images/extra_image/p_list_2.png";
@@ -84,6 +99,10 @@ class ImagePathUtils {
   static String productImage_2 = "images/extra_image/product_image_2.png";
   static String productImage_3 = "images/extra_image/product_image_3.png";
   static String productImage_4 = "images/extra_image/product_image_4.png";
+  static String productImage_5 = "images/extra_image/product_image_5.png";
+  static String productImage_6 = "images/extra_image/product_image_6.png";
+  static String productImage_7 = "images/extra_image/product_image_7.png";
+  static String productImage_8 = "images/extra_image/product_image_8.png";
 
   static String restaurantImage = "images/extra_image/resturant_image.png";
 

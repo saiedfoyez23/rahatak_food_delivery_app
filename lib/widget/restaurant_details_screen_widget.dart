@@ -1486,7 +1486,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
                                             foodDetails[index].description,
-                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
                                               fontStyle: FontStyle.normal,

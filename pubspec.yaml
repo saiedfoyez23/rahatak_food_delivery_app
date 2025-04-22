@@ -35,6 +35,7 @@ dependencies:
   google_fonts: ^6.2.1
   geocoding:
   google_maps_flutter:
+  image_picker: ^1.1.2
   geolocator:
   flutter_localizations:
     sdk: flutter
@@ -55,7 +56,7 @@ flutter:
   assets:
     - images/
     - images/extra_image/
-
+    - images/profile_screen_image/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
