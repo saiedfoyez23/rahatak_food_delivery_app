@@ -14,6 +14,7 @@ class ColorUtils {
   static const Color gray136 = Color.fromRGBO(136, 136, 136, 1);
   static const Color gray117 = Color.fromRGBO(117, 117, 117, 1);
   static const Color yellow160 = Color.fromRGBO(255, 160, 0, 1);
+  static const Color yellow175 = Color.fromRGBO(233, 175, 0, 1);
   static const Color green142 = Color.fromRGBO(56, 142, 60, 1);
   static const Color red211 = Color.fromRGBO(211, 47, 47, 1);
   static const Color black51 = Color.fromRGBO(51, 51, 51, 1);

@@ -1,0 +1,47 @@
+class Arabic {
+
+
+  Map<String,String> arabic = {
+    "Arabic": "اللغة العربية",
+    "English": "اللغة الانجليزية",
+    "Login": "تسجيل الدخول",
+    "Create Account": "انشاء حساب",
+    "© 2025 All rights reserved.\nDesigned & Developed by Script | Daleel Technology" : "© 2025 جميع الحقوق محفوظة.\n برمجة وتطوير: سكربت | دليل التكنولوجيا",
+    "Welcome to Rahtak!": "مرحبًا بك في راحتك!",
+    "Email/Phone Number": "البريد الالكتروني / رقم الهاتف",
+    "moha.ali@gmail.com": "أدخل بريدك الالكتروني أو رقم هاتفك",
+    "Password": "كلمة المرور",
+    "Remember me": "تذكرني",
+    "Forgot your password?": "نسيت كلمة المرور؟",
+    "Don't have an account? ": "ليس لديك حساب؟ ",
+    "Create a new account ": "إنشاء حساب جديد",
+    "Enter your registered email address, and we will send you a link to reset your password.": "أدخل بريدك الإلكتروني المسجل، وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+    "Enter your email": "أدخل بريدك الالكتروني ",
+    "A reset link has been sent!": "تم إرسال رابط إعادة التعيين!",
+    "Please check your email to create a new password.": "يرجى التحقق من بريدك الإلكتروني لإنشاء كلمة مرور جديدة.",
+    "Reset password": "إعادة تعيين كلمة المرور",
+    "Cancel": "إلغاء",
+    "Send": "ارسال",
+    "Enter new password": "أدخل كلمة المرور الجديدة",
+    "New Password": "كلمة المرور الجديدة",
+    "Confirm Password": "تأكيد كلمة المرور",
+    "Your password has been updated successfully!": "تم تحديث كلمة المرور بنجاح!",
+    "You can now log in with your new password.": "يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة.",
+    "Save Password": "حفظ كلمة المرور",
+    "Join us to Rahtak and enjoy the best food!": "انضم إلى راحتك واستمتع بأفضل الأطعمة!",
+    "Name *": "الاسم ",
+    "Enter your name": "أدخل اسمك",
+    "Email *": "البريد الالكتروني",
+    "Phone Number *": "رقم الهاتف",
+    "Enter your phone number": "أدخل رقم هاتفك",
+    "I agree to ": "أوافق على ",
+    "the terms and conditions": "الشروط والأحكام",
+    "Your account has been created successfully!": "تم إنشاء حسابك بنجاح! ",
+    "You can now log in and start ordering your favorite meals with ease.": "يمكنك الآن تسجيل الدخول والبدء في طلب وجباتك المفضلة بسهولة.",
+    "Create account": "انشاء حساب",
+    "Already have an account? ": "لديك حساب بالفعل؟ ",
+    "Login ": "تسجيل الدخول",
+  };
+
+
+}

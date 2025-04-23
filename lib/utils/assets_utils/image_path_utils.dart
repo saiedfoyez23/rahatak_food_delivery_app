@@ -54,6 +54,7 @@ class ImagePathUtils {
   static String bxsErrorIconImagePath = "images/bxs_error_icon.png";
   static String passwordResetIconImagePath = "images/password_reset_icon.png";
   static String arrowForwordIconImagePath = "images/arrow_forword_icon.png";
+  static String uploadIconImagePath = "images/upload_icon.png";
 
 
   static String editImageIconImagePath = "images/profile_screen_image/edit_image_icon.png";

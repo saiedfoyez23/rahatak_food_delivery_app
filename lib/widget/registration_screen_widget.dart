@@ -105,7 +105,7 @@ class RegistrationScreenWidget extends GetxController {
                                               },
                                               child: Center(
                                                 child: Text(
-                                                  "Arabic",
+                                                  "Arabic".tr,
                                                   textAlign: TextAlign.center,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -132,7 +132,7 @@ class RegistrationScreenWidget extends GetxController {
                                               },
                                               child: Center(
                                                 child: Text(
-                                                  "English",
+                                                  "English".tr,
                                                   textAlign: TextAlign.center,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -174,7 +174,7 @@ class RegistrationScreenWidget extends GetxController {
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
-                        "Join us to Rahtak and enjoy the best food!",
+                        "Join us to Rahtak and enjoy the best food!".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -189,10 +189,10 @@ class RegistrationScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Name *",
-                        textAlign: TextAlign.start,
+                        "Name *".tr,
+                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -255,10 +255,10 @@ class RegistrationScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Email *",
-                        textAlign: TextAlign.start,
+                        "Email *".tr,
+                        textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -283,7 +283,7 @@ class RegistrationScreenWidget extends GetxController {
                       ),
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
-                        hintText: "Enter your email",
+                        hintText: "Enter your email".tr,
                         hintStyle: GoogleFonts.tajawal(
                           fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
                           fontWeight: FontWeight.w400,
@@ -320,10 +320,10 @@ class RegistrationScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Phone Number *",
-                        textAlign: TextAlign.start,
+                        "Phone Number *".tr,
+                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -348,7 +348,7 @@ class RegistrationScreenWidget extends GetxController {
                       ),
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
-                        hintText: "Enter your phone number",
+                        hintText: "Enter your phone number".tr,
                         hintStyle: GoogleFonts.tajawal(
                           fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
                           fontWeight: FontWeight.w400,
@@ -386,10 +386,10 @@ class RegistrationScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Password",
-                        textAlign: TextAlign.start,
+                        "Password".tr,
+                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -537,7 +537,7 @@ class RegistrationScreenWidget extends GetxController {
                             RichText(
                               textAlign: TextAlign.center,
                               text: TextSpan(
-                                text: "I agree to ",
+                                text: "I agree to ".tr,
                                 style: GoogleFonts.tajawal(
                                   fontStyle: FontStyle.normal,
                                   fontSize: MediaQuery.sizeOf(context).height > 1000 ? 14.spt(context) : 14.spm(context),
@@ -546,7 +546,7 @@ class RegistrationScreenWidget extends GetxController {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: "the terms and conditions",
+                                    text: "the terms and conditions".tr,
                                     style: GoogleFonts.tajawal(
                                       fontStyle: FontStyle.normal,
                                       fontSize: MediaQuery.sizeOf(context).height > 1000 ? 14.spt(context) : 14.spm(context),
@@ -627,7 +627,7 @@ class RegistrationScreenWidget extends GetxController {
                                         width: MediaQuery.sizeOf(context).width > 500  ? 428.wt(context) : 358.wm(context),
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "Your account has been created successfully!",
+                                          "Your account has been created successfully!".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -643,7 +643,7 @@ class RegistrationScreenWidget extends GetxController {
                                         width: MediaQuery.sizeOf(context).width > 500  ? 428.wt(context) : 358.wm(context),
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "You can now log in and start ordering your favorite meals with ease.",
+                                          "You can now log in and start ordering your favorite meals with ease.".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -668,7 +668,7 @@ class RegistrationScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Create account",
+                            "Create account".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -692,7 +692,7 @@ class RegistrationScreenWidget extends GetxController {
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
-                          text: "Already have an account? ",
+                          text: "Already have an account? ".tr,
                           style: GoogleFonts.tajawal(
                             fontStyle: FontStyle.normal,
                             fontSize: MediaQuery.sizeOf(context).height > 1000 ? 14.spt(context) : 14.spm(context),
@@ -701,7 +701,7 @@ class RegistrationScreenWidget extends GetxController {
                           ),
                           children: [
                             TextSpan(
-                              text: "Login ",
+                              text: "Login ".tr,
                               style: GoogleFonts.tajawal(
                                 fontStyle: FontStyle.normal,
                                 fontSize: MediaQuery.sizeOf(context).height > 1000 ? 14.spt(context) : 14.spm(context),

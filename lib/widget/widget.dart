@@ -18,3 +18,8 @@ export 'payment_screen_widget.dart';
 export 'notification_screen_widget.dart';
 export 'filter_search_screen_widget.dart';
 export 'search_result_screen_widget.dart';
+export 'rating_and_review_screen_widget.dart';
+export 'help_center_screen_widget.dart';
+export 'terms_and_conditions_screen_widget.dart';
+export 'language_change_screen_widget.dart';
+export 'logout_screen_widget.dart';

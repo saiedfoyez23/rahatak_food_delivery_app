@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 class ProfileScreenWidget extends GetxController {
@@ -633,7 +634,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>RatingAndReviewScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -720,7 +723,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>LanguageChangeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -808,7 +813,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=> TermsAndConditionsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -894,7 +901,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=> HelpCenterScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -994,7 +1003,7 @@ class ProfileScreenWidget extends GetxController {
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () async {
-                          //Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          Get.off(()=>LogoutScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                         },
                         child: Center(
                           child: Text(
@@ -1645,7 +1654,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>RatingAndReviewScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),
@@ -1732,7 +1743,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>LanguageChangeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),
@@ -1820,7 +1833,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=> TermsAndConditionsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),
@@ -1906,7 +1921,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>HelpCenterScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),
@@ -2006,7 +2023,7 @@ class ProfileScreenWidget extends GetxController {
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () async {
-                          //Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          Get.off(()=>LogoutScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                         },
                         child: Center(
                           child: Text(

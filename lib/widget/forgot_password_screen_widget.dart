@@ -39,32 +39,35 @@ class ForgotPasswordScreenWidget extends GetxController {
                     ),
       
       
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-      
-                        Container(
-                          height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
-                          width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
-                          decoration: BoxDecoration(
-                              color: Colors.transparent
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {
-                              Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                            },
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: Image.asset(
-                                ImagePathUtils.authorizationBackButtonImagePath,
+                    Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+
+                          Container(
+                            height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
+                            width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
+                            decoration: BoxDecoration(
+                                color: Colors.transparent
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              child: FittedBox(
                                 fit: BoxFit.cover,
-                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  ImagePathUtils.authorizationBackButtonImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
 
 
@@ -75,7 +78,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
-                        "Forgot your password?",
+                        "Forgot your password?".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -92,7 +95,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
-                        "Enter your registered email address, and we will send you a link to reset your password.",
+                        "Enter your registered email address, and we will send you a link to reset your password.".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -125,7 +128,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                       ),
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
-                        hintText: "Enter your email",
+                        hintText: "Enter your email".tr,
                         hintStyle: GoogleFonts.tajawal(
                           fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
                           fontWeight: FontWeight.w400,
@@ -178,7 +181,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                             builder: (context) {
                               return Padding(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: MediaQuery.sizeOf(context).height > 1000 ? 380.vpmt(context) : 254.vpmm(context),
+                                  vertical: MediaQuery.sizeOf(context).height > 1000 ? 350.vpmt(context) : 234.vpmm(context),
                                   horizontal: MediaQuery.sizeOf(context).width > 500 ? 158.hpmt(context) : 16.hpmm(context),
                                 ),
                                 child: Container(
@@ -200,7 +203,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                                         width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wm(context),
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "A reset link has been sent!",
+                                          "A reset link has been sent!".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -216,7 +219,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                                         width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wt(context),
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "Please check your email to create a new password.",
+                                          "Please check your email to create a new password.".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -245,7 +248,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                                           },
                                           child: Center(
                                             child: Text(
-                                              "Reset password",
+                                              "Reset password".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -276,7 +279,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                                           },
                                           child: Center(
                                             child: Text(
-                                              "Cancel",
+                                              "Cancel".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -300,7 +303,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Send",
+                            "Send".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,

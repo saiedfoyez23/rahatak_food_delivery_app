@@ -1,0 +1,47 @@
+class English {
+
+
+  Map<String,String> english = {
+    "Arabic": "Arabic",
+    "English": "English",
+    "Login": "Login",
+    "Create Account": "Create Account",
+    "© 2025 All rights reserved.\nDesigned & Developed by Script | Daleel Technology" : "© 2025 All rights reserved.\nDesigned & Developed by Script | Daleel Technology",
+    "Welcome to Rahtak!": "Welcome to Rahtak!",
+    "Email/Phone Number": "Email/Phone Number",
+    "moha.ali@gmail.com": "moha.ali@gmail.com",
+    "Password": "Password",
+    "Remember me": "Remember me",
+    "Forgot your password?": "Forgot your password?",
+    "Don't have an account? ": "Don't have an account? ",
+    "Create a new account ": "Create a new account ",
+    "Enter your registered email address, and we will send you a link to reset your password.": "Enter your registered email address, and we will send you a link to reset your password.",
+    "Enter your email": "Enter your email",
+    "A reset link has been sent!": "A reset link has been sent!",
+    "Please check your email to create a new password.": "Please check your email to create a new password.",
+    "Reset password": "Reset password",
+    "Cancel": "Cancel",
+    "Send": "Send",
+    "Enter new password": "Enter new password",
+    "New Password": "New Password",
+    "Confirm Password": "Confirm Password",
+    "Your password has been updated successfully!": "Your password has been updated successfully!",
+    "You can now log in with your new password.": "You can now log in with your new password.",
+    "Save Password": "Save Password",
+    "Join us to Rahtak and enjoy the best food!": "Join us to Rahtak and enjoy the best food!",
+    "Name *": "Name *",
+    "Enter your name": "Enter your name",
+    "Email *": "Email *",
+    "Phone Number *": "Phone Number *",
+    "Enter your phone number": "Enter your phone number",
+    "I agree to ": "I agree to ",
+    "the terms and conditions": "the terms and conditions",
+    "Your account has been created successfully!": "Your account has been created successfully!",
+    "You can now log in and start ordering your favorite meals with ease.": "You can now log in and start ordering your favorite meals with ease.",
+    "Create account": "Create account",
+    "Already have an account? ": "Already have an account? ",
+    "Login ": "Login ",
+  };
+
+
+}

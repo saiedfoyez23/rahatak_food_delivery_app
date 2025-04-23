@@ -96,7 +96,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                                               },
                                               child: Center(
                                                 child: Text(
-                                                  "Arabic",
+                                                  "Arabic".tr,
                                                   textAlign: TextAlign.center,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -123,7 +123,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                                               },
                                               child: Center(
                                                 child: Text(
-                                                  "English",
+                                                  "English".tr,
                                                   textAlign: TextAlign.center,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -199,7 +199,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Login",
+                            "Login".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -234,7 +234,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Create Account",
+                            "Create Account".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -254,7 +254,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "© 2025 All rights reserved.\nDesigned & Developed by Script | Daleel Technology",
+                        "© 2025 All rights reserved.\nDesigned & Developed by Script | Daleel Technology".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,

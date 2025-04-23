@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
+import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,9 +34,13 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
+      translationsKeys: {
+        "en": English().english,
+        "ar": Arabic().arabic,
+      },
       supportedLocales: [
         Locale("ar"),
-        Locale("en")
+        Locale("en"),
       ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

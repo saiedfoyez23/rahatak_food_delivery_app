@@ -101,7 +101,7 @@ class LoginScreenWidget extends GetxController {
                                               },
                                               child: Center(
                                                 child: Text(
-                                                  "Arabic",
+                                                  "Arabic".tr,
                                                   textAlign: TextAlign.center,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -128,7 +128,7 @@ class LoginScreenWidget extends GetxController {
                                               },
                                               child: Center(
                                                 child: Text(
-                                                  "English",
+                                                  "English".tr,
                                                   textAlign: TextAlign.center,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -172,7 +172,7 @@ class LoginScreenWidget extends GetxController {
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
-                        "Welcome to Rahtak!",
+                        "Welcome to Rahtak!".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -189,10 +189,10 @@ class LoginScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Email/Phone Number",
-                        textAlign: TextAlign.start,
+                        "Email/Phone Number".tr,
+                        textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -217,7 +217,7 @@ class LoginScreenWidget extends GetxController {
                       ),
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
-                        hintText: "moha.ali@gmail.com",
+                        hintText: "moha.ali@gmail.com".tr,
                         hintStyle: GoogleFonts.tajawal(
                           fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
                           fontWeight: FontWeight.w400,
@@ -254,10 +254,10 @@ class LoginScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Password",
-                        textAlign: TextAlign.start,
+                        "Password".tr,
+                        textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -410,7 +410,7 @@ class LoginScreenWidget extends GetxController {
                                   SpacerWidget.spacerWidget(spaceWidth: MediaQuery.sizeOf(context).width > 500 ? 8.wt(context) : 8.wm(context)),
 
                                   Text(
-                                    "Remember me",
+                                    "Remember me".tr,
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -437,7 +437,7 @@ class LoginScreenWidget extends GetxController {
                                 Get.off(()=>ForgotPasswordScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                               },
                               child: Text(
-                                "Forgot your password?",
+                                "Forgot your password?".tr,
                                 textAlign: TextAlign.start,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -471,7 +471,7 @@ class LoginScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Login",
+                            "Login".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -496,7 +496,7 @@ class LoginScreenWidget extends GetxController {
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
-                          text: "Don't have an account? ",
+                          text: "Don't have an account? ".tr,
                           style: GoogleFonts.tajawal(
                             fontStyle: FontStyle.normal,
                             fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 14.spm(context),
@@ -505,7 +505,7 @@ class LoginScreenWidget extends GetxController {
                           ),
                           children: [
                             TextSpan(
-                              text: "Create a new account ",
+                              text: "Create a new account ".tr,
                               style: GoogleFonts.tajawal(
                                 fontStyle: FontStyle.normal,
                                 fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 14.spm(context),

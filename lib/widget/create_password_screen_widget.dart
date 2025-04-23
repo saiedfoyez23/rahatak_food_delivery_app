@@ -41,32 +41,35 @@ class CreatePasswordScreenWidget extends GetxController {
                     ),
 
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                    Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
 
-                        Container(
-                          height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
-                          width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {
-                              Get.off(()=>ForgotPasswordScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                            },
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: Image.asset(
-                                ImagePathUtils.authorizationBackButtonImagePath,
+                          Container(
+                            height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
+                            width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                Get.off(()=>ForgotPasswordScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              child: FittedBox(
                                 fit: BoxFit.cover,
-                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  ImagePathUtils.authorizationBackButtonImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
 
                     SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 297.ht(context) : 169.hm(context)),
@@ -75,7 +78,7 @@ class CreatePasswordScreenWidget extends GetxController {
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
-                        "Enter new password",
+                        "Enter new password".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -92,10 +95,10 @@ class CreatePasswordScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "New Password",
-                        textAlign: TextAlign.start,
+                        "New Password".tr,
+                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -200,10 +203,10 @@ class CreatePasswordScreenWidget extends GetxController {
 
                     Container(
                       width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                      alignment: Alignment.centerLeft,
+                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Confirm Password",
-                        textAlign: TextAlign.start,
+                        "Confirm Password".tr,
+                        textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
@@ -367,7 +370,7 @@ class CreatePasswordScreenWidget extends GetxController {
                                         width: MediaQuery.sizeOf(context).width > 500  ? 428.wt(context) : 358.wm(context),
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "Your password has been updated successfully!",
+                                          "Your password has been updated successfully!".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -383,7 +386,7 @@ class CreatePasswordScreenWidget extends GetxController {
                                         width: MediaQuery.sizeOf(context).width > 500  ? 428.wt(context) : 358.wm(context),
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "You can now log in with your new password.",
+                                          "You can now log in with your new password.".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -408,7 +411,7 @@ class CreatePasswordScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Save Password",
+                            "Save Password".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
