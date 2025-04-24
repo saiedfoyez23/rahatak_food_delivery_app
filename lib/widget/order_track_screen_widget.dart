@@ -445,7 +445,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Mohammed",
+                        "Mohammed".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -474,7 +474,7 @@ class OrderTrackScreenWidget extends GetxController {
                             height: 25.ht(context),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "#13456",
+                              "#13456".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -521,7 +521,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "4.9",
+                              "4.9".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -613,7 +613,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "20 minutes",
+                        "20 minutes".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -653,7 +653,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Muscat, Al Khoudh",
+                        "Muscat, Al Khoudh".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -839,7 +839,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "In process",
+                              "In process".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -853,7 +853,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:00 PM",
+                              "06:00 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -875,7 +875,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Preparing",
+                              "Preparing".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -889,7 +889,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:05 PM",
+                              "06:05 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -948,7 +948,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Out for delivery",
+                              "Out for delivery".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -984,7 +984,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Delivered",
+                              "Delivered".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -998,7 +998,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:40 PM",
+                              "06:40 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1051,7 +1051,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Mohammed",
+                        "Mohammed".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -1080,7 +1080,7 @@ class OrderTrackScreenWidget extends GetxController {
                             height: 25.hm(context),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "#13456",
+                              "#13456".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1127,7 +1127,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "4.9",
+                              "4.9".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1219,7 +1219,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "20 minutes",
+                        "20 minutes".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -1259,7 +1259,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Muscat, Al Khoudh",
+                        "Muscat, Al Khoudh".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -1445,7 +1445,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "In process",
+                              "In process".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1459,7 +1459,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:00 PM",
+                              "06:00 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1481,7 +1481,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Preparing",
+                              "Preparing".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1495,7 +1495,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:05 PM",
+                              "06:05 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1517,7 +1517,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Prepared",
+                              "Prepared".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1531,7 +1531,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:15 PM",
+                              "06:15 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1554,7 +1554,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Out for delivery",
+                              "Out for delivery".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1568,7 +1568,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:20 PM",
+                              "06:20 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1590,7 +1590,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Delivered",
+                              "Delivered".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1604,7 +1604,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:40 PM",
+                              "06:40 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1665,7 +1665,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Mohammed",
+                        "Mohammed".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -1694,7 +1694,7 @@ class OrderTrackScreenWidget extends GetxController {
                             height: 25.ht(context),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "#123456",
+                              "#123456".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1741,7 +1741,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "4.9",
+                              "4.9".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -1833,7 +1833,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "30 minutes",
+                        "30 minutes".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -1873,7 +1873,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Muscat, Al Khoudh",
+                        "Muscat, Al Khoudh".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -2059,7 +2059,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "In process",
+                              "In process".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2073,7 +2073,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:00 PM",
+                              "06:00 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2095,7 +2095,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Preparing",
+                              "Preparing".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2109,7 +2109,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:05 PM",
+                              "06:05 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2131,7 +2131,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Prepared",
+                              "Prepared".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2145,7 +2145,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:15 PM",
+                              "06:15 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2168,7 +2168,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Out for delivery",
+                              "Out for delivery".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2182,7 +2182,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:20 PM",
+                              "06:20 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2204,7 +2204,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Delivered",
+                              "Delivered".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2218,7 +2218,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:40 PM",
+                              "06:40 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2271,7 +2271,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Mohammed",
+                        "Mohammed".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -2300,7 +2300,7 @@ class OrderTrackScreenWidget extends GetxController {
                             height: 25.hm(context),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "#123456",
+                              "#123456".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2347,7 +2347,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "4.9",
+                              "4.9".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2439,7 +2439,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "30 minutes",
+                        "30 minutes".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -2479,7 +2479,7 @@ class OrderTrackScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Muscat, Al Khoudh",
+                        "Muscat, Al Khoudh".tr,
                         textAlign: TextAlign.start,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
@@ -2665,7 +2665,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "In process",
+                              "In process".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2679,7 +2679,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:00 PM",
+                              "06:00 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2701,7 +2701,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Preparing",
+                              "Preparing".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2715,7 +2715,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:05 PM",
+                              "06:05 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2737,7 +2737,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Prepared",
+                              "Prepared".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2751,7 +2751,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:15 PM",
+                              "06:15 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2774,7 +2774,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Out for delivery",
+                              "Out for delivery".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2788,7 +2788,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:20 PM",
+                              "06:20 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2810,7 +2810,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Delivered",
+                              "Delivered".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -2824,7 +2824,7 @@ class OrderTrackScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "06:40 PM",
+                              "06:40 PM".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,

@@ -36,32 +36,35 @@ class ProductDetailsScreenWidget extends GetxController {
 
                       SpacerWidget.spacerWidget(spaceHeight: 11.ht(context),),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                      Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
 
-                          Container(
-                            height: 40.ht(context),
-                            width: 40.wt(context),
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: TextButton(
-                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                              onPressed: () {
-                                Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                              },
-                              child: FittedBox(
-                                fit: BoxFit.cover,
-                                child: Image.asset(
-                                  ImagePathUtils.authorizationBackButtonImagePath,
+                            Container(
+                              height: 40.ht(context),
+                              width: 40.wt(context),
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                              ),
+                              child: TextButton(
+                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                onPressed: () {
+                                  Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
+                                child: FittedBox(
                                   fit: BoxFit.cover,
-                                  alignment: Alignment.center,
+                                  child: Image.asset(
+                                    ImagePathUtils.authorizationBackButtonImagePath,
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.center,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
 
 
@@ -151,7 +154,7 @@ class ProductDetailsScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Tanoor",
+                              "Tanoor".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -166,7 +169,7 @@ class ProductDetailsScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "1.900 OMR",
+                              "1.900 OMR".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -188,7 +191,7 @@ class ProductDetailsScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.",
+                          "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w500,
@@ -206,7 +209,7 @@ class ProductDetailsScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Notes: ",
+                          "Notes: ".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w500,
@@ -235,7 +238,7 @@ class ProductDetailsScreenWidget extends GetxController {
                         maxLines: 5,
                         textAlignVertical: TextAlignVertical.center,
                         decoration: InputDecoration(
-                          hintText: "Add sauces, spices, salad, ...",
+                          hintText: "Add sauces, spices, salad, ...".tr,
                           hintStyle: GoogleFonts.tajawal(
                             fontSize: 16.spt(context),
                             fontWeight: FontWeight.w400,
@@ -284,7 +287,7 @@ class ProductDetailsScreenWidget extends GetxController {
                               Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "SIZE ",
+                                  "SIZE ".tr,
                                   textAlign: TextAlign.start,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -298,47 +301,50 @@ class ProductDetailsScreenWidget extends GetxController {
 
                               SpacerWidget.spacerWidget(spaceHeight: 8.ht(context)),
 
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: List.generate(
-                                    3,
-                                        (index) {
-                                      return Container(
-                                        height: 32.ht(context),
-                                        width: 57.wt(context),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10.rm(context)),
-                                          border: Border.all(
-                                            color: selectSize.value == index ? ColorUtils.blue192 : ColorUtils.gray136,
-                                            width: 1,
+                              Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: List.generate(
+                                      3,
+                                          (index) {
+                                        return Container(
+                                          height: 32.ht(context),
+                                          width: 57.wt(context),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10.rm(context)),
+                                            border: Border.all(
+                                              color: selectSize.value == index ? ColorUtils.blue192 : ColorUtils.gray136,
+                                              width: 1,
+                                            ),
+                                            color: selectSize.value == index ? ColorUtils.white255 : ColorUtils.white233,
                                           ),
-                                          color: selectSize.value == index ? ColorUtils.white255 : ColorUtils.white233,
-                                        ),
-                                        margin: EdgeInsets.only(right: 12.rpmt(context)),
-                                        child: TextButton(
-                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                          onPressed: () {
-                                            selectSize.value = index;
-                                          },
-                                          child: Center(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                index == 0 ? "SMALL" : index == 1 ? "MIDDLE" : "LARGE",
-                                                textAlign: TextAlign.start,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 12.spt(context),
-                                                  color: selectSize.value == index ? ColorUtils.black51 : ColorUtils.gray136,
+                                          margin: EdgeInsets.only(right: 12.rpmt(context)),
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                            onPressed: () {
+                                              selectSize.value = index;
+                                            },
+                                            child: Center(
+                                              child: Container(
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  index == 0 ? "SMALL".tr : index == 1 ? "MIDDLE".tr : "LARGE".tr,
+                                                  textAlign: TextAlign.start,
+                                                  style: GoogleFonts.tajawal(
+                                                    fontWeight: FontWeight.w700,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 12.spt(context),
+                                                    color: selectSize.value == index ? ColorUtils.black51 : ColorUtils.gray136,
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    }
+                                        );
+                                      }
+                                  ),
                                 ),
                               )
 
@@ -356,7 +362,7 @@ class ProductDetailsScreenWidget extends GetxController {
                               Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "quantity ",
+                                  "quantity ".tr,
                                   textAlign: TextAlign.start,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -474,7 +480,7 @@ class ProductDetailsScreenWidget extends GetxController {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Add to Cart",
+                                  "Add to Cart".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -544,32 +550,35 @@ class ProductDetailsScreenWidget extends GetxController {
 
                       SpacerWidget.spacerWidget(spaceHeight: 11.hm(context),),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                      Directionality(
+                        textDirection: TextDirection.ltr,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
 
-                          Container(
-                            height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
-                            width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: TextButton(
-                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                              onPressed: () {
-                                Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                              },
-                              child: FittedBox(
-                                fit: BoxFit.cover,
-                                child: Image.asset(
-                                  ImagePathUtils.authorizationBackButtonImagePath,
+                            Container(
+                              height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
+                              width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                              ),
+                              child: TextButton(
+                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                onPressed: () {
+                                  Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
+                                child: FittedBox(
                                   fit: BoxFit.cover,
-                                  alignment: Alignment.center,
+                                  child: Image.asset(
+                                    ImagePathUtils.authorizationBackButtonImagePath,
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.center,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
 
                       SpacerWidget.spacerWidget(spaceHeight: 26.hm(context),),
@@ -643,7 +652,7 @@ class ProductDetailsScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Tanoor",
+                              "Tanoor".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -658,7 +667,7 @@ class ProductDetailsScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "1.900 OMR",
+                              "1.900 OMR".tr,
                               textAlign: TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -680,8 +689,8 @@ class ProductDetailsScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.",
-                          textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                          "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.".tr,
+                          textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.normal,
@@ -698,7 +707,7 @@ class ProductDetailsScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Notes: ",
+                          "Notes: ".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w500,
@@ -727,7 +736,7 @@ class ProductDetailsScreenWidget extends GetxController {
                         maxLines: 5,
                         textAlignVertical: TextAlignVertical.center,
                         decoration: InputDecoration(
-                          hintText: "Add sauces, spices, salad, ...",
+                          hintText: "Add sauces, spices, salad, ...".tr,
                           hintStyle: GoogleFonts.tajawal(
                             fontSize: 16.spm(context),
                             fontWeight: FontWeight.w400,
@@ -777,7 +786,7 @@ class ProductDetailsScreenWidget extends GetxController {
                               Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "SIZE ",
+                                  "SIZE ".tr,
                                   textAlign: TextAlign.start,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -791,47 +800,50 @@ class ProductDetailsScreenWidget extends GetxController {
 
                               SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
 
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: List.generate(
-                                    3,
-                                    (index) {
-                                      return Container(
-                                        height: 32.hm(context),
-                                        width: 57.wm(context),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10.rm(context)),
-                                          border: Border.all(
-                                            color: selectSize.value == index ? ColorUtils.blue192 : ColorUtils.gray136,
-                                            width: 1,
+                              Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: List.generate(
+                                      3,
+                                      (index) {
+                                        return Container(
+                                          height: 32.hm(context),
+                                          width: 57.wm(context),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10.rm(context)),
+                                            border: Border.all(
+                                              color: selectSize.value == index ? ColorUtils.blue192 : ColorUtils.gray136,
+                                              width: 1,
+                                            ),
+                                            color: selectSize.value == index ? ColorUtils.white255 : ColorUtils.white233,
                                           ),
-                                          color: selectSize.value == index ? ColorUtils.white255 : ColorUtils.white233,
-                                        ),
-                                        margin: EdgeInsets.only(right: 12.rpmm(context)),
-                                        child: TextButton(
-                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                          onPressed: () {
-                                            selectSize.value = index;
-                                          },
-                                          child: Center(
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                index == 0 ? "SMALL" : index == 1 ? "MIDDLE" : "LARGE",
-                                                textAlign: TextAlign.start,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 12.spm(context),
-                                                  color: selectSize.value == index ? ColorUtils.black51 : ColorUtils.gray136,
+                                          margin: EdgeInsets.only(right: 12.rpmm(context)),
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                            onPressed: () {
+                                              selectSize.value = index;
+                                            },
+                                            child: Center(
+                                              child: Container(
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  index == 0 ? "SMALL".tr : index == 1 ? "MIDDLE".tr : "LARGE".tr,
+                                                  textAlign: TextAlign.start,
+                                                  style: GoogleFonts.tajawal(
+                                                    fontWeight: FontWeight.w700,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 12.spm(context),
+                                                    color: selectSize.value == index ? ColorUtils.black51 : ColorUtils.gray136,
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    }
+                                        );
+                                      }
+                                  ),
                                 ),
                               )
 
@@ -849,7 +861,7 @@ class ProductDetailsScreenWidget extends GetxController {
                               Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "quantity ",
+                                  "quantity ".tr,
                                   textAlign: TextAlign.start,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -982,7 +994,7 @@ class ProductDetailsScreenWidget extends GetxController {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Add to Cart",
+                              "Add to Cart".tr,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,

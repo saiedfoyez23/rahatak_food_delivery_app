@@ -86,7 +86,7 @@ class HomeScreenWidget extends GetxController {
                               Container(
                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
                                 child: Text(
-                                  "Hello, Muhammad Ali",
+                                  "Hello, Muhammad Ali".tr,
                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w500,
@@ -101,7 +101,7 @@ class HomeScreenWidget extends GetxController {
                               Container(
                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
                                 child: Text(
-                                  "What do you want to eat today?",
+                                  "What do you want to eat today?".tr,
                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -175,7 +175,7 @@ class HomeScreenWidget extends GetxController {
                       textAlignVertical: TextAlignVertical.top,
                       decoration: InputDecoration(
                         alignLabelWithHint: true,
-                        hintText: "Search for a restaurant, dish...",
+                        hintText: "Search for a restaurant, dish...".tr,
                         hintStyle: GoogleFonts.openSans(
                           fontSize: 16.spt(context),
                           fontWeight: FontWeight.w400,
@@ -257,7 +257,7 @@ class HomeScreenWidget extends GetxController {
                     Container(
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Top Rated Restaurants",
+                        "Top Rated Restaurants".tr,
                         textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -335,7 +335,7 @@ class HomeScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${firstImageList[index].status}",
+                                      "${firstImageList[index].status}".tr,
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -393,7 +393,7 @@ class HomeScreenWidget extends GetxController {
                                 Container(
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "${firstImageList[index].restaurant}",
+                                    "${firstImageList[index].restaurant}".tr,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -433,7 +433,7 @@ class HomeScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "${firstImageList[index].rating}",
+                                        "${firstImageList[index].rating}".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -478,7 +478,7 @@ class HomeScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "${firstImageList[index].address}",
+                                        "${firstImageList[index].address}".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -524,7 +524,7 @@ class HomeScreenWidget extends GetxController {
                     Container(
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "All Restaurants",
+                        "All Restaurants".tr,
                         textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -581,7 +581,7 @@ class HomeScreenWidget extends GetxController {
                                     width: 80.wt(context),
                                     alignment: Alignment.topCenter,
                                     child: Text(
-                                      "${listImageList[index].name}",
+                                      "${listImageList[index].name}".tr,
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -668,7 +668,7 @@ class HomeScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${secondImageList[index].status}",
+                                      "${secondImageList[index].status}".tr,
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -726,7 +726,7 @@ class HomeScreenWidget extends GetxController {
                                 Container(
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "${secondImageList[index].restaurant}",
+                                    "${secondImageList[index].restaurant}".tr,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -766,7 +766,7 @@ class HomeScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "${secondImageList[index].rating}",
+                                        "${secondImageList[index].rating}".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -811,7 +811,7 @@ class HomeScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "${secondImageList[index].address}",
+                                        "${secondImageList[index].address}".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -895,7 +895,7 @@ class HomeScreenWidget extends GetxController {
                               Container(
                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
                                 child: Text(
-                                  "Hello, Muhammad Ali",
+                                  "Hello, Muhammad Ali".tr,
                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w500,
@@ -910,7 +910,7 @@ class HomeScreenWidget extends GetxController {
                               Container(
                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
                                 child: Text(
-                                  "What do you want to eat today?",
+                                  "What do you want to eat today?".tr,
                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -971,7 +971,7 @@ class HomeScreenWidget extends GetxController {
                       textAlignVertical: TextAlignVertical.top,
                       decoration: InputDecoration(
                         alignLabelWithHint: true,
-                        hintText: "Search for a restaurant, dish...",
+                        hintText: "Search for a restaurant, dish...".tr,
                         hintStyle: GoogleFonts.openSans(
                           fontSize: 16.spm(context),
                           fontWeight: FontWeight.w400,
@@ -1068,7 +1068,7 @@ class HomeScreenWidget extends GetxController {
                     Container(
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Top Rated Restaurants",
+                        "Top Rated Restaurants".tr,
                         textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -1143,7 +1143,7 @@ class HomeScreenWidget extends GetxController {
                                         child: Container(
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "${firstImageList[index].status}",
+                                            "${firstImageList[index].status}".tr,
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -1201,7 +1201,7 @@ class HomeScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "${firstImageList[index].restaurant}",
+                                            "${firstImageList[index].restaurant}".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -1241,7 +1241,7 @@ class HomeScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "${firstImageList[index].rating}",
+                                                "${firstImageList[index].rating}".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1286,7 +1286,7 @@ class HomeScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "${firstImageList[index].address}",
+                                                "${firstImageList[index].address}".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1331,7 +1331,7 @@ class HomeScreenWidget extends GetxController {
                     Container(
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "All Restaurant",
+                        "All Restaurant".tr,
                         textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -1402,7 +1402,7 @@ class HomeScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Alignment.topCenter,
                                     child: Text(
-                                      "${listImageList[index].name}",
+                                      "${listImageList[index].name}".tr,
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1484,7 +1484,7 @@ class HomeScreenWidget extends GetxController {
                                       child: Container(
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "${secondImageList[index].status}",
+                                          "${secondImageList[index].status}".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -1542,7 +1542,7 @@ class HomeScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "${secondImageList[index].restaurant}",
+                                        "${secondImageList[index].restaurant}".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -1582,7 +1582,7 @@ class HomeScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "${secondImageList[index].rating}",
+                                            "${secondImageList[index].rating}".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -1627,7 +1627,7 @@ class HomeScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "${secondImageList[index].address}",
+                                            "${secondImageList[index].address}".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,

@@ -66,7 +66,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.ht(context)),
 
                       Text(
-                        "Home",
+                        "Home".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -122,7 +122,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.ht(context)),
 
                       Text(
-                        "Search",
+                        "Search".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -178,7 +178,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.ht(context)),
 
                       Text(
-                        "Track Order",
+                        "Track Order".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -234,7 +234,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.ht(context)),
 
                       Text(
-                        "Cart",
+                        "Cart".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -290,7 +290,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.ht(context)),
 
                       Text(
-                        "My Account",
+                        "My Account".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -365,7 +365,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.hm(context)),
 
                       Text(
-                        "Home",
+                        "Home".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -420,7 +420,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.hm(context)),
 
                       Text(
-                        "Search",
+                        "Search".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -475,7 +475,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.hm(context)),
 
                       Text(
-                        "Track Order",
+                        "Track Order".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
@@ -530,7 +530,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.hm(context)),
 
                       Text(
-                        "Cart",
+                        "Cart".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,

@@ -8,9 +8,9 @@ class CartScreenWidget extends GetxController {
 
 
   RxList<CartList> cartList = <CartList>[
-    CartList(index: 0,name: "Tanoor", amount: "1900 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.pList_3),
-    CartList(index: 1,name: "Chicken Fries", amount: "1500 OMR", size: "Size: Large", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.pList_1),
-    CartList(index: 2,name: "Classic Burger", amount: "1200 OMR", size: "Size: Small", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.productImage_4),
+    CartList(index: 0,name: "Tanoor", amount: "1.900 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.pList_3),
+    CartList(index: 1,name: "Chicken Fries", amount: "1.500 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.pList_1),
+    CartList(index: 2,name: "Classic Burger", amount: "1.200 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.productImage_4),
   ].obs;
 
 
@@ -37,7 +37,7 @@ class CartScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "Cart",
+                        "Cart".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -60,7 +60,7 @@ class CartScreenWidget extends GetxController {
                           Container(
                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                             child: Text(
-                              "Orders ( 5 )",
+                              "Orders ( 5 )".tr,
                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -129,7 +129,7 @@ class CartScreenWidget extends GetxController {
                                             Container(
                                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                               child: Text(
-                                                "${cartList[index].name}",
+                                                "${cartList[index].name}".tr,
                                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -145,7 +145,7 @@ class CartScreenWidget extends GetxController {
                                             Container(
                                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                               child: Text(
-                                                "${cartList[index].amount}",
+                                                "${cartList[index].amount}".tr,
                                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -161,7 +161,7 @@ class CartScreenWidget extends GetxController {
                                             Container(
                                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                               child: Text(
-                                                "${cartList[index].size}",
+                                                "${cartList[index].size}".tr,
                                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -177,7 +177,7 @@ class CartScreenWidget extends GetxController {
                                             Container(
                                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                               child: Text(
-                                                "${cartList[index].notes}",
+                                                "${cartList[index].notes}".tr,
                                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -238,7 +238,7 @@ class CartScreenWidget extends GetxController {
                                                               width: 428.wt(context),
                                                               alignment: Alignment.center,
                                                               child: Text(
-                                                                "Delete meal",
+                                                                "Delete meal".tr,
                                                                 textAlign: TextAlign.center,
                                                                 style: GoogleFonts.tajawal(
                                                                   fontWeight: FontWeight.w700,
@@ -254,7 +254,7 @@ class CartScreenWidget extends GetxController {
                                                               width: 428.wt(context),
                                                               alignment: Alignment.center,
                                                               child: Text(
-                                                                "Are you really sure you want to cancel the meal?",
+                                                                "Are you really sure you want to cancel the meal?".tr,
                                                                 textAlign: TextAlign.center,
                                                                 style: GoogleFonts.tajawal(
                                                                   fontWeight: FontWeight.w500,
@@ -289,7 +289,7 @@ class CartScreenWidget extends GetxController {
                                                                     },
                                                                     child: Center(
                                                                       child: Text(
-                                                                        "Yes",
+                                                                        "Yes".tr,
                                                                         textAlign: TextAlign.center,
                                                                         style: GoogleFonts.tajawal(
                                                                           fontWeight: FontWeight.w700,
@@ -320,7 +320,7 @@ class CartScreenWidget extends GetxController {
                                                                     },
                                                                     child: Center(
                                                                       child: Text(
-                                                                        "Cancel",
+                                                                        "Cancel".tr,
                                                                         textAlign: TextAlign.center,
                                                                         style: GoogleFonts.tajawal(
                                                                           fontWeight: FontWeight.w700,
@@ -469,7 +469,7 @@ class CartScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Order Details",
+                                    "Order Details".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -491,7 +491,7 @@ class CartScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "Price",
+                                        "Price".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -506,7 +506,7 @@ class CartScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "7.300 OMR",
+                                        "7.300 OMR".tr,
                                         textAlign: TextAlign.start,
                                         style:GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -530,7 +530,7 @@ class CartScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "Delivery fee",
+                                        "Delivery fee".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -545,7 +545,7 @@ class CartScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "1.500 OMR",
+                                        "1.500 OMR".tr,
                                         textAlign: TextAlign.start,
                                         style:GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -581,7 +581,7 @@ class CartScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "Total",
+                                        "Total".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -596,7 +596,7 @@ class CartScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "8.800 OMR",
+                                        "8.800 OMR".tr,
                                         textAlign: TextAlign.start,
                                         style:GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -632,7 +632,7 @@ class CartScreenWidget extends GetxController {
                               },
                               child: Center(
                                 child: Text(
-                                  "Confirm order",
+                                  "Confirm order".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -687,7 +687,7 @@ class CartScreenWidget extends GetxController {
                         Container(
                           alignment: Alignment.center,
                           child: Text(
-                            "Cart",
+                            "Cart".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -704,7 +704,7 @@ class CartScreenWidget extends GetxController {
                         Container(
                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                           child: Text(
-                            "Orders ( 5 )",
+                            "Orders ( 5 )".tr,
                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -773,7 +773,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].name}",
+                                              "${cartList[index].name}".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -789,7 +789,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].amount}",
+                                              "${cartList[index].amount}".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -805,7 +805,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].size}",
+                                              "${cartList[index].size}".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -821,7 +821,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].notes}",
+                                              "${cartList[index].notes}".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -882,7 +882,7 @@ class CartScreenWidget extends GetxController {
                                                             width: 358.wm(context),
                                                             alignment: Alignment.center,
                                                             child: Text(
-                                                              "Delete meal",
+                                                              "Delete meal".tr,
                                                               textAlign: TextAlign.center,
                                                               style: GoogleFonts.tajawal(
                                                                 fontWeight: FontWeight.w700,
@@ -898,7 +898,7 @@ class CartScreenWidget extends GetxController {
                                                             width: 358.wm(context),
                                                             alignment: Alignment.center,
                                                             child: Text(
-                                                              "Are you really sure you want to cancel the meal?",
+                                                              "Are you really sure you want to cancel the meal?".tr,
                                                               textAlign: TextAlign.center,
                                                               style: GoogleFonts.tajawal(
                                                                 fontWeight: FontWeight.w500,
@@ -933,7 +933,7 @@ class CartScreenWidget extends GetxController {
                                                                   },
                                                                   child: Center(
                                                                     child: Text(
-                                                                      "Yes",
+                                                                      "Yes".tr,
                                                                       textAlign: TextAlign.center,
                                                                       style: GoogleFonts.tajawal(
                                                                         fontWeight: FontWeight.w700,
@@ -964,7 +964,7 @@ class CartScreenWidget extends GetxController {
                                                                   },
                                                                   child: Center(
                                                                     child: Text(
-                                                                      "Cancel",
+                                                                      "Cancel".tr,
                                                                       textAlign: TextAlign.center,
                                                                       style: GoogleFonts.tajawal(
                                                                         fontWeight: FontWeight.w700,
@@ -1113,7 +1113,7 @@ class CartScreenWidget extends GetxController {
                               Container(
                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                 child: Text(
-                                  "Order Details",
+                                  "Order Details".tr,
                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -1135,7 +1135,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "Price",
+                                      "Price".tr,
                                       textAlign: TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1150,7 +1150,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "7.300 OMR",
+                                      "7.300 OMR".tr,
                                       textAlign: TextAlign.start,
                                       style:GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1174,7 +1174,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "Delivery fee",
+                                      "Delivery fee".tr,
                                       textAlign: TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1189,7 +1189,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "1.500 OMR",
+                                      "1.500 OMR".tr,
                                       textAlign: TextAlign.start,
                                       style:GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1225,7 +1225,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "Total",
+                                      "Total".tr,
                                       textAlign: TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -1240,7 +1240,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "8.800 OMR",
+                                      "8.800 OMR".tr,
                                       textAlign: TextAlign.start,
                                       style:GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -1276,7 +1276,7 @@ class CartScreenWidget extends GetxController {
                             },
                             child: Center(
                               child: Text(
-                                "Confirm order",
+                                "Confirm order".tr,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,

@@ -33,52 +33,55 @@ class OrderAddressScreenWidget extends GetxController {
 
                             SpacerWidget.spacerWidget(spaceHeight: 11.ht(context),),
 
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 37.hpmt(context)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 37.hpmt(context)),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
 
-                                  Container(
-                                    height: 40.ht(context),
-                                    width: 40.wt(context),
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: TextButton(
-                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                      onPressed: () {
-                                        Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                      },
-                                      child: FittedBox(
-                                        fit: BoxFit.cover,
-                                        child: Image.asset(
-                                          ImagePathUtils.authorizationBackButtonImagePath,
+                                    Container(
+                                      height: 40.ht(context),
+                                      width: 40.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: TextButton(
+                                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                        onPressed: () {
+                                          Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                        },
+                                        child: FittedBox(
                                           fit: BoxFit.cover,
-                                          alignment: Alignment.center,
+                                          child: Image.asset(
+                                            ImagePathUtils.authorizationBackButtonImagePath,
+                                            fit: BoxFit.cover,
+                                            alignment: Alignment.center,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
 
 
-                                  Expanded(
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        "Specify the address",
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.tajawal(
-                                          fontWeight: FontWeight.w700,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16.spt(context),
-                                          color: ColorUtils.black255,
+                                    Expanded(
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "Specify the address".tr,
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w700,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 16.spt(context),
+                                            color: ColorUtils.black255,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
 
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
 
@@ -113,7 +116,7 @@ class OrderAddressScreenWidget extends GetxController {
                                               Container(
                                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                 child: Text(
-                                                  "My Home",
+                                                  "My Home".tr,
                                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w700,
@@ -130,7 +133,7 @@ class OrderAddressScreenWidget extends GetxController {
                                               Container(
                                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                 child: Text(
-                                                  "Muscat, Al Khoud",
+                                                  "Muscat, Al Khoud".tr,
                                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -146,7 +149,7 @@ class OrderAddressScreenWidget extends GetxController {
                                               Container(
                                                 alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                 child: Text(
-                                                  "+968 95ْْXXXXXX",
+                                                  "+968 95ْْXXXXXX".tr,
                                                   textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
@@ -236,7 +239,7 @@ class OrderAddressScreenWidget extends GetxController {
                                             child: Container(
                                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                               child: Text(
-                                                "Use my current location",
+                                                "Use my current location".tr,
                                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -321,7 +324,7 @@ class OrderAddressScreenWidget extends GetxController {
                                             child: Container(
                                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                               child: Text(
-                                                "Add a new address",
+                                                "Add a new address".tr,
                                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -378,7 +381,7 @@ class OrderAddressScreenWidget extends GetxController {
                                       },
                                       child: Center(
                                         child: Text(
-                                          "Save Address",
+                                          "Save Address".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -438,50 +441,53 @@ class OrderAddressScreenWidget extends GetxController {
         
                             SpacerWidget.spacerWidget(spaceHeight: 11.hm(context),),
         
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-        
-                                Container(
-                                  height: 40.hm(context),
-                                  width: 40.wm(context),
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: TextButton(
-                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                    onPressed: () {
-                                      Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                    },
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.authorizationBackButtonImagePath,
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+
+                                  Container(
+                                    height: 40.hm(context),
+                                    width: 40.wm(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
-                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          ImagePathUtils.authorizationBackButtonImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-        
-        
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "Specify the address",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 16.spm(context),
-                                        color: ColorUtils.black255,
+
+
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Specify the address".tr,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.spm(context),
+                                          color: ColorUtils.black255,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-        
-                              ],
+
+                                ],
+                              ),
                             ),
 
 
@@ -509,7 +515,7 @@ class OrderAddressScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "My Home",
+                                            "My Home".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -526,7 +532,7 @@ class OrderAddressScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Muscat, Al Khoud",
+                                            "Muscat, Al Khoud".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -542,7 +548,7 @@ class OrderAddressScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "+968 95ْْXXXXXX",
+                                            "+968 95ْْXXXXXX".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -632,7 +638,7 @@ class OrderAddressScreenWidget extends GetxController {
                                       child: Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Use my current location",
+                                          "Use my current location".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -717,7 +723,7 @@ class OrderAddressScreenWidget extends GetxController {
                                       child: Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Add a new address",
+                                          "Add a new address".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -792,7 +798,7 @@ class OrderAddressScreenWidget extends GetxController {
                     },
                     child: Center(
                       child: Text(
-                        "Save Address",
+                        "Save Address".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,

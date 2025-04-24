@@ -96,7 +96,7 @@ class FilterSearchScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Filter search",
+                                  "Filter search".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -122,7 +122,7 @@ class FilterSearchScreenWidget extends GetxController {
                           Container(
                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                             child: Text(
-                              "Type of food",
+                              "Type of food".tr,
                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -185,7 +185,7 @@ class FilterSearchScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "${listImageList[index].name}",
+                                              "${listImageList[index].name}".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -213,7 +213,7 @@ class FilterSearchScreenWidget extends GetxController {
                           Container(
                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                             child: Text(
-                              "Locations",
+                              "Locations".tr,
                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -232,7 +232,7 @@ class FilterSearchScreenWidget extends GetxController {
                             children: List.generate(locations.length, (index) {
                               return SizedBox(
                                 height: 70.ht(context),
-                                width: 100.wt(context),
+                                width: 120.wt(context),
                                 child: TextButton(
                                   onPressed: () async {
                                     bigIndex_1.value = index + 1 ;
@@ -240,7 +240,7 @@ class FilterSearchScreenWidget extends GetxController {
                                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                   child: Container(
                                     height: 70.ht(context),
-                                    width: 100.wt(context),
+                                    width: 120.wt(context),
                                     decoration: BoxDecoration(
                                       color: bigIndex_1.value == (index + 1) ? ColorUtils.blue192 : Colors.transparent,
                                       borderRadius: BorderRadius.circular(8.rt(context)),
@@ -256,7 +256,7 @@ class FilterSearchScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "${locations[index]}",
+                                            "${locations[index]}".tr,
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -283,7 +283,7 @@ class FilterSearchScreenWidget extends GetxController {
                           Container(
                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                             child: Text(
-                              "working hours",
+                              "working hours".tr,
                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -327,7 +327,7 @@ class FilterSearchScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.center,
                                           child: Text(
-                                            index == 0 ? "All" : index == 1 ? "Open Now" : "24 hours",
+                                            index == 0 ? "All".tr : index == 1 ? "Open Now".tr : "24 hours".tr,
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -370,7 +370,7 @@ class FilterSearchScreenWidget extends GetxController {
                                   },
                                   child: Center(
                                     child: Text(
-                                      "Search",
+                                      "Search".tr,
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -401,7 +401,7 @@ class FilterSearchScreenWidget extends GetxController {
                                   },
                                   child: Center(
                                     child: Text(
-                                      "Cancel",
+                                      "Cancel".tr,
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -491,7 +491,7 @@ class FilterSearchScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Filter search",
+                                  "Filter search".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -513,7 +513,7 @@ class FilterSearchScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Type of food",
+                          "Type of food".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w700,
@@ -579,7 +579,7 @@ class FilterSearchScreenWidget extends GetxController {
                                       Container(
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "${listImageList[index].name}",
+                                          "${listImageList[index].name}".tr,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -607,7 +607,7 @@ class FilterSearchScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Locations",
+                          "Locations".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w700,
@@ -626,7 +626,7 @@ class FilterSearchScreenWidget extends GetxController {
                         children: List.generate(locations.length, (index) {
                           return SizedBox(
                             height: 70.hm(context),
-                            width: 70.wm(context),
+                            width: 100.wm(context),
                             child: TextButton(
                               onPressed: () async {
                                 bigIndex_1.value = index + 1 ;
@@ -634,7 +634,7 @@ class FilterSearchScreenWidget extends GetxController {
                               style: TextButton.styleFrom(padding: EdgeInsets.zero),
                               child: Container(
                                 height: 70.hm(context),
-                                width: 70.wm(context),
+                                width: 100.wm(context),
                                 decoration: BoxDecoration(
                                   color: bigIndex_1.value == (index + 1) ? ColorUtils.blue192 : Colors.transparent,
                                   borderRadius: BorderRadius.circular(8.rm(context)),
@@ -650,7 +650,7 @@ class FilterSearchScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        "${locations[index]}",
+                                        "${locations[index]}".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -720,7 +720,7 @@ class FilterSearchScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        index == 0 ? "All" : index == 1 ? "Open Now" : "24 hours",
+                                        index == 0 ? "All".tr : index == 1 ? "Open Now".tr : "24 hours".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -762,7 +762,7 @@ class FilterSearchScreenWidget extends GetxController {
                               },
                               child: Center(
                                 child: Text(
-                                  "Search",
+                                  "Search".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -793,7 +793,7 @@ class FilterSearchScreenWidget extends GetxController {
                               },
                               child: Center(
                                 child: Text(
-                                  "Cancel",
+                                  "Cancel".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,

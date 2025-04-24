@@ -70,7 +70,7 @@ class SearchResultScreenWidget extends GetxController {
                       Container(
                         alignment: Alignment.center,
                         child: Text(
-                          "Search result",
+                          "Search result".tr,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w700,
@@ -97,7 +97,7 @@ class SearchResultScreenWidget extends GetxController {
                         textAlignVertical: TextAlignVertical.top,
                         decoration: InputDecoration(
                           alignLabelWithHint: true,
-                          hintText: "Search for a restaurant, dish...",
+                          hintText: "Search for a restaurant, dish...".tr,
                           hintStyle: GoogleFonts.openSans(
                             fontSize: 16.spt(context),
                             fontWeight: FontWeight.w400,
@@ -239,7 +239,7 @@ class SearchResultScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        foodDetails[index].name,
+                                        foodDetails[index].name.tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -256,7 +256,7 @@ class SearchResultScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        foodDetails[index].description,
+                                        foodDetails[index].description.tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -298,7 +298,7 @@ class SearchResultScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                foodDetails[index].time,
+                                                foodDetails[index].time.tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -317,7 +317,7 @@ class SearchResultScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "${foodDetails[index].amount}",
+                                            "${foodDetails[index].amount}".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -382,7 +382,7 @@ class SearchResultScreenWidget extends GetxController {
                       Container(
                         alignment: Alignment.center,
                         child: Text(
-                          "Search result",
+                          "Search result".tr,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w700,
@@ -409,7 +409,7 @@ class SearchResultScreenWidget extends GetxController {
                         textAlignVertical: TextAlignVertical.top,
                         decoration: InputDecoration(
                           alignLabelWithHint: true,
-                          hintText: "Search for a restaurant, dish...",
+                          hintText: "Search for a restaurant, dish...".tr,
                           hintStyle: GoogleFonts.openSans(
                             fontSize: 16.spm(context),
                             fontWeight: FontWeight.w400,
@@ -552,7 +552,7 @@ class SearchResultScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        foodDetails[index].name,
+                                        foodDetails[index].name.tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -569,7 +569,7 @@ class SearchResultScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        foodDetails[index].description,
+                                        foodDetails[index].description.tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -611,7 +611,7 @@ class SearchResultScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                foodDetails[index].time,
+                                                foodDetails[index].time.tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -630,7 +630,7 @@ class SearchResultScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "${foodDetails[index].amount}",
+                                            "${foodDetails[index].amount}".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,

@@ -49,7 +49,7 @@ class SearchScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "Search",
+                        "Search".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -81,7 +81,7 @@ class SearchScreenWidget extends GetxController {
                             textAlignVertical: TextAlignVertical.top,
                             decoration: InputDecoration(
                               alignLabelWithHint: true,
-                              hintText: "Search for a restaurant, dish...",
+                              hintText: "Search for a restaurant, dish...".tr,
                               hintStyle: GoogleFonts.openSans(
                                 fontSize: 16.spt(context),
                                 fontWeight: FontWeight.w400,
@@ -208,7 +208,7 @@ class SearchScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "${listImageList[index].name}",
+                                            "${listImageList[index].name}".tr,
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -265,7 +265,7 @@ class SearchScreenWidget extends GetxController {
                       Container(
                         alignment: Alignment.center,
                         child: Text(
-                          "Search",
+                          "Search".tr,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w700,
@@ -297,7 +297,7 @@ class SearchScreenWidget extends GetxController {
                               textAlignVertical: TextAlignVertical.top,
                               decoration: InputDecoration(
                                 alignLabelWithHint: true,
-                                hintText: "Search for a restaurant, dish...",
+                                hintText: "Search for a restaurant, dish...".tr,
                                 hintStyle: GoogleFonts.openSans(
                                   fontSize: 16.spm(context),
                                   fontWeight: FontWeight.w400,
@@ -425,7 +425,7 @@ class SearchScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "${listImageList[index].name}",
+                                              "${listImageList[index].name}".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,

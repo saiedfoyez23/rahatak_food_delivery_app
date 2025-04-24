@@ -135,7 +135,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                     child: Container(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        "Edit Address",
+                                        "Edit Address".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -166,7 +166,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Select Location",
+                                    "Select Location".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -218,7 +218,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Governorate",
+                                    "Governorate".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -245,7 +245,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                   ),
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
-                                    hintText: "Enter Governorate",
+                                    hintText: "Enter Governorate".tr,
                                     hintStyle: GoogleFonts.tajawal(
                                       fontSize: 16.spt(context),
                                       fontWeight: FontWeight.w400,
@@ -292,7 +292,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "state",
+                                            "state".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -319,7 +319,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                           ),
                                           textAlignVertical: TextAlignVertical.center,
                                           decoration: InputDecoration(
-                                            hintText: "Enter State",
+                                            hintText: "Enter State".tr,
                                             hintStyle: GoogleFonts.tajawal(
                                               fontSize: 16.spt(context),
                                               fontWeight: FontWeight.w400,
@@ -367,7 +367,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerRight,
                                           child: Text(
-                                            "City",
+                                            "City".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -394,7 +394,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                           ),
                                           textAlignVertical: TextAlignVertical.center,
                                           decoration: InputDecoration(
-                                            hintText: "Enter City",
+                                            hintText: "Enter City".tr,
                                             hintStyle: GoogleFonts.tajawal(
                                               fontSize: 16.spt(context),
                                               fontWeight: FontWeight.w400,
@@ -488,24 +488,14 @@ class EditNewAddressScreenWidget extends GetxController {
                                         RichText(
                                           textAlign: TextAlign.center,
                                           text: TextSpan(
-                                            text: "Save location ",
+                                            text: "Save location data for later use".tr,
                                             style: GoogleFonts.tajawal(
                                               fontStyle: FontStyle.normal,
                                               fontSize: 14.spt(context),
                                               color: ColorUtils.black51,
                                               fontWeight: FontWeight.w500,
                                             ),
-                                            children: [
-                                              TextSpan(
-                                                text: "data for later use",
-                                                style: GoogleFonts.tajawal(
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 14.spt(context),
-                                                  color: ColorUtils.black51,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ],
+                                            children: [],
                                           ),
                                         ),
         
@@ -532,7 +522,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                     },
                                     child: Center(
                                       child: Text(
-                                        "Save Address",
+                                        "Save Address".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -628,7 +618,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                     child: Container(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        "Edit Address",
+                                        "Edit Address".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -651,7 +641,7 @@ class EditNewAddressScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Select Location",
+                                "Select Location".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -703,7 +693,7 @@ class EditNewAddressScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Governorate",
+                                "Governorate".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -730,7 +720,7 @@ class EditNewAddressScreenWidget extends GetxController {
                               ),
                               textAlignVertical: TextAlignVertical.center,
                               decoration: InputDecoration(
-                                hintText: "Enter Governorate",
+                                hintText: "Enter Governorate".tr,
                                 hintStyle: GoogleFonts.tajawal(
                                   fontSize: 16.spm(context),
                                   fontWeight: FontWeight.w400,
@@ -778,7 +768,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "state",
+                                        "state".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -805,7 +795,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                       ),
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: InputDecoration(
-                                        hintText: "Enter State",
+                                        hintText: "Enter State".tr,
                                         hintStyle: GoogleFonts.tajawal(
                                           fontSize: 16.spm(context),
                                           fontWeight: FontWeight.w400,
@@ -853,7 +843,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "City",
+                                        "City".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -880,7 +870,7 @@ class EditNewAddressScreenWidget extends GetxController {
                                       ),
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: InputDecoration(
-                                        hintText: "Enter City",
+                                        hintText: "Enter City".tr,
                                         hintStyle: GoogleFonts.tajawal(
                                           fontSize: 16.spm(context),
                                           fontWeight: FontWeight.w400,
@@ -974,24 +964,14 @@ class EditNewAddressScreenWidget extends GetxController {
                                     RichText(
                                       textAlign: TextAlign.center,
                                       text: TextSpan(
-                                        text: "Save location ",
+                                        text: "Save location data for later use".tr,
                                         style: GoogleFonts.tajawal(
                                           fontStyle: FontStyle.normal,
                                           fontSize: 14.spm(context),
                                           color: ColorUtils.black51,
                                           fontWeight: FontWeight.w500,
                                         ),
-                                        children: [
-                                          TextSpan(
-                                            text: "data for later use",
-                                            style: GoogleFonts.tajawal(
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 14.spm(context),
-                                              color: ColorUtils.black51,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
+                                        children: [],
                                       ),
                                     ),
 
@@ -1002,13 +982,6 @@ class EditNewAddressScreenWidget extends GetxController {
                             ),
 
                             SpacerWidget.spacerWidget(spaceHeight: 32.hm(context),),
-
-
-
-
-
-
-
 
 
 
@@ -1050,7 +1023,7 @@ class EditNewAddressScreenWidget extends GetxController {
                     },
                     child: Center(
                       child: Text(
-                        "Save Address",
+                        "Save Address".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,

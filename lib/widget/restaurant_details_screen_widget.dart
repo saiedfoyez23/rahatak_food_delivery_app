@@ -10,13 +10,29 @@ class RestaurantDetailsScreenWidget extends GetxController {
     FoodDetails(
       name: "Tanoor",
       time: "10 Minutes",
-      amount: "1900 OMR",
+      amount: "1.900 OMR",
       description: "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.",
       image: "images/extra_image/p_list_1.png",
     ),
-    FoodDetails(image: "images/extra_image/p_list_2.png", name: "Sandwich Packet", time: "10 Minutes", amount: "2200 OMR", description: "An assortment of mini shawarma sandwiches, filled with various flavors and served with fries and appetizers."),
-    FoodDetails(image: "images/extra_image/p_list_3.png", name: "Chicken Fries", time: "10 Minutes", amount: "1500 OMR", description: "Crispy fries topped with shawarma pieces, melted cheese, and special sauces."),
-    FoodDetails(image: "images/extra_image/p_list_4.png", name: "Meal Name", time: "10 Minutes", amount: "3500 OMR", description: "Mini sandwich box with 3 delicious sauces such as garlic, hummus, and tahini, to add a rich flavor to your meal."),
+    FoodDetails(
+        image: "images/extra_image/p_list_4.png",
+        name: "Sandwich Packet",
+        time: "20 Minutes",
+        amount: "2.200 OMR",
+        description: "An assortment of mini shawarma sandwiches, filled with various flavors and served with fries and appetizers."
+    ),
+    FoodDetails(
+        image: "images/extra_image/p_list_3.png",
+        name: "Chicken Fries",
+        time: "10 Minutes", amount: "1.500 OMR",
+        description: "Crispy fries topped with shawarma pieces, melted cheese, and special sauces."
+    ),
+    FoodDetails(
+        image: "images/extra_image/p_list_2.png",
+        name: "Meal Name",
+        time: "15 Minutes",
+        amount: "3.500 OMR",
+        description: "Mini sandwich box with 3 delicious sauces such as garlic, hummus, and tahini, to add a rich flavor to your meal."),
   ].obs;
 
 
@@ -98,31 +114,34 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                 SpacerWidget.spacerWidget(spaceHeight: 4.ht(context)),
 
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 40.ht(context),
-                                      width: 40.wt(context),
-                                      decoration: BoxDecoration(
-                                          color: Colors.transparent
-                                      ),
-                                      child: TextButton(
-                                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                        onPressed: () {
-                                          Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                        },
-                                        child: FittedBox(
-                                          fit: BoxFit.cover,
-                                          child: Image.asset(
-                                            ImagePathUtils.authorizationBackButtonImagePath,
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 40.ht(context),
+                                        width: 40.wt(context),
+                                        decoration: BoxDecoration(
+                                            color: Colors.transparent
+                                        ),
+                                        child: TextButton(
+                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                          onPressed: () {
+                                            Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                          },
+                                          child: FittedBox(
                                             fit: BoxFit.cover,
-                                            alignment: Alignment.center,
+                                            child: Image.asset(
+                                              ImagePathUtils.authorizationBackButtonImagePath,
+                                              fit: BoxFit.cover,
+                                              alignment: Alignment.center,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
 
                               ],
@@ -166,7 +185,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                           child: Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "Crowded",
+                                              "Crowded".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -224,7 +243,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Shawarmac",
+                                            "Shawarmac".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -241,7 +260,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Shawarma, fries, burgers",
+                                            "Shawarma, fries, burgers".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -283,7 +302,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 Container(
                                                   alignment: Alignment.centerLeft,
                                                   child: Text(
-                                                    "3.9",
+                                                    "3.9".tr,
                                                     textAlign: TextAlign.start,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -326,7 +345,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 Container(
                                                   alignment: Alignment.centerLeft,
                                                   child: Text(
-                                                    "Muscat, Al Khoudh",
+                                                    "Muscat, Al Khoudh".tr,
                                                     textAlign: TextAlign.start,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -371,7 +390,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 Container(
                                                   alignment: Alignment.centerLeft,
                                                   child: Text(
-                                                    "5:00 pm -11:00 pm",
+                                                    "5:00 pm -11:00 pm".tr,
                                                     textAlign: TextAlign.start,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -429,7 +448,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              "Menu",
+                              "Menu".tr,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -492,7 +511,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Burger",
+                                                    "Burger".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -517,7 +536,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Pasta",
+                                                    "Pasta".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -542,7 +561,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Shawarma",
+                                                    "Shawarma".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -567,7 +586,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Fries",
+                                                    "Fries".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -592,7 +611,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Drinks",
+                                                    "Drinks".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -685,7 +704,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.center : Alignment.center,
                               child: Text(
-                                foodDetails[index].name,
+                                foodDetails[index].name.tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -702,7 +721,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.center : Alignment.center,
                               child: Text(
-                                foodDetails[index].description,
+                                foodDetails[index].description.tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.center : TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -744,7 +763,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        foodDetails[index].time,
+                                        foodDetails[index].time.tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -763,7 +782,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "${foodDetails[index].amount}",
+                                    "${foodDetails[index].amount}".tr,
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -877,31 +896,34 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                 SpacerWidget.spacerWidget(spaceHeight: 4.hm(context)),
 
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 40.hm(context),
-                                      width: 40.wm(context),
-                                      decoration: BoxDecoration(
-                                          color: Colors.transparent
-                                      ),
-                                      child: TextButton(
-                                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                        onPressed: () {
-                                          Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                        },
-                                        child: FittedBox(
-                                          fit: BoxFit.cover,
-                                          child: Image.asset(
-                                            ImagePathUtils.authorizationBackButtonImagePath,
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 40.hm(context),
+                                        width: 40.wm(context),
+                                        decoration: BoxDecoration(
+                                            color: Colors.transparent
+                                        ),
+                                        child: TextButton(
+                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                          onPressed: () {
+                                            Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                          },
+                                          child: FittedBox(
                                             fit: BoxFit.cover,
-                                            alignment: Alignment.center,
+                                            child: Image.asset(
+                                              ImagePathUtils.authorizationBackButtonImagePath,
+                                              fit: BoxFit.cover,
+                                              alignment: Alignment.center,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
 
                               ],
@@ -945,7 +967,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                           child: Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "Crowded",
+                                              "Crowded".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -1003,7 +1025,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Shawarmac",
+                                            "Shawarmac".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -1020,7 +1042,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Shawarma, fries, burgers",
+                                            "Shawarma, fries, burgers".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -1059,7 +1081,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "3.9",
+                                                "3.9".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1104,7 +1126,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Muscat, Al Khoudh",
+                                                "Muscat, Al Khoudh".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1149,7 +1171,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "5:00 pm -11:00 pm",
+                                                "5:00 pm -11:00 pm".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1207,7 +1229,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              "Menu",
+                              "Menu".tr,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -1270,7 +1292,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Burger",
+                                                    "Burger".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -1295,7 +1317,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Pasta",
+                                                    "Pasta".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -1320,7 +1342,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Shawarma",
+                                                    "Shawarma".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -1345,7 +1367,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Fries",
+                                                    "Fries".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -1370,7 +1392,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Drinks",
+                                                    "Drinks".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -1468,7 +1490,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            foodDetails[index].name,
+                                            foodDetails[index].name.tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -1485,7 +1507,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            foodDetails[index].description,
+                                            foodDetails[index].description.tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -1527,7 +1549,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 Container(
                                                   alignment: Alignment.centerLeft,
                                                   child: Text(
-                                                    foodDetails[index].time,
+                                                    foodDetails[index].time.tr,
                                                     textAlign: TextAlign.start,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -1546,7 +1568,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "${foodDetails[index].amount}",
+                                                "${foodDetails[index].amount}".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
