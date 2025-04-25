@@ -35,7 +35,7 @@ class LogoutScreenWidget extends GetxController {
                 },
                 child: Center(
                   child: Text(
-                    "Login",
+                    "Login".tr,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.tajawal(
                       fontWeight: FontWeight.w700,
@@ -54,7 +54,7 @@ class LogoutScreenWidget extends GetxController {
             Container(
               alignment: Alignment.center,
               child: Text(
-                "You have successfully logged out!",
+                "You have successfully logged out!".tr,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.tajawal(
                   fontWeight: FontWeight.w700,
@@ -70,7 +70,7 @@ class LogoutScreenWidget extends GetxController {
             Container(
               alignment: Alignment.center,
               child: Text(
-                "Log back in to access your account and continue with your orders.",
+                "Log back in to access your account and continue with your orders.".tr,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.tajawal(
                   fontWeight: FontWeight.w500,
@@ -114,7 +114,7 @@ class LogoutScreenWidget extends GetxController {
                 },
                 child: Center(
                   child: Text(
-                    "Login",
+                    "Login".tr,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.tajawal(
                       fontWeight: FontWeight.w700,
@@ -133,7 +133,7 @@ class LogoutScreenWidget extends GetxController {
             Container(
               alignment: Alignment.center,
               child: Text(
-                "You have successfully logged out!",
+                "You have successfully logged out!".tr,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.tajawal(
                   fontWeight: FontWeight.w700,
@@ -149,7 +149,7 @@ class LogoutScreenWidget extends GetxController {
             Container(
               alignment: Alignment.center,
               child: Text(
-                "Log back in to access your account and continue with your orders.",
+                "Log back in to access your account and continue with your orders.".tr,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.tajawal(
                   fontWeight: FontWeight.w500,

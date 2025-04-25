@@ -62,7 +62,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Rating",
+                                  "Rating".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -139,7 +139,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                       Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Blue Fish",
+                                          "Blue Fish".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -158,7 +158,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                       Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Seafood",
+                                          "Seafood".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -198,7 +198,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "3.9",
+                                              "3.9".tr,
                                               textAlign: TextAlign.start,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -230,7 +230,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              "How was your experience?",
+                              "How was your experience?".tr,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -270,7 +270,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                               onPressed: () async {},
                               child: Center(
                                 child: Text(
-                                  "Submit Your Rating",
+                                  "Submit Your Rating".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -348,7 +348,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                       Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Abdullah",
+                                          "Abdullah".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -388,7 +388,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "3.9",
+                                              "3.9".tr,
                                               textAlign: TextAlign.start,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -420,7 +420,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              "How was your experience?",
+                              "How was your experience?".tr,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w500,
@@ -460,7 +460,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                               onPressed: () async {},
                               child: Center(
                                 child: Text(
-                                  "Submit Your Rating",
+                                  "Submit Your Rating".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -540,7 +540,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Rating",
+                                  "Rating".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -616,7 +616,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Blue Fish",
+                                            "Blue Fish".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -635,7 +635,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Seafood",
+                                            "Seafood".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -675,7 +675,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "3.9",
+                                                "3.9".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -707,7 +707,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                             Container(
                               alignment: Alignment.center,
                               child: Text(
-                                "How was your experience?",
+                                "How was your experience?".tr,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -747,7 +747,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                 onPressed: () async {},
                                 child: Center(
                                   child: Text(
-                                    "Submit Your Rating",
+                                    "Submit Your Rating".tr,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -825,7 +825,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Abdullah",
+                                            "Abdullah".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -865,7 +865,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "3.9",
+                                                "3.9".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -897,7 +897,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                             Container(
                               alignment: Alignment.center,
                               child: Text(
-                                "How was your experience?",
+                                "How was your experience?".tr,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -937,7 +937,7 @@ class RatingAndReviewScreenWidget extends GetxController {
                                 onPressed: () async {},
                                 child: Center(
                                   child: Text(
-                                    "Submit Your Rating",
+                                    "Submit Your Rating".tr,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,

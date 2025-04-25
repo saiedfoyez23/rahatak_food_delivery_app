@@ -63,7 +63,7 @@ class HelpCenterScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Help Center",
+                                  "Help Center".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -92,7 +92,7 @@ class HelpCenterScreenWidget extends GetxController {
                           Container(
                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                             child: Text(
-                              "Do you need assistance?",
+                              "Do you need assistance?".tr,
                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,
@@ -107,7 +107,7 @@ class HelpCenterScreenWidget extends GetxController {
                           Container(
                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                             child: Text(
-                              "We are here to help you! If you encounter any issues or have any questions, feel free to reach out to us through the form or contact information below.",
+                              "We are here to help you! If you encounter any issues or have any questions, feel free to reach out to us through the form or contact information below.".tr,
                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w400,
@@ -141,7 +141,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Please describe your issue or question in detail, and we will respond to you as soon as possible.",
+                                    "Please describe your issue or question in detail, and we will respond to you as soon as possible.".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -162,7 +162,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Message *",
+                                    "Message *".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -191,7 +191,7 @@ class HelpCenterScreenWidget extends GetxController {
                                   maxLines: 7,
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
-                                    hintText: "Please write your inquiry or the issue you are facing here...",
+                                    hintText: "Please write your inquiry or the issue you are facing here...".tr,
                                     hintStyle: GoogleFonts.tajawal(
                                       fontSize: 16.spt(context),
                                       fontWeight: FontWeight.w400,
@@ -230,7 +230,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "You can attach a picture (optional)",
+                                    "You can attach a picture (optional)".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -270,7 +270,7 @@ class HelpCenterScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "Add Images",
+                                            "Add Images".tr,
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -321,7 +321,7 @@ class HelpCenterScreenWidget extends GetxController {
                                     onPressed: () async {},
                                     child: Center(
                                       child: Text(
-                                        "Send Message",
+                                        "Send Message".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -361,7 +361,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Other Contact Methods",
+                                    "Other Contact Methods".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -383,7 +383,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Phone Number:",
+                                    "Phone Number:".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -399,7 +399,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "+968 9xxxxxxx",
+                                    "+968 9xxxxxxx".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -418,7 +418,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Email:",
+                                    "Email:".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -434,7 +434,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "support@rahatakapp.com",
+                                    "support@rahatakapp.com".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -528,7 +528,7 @@ class HelpCenterScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Help Center",
+                                  "Help Center".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -551,7 +551,7 @@ class HelpCenterScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Do you need assistance?",
+                          "Do you need assistance?".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w700,
@@ -566,7 +566,7 @@ class HelpCenterScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "We are here to help you! If you encounter any issues or have any questions, feel free to reach out to us through the form or contact information below.",
+                          "We are here to help you! If you encounter any issues or have any questions, feel free to reach out to us through the form or contact information below.".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w400,
@@ -600,7 +600,7 @@ class HelpCenterScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Please describe your issue or question in detail, and we will respond to you as soon as possible.",
+                                "Please describe your issue or question in detail, and we will respond to you as soon as possible.".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -650,7 +650,7 @@ class HelpCenterScreenWidget extends GetxController {
                               maxLines: 7,
                               textAlignVertical: TextAlignVertical.center,
                               decoration: InputDecoration(
-                                hintText: "Please write your inquiry or the issue you are facing here...",
+                                hintText: "Please write your inquiry or the issue you are facing here...".tr,
                                 hintStyle: GoogleFonts.tajawal(
                                   fontSize: 16.spm(context),
                                   fontWeight: FontWeight.w400,
@@ -690,7 +690,7 @@ class HelpCenterScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "You can attach a picture (optional)",
+                                "You can attach a picture (optional)".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -730,7 +730,7 @@ class HelpCenterScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        "Add Images",
+                                        "Add Images".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -781,7 +781,7 @@ class HelpCenterScreenWidget extends GetxController {
                                 onPressed: () async {},
                                 child: Center(
                                   child: Text(
-                                    "Send Message",
+                                    "Send Message".tr,
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -821,7 +821,7 @@ class HelpCenterScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Other Contact Methods",
+                                "Other Contact Methods".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -843,7 +843,7 @@ class HelpCenterScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Phone Number:",
+                                "Phone Number:".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -859,7 +859,7 @@ class HelpCenterScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "+968 9xxxxxxx",
+                                "+968 9xxxxxxx".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -878,7 +878,7 @@ class HelpCenterScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Email:",
+                                "Email:".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -894,7 +894,7 @@ class HelpCenterScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "support@rahatakapp.com",
+                                "support@rahatakapp.com".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,

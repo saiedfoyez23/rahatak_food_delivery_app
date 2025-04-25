@@ -62,7 +62,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Terms and Conditions",
+                                  "Terms and Conditions".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -104,7 +104,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Terms and Conditions of the Application",
+                                "Terms and Conditions of the Application".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -124,7 +124,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "1. Acceptance of Terms",
+                                "1. Acceptance of Terms".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -139,7 +139,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "By using the Rahtak application, you agree to comply with these terms and conditions.",
+                                "By using the Rahtak application, you agree to comply with these terms and conditions.".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -157,7 +157,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "2. Services",
+                                "2. Services".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -188,7 +188,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The application provides the ability to order food from available restaurants within the app.",
+                                      "The application provides the ability to order food from available restaurants within the app.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -222,7 +222,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "Orders are delivered by authorized delivery representatives.",
+                                      "Orders are delivered by authorized delivery representatives.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -244,7 +244,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "3. Registration and Account",
+                                "3. Registration and Account".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -275,7 +275,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "Customers must enter accurate and correct information when registering.",
+                                      "Customers must enter accurate and correct information when registering.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -309,7 +309,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The customer is responsible for maintaining the confidentiality of their account and password.",
+                                      "The customer is responsible for maintaining the confidentiality of their account and password.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -332,7 +332,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "4. Order and Payment",
+                                "4. Order and Payment".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -363,7 +363,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The order is confirmed after completing the payment process (Visa or MasterCard, or cash on delivery).",
+                                      "The order is confirmed after completing the payment process (Visa or MasterCard, or cash on delivery).".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -397,7 +397,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The order cannot be modified after it has been sent except through customer service.",
+                                      "The order cannot be modified after it has been sent except through customer service.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -418,7 +418,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "5. Cancellation and Refund",
+                                "5. Cancellation and Refund".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -449,7 +449,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The customer has the right to cancel the order before the restaurant accepts it.",
+                                      "The customer has the right to cancel the order before the restaurant accepts it.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -483,7 +483,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "Refunds cannot be issued after the order has been prepared or delivered, except in cases of error or defect in the order.",
+                                      "Refunds cannot be issued after the order has been prepared or delivered, except in cases of error or defect in the order.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -505,7 +505,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "6. Usage Policy",
+                                "6. Usage Policy".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -536,7 +536,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The application is prohibited from being used for any illegal purposes, harassment, or exploitation.",
+                                      "The application is prohibited from being used for any illegal purposes, harassment, or exploitation.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -570,7 +570,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The application reserves the right to suspend or delete any user's account in case of violation of the terms.",
+                                      "The application reserves the right to suspend or delete any user's account in case of violation of the terms.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -655,7 +655,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Terms and Conditions",
+                                  "Terms and Conditions".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -694,7 +694,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "Terms and Conditions of the Application",
+                                "Terms and Conditions of the Application".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -714,7 +714,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "1. Acceptance of Terms",
+                                "1. Acceptance of Terms".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -729,7 +729,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "By using the Rahtak application, you agree to comply with these terms and conditions.",
+                                "By using the Rahtak application, you agree to comply with these terms and conditions.".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -747,7 +747,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "2. Services",
+                                "2. Services".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -778,7 +778,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The application provides the ability to order food from available restaurants within the app.",
+                                      "The application provides the ability to order food from available restaurants within the app.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -812,7 +812,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "Orders are delivered by authorized delivery representatives.",
+                                      "Orders are delivered by authorized delivery representatives.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start :  TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -834,7 +834,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "3. Registration and Account",
+                                "3. Registration and Account".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -865,7 +865,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "Customers must enter accurate and correct information when registering.",
+                                      "Customers must enter accurate and correct information when registering.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -899,7 +899,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The customer is responsible for maintaining the confidentiality of their account and password.",
+                                      "The customer is responsible for maintaining the confidentiality of their account and password.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -922,7 +922,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "4. Order and Payment",
+                                "4. Order and Payment".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -953,7 +953,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The order is confirmed after completing the payment process (Visa or MasterCard, or cash on delivery).",
+                                      "The order is confirmed after completing the payment process (Visa or MasterCard, or cash on delivery).".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -987,7 +987,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The order cannot be modified after it has been sent except through customer service.",
+                                      "The order cannot be modified after it has been sent except through customer service.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1008,7 +1008,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "5. Cancellation and Refund",
+                                "5. Cancellation and Refund".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -1039,7 +1039,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The customer has the right to cancel the order before the restaurant accepts it.",
+                                      "The customer has the right to cancel the order before the restaurant accepts it.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1073,7 +1073,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "Refunds cannot be issued after the order has been prepared or delivered, except in cases of error or defect in the order.",
+                                      "Refunds cannot be issued after the order has been prepared or delivered, except in cases of error or defect in the order.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1095,7 +1095,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                               child: Text(
-                                "6. Usage Policy",
+                                "6. Usage Policy".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -1126,7 +1126,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The application is prohibited from being used for any illegal purposes, harassment, or exploitation.",
+                                      "The application is prohibited from being used for any illegal purposes, harassment, or exploitation.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1160,7 +1160,7 @@ class TermsAndConditionsScreenWidget extends GetxController {
                                   child: Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "The application reserves the right to suspend or delete any user's account in case of violation of the terms.",
+                                      "The application reserves the right to suspend or delete any user's account in case of violation of the terms.".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,

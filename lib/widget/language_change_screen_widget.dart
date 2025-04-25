@@ -79,7 +79,7 @@ class LanguageChangeScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Change Language",
+                                  "Change Language".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -157,7 +157,7 @@ class LanguageChangeScreenWidget extends GetxController {
                                     child: Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Arabic Language",
+                                        "Arabic Language".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -230,7 +230,7 @@ class LanguageChangeScreenWidget extends GetxController {
                                     child: Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "English Language",
+                                        "English Language".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -269,7 +269,7 @@ class LanguageChangeScreenWidget extends GetxController {
                               },
                               child: Center(
                                 child: Text(
-                                  "Change Language",
+                                  "Change Language".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -347,7 +347,7 @@ class LanguageChangeScreenWidget extends GetxController {
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Change Language",
+                                  "Change Language".tr,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.tajawal(
                                     fontWeight: FontWeight.w700,
@@ -419,7 +419,7 @@ class LanguageChangeScreenWidget extends GetxController {
                                 child: Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Arabic Language",
+                                    "Arabic Language".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -492,7 +492,7 @@ class LanguageChangeScreenWidget extends GetxController {
                                 child: Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "English Language",
+                                    "English Language".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,
@@ -531,7 +531,7 @@ class LanguageChangeScreenWidget extends GetxController {
                           },
                           child: Center(
                             child: Text(
-                              "Change Language",
+                              "Change Language".tr,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.tajawal(
                                 fontWeight: FontWeight.w700,

@@ -37,7 +37,7 @@ class ProfileScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "My Account",
+                        "My Account".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -252,7 +252,7 @@ class ProfileScreenWidget extends GetxController {
                             Container(
                               alignment: Alignment.center,
                               child: Text(
-                                "Mohammed Ali",
+                                "Mohammed Ali".tr,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -320,7 +320,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Personal Information",
+                                                "Personal Information".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -407,7 +407,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Manage Address",
+                                                "Manage Address".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -494,7 +494,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Payment Methods",
+                                                "Payment Methods".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -581,7 +581,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Change Password",
+                                                "Change Password".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -670,7 +670,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Rating and Review",
+                                                "Rating and Review".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -759,7 +759,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Change App Language",
+                                                "Change App Language".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -849,7 +849,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Terms and Conditions",
+                                                "Terms and Conditions".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -937,7 +937,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Help Center",
+                                                "Help Center".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -1007,7 +1007,7 @@ class ProfileScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Login",
+                            "Login".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -1057,7 +1057,7 @@ class ProfileScreenWidget extends GetxController {
                     Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "My Account",
+                        "My Account".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
@@ -1272,7 +1272,7 @@ class ProfileScreenWidget extends GetxController {
                             Container(
                               alignment: Alignment.center,
                               child: Text(
-                                "Mohammed Ali",
+                                "Mohammed Ali".tr,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -1340,7 +1340,7 @@ class ProfileScreenWidget extends GetxController {
                                            Container(
                                              alignment: Alignment.centerLeft,
                                              child: Text(
-                                               "Personal Information",
+                                               "Personal Information".tr,
                                                textAlign: TextAlign.center,
                                                style: GoogleFonts.tajawal(
                                                  fontWeight: FontWeight.w700,
@@ -1427,7 +1427,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Manage Address",
+                                                "Manage Address".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -1514,7 +1514,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Payment Methods",
+                                                "Payment Methods".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -1601,7 +1601,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Change Password",
+                                                "Change Password".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -1690,7 +1690,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Rating and Review",
+                                                "Rating and Review".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -1779,7 +1779,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Change App Language",
+                                                "Change App Language".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -1869,7 +1869,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Terms and Conditions",
+                                                "Terms and Conditions".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -1957,7 +1957,7 @@ class ProfileScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Help Center",
+                                                "Help Center".tr,
                                                 textAlign: TextAlign.center,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
@@ -2027,7 +2027,7 @@ class ProfileScreenWidget extends GetxController {
                         },
                         child: Center(
                           child: Text(
-                            "Login",
+                            "Login".tr,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,

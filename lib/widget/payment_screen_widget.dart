@@ -37,9 +37,9 @@ class PaymentScreenWidget extends GetxController {
   RxInt timeCounter = 60.obs;
 
   RxList<CartList> cartList = <CartList>[
-    CartList(index: 0,name: "Tanoor", amount: "1900 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "2", image: ImagePathUtils.pList_3),
-    CartList(index: 1,name: "Chicken Fries", amount: "1500 OMR", size: "Size: Large", notes: "Notes: Spicy", quantity: "5", image: ImagePathUtils.pList_1),
-    CartList(index: 2,name: "Classic Burger", amount: "1200 OMR", size: "Size: Small", notes: "Notes: Spicy", quantity: "10", image: ImagePathUtils.productImage_4),
+    CartList(index: 0,name: "Tanoor", amount: "1900 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "Quantity 2", image: ImagePathUtils.pList_3),
+    CartList(index: 1,name: "Chicken Fries", amount: "1500 OMR", size: "Size: Large", notes: "Notes: Spicy", quantity: "Quantity 2", image: ImagePathUtils.pList_1),
+    CartList(index: 2,name: "Classic Burger", amount: "1200 OMR", size: "Size: Small", notes: "Notes: Spicy", quantity: "Quantity 2", image: ImagePathUtils.productImage_4),
   ].obs;
 
 
@@ -78,53 +78,56 @@ class PaymentScreenWidget extends GetxController {
 
                           SpacerWidget.spacerWidget(spaceHeight: 11.ht(context),),
 
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 37.hpmt(context)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                            
-                                Container(
-                                  height: 40.ht(context),
-                                  width: 40.wt(context),
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: TextButton(
-                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                    onPressed: () {
-                                      Get.delete<PaymentScreenWidget>(force: true);
-                                      Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                    },
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.authorizationBackButtonImagePath,
+                          Directionality(
+                            textDirection: TextDirection.ltr,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 37.hpmt(context)),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+
+                                  Container(
+                                    height: 40.ht(context),
+                                    width: 40.wt(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        Get.delete<PaymentScreenWidget>(force: true);
+                                        Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
-                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          ImagePathUtils.authorizationBackButtonImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                            
-                            
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "Payment",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 16.spt(context),
-                                        color: ColorUtils.black255,
+
+
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Payment".tr,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.spt(context),
+                                          color: ColorUtils.black255,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                            
-                              ],
+
+                                ],
+                              ),
                             ),
                           ),
                           
@@ -195,7 +198,7 @@ class PaymentScreenWidget extends GetxController {
                                           child: Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "Cash",
+                                              "Cash".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -223,7 +226,7 @@ class PaymentScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Name*",
+                                        "Name*".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -250,7 +253,7 @@ class PaymentScreenWidget extends GetxController {
                                       ),
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: InputDecoration(
-                                        hintText: "Enter your name",
+                                        hintText: "Enter your name".tr,
                                         hintStyle: GoogleFonts.tajawal(
                                           fontSize: 16.spt(context),
                                           fontWeight: FontWeight.w400,
@@ -288,7 +291,7 @@ class PaymentScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Phone Number *",
+                                        "Phone Number *".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -315,7 +318,7 @@ class PaymentScreenWidget extends GetxController {
                                       ),
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: InputDecoration(
-                                        hintText: "+88017XXXXXXXX",
+                                        hintText: "+88017XXXXXXXX".tr,
                                         hintStyle: GoogleFonts.tajawal(
                                           fontSize: 16.spt(context),
                                           fontWeight: FontWeight.w400,
@@ -354,7 +357,7 @@ class PaymentScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Governorate *",
+                                        "Governorate *".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -381,7 +384,7 @@ class PaymentScreenWidget extends GetxController {
                                       ),
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: InputDecoration(
-                                        hintText: "Muscat",
+                                        hintText: "Muscat".tr,
                                         hintStyle: GoogleFonts.tajawal(
                                           fontSize: 16.spt(context),
                                           fontWeight: FontWeight.w400,
@@ -428,7 +431,7 @@ class PaymentScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "State",
+                                                "State".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -455,7 +458,7 @@ class PaymentScreenWidget extends GetxController {
                                               ),
                                               textAlignVertical: TextAlignVertical.center,
                                               decoration: InputDecoration(
-                                                hintText: "Al Khoud",
+                                                hintText: "Al Khoud".tr,
                                                 hintStyle: GoogleFonts.tajawal(
                                                   fontSize: 16.spt(context),
                                                   fontWeight: FontWeight.w400,
@@ -503,7 +506,7 @@ class PaymentScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "City",
+                                                "City".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -530,7 +533,7 @@ class PaymentScreenWidget extends GetxController {
                                               ),
                                               textAlignVertical: TextAlignVertical.center,
                                               decoration: InputDecoration(
-                                                hintText: "Al Khoud",
+                                                hintText: "Al Khoud".tr,
                                                 hintStyle: GoogleFonts.tajawal(
                                                   fontSize: 16.spt(context),
                                                   fontWeight: FontWeight.w400,
@@ -658,7 +661,7 @@ class PaymentScreenWidget extends GetxController {
                                           child: Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "Mastercard / Visa",
+                                              "Mastercard / Visa".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -725,7 +728,7 @@ class PaymentScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Name on card *",
+                                        "Name on card *".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -752,7 +755,7 @@ class PaymentScreenWidget extends GetxController {
                                       ),
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: InputDecoration(
-                                        hintText: "Enter card name",
+                                        hintText: "Enter card name".tr,
                                         hintStyle: GoogleFonts.tajawal(
                                           fontSize: 16.spt(context),
                                           fontWeight: FontWeight.w400,
@@ -790,7 +793,7 @@ class PaymentScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Card Number *",
+                                        "Card Number *".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -817,7 +820,7 @@ class PaymentScreenWidget extends GetxController {
                                       ),
                                       textAlignVertical: TextAlignVertical.center,
                                       decoration: InputDecoration(
-                                        hintText: "0000 0000 0000 0000",
+                                        hintText: "0000 0000 0000 0000".tr,
                                         hintStyle: GoogleFonts.tajawal(
                                           fontSize: 16.spt(context),
                                           fontWeight: FontWeight.w400,
@@ -864,7 +867,7 @@ class PaymentScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "Expiry date * ",
+                                                "Expiry date * ".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -891,7 +894,7 @@ class PaymentScreenWidget extends GetxController {
                                               ),
                                               textAlignVertical: TextAlignVertical.center,
                                               decoration: InputDecoration(
-                                                hintText: "00/00",
+                                                hintText: "00/00".tr,
                                                 hintStyle: GoogleFonts.tajawal(
                                                   fontSize: 16.spt(context),
                                                   fontWeight: FontWeight.w400,
@@ -939,7 +942,7 @@ class PaymentScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "CVV *",
+                                                "CVV *".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -966,7 +969,7 @@ class PaymentScreenWidget extends GetxController {
                                               ),
                                               textAlignVertical: TextAlignVertical.center,
                                               decoration: InputDecoration(
-                                                hintText: "000",
+                                                hintText: "000".tr,
                                                 hintStyle: GoogleFonts.tajawal(
                                                   fontSize: 16.spt(context),
                                                   fontWeight: FontWeight.w400,
@@ -1073,7 +1076,7 @@ class PaymentScreenWidget extends GetxController {
                                                             width: 428.wt(context),
                                                             alignment: Alignment.center,
                                                             child: Text(
-                                                              "Verify Your Identity",
+                                                              "Verify Your Identity".tr,
                                                               textAlign: TextAlign.center,
                                                               style: GoogleFonts.tajawal(
                                                                 fontWeight: FontWeight.w700,
@@ -1091,7 +1094,7 @@ class PaymentScreenWidget extends GetxController {
                                                             width: 428.wt(context),
                                                             alignment: Alignment.center,
                                                             child: Text(
-                                                              "We have sent a 6-digit verification code to your registered phone number. Please enter the code below to complete your payment.",
+                                                              "We have sent a 6-digit verification code to your registered phone number. Please enter the code below to complete your payment.".tr,
                                                               textAlign: TextAlign.center,
                                                               style: GoogleFonts.tajawal(
                                                                 fontWeight: FontWeight.w500,
@@ -1454,7 +1457,7 @@ class PaymentScreenWidget extends GetxController {
                                                                               width: 428.wt(context),
                                                                               alignment: Alignment.center,
                                                                               child: Text(
-                                                                                "Payment successful!",
+                                                                                "Payment successful!".tr,
                                                                                 textAlign: TextAlign.center,
                                                                                 style: GoogleFonts.tajawal(
                                                                                   fontWeight: FontWeight.w700,
@@ -1470,7 +1473,7 @@ class PaymentScreenWidget extends GetxController {
                                                                               width: 428.wt(context),
                                                                               alignment: Alignment.center,
                                                                               child: Text(
-                                                                                "Thank you! Your payment has been confirmed and your order has been successfully submitted.",
+                                                                                "Thank you! Your payment has been confirmed and your order has been successfully submitted.".tr,
                                                                                 textAlign: TextAlign.center,
                                                                                 style: GoogleFonts.tajawal(
                                                                                   fontWeight: FontWeight.w500,
@@ -1486,7 +1489,7 @@ class PaymentScreenWidget extends GetxController {
                                                                               width: 428.wt(context),
                                                                               alignment: Alignment.center,
                                                                               child: Text(
-                                                                                "Order number: #123456",
+                                                                                "Order number: #123456".tr,
                                                                                 textAlign: TextAlign.center,
                                                                                 style: GoogleFonts.tajawal(
                                                                                   fontWeight: FontWeight.w500,
@@ -1517,7 +1520,7 @@ class PaymentScreenWidget extends GetxController {
                                                                                 },
                                                                                 child: Center(
                                                                                   child: Text(
-                                                                                    "Complete payment",
+                                                                                    "Complete payment".tr,
                                                                                     textAlign: TextAlign.center,
                                                                                     style: GoogleFonts.tajawal(
                                                                                       fontWeight: FontWeight.w700,
@@ -1539,7 +1542,7 @@ class PaymentScreenWidget extends GetxController {
                                                               },
                                                               child: Center(
                                                                 child: Text(
-                                                                  "Complete payment",
+                                                                  "Complete payment".tr,
                                                                   textAlign: TextAlign.center,
                                                                   style: GoogleFonts.tajawal(
                                                                     fontWeight: FontWeight.w700,
@@ -1559,7 +1562,7 @@ class PaymentScreenWidget extends GetxController {
                                                             width: 428.wt(context),
                                                             alignment: Alignment.center,
                                                             child: Text(
-                                                              "Didn't receive the code?",
+                                                              "Didn't receive the code?".tr,
                                                               textAlign: TextAlign.center,
                                                               style: GoogleFonts.tajawal(
                                                                 fontWeight: FontWeight.w700,
@@ -1630,7 +1633,7 @@ class PaymentScreenWidget extends GetxController {
                                                                               width: 428.wt(context),
                                                                               alignment: Alignment.center,
                                                                               child: Text(
-                                                                                "Sorry, your payment was not completed!",
+                                                                                "Sorry, your payment was not completed!".tr,
                                                                                 textAlign: TextAlign.center,
                                                                                 style: GoogleFonts.tajawal(
                                                                                   fontWeight: FontWeight.w700,
@@ -1646,7 +1649,7 @@ class PaymentScreenWidget extends GetxController {
                                                                               width: 358.wt(context),
                                                                               alignment: Alignment.center,
                                                                               child: Text(
-                                                                                "There was a problem processing your payment. Please check your details and try again.",
+                                                                                "There was a problem processing your payment. Please check your details and try again.".tr,
                                                                                 textAlign: TextAlign.center,
                                                                                 style: GoogleFonts.tajawal(
                                                                                   fontWeight: FontWeight.w500,
@@ -1677,7 +1680,7 @@ class PaymentScreenWidget extends GetxController {
                                                                                 },
                                                                                 child: Center(
                                                                                   child: Text(
-                                                                                    "Try Again",
+                                                                                    "Try Again".tr,
                                                                                     textAlign: TextAlign.center,
                                                                                     style: GoogleFonts.tajawal(
                                                                                       fontWeight: FontWeight.w700,
@@ -1698,7 +1701,7 @@ class PaymentScreenWidget extends GetxController {
                                                                 );
                                                               },
                                                               child: Text(
-                                                                "Resend Otp",
+                                                                "Resend Otp".tr,
                                                                 textAlign: TextAlign.center,
                                                                 style: GoogleFonts.tajawal(
                                                                   fontWeight: FontWeight.w500,
@@ -1713,16 +1716,31 @@ class PaymentScreenWidget extends GetxController {
                                                           Container(
                                                             width: 430.wt(context),
                                                             alignment: Alignment.center,
-                                                            child: Text(
-                                                              "Resend after (${timeCounter.value}s)",
-                                                              textAlign: TextAlign.center,
-                                                              style: GoogleFonts.tajawal(
-                                                                fontWeight: FontWeight.w500,
-                                                                fontStyle: FontStyle.normal,
-                                                                fontSize: 14.spt(context),
-                                                                color: ColorUtils.black33,
-                                                                height: (25.ht(context) / 14.spt(context)),
-                                                              ),
+                                                            child: Row(
+                                                              children: [
+                                                                Text(
+                                                                  "Resend after".tr,
+                                                                  textAlign: TextAlign.center,
+                                                                  style: GoogleFonts.tajawal(
+                                                                    fontWeight: FontWeight.w500,
+                                                                    fontStyle: FontStyle.normal,
+                                                                    fontSize: 14.spt(context),
+                                                                    color: ColorUtils.black33,
+                                                                    height: (25.ht(context) / 14.spt(context)),
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  " (${timeCounter.value}s)",
+                                                                  textAlign: TextAlign.center,
+                                                                  style: GoogleFonts.tajawal(
+                                                                    fontWeight: FontWeight.w500,
+                                                                    fontStyle: FontStyle.normal,
+                                                                    fontSize: 14.spt(context),
+                                                                    color: ColorUtils.black33,
+                                                                    height: (25.ht(context) / 14.spt(context)),
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
                             
@@ -1763,24 +1781,14 @@ class PaymentScreenWidget extends GetxController {
                                             RichText(
                                               textAlign: TextAlign.center,
                                               text: TextSpan(
-                                                text: "Save card details",
+                                                text: "Save card details for quick payment later".tr,
                                                 style: GoogleFonts.tajawal(
                                                   fontStyle: FontStyle.normal,
                                                   fontSize: 14.spt(context),
                                                   color: ColorUtils.black33,
                                                   fontWeight: FontWeight.w500,
                                                 ),
-                                                children: [
-                                                  TextSpan(
-                                                    text: " for quick payment later ",
-                                                    style: GoogleFonts.tajawal(
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 14.spt(context),
-                                                      color: ColorUtils.black33,
-                                                      fontWeight: FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                ],
+                                                children: [],
                                               ),
                                             ),
                             
@@ -1839,7 +1847,7 @@ class PaymentScreenWidget extends GetxController {
                                       Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Order Details",
+                                          "Order Details".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -1861,7 +1869,7 @@ class PaymentScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "Price",
+                                              "Price".tr,
                                               textAlign: TextAlign.start,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -1876,7 +1884,7 @@ class PaymentScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "7.300 OMR",
+                                              "7.300 OMR".tr,
                                               textAlign: TextAlign.start,
                                               style:GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -1900,7 +1908,7 @@ class PaymentScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "Delivery fee",
+                                              "Delivery fee".tr,
                                               textAlign: TextAlign.start,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -1915,7 +1923,7 @@ class PaymentScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "1.500 OMR",
+                                              "1.500 OMR".tr,
                                               textAlign: TextAlign.start,
                                               style:GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -1951,7 +1959,7 @@ class PaymentScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "Total",
+                                              "Total".tr,
                                               textAlign: TextAlign.start,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -1966,7 +1974,7 @@ class PaymentScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "8.800 OMR",
+                                              "8.800 OMR".tr,
                                               textAlign: TextAlign.start,
                                               style:GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -2023,7 +2031,7 @@ class PaymentScreenWidget extends GetxController {
                                               Container(
                                                 alignment: Alignment.centerLeft,
                                                 child: Text(
-                                                  isProductListShow.value == true ? "See Order details" : "Order details",
+                                                  isProductListShow.value == true ? "See Order details".tr : "Order details".tr,
                                                   textAlign: TextAlign.start,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w700,
@@ -2107,7 +2115,7 @@ class PaymentScreenWidget extends GetxController {
                                                         Container(
                                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                           child: Text(
-                                                            "${cartList[index].name}",
+                                                            "${cartList[index].name}".tr,
                                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                             style: GoogleFonts.tajawal(
                                                               fontWeight: FontWeight.w700,
@@ -2123,7 +2131,7 @@ class PaymentScreenWidget extends GetxController {
                                                         Container(
                                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                           child: Text(
-                                                            "${cartList[index].amount}",
+                                                            "${cartList[index].amount}".tr,
                                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                             style: GoogleFonts.tajawal(
                                                               fontWeight: FontWeight.w500,
@@ -2139,7 +2147,7 @@ class PaymentScreenWidget extends GetxController {
                                                         Container(
                                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                           child: Text(
-                                                            "${cartList[index].size}",
+                                                            "${cartList[index].size}".tr,
                                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                             style: GoogleFonts.tajawal(
                                                               fontWeight: FontWeight.w500,
@@ -2158,7 +2166,7 @@ class PaymentScreenWidget extends GetxController {
                                                             Container(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
-                                                                "${cartList[index].notes}",
+                                                                "${cartList[index].notes}".tr,
                                                                 textAlign: TextAlign.start,
                                                                 style: GoogleFonts.tajawal(
                                                                   fontWeight: FontWeight.w500,
@@ -2172,7 +2180,7 @@ class PaymentScreenWidget extends GetxController {
                                                             Container(
                                                               alignment: Alignment.centerLeft,
                                                               child: Text(
-                                                                "Quantity ${cartList[index].quantity}",
+                                                                "${cartList[index].quantity}".tr,
                                                                 textAlign: TextAlign.start,
                                                                 style: GoogleFonts.tajawal(
                                                                   fontWeight: FontWeight.w500,
@@ -2222,7 +2230,7 @@ class PaymentScreenWidget extends GetxController {
                                     },
                                     child: Center(
                                       child: Text(
-                                        "Complete payment",
+                                        "Complete payment".tr,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -2285,51 +2293,54 @@ class PaymentScreenWidget extends GetxController {
 
                             SpacerWidget.spacerWidget(spaceHeight: 11.hm(context),),
 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
 
-                                Container(
-                                  height: 40.hm(context),
-                                  width: 40.wm(context),
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: TextButton(
-                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                    onPressed: () {
-                                      Get.delete<PaymentScreenWidget>(force: true);
-                                      Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                    },
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.authorizationBackButtonImagePath,
+                                  Container(
+                                    height: 40.hm(context),
+                                    width: 40.wm(context),
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                      onPressed: () {
+                                        Get.delete<PaymentScreenWidget>(force: true);
+                                        Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                      },
+                                      child: FittedBox(
                                         fit: BoxFit.cover,
-                                        alignment: Alignment.center,
+                                        child: Image.asset(
+                                          ImagePathUtils.authorizationBackButtonImagePath,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
 
 
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "Payment",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 16.spm(context),
-                                        color: ColorUtils.black255,
+                                  Expanded(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Payment".tr,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.spm(context),
+                                          color: ColorUtils.black255,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
 
-                              ],
+                                ],
+                              ),
                             ),
 
 
@@ -2391,7 +2402,7 @@ class PaymentScreenWidget extends GetxController {
                                       child: Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Cash",
+                                          "Cash".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -2446,7 +2457,7 @@ class PaymentScreenWidget extends GetxController {
                                   ),
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
-                                    hintText: "Enter your name",
+                                    hintText: "Enter your name".tr,
                                     hintStyle: GoogleFonts.tajawal(
                                       fontSize: 16.spm(context),
                                       fontWeight: FontWeight.w400,
@@ -2485,7 +2496,7 @@ class PaymentScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Phone Number *",
+                                    "Phone Number *".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -2512,7 +2523,7 @@ class PaymentScreenWidget extends GetxController {
                                   ),
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
-                                    hintText: "+88017XXXXXXXX",
+                                    hintText: "+88017XXXXXXXX".tr,
                                     hintStyle: GoogleFonts.tajawal(
                                       fontSize: 16.spm(context),
                                       fontWeight: FontWeight.w400,
@@ -2552,7 +2563,7 @@ class PaymentScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Governorate *",
+                                    "Governorate *".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -2579,7 +2590,7 @@ class PaymentScreenWidget extends GetxController {
                                   ),
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
-                                    hintText: "Muscat",
+                                    hintText: "Muscat".tr,
                                     hintStyle: GoogleFonts.tajawal(
                                       fontSize: 16.spm(context),
                                       fontWeight: FontWeight.w400,
@@ -2627,7 +2638,7 @@ class PaymentScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "State",
+                                            "State".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -2654,7 +2665,7 @@ class PaymentScreenWidget extends GetxController {
                                           ),
                                           textAlignVertical: TextAlignVertical.center,
                                           decoration: InputDecoration(
-                                            hintText: "Al Khoud",
+                                            hintText: "Al Khoud".tr,
                                             hintStyle: GoogleFonts.tajawal(
                                               fontSize: 16.spm(context),
                                               fontWeight: FontWeight.w400,
@@ -2702,7 +2713,7 @@ class PaymentScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "City",
+                                            "City".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -2729,7 +2740,7 @@ class PaymentScreenWidget extends GetxController {
                                           ),
                                           textAlignVertical: TextAlignVertical.center,
                                           decoration: InputDecoration(
-                                            hintText: "Al Khoud",
+                                            hintText: "Al Khoud".tr,
                                             hintStyle: GoogleFonts.tajawal(
                                               fontSize: 16.spm(context),
                                               fontWeight: FontWeight.w400,
@@ -2857,7 +2868,7 @@ class PaymentScreenWidget extends GetxController {
                                       child: Container(
                                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "Mastercard / Visa",
+                                          "Mastercard / Visa".tr,
                                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -2924,7 +2935,7 @@ class PaymentScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Name on card *",
+                                    "Name on card *".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -2951,7 +2962,7 @@ class PaymentScreenWidget extends GetxController {
                                   ),
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
-                                    hintText: "Enter card name",
+                                    hintText: "Enter card name".tr,
                                     hintStyle: GoogleFonts.tajawal(
                                       fontSize: 16.spm(context),
                                       fontWeight: FontWeight.w400,
@@ -2990,7 +3001,7 @@ class PaymentScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Card Number *",
+                                    "Card Number *".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -3017,7 +3028,7 @@ class PaymentScreenWidget extends GetxController {
                                   ),
                                   textAlignVertical: TextAlignVertical.center,
                                   decoration: InputDecoration(
-                                    hintText: "0000 0000 0000 0000",
+                                    hintText: "0000 0000 0000 0000".tr,
                                     hintStyle: GoogleFonts.tajawal(
                                       fontSize: 16.spm(context),
                                       fontWeight: FontWeight.w400,
@@ -3065,7 +3076,7 @@ class PaymentScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "Expiry date * ",
+                                            "Expiry date * ".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -3092,7 +3103,7 @@ class PaymentScreenWidget extends GetxController {
                                           ),
                                           textAlignVertical: TextAlignVertical.center,
                                           decoration: InputDecoration(
-                                            hintText: "00/00",
+                                            hintText: "00/00".tr,
                                             hintStyle: GoogleFonts.tajawal(
                                               fontSize: 16.spm(context),
                                               fontWeight: FontWeight.w400,
@@ -3140,7 +3151,7 @@ class PaymentScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "CVV *",
+                                            "CVV *".tr,
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -3167,7 +3178,7 @@ class PaymentScreenWidget extends GetxController {
                                           ),
                                           textAlignVertical: TextAlignVertical.center,
                                           decoration: InputDecoration(
-                                            hintText: "000",
+                                            hintText: "000".tr,
                                             hintStyle: GoogleFonts.tajawal(
                                               fontSize: 16.spm(context),
                                               fontWeight: FontWeight.w400,
@@ -3272,7 +3283,7 @@ class PaymentScreenWidget extends GetxController {
                                                         width: 358.wm(context),
                                                         alignment: Alignment.center,
                                                         child: Text(
-                                                          "Verify Your Identity",
+                                                          "Verify Your Identity".tr,
                                                           textAlign: TextAlign.center,
                                                           style: GoogleFonts.tajawal(
                                                             fontWeight: FontWeight.w700,
@@ -3290,7 +3301,7 @@ class PaymentScreenWidget extends GetxController {
                                                         width: 358.wm(context),
                                                         alignment: Alignment.center,
                                                         child: Text(
-                                                          "We have sent a 6-digit verification code to your registered phone number. Please enter the code below to complete your payment.",
+                                                          "We have sent a 6-digit verification code to your registered phone number. Please enter the code below to complete your payment.".tr,
                                                           textAlign: TextAlign.center,
                                                           style: GoogleFonts.tajawal(
                                                             fontWeight: FontWeight.w500,
@@ -3685,7 +3696,7 @@ class PaymentScreenWidget extends GetxController {
                                                                           width: 358.wm(context),
                                                                           alignment: Alignment.center,
                                                                           child: Text(
-                                                                            "Order number: #123456",
+                                                                            "Order number: #123456".tr,
                                                                             textAlign: TextAlign.center,
                                                                             style: GoogleFonts.tajawal(
                                                                               fontWeight: FontWeight.w500,
@@ -3716,7 +3727,7 @@ class PaymentScreenWidget extends GetxController {
                                                                             },
                                                                             child: Center(
                                                                               child: Text(
-                                                                                "Complete payment",
+                                                                                "Complete payment".tr,
                                                                                 textAlign: TextAlign.center,
                                                                                 style: GoogleFonts.tajawal(
                                                                                   fontWeight: FontWeight.w700,
@@ -3738,7 +3749,7 @@ class PaymentScreenWidget extends GetxController {
                                                           },
                                                           child: Center(
                                                             child: Text(
-                                                              "Complete payment",
+                                                              "Complete payment".tr,
                                                               textAlign: TextAlign.center,
                                                               style: GoogleFonts.tajawal(
                                                                 fontWeight: FontWeight.w700,
@@ -3758,7 +3769,7 @@ class PaymentScreenWidget extends GetxController {
                                                         width: 358.wm(context),
                                                         alignment: Alignment.center,
                                                         child: Text(
-                                                          "Didn't receive the code?",
+                                                          "Didn't receive the code?".tr,
                                                           textAlign: TextAlign.center,
                                                           style: GoogleFonts.tajawal(
                                                             fontWeight: FontWeight.w700,
@@ -3829,7 +3840,7 @@ class PaymentScreenWidget extends GetxController {
                                                                           width: 358.wm(context),
                                                                           alignment: Alignment.center,
                                                                           child: Text(
-                                                                            "Sorry, your payment was not completed!",
+                                                                            "Sorry, your payment was not completed!".tr,
                                                                             textAlign: TextAlign.center,
                                                                             style: GoogleFonts.tajawal(
                                                                               fontWeight: FontWeight.w700,
@@ -3845,7 +3856,7 @@ class PaymentScreenWidget extends GetxController {
                                                                           width: 358.wm(context),
                                                                           alignment: Alignment.center,
                                                                           child: Text(
-                                                                            "There was a problem processing your payment. Please check your details and try again.",
+                                                                            "There was a problem processing your payment. Please check your details and try again.".tr,
                                                                             textAlign: TextAlign.center,
                                                                             style: GoogleFonts.tajawal(
                                                                               fontWeight: FontWeight.w500,
@@ -3876,7 +3887,7 @@ class PaymentScreenWidget extends GetxController {
                                                                             },
                                                                             child: Center(
                                                                               child: Text(
-                                                                                "Try Again",
+                                                                                "Try Again".tr,
                                                                                 textAlign: TextAlign.center,
                                                                                 style: GoogleFonts.tajawal(
                                                                                   fontWeight: FontWeight.w700,
@@ -3897,7 +3908,7 @@ class PaymentScreenWidget extends GetxController {
                                                             );
                                                           },
                                                           child: Text(
-                                                            "Resend Otp",
+                                                            "Resend Otp".tr,
                                                             textAlign: TextAlign.center,
                                                             style: GoogleFonts.tajawal(
                                                               fontWeight: FontWeight.w500,
@@ -3912,16 +3923,32 @@ class PaymentScreenWidget extends GetxController {
                                                       Container(
                                                         width: 358.wm(context),
                                                         alignment: Alignment.center,
-                                                        child: Text(
-                                                          "Resend after (${timeCounter.value}s)",
-                                                          textAlign: TextAlign.center,
-                                                          style: GoogleFonts.tajawal(
-                                                            fontWeight: FontWeight.w500,
-                                                            fontStyle: FontStyle.normal,
-                                                            fontSize: 14.spm(context),
-                                                            color: ColorUtils.black33,
-                                                            height: (25.hm(context) / 14.spm(context)),
-                                                          ),
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children: [
+                                                            Text(
+                                                              "Resend after".tr,
+                                                              textAlign: TextAlign.center,
+                                                              style: GoogleFonts.tajawal(
+                                                                fontWeight: FontWeight.w500,
+                                                                fontStyle: FontStyle.normal,
+                                                                fontSize: 14.spm(context),
+                                                                color: ColorUtils.black33,
+                                                                height: (25.hm(context) / 14.spm(context)),
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              "(${timeCounter.value}s)",
+                                                              textAlign: TextAlign.center,
+                                                              style: GoogleFonts.tajawal(
+                                                                fontWeight: FontWeight.w500,
+                                                                fontStyle: FontStyle.normal,
+                                                                fontSize: 14.spm(context),
+                                                                color: ColorUtils.black33,
+                                                                height: (25.hm(context) / 14.spm(context)),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
 
@@ -3962,24 +3989,14 @@ class PaymentScreenWidget extends GetxController {
                                         RichText(
                                           textAlign: TextAlign.center,
                                           text: TextSpan(
-                                            text: "Save card details",
+                                            text: "Save card details for quick payment later".tr,
                                             style: GoogleFonts.tajawal(
                                               fontStyle: FontStyle.normal,
                                               fontSize: 14.spm(context),
                                               color: ColorUtils.black33,
                                               fontWeight: FontWeight.w500,
                                             ),
-                                            children: [
-                                              TextSpan(
-                                                text: " for quick payment later ",
-                                                style: GoogleFonts.tajawal(
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 14.spm(context),
-                                                  color: ColorUtils.black33,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ],
+                                            children: [],
                                           ),
                                         ),
 
@@ -4038,7 +4055,7 @@ class PaymentScreenWidget extends GetxController {
                                   Container(
                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                     child: Text(
-                                      "Order Details",
+                                      "Order Details".tr,
                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                       style: GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -4060,7 +4077,7 @@ class PaymentScreenWidget extends GetxController {
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          "Price",
+                                          "Price".tr,
                                           textAlign: TextAlign.start,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -4075,7 +4092,7 @@ class PaymentScreenWidget extends GetxController {
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          "7.300 OMR",
+                                          "7.300 OMR".tr,
                                           textAlign: TextAlign.start,
                                           style:GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -4099,7 +4116,7 @@ class PaymentScreenWidget extends GetxController {
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          "Delivery fee",
+                                          "Delivery fee".tr,
                                           textAlign: TextAlign.start,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -4114,7 +4131,7 @@ class PaymentScreenWidget extends GetxController {
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          "1.500 OMR",
+                                          "1.500 OMR".tr,
                                           textAlign: TextAlign.start,
                                           style:GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w500,
@@ -4150,7 +4167,7 @@ class PaymentScreenWidget extends GetxController {
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          "Total",
+                                          "Total".tr,
                                           textAlign: TextAlign.start,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -4165,7 +4182,7 @@ class PaymentScreenWidget extends GetxController {
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          "8.800 OMR",
+                                          "8.800 OMR".tr,
                                           textAlign: TextAlign.start,
                                           style:GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
@@ -4222,7 +4239,7 @@ class PaymentScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              isProductListShow.value == true ? "See Order details" : "Order details",
+                                              isProductListShow.value == true ? "See Order details".tr : "Order details".tr,
                                               textAlign: TextAlign.start,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -4306,7 +4323,7 @@ class PaymentScreenWidget extends GetxController {
                                                     Container(
                                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                       child: Text(
-                                                        "${cartList[index].name}",
+                                                        "${cartList[index].name}".tr,
                                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                         style: GoogleFonts.tajawal(
                                                           fontWeight: FontWeight.w700,
@@ -4322,7 +4339,7 @@ class PaymentScreenWidget extends GetxController {
                                                     Container(
                                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                       child: Text(
-                                                        "${cartList[index].amount}",
+                                                        "${cartList[index].amount}".tr,
                                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                         style: GoogleFonts.tajawal(
                                                           fontWeight: FontWeight.w500,
@@ -4338,7 +4355,7 @@ class PaymentScreenWidget extends GetxController {
                                                     Container(
                                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                       child: Text(
-                                                        "${cartList[index].size}",
+                                                        "${cartList[index].size}".tr,
                                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                         style: GoogleFonts.tajawal(
                                                           fontWeight: FontWeight.w500,
@@ -4357,7 +4374,7 @@ class PaymentScreenWidget extends GetxController {
                                                         Container(
                                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                           child: Text(
-                                                            "${cartList[index].notes}",
+                                                            "${cartList[index].notes}".tr,
                                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                             style: GoogleFonts.tajawal(
                                                               fontWeight: FontWeight.w500,
@@ -4371,7 +4388,7 @@ class PaymentScreenWidget extends GetxController {
                                                         Container(
                                                           alignment: Alignment.centerLeft,
                                                           child: Text(
-                                                            "Quantity ${cartList[index].quantity}",
+                                                            "${cartList[index].quantity}".tr,
                                                             textAlign: TextAlign.start,
                                                             style: GoogleFonts.tajawal(
                                                               fontWeight: FontWeight.w500,
@@ -4441,7 +4458,7 @@ class PaymentScreenWidget extends GetxController {
                     },
                     child: Center(
                       child: Text(
-                        "Complete payment",
+                        "Complete payment".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,

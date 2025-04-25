@@ -585,7 +585,7 @@ class BottomNavigationBarWidget {
                       SpacerWidget.spacerWidget(spaceHeight: 2.hm(context)),
 
                       Text(
-                        "Profile",
+                        "Profile".tr,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w400,
