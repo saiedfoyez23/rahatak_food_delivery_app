@@ -218,7 +218,7 @@ class RegistrationScreenWidget extends GetxController {
                       ),
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
-                        hintText: "Enter your name",
+                        hintText: "Enter your name".tr,
                         hintStyle: GoogleFonts.tajawal(
                           fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
                           fontWeight: FontWeight.w400,
