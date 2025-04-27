@@ -1717,6 +1717,7 @@ class PaymentScreenWidget extends GetxController {
                                                             width: 430.wt(context),
                                                             alignment: Alignment.center,
                                                             child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.center,
                                                               children: [
                                                                 Text(
                                                                   "Resend after".tr,
@@ -2430,7 +2431,7 @@ class PaymentScreenWidget extends GetxController {
                                 Container(
                                   alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                   child: Text(
-                                    "Name*",
+                                    "Name*".tr,
                                     textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,

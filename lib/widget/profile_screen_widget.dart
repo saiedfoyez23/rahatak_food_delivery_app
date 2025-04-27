@@ -286,7 +286,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>PersonalInformationScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -373,7 +375,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>ManageAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -460,7 +464,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>PaymentMethodsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -547,7 +553,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 744.wt(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>ChangePasswordScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.ht(context),
                                   width: 744.wt(context),
@@ -1306,7 +1314,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>PersonalInformationScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),
@@ -1393,7 +1403,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>ManageAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),
@@ -1480,7 +1492,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>PaymentMethodsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),
@@ -1567,7 +1581,9 @@ class ProfileScreenWidget extends GetxController {
                               width: 390.wm(context),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.off(()=>ChangePasswordScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
                                 child: Container(
                                   height: 54.hm(context),
                                   width: 390.wm(context),

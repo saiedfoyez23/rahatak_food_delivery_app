@@ -23,3 +23,7 @@ export 'help_center_screen_widget.dart';
 export 'terms_and_conditions_screen_widget.dart';
 export 'language_change_screen_widget.dart';
 export 'logout_screen_widget.dart';
+export 'change_password_screen_widget.dart';
+export 'payment_methods_screen_widget.dart';
+export 'manage_address_screen_widget.dart';
+export 'personal_information_screen_widget.dart';

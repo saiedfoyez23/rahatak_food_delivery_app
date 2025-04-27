@@ -280,6 +280,13 @@ class Arabic {
     "6. Usage Policy": "6. سياسة الاستخدام",
     "The application is prohibited from being used for any illegal purposes, harassment, or exploitation.": "يُمنع استخدام التطبيق لأي أغراض غير مشروعة أو مضايقة أو استغلال.",
     "The application reserves the right to suspend or delete any user's account in case of violation of the terms.": "يحتفظ التطبيق بحق إيقاف أو حذف حساب أي مستخدم في حال مخالفة الشروط.",
+    "Current Password": "كلمة المرور الحالية",
+    "Cash on Delivery": "الدفع عند الاستلام",
+    "Save": "حفظ",
+    "Edit": "تعديل",
+    "Email Address": "البريد الالكتروني",
+    "Phone Number": "رقم الهاتف",
+    "Name": "الاسم ",
   };
 
 

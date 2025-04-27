@@ -1028,7 +1028,7 @@ class NotificationScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Order on the Way",
+                                        "Order on the Way".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -1045,7 +1045,7 @@ class NotificationScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "The delivery person is on their way to you, track their location live.",
+                                        "The delivery person is on their way to you, track their location live.".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w400,
@@ -1129,7 +1129,7 @@ class NotificationScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Confirm Order",
+                                        "Confirm Order".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -1146,7 +1146,7 @@ class NotificationScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Your order has been received successfully! Order number: #123456",
+                                        "Your order has been received successfully! Order number: #123456".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w400,
@@ -1230,7 +1230,7 @@ class NotificationScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "Payment Failed",
+                                        "Payment Failed".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -1247,7 +1247,7 @@ class NotificationScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        "There was a problem during payment, please try again.",
+                                        "There was a problem during payment, please try again.".tr,
                                         textAlign:Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w400,

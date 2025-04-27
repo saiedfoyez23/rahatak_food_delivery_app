@@ -191,7 +191,7 @@ class English {
     "Enter Governorate": "Enter Governorate",
     "state": "state",
     "Enter State": "Enter State",
-    "City": "City",
+    "City": "City / Village",
     "Enter City": "Enter City",
     "Save location data for later use": "Save location data for later use",
     "Edit Address": "Edit Address",
@@ -277,6 +277,13 @@ class English {
     "6. Usage Policy": "6. Usage Policy",
     "The application is prohibited from being used for any illegal purposes, harassment, or exploitation.": "The application is prohibited from being used for any illegal purposes, harassment, or exploitation.",
     "The application reserves the right to suspend or delete any user's account in case of violation of the terms.": "The application reserves the right to suspend or delete any user's account in case of violation of the terms.",
+    "Current Password": "Current Password",
+    "Cash on Delivery": "Cash on Delivery",
+    "Save": "Save",
+    "Edit": "Edit",
+    "Email Address": "Email Address",
+    "Phone Number": "Phone Number",
+    "Name": "Name",
   };
 
 
