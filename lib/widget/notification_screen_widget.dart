@@ -1326,8 +1326,6 @@ class NotificationScreenWidget extends GetxController {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-
-
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(

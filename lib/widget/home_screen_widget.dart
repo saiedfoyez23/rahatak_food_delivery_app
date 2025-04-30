@@ -215,7 +215,9 @@ class HomeScreenWidget extends GetxController {
                           ),
                           child: TextButton(
                             style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            },
                             child: FittedBox(
                               fit: BoxFit.cover,
                               child: Image.asset(
@@ -1011,7 +1013,9 @@ class HomeScreenWidget extends GetxController {
                           ),
                           child: TextButton(
                             style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            },
                             child: FittedBox(
                               fit: BoxFit.cover,
                               child: Image.asset(

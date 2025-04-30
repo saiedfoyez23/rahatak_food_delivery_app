@@ -584,12 +584,12 @@ class RegistrationScreenWidget extends GetxController {
                             builder: (context) {
                               return Padding(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: MediaQuery.sizeOf(context).height > 1000 ? 406.vpmt(context) : 271.vpmm(context),
+                                  vertical: MediaQuery.sizeOf(context).height > 1000 ? 406.vpmt(context) : 251.vpmm(context),
                                   horizontal: MediaQuery.sizeOf(context).width > 500 ? 158.hpmt(context) : 16.hpmm(context),
                                 ),
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width > 500 ? 414.wt(context) : 358.wm(context),
-                                  height: MediaQuery.sizeOf(context).height > 1000 ? 247.ht(context) : 283.hm(context),
+                                  height: MediaQuery.sizeOf(context).height > 1000 ? 247.ht(context) : 303.hm(context),
                                   decoration: BoxDecoration(
                                     color: ColorUtils.white255,
                                     borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 16.rt(context) : 16.rm(context)),

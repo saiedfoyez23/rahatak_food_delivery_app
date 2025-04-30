@@ -3256,12 +3256,12 @@ class PaymentScreenWidget extends GetxController {
                                           builder: (context) {
                                             return Obx(()=>Padding(
                                               padding: EdgeInsets.symmetric(
-                                                vertical: 200.vpmm(context),
+                                                vertical: 190.vpmm(context),
                                                 horizontal: 16.hpmm(context),
                                               ),
                                               child: Container(
                                                 width: 358.wm(context),
-                                                height: 438.hm(context),
+                                                height: 448.hm(context),
                                                 decoration: BoxDecoration(
                                                   color: ColorUtils.white255,
                                                   borderRadius: BorderRadius.circular(16.rm(context)),
@@ -3622,12 +3622,12 @@ class PaymentScreenWidget extends GetxController {
                                                               builder: (context) {
                                                                 return Padding(
                                                                   padding: EdgeInsets.symmetric(
-                                                                    vertical: 210.vpmm(context),
+                                                                    vertical: 200.vpmm(context),
                                                                     horizontal: 16.hpmm(context),
                                                                   ),
                                                                   child: Container(
                                                                     width: 358.wm(context),
-                                                                    height: 283.hm(context),
+                                                                    height: 293.hm(context),
                                                                     decoration: BoxDecoration(
                                                                       color: ColorUtils.white255,
                                                                       borderRadius: BorderRadius.circular(16.rm(context)),

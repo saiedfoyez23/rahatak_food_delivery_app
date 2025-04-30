@@ -655,7 +655,7 @@ class FilterSearchScreenWidget extends GetxController {
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
                                           fontStyle: FontStyle.normal,
-                                          fontSize: 16.spm(context),
+                                          fontSize: 14.spm(context),
                                           color: bigIndex_1.value == (index + 1) ? ColorUtils.white255 : ColorUtils.black51,
                                         ),
                                       ),

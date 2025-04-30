@@ -1274,12 +1274,12 @@ class PaymentMethodsScreenWidget extends GetxController {
                                     builder: (context) {
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
-                                          vertical: 150.vpmm(context),
+                                          vertical: 140.vpmm(context),
                                           horizontal: 16.hpmm(context),
                                         ),
                                         child: Container(
                                           width: 358.wm(context),
-                                          height: 500.hm(context),
+                                          height: 510.hm(context),
                                           decoration: BoxDecoration(
                                             color: ColorUtils.white255,
                                             borderRadius: BorderRadius.circular( 16.rm(context)),
