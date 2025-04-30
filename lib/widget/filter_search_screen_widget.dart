@@ -534,7 +534,7 @@ class FilterSearchScreenWidget extends GetxController {
                             padding: EdgeInsets.only(right: 10.rpmm(context)),
                             child: SizedBox(
                               height: 110.hm(context),
-                              width: 70.wm(context),
+                              width: 80.wm(context),
                               child: TextButton(
                                 onPressed: () async {
                                   bigIndex.value = index + 1 ;
@@ -542,7 +542,7 @@ class FilterSearchScreenWidget extends GetxController {
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                 child: Container(
                                   height: 110.hm(context),
-                                  width: 70.wm(context),
+                                  width: 80.wm(context),
                                   decoration: BoxDecoration(
                                       color: Colors.transparent,
                                       borderRadius: BorderRadius.circular(8.rm(context)),
@@ -552,7 +552,7 @@ class FilterSearchScreenWidget extends GetxController {
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Container(
                                         height: 60.hm(context),
@@ -626,7 +626,7 @@ class FilterSearchScreenWidget extends GetxController {
                         children: List.generate(locations.length, (index) {
                           return SizedBox(
                             height: 70.hm(context),
-                            width: 100.wm(context),
+                            width: 110.wm(context),
                             child: TextButton(
                               onPressed: () async {
                                 bigIndex_1.value = index + 1 ;
@@ -634,7 +634,7 @@ class FilterSearchScreenWidget extends GetxController {
                               style: TextButton.styleFrom(padding: EdgeInsets.zero),
                               child: Container(
                                 height: 70.hm(context),
-                                width: 100.wm(context),
+                                width: 110.wm(context),
                                 decoration: BoxDecoration(
                                   color: bigIndex_1.value == (index + 1) ? ColorUtils.blue192 : Colors.transparent,
                                   borderRadius: BorderRadius.circular(8.rm(context)),
