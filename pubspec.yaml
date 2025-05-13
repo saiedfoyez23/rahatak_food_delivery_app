@@ -35,7 +35,9 @@ dependencies:
   google_fonts: ^6.2.1
   geocoding:
   google_maps_flutter:
+  shared_preferences: ^2.5.3
   image_picker: ^1.1.2
+  dio: ^5.8.0+1
   geolocator:
   flutter_localizations:
     sdk: flutter
