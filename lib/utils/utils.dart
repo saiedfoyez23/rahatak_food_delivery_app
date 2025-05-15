@@ -7,3 +7,4 @@ export 'widget_utils/spacer_widget.dart';
 export 'widget_utils/bottom_navigation_bar.dart';
 export 'translation_utils/arabic.dart';
 export 'translation_utils/english.dart';
+export 'widget_utils/custom_snackbar.dart';
