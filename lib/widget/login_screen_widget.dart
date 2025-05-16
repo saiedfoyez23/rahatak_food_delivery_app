@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
 
 class LoginScreenWidget extends GetxController {
 
@@ -11,6 +14,27 @@ class LoginScreenWidget extends GetxController {
   Rx<TextEditingController> passwordController = TextEditingController().obs;
   RxBool obscureText = true.obs;
   RxBool isCheckIn = false.obs;
+  RxBool isLoading = false.obs;
+
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    Future.delayed(Duration(seconds: 1),() async {
+      await LoginController.checkLocalLoginResponse().then((value) {
+        print(value?.data?.accessToken);
+      });
+      await AppLocalStorageController.getSharedPreferencesString(key: "Local_Auth").then((value) {
+        print(value);
+        if(value != null) {
+          emailPhoneController.value.text = jsonDecode(value)["email"];
+          passwordController.value.text = jsonDecode(value)["password"];
+          isCheckIn.value = true;
+        }
+      });
+    });
+  }
 
   Widget loginScreenWidget({required BuildContext context}) {
     return Obx(()=>SafeArea(
@@ -377,11 +401,21 @@ class LoginScreenWidget extends GetxController {
                             alignment: Alignment.center,
                             child: TextButton(
                               style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                              onPressed: () {
-                                if(isCheckIn.value == true) {
-                                  isCheckIn.value = false;
-                                } else {
+                              onPressed: () async {
+                                if(isCheckIn.value == false) {
                                   isCheckIn.value = true;
+                                } else {
+                                  await AppLocalStorageController.getSharedPreferencesString(key: "Local_Auth").then((value) async {
+                                    print(value);
+                                    if(value != null) {
+                                      await AppLocalStorageController.getSharedPreferencesRemove(key: "Local_Auth");
+                                      emailPhoneController.value.text = "";
+                                      passwordController.value.text = "";
+                                      isCheckIn.value = false;
+                                    } else {
+                                      isCheckIn.value = false;
+                                    }
+                                  });
                                 }
                               },
                               child: Row(
@@ -456,7 +490,15 @@ class LoginScreenWidget extends GetxController {
 
 
                     SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 32.ht(context) : 46.hm(context)),
-
+                    isLoading.value == true ?
+                    Container(
+                      height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
+                      width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent
+                      ),
+                      child: Center(child: CircularProgressIndicator(),),
+                    ) :
                     Container(
                       height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
                       width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
@@ -467,7 +509,40 @@ class LoginScreenWidget extends GetxController {
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () async {
-                          Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          if(emailPhoneController.value.text == "") {
+                            CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter your email");
+                          } else if(passwordController.value.text == "") {
+                            CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter your password");
+                          } else {
+                            isLoading.value = true;
+                            Map<String,dynamic> data = {
+                              "email": emailPhoneController.value.text,
+                              "password": passwordController.value.text,
+                            };
+                            print(data);
+                            await LoginController.getUserLoginResponse(
+                              data: data,
+                              onSuccess: (e) async {
+                                isLoading.value = false;
+                                if(isCheckIn.value == true) {
+                                  await AppLocalStorageController.setSharedPreferencesString(key: "Local_Auth", stringValue: jsonEncode(data));
+                                  CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                  Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else {
+                                  CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                  Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                }
+                              },
+                              onFail: (e) {
+                                isLoading.value = false;
+                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                              },
+                              onExceptionFail: (e) {
+                                isLoading.value = false;
+                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                              },
+                            );
+                          }
                         },
                         child: Center(
                           child: Text(

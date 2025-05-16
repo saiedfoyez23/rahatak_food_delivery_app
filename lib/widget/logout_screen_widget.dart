@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
+import '../controller/controller.dart';
+
 class LogoutScreenWidget extends GetxController {
 
 
@@ -31,6 +33,7 @@ class LogoutScreenWidget extends GetxController {
               child: TextButton(
                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 onPressed: () async {
+                  AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
                   Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                 },
                 child: Center(

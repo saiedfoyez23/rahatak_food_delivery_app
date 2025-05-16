@@ -219,6 +219,7 @@ class Arabic {
     "Verify Otp": "التحقق من كلمة المرور المؤقتة",
     "We have sent a 6-digit verification code to your registered phone number. Please enter the code below to complete your payment.": "لقد أرسلنا رمز تحقق مكونًا من 6 أرقام إلى رقم هاتفك المسجل. أدخل الرمز أدناه لإكمال عملية الدفع.",
     "We have sent a 6-digit verification code to your registered email. Please enter the code below to complete your registration.": "لقد أرسلنا رمز تحقق مكونًا من 6 أرقام إلى بريدك الإلكتروني المسجل. يُرجى إدخال الرمز أدناه لإتمام عملية الدفع.",
+    "We have sent a 6-digit verification code to your registered email. Please enter the code below to complete your reset password.": "لقد أرسلنا رمز تحقق مكونًا من 6 أرقام إلى بريدك الإلكتروني المسجل. يُرجى إدخال الرمز أدناه لإكمال عملية إعادة تعيين كلمة المرور.",
     "Payment successful!": "تم الدفع بنجاح!",
     "Verify Your Otp": "لتحقق من كلمة المرور المؤقتة الخاصة بك",
     "Thank you! Your payment has been confirmed and your order has been successfully submitted.": "شكرًا لك! تم تأكيد عملية الدفع وإرسال طلبك بنجاح.",

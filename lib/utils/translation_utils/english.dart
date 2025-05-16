@@ -56,6 +56,7 @@ class English {
     "3.9": "3.9",
     "1.2": "1.2",
     "We have sent a 6-digit verification code to your registered email. Please enter the code below to complete your registration.": "We have sent a 6-digit verification code to your registered email. Please enter the code below to complete your registration.",
+    "We have sent a 6-digit verification code to your registered email. Please enter the code below to complete your reset password.": "We have sent a 6-digit verification code to your registered email. Please enter the code below to complete your reset password.",
     "Kuco": "Kuco",
     "Verify Your Otp": "Verify Your Otp",
     "Verify Otp": "Verify Otp",

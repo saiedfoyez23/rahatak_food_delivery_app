@@ -4,8 +4,8 @@ import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/widget/widget.dart';
 
 class CreatePasswordScreen extends StatelessWidget {
-  CreatePasswordScreen({super.key});
-  
+  CreatePasswordScreen({super.key,required this.email});
+  final String email;
   CreatePasswordScreenWidget createPasswordScreenWidget = Get.put(CreatePasswordScreenWidget());
   
   @override
@@ -16,7 +16,7 @@ class CreatePasswordScreen extends StatelessWidget {
         Get.off(()=>ForgotPasswordScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
       },
       child: Scaffold(
-        body: createPasswordScreenWidget.createPasswordScreenWidget(context: context),
+        body: createPasswordScreenWidget.createPasswordScreenWidget(context: context,email: email),
       ),
     );
   }

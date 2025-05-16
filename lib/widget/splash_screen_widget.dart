@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
+import '../controller/controller.dart';
+
 class SplashScreenWidget extends GetxController {
 
 
@@ -11,10 +13,18 @@ class SplashScreenWidget extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    Future.delayed(Duration(seconds: 5),() async {
-      Get.off(()=>AuthenticationSplashScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+    Future.delayed(Duration(seconds: 1),() async {
+      await LoginController.checkLocalLoginResponse().then((value) {
+        print(value?.data?.accessToken);
+        if(value?.data?.accessToken == null) {
+          Get.off(()=>AuthenticationSplashScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+        } else {
+          Get.off(()=>HomeScreen(),preventDuplicates: false,transition: Transition.fadeIn,duration: Duration(milliseconds: 300));
+        }
+      });
     });
   }
+
 
   Widget splashScreenWidget({required BuildContext context}) {
     return Container(

@@ -13,6 +13,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) {
+        Get.delete<ForgotPasswordScreenWidget>(force: true);
         Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
       },
       child: Scaffold(
