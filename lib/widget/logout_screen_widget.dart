@@ -33,7 +33,7 @@ class LogoutScreenWidget extends GetxController {
               child: TextButton(
                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 onPressed: () async {
-                  AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+                  await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
                   Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                 },
                 child: Center(
@@ -113,6 +113,7 @@ class LogoutScreenWidget extends GetxController {
               child: TextButton(
                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 onPressed: () async {
+                  await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
                   Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                 },
                 child: Center(

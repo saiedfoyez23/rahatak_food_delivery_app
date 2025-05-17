@@ -4,13 +4,48 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 class ProfileScreenWidget extends GetxController {
 
-
+  BuildContext context;
+  ProfileScreenWidget({required this.context});
   Rx<File> imageFile = File("").obs;
+  RxBool isLoading = false.obs;
+  RxString coverImage = "".obs;
+  RxString userName = "".obs;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await ProfileController.getUserProfileResponse(
+        onSuccess: (e) async {
+          isLoading.value = false;
+          await ProfileController.checkLocalProfileResponse().then((value) {
+            print(value?.data?.image);
+            if(value?.data != null) {
+              coverImage.value = value?.data?.image ?? "";
+              userName.value = value?.data?.name ?? "";
+            }
+          });
+          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      );
+    });
+  }
 
 
   Widget profileScreenWidget({required BuildContext context}) {
@@ -22,7 +57,7 @@ class ProfileScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -90,7 +125,48 @@ class ProfileScreenWidget extends GetxController {
                                     ),
 
 
-                                    imageFile.value.path == "" ?
+                                    imageFile.value.path != "" ?
+                                    Container(
+                                      height: 100.ht(context),
+                                      width: 100.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: ColorUtils.white252,
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: FileImage(imageFile.value,),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: ColorUtils.black025,
+                                              spreadRadius: 0,
+                                              blurRadius: 4,
+                                              offset: Offset(0, 0)
+                                          )
+                                        ],
+                                      ),
+                                    ) :
+                                    coverImage.value != "" ?
+                                    Container(
+                                      height: 100.ht(context),
+                                      width: 100.wt(context),
+                                      decoration: BoxDecoration(
+                                        color: ColorUtils.white252,
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: NetworkImage(coverImage.value,),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: ColorUtils.black025,
+                                              spreadRadius: 0,
+                                              blurRadius: 4,
+                                              offset: Offset(0, 0)
+                                          )
+                                        ],
+                                      ),
+                                    ) :
                                     Container(
                                       height: 100.ht(context),
                                       width: 100.wt(context),
@@ -120,26 +196,6 @@ class ProfileScreenWidget extends GetxController {
                                             fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ),
-                                    ) :
-                                    Container(
-                                      height: 100.ht(context),
-                                      width: 100.wt(context),
-                                      decoration: BoxDecoration(
-                                        color: ColorUtils.white252,
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          image: FileImage(imageFile.value,),
-                                          fit: BoxFit.fill,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: ColorUtils.black025,
-                                              spreadRadius: 0,
-                                              blurRadius: 4,
-                                              offset: Offset(0, 0)
-                                          )
-                                        ],
                                       ),
                                     ),
 
@@ -178,35 +234,62 @@ class ProfileScreenWidget extends GetxController {
                                                                 if (pickedFile != null) {
                                                                   print('Image selected: ${pickedFile.path}');
                                                                   imageFile.value = File(pickedFile.path);
-                                                                } else {
-                                                                  ScaffoldMessenger.of(context).showSnackBar(
-                                                                    SnackBar(
-                                                                      content: Text('No image selected'),
-                                                                      duration: Duration(seconds: 2),
-                                                                    ),
+                                                                  Get.back();
+                                                                  isLoading.value = true;
+                                                                  await ProfileController.getUserImageUpdateResponse(
+                                                                    name: userName.value,
+                                                                    image: imageFile.value,
+                                                                    onSuccess: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                      Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                                    },
+                                                                    onFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
+                                                                    onExceptionFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
                                                                   );
+                                                                  Get.back();
+                                                                } else {
+                                                                  CustomSnackBar().normalCustomSnackBar(context: context, message: 'No image selected');
+                                                                  Get.back();
                                                                 }
-                                                                Get.back();
                                                               },
                                                             ),
                                                             ListTile(
                                                               leading: Icon(Icons.camera_alt),
                                                               title: Text('Camera'),
                                                               onTap: () async {
-                                                                final pickedFile = await ImagePicker().pickImage(
-                                                                    source: ImageSource.camera);
+                                                                final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
                                                                 if (pickedFile != null) {
                                                                   imageFile.value = File(pickedFile.path);
-                                                                  print('Image selected: ${pickedFile.path}');
-                                                                } else {
-                                                                  ScaffoldMessenger.of(context).showSnackBar(
-                                                                    SnackBar(
-                                                                      content: Text('No image selected'),
-                                                                      duration: Duration(seconds: 2),
-                                                                    ),
+                                                                  Get.back();
+                                                                  isLoading.value = true;
+                                                                  await ProfileController.getUserImageUpdateResponse(
+                                                                    name: userName.value,
+                                                                    image: imageFile.value,
+                                                                    onSuccess: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                      Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                                    },
+                                                                    onFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
+                                                                    onExceptionFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
                                                                   );
+                                                                } else {
+                                                                  CustomSnackBar().normalCustomSnackBar(context: context, message: 'No image selected');
+                                                                  Get.back();
                                                                 }
-                                                                Get.back();
                                                               },
                                                             ),
                                                           ],
@@ -252,7 +335,7 @@ class ProfileScreenWidget extends GetxController {
                             Container(
                               alignment: Alignment.center,
                               child: Text(
-                                "Mohammed Ali".tr,
+                                userName.value,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -1039,7 +1122,7 @@ class ProfileScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     } else {
@@ -1050,7 +1133,7 @@ class ProfileScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -1118,7 +1201,48 @@ class ProfileScreenWidget extends GetxController {
                                     ),
 
 
-                                    imageFile.value.path == "" ?
+                                    imageFile.value.path != "" ?
+                                    Container(
+                                      height: 100.hm(context),
+                                      width: 100.wm(context),
+                                      decoration: BoxDecoration(
+                                        color: ColorUtils.white252,
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: FileImage(imageFile.value,),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: ColorUtils.black025,
+                                              spreadRadius: 0,
+                                              blurRadius: 4,
+                                              offset: Offset(0, 0)
+                                          )
+                                        ],
+                                      ),
+                                    ) :
+                                    coverImage.value != "" ?
+                                    Container(
+                                      height: 100.hm(context),
+                                      width: 100.wm(context),
+                                      decoration: BoxDecoration(
+                                        color: ColorUtils.white252,
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          image: NetworkImage(coverImage.value,),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: ColorUtils.black025,
+                                              spreadRadius: 0,
+                                              blurRadius: 4,
+                                              offset: Offset(0, 0)
+                                          )
+                                        ],
+                                      ),
+                                    ) :
                                     Container(
                                       height: 100.hm(context),
                                       width: 100.wm(context),
@@ -1148,26 +1272,6 @@ class ProfileScreenWidget extends GetxController {
                                             fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ),
-                                    ) :
-                                    Container(
-                                      height: 100.hm(context),
-                                      width: 100.wm(context),
-                                      decoration: BoxDecoration(
-                                        color: ColorUtils.white252,
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                          image: FileImage(imageFile.value,),
-                                          fit: BoxFit.fill,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: ColorUtils.black025,
-                                              spreadRadius: 0,
-                                              blurRadius: 4,
-                                              offset: Offset(0, 0)
-                                          )
-                                        ],
                                       ),
                                     ),
 
@@ -1206,35 +1310,62 @@ class ProfileScreenWidget extends GetxController {
                                                                 if (pickedFile != null) {
                                                                   print('Image selected: ${pickedFile.path}');
                                                                   imageFile.value = File(pickedFile.path);
-                                                                } else {
-                                                                  ScaffoldMessenger.of(context).showSnackBar(
-                                                                    SnackBar(
-                                                                      content: Text('No image selected'),
-                                                                      duration: Duration(seconds: 2),
-                                                                    ),
+                                                                  Get.back();
+                                                                  isLoading.value = true;
+                                                                  await ProfileController.getUserImageUpdateResponse(
+                                                                    name: userName.value,
+                                                                    image: imageFile.value,
+                                                                    onSuccess: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                      Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                                    },
+                                                                    onFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
+                                                                    onExceptionFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
                                                                   );
+                                                                  Get.back();
+                                                                } else {
+                                                                  CustomSnackBar().normalCustomSnackBar(context: context, message: 'No image selected');
+                                                                  Get.back();
                                                                 }
-                                                                Get.back();
                                                               },
                                                             ),
                                                             ListTile(
                                                               leading: Icon(Icons.camera_alt),
                                                               title: Text('Camera'),
                                                               onTap: () async {
-                                                                final pickedFile = await ImagePicker().pickImage(
-                                                                    source: ImageSource.camera);
+                                                                final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
                                                                 if (pickedFile != null) {
                                                                   imageFile.value = File(pickedFile.path);
-                                                                  print('Image selected: ${pickedFile.path}');
-                                                                } else {
-                                                                  ScaffoldMessenger.of(context).showSnackBar(
-                                                                    SnackBar(
-                                                                      content: Text('No image selected'),
-                                                                      duration: Duration(seconds: 2),
-                                                                    ),
+                                                                  Get.back();
+                                                                  isLoading.value = true;
+                                                                  await ProfileController.getUserImageUpdateResponse(
+                                                                    name: userName.value,
+                                                                    image: imageFile.value,
+                                                                    onSuccess: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                      Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                                    },
+                                                                    onFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
+                                                                    onExceptionFail: (e) async {
+                                                                      isLoading.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    },
                                                                   );
+                                                                } else {
+                                                                  CustomSnackBar().normalCustomSnackBar(context: context, message: 'No image selected');
+                                                                  Get.back();
                                                                 }
-                                                                Get.back();
                                                               },
                                                             ),
                                                           ],
@@ -1280,7 +1411,7 @@ class ProfileScreenWidget extends GetxController {
                             Container(
                               alignment: Alignment.center,
                               child: Text(
-                                "Mohammed Ali".tr,
+                                userName.value,
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -2067,7 +2198,7 @@ class ProfileScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     }

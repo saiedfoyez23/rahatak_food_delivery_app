@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
+import '../controller/controller.dart';
 import '../screen/screen.dart';
 
 class ChangePasswordScreenWidget extends GetxController {
 
-
+  RxBool isSubmit = false.obs;
   Rx<TextEditingController> passwordController = TextEditingController().obs;
   RxBool obscureText = true.obs;
   Rx<TextEditingController> currentPasswordController = TextEditingController().obs;
@@ -423,7 +424,7 @@ class ChangePasswordScreenWidget extends GetxController {
 
                           SpacerWidget.spacerWidget(spaceHeight: 36.ht(context)),
 
-
+                          isSubmit.value == false ?
                           Container(
                             height: 52.ht(context),
                             width: 300.wt(context),
@@ -434,7 +435,39 @@ class ChangePasswordScreenWidget extends GetxController {
                             child: TextButton(
                               style: TextButton.styleFrom(padding: EdgeInsets.zero),
                               onPressed: () async {
-                                Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                if(currentPasswordController.value.text == "") {
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter the old password");
+                                } else if(passwordController.value.text == "") {
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter the password");
+                                } else if(confirmPasswordController.value.text == "") {
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter the confirm password");
+                                } else if(passwordController.value.text != confirmPasswordController.value.text) {
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: "Password is not match");
+                                } else {
+                                  isSubmit.value = true;
+                                  Map<String,dynamic> data = {
+                                    "oldPassword": currentPasswordController.value.text,
+                                    "newPassword": passwordController.value.text,
+                                  };
+                                  print(data);
+                                  await ForgotPasswordController.getChangePasswordResponse(
+                                    data: data,
+                                    onSuccess: (e) async {
+                                      isSubmit.value = false;
+                                      CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                      await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+                                      Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                    },
+                                    onFail: (e) {
+                                      isSubmit.value = false;
+                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                    },
+                                    onExceptionFail: (e) {
+                                      isSubmit.value = false;
+                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                    },
+                                  );
+                                }
                               },
                               child: Center(
                                 child: Text(
@@ -448,6 +481,13 @@ class ChangePasswordScreenWidget extends GetxController {
                                   ),
                                 ),
                               ),
+                            ),
+                          ) :
+                          Container(
+                            height: 52.ht(context),
+                            width: 300.wt(context),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent
                             ),
                           ),
 
@@ -868,6 +908,7 @@ class ChangePasswordScreenWidget extends GetxController {
                       SpacerWidget.spacerWidget(spaceHeight: 36.hm(context)),
 
 
+                      isSubmit.value == false ?
                       Container(
                         height: 48.hm(context),
                         width: 300.wm(context),
@@ -878,7 +919,39 @@ class ChangePasswordScreenWidget extends GetxController {
                         child: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           onPressed: () async {
-                            Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            if(currentPasswordController.value.text == "") {
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter the old password");
+                            } else if(passwordController.value.text == "") {
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter the password");
+                            } else if(confirmPasswordController.value.text == "") {
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter the confirm password");
+                            } else if(passwordController.value.text != confirmPasswordController.value.text) {
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: "Password is not match");
+                            } else {
+                              isSubmit.value = true;
+                              Map<String,dynamic> data = {
+                                "oldPassword": currentPasswordController.value.text,
+                                "newPassword": passwordController.value.text,
+                              };
+                              print(data);
+                              await ForgotPasswordController.getChangePasswordResponse(
+                                data: data,
+                                onSuccess: (e) async {
+                                  isSubmit.value = false;
+                                  CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                  await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+                                  Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                },
+                                onFail: (e) {
+                                  isSubmit.value = false;
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                },
+                                onExceptionFail: (e) {
+                                  isSubmit.value = false;
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                },
+                              );
+                            }
                           },
                           child: Center(
                             child: Text(
@@ -893,6 +966,13 @@ class ChangePasswordScreenWidget extends GetxController {
                             ),
                           ),
                         ),
+                      ) : Container(
+                        height: 48.hm(context),
+                        width: 300.wm(context),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Center(child: CircularProgressIndicator(),),
                       ),
 
                       SpacerWidget.spacerWidget(spaceHeight: 36.hm(context)),
