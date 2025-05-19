@@ -7,10 +7,9 @@ import '../widget/widget.dart';
 class ManageAddressScreen extends StatelessWidget {
   ManageAddressScreen({super.key});
 
-  ManageAddressScreenWidget manageAddressScreenWidget = Get.put(ManageAddressScreenWidget());
-
   @override
   Widget build(BuildContext context) {
+    ManageAddressScreenWidget manageAddressScreenWidget = Get.put(ManageAddressScreenWidget(context: context));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) {

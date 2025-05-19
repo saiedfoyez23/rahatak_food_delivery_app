@@ -6,10 +6,10 @@ import 'package:rahatak_food_delivery_app/widget/widget.dart';
 class PersonalInformationScreen extends StatelessWidget {
   PersonalInformationScreen({super.key});
 
-  PersonalInformationScreenWidget personalInformationScreenWidget = Get.put(PersonalInformationScreenWidget());
 
   @override
   Widget build(BuildContext context) {
+    PersonalInformationScreenWidget personalInformationScreenWidget = Get.put(PersonalInformationScreenWidget(context: context));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) {

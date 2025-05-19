@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
+import '../controller/controller.dart';
 import '../screen/screen.dart';
 
 class ManageAddressScreenWidget extends GetxController {
@@ -14,6 +17,47 @@ class ManageAddressScreenWidget extends GetxController {
   Rx<TextEditingController> cityController = TextEditingController().obs;
 
 
+  BuildContext context;
+  ManageAddressScreenWidget({required this.context});
+  RxBool isSubmit = false.obs;
+  RxBool isLoading = false.obs;
+  RxString coverImage = "".obs;
+  RxString userName = "".obs;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await ProfileController.getUserProfileResponse(
+        onSuccess: (e) async {
+          isLoading.value = false;
+          await ProfileController.checkLocalProfileResponse().then((value) {
+            print(value?.data?.image);
+            if(value?.data != null) {
+              coverImage.value = value?.data?.image ?? "";
+              stateController.value.text = value?.data?.state ?? "";
+              governorateController.value.text = value?.data?.governorate ?? "";
+              cityController.value.text = value?.data?.city ?? "";
+            }
+          });
+          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      );
+    });
+  }
+
+
+
   Widget manageAddressScreenWidget({required BuildContext context}) {
     if(MediaQuery.sizeOf(context).height > 1000) {
       return Obx(()=>SafeArea(
@@ -23,7 +67,7 @@ class ManageAddressScreenWidget extends GetxController {
           decoration: BoxDecoration(
               color: ColorUtils.white248
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -551,9 +595,9 @@ class ManageAddressScreenWidget extends GetxController {
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
-                      
-                      
-                                                  Container(
+
+
+                                                  isSubmit.value == false ? Container(
                                                     height: 52.ht(context),
                                                     width: 188.wt(context),
                                                     decoration: BoxDecoration(
@@ -563,7 +607,31 @@ class ManageAddressScreenWidget extends GetxController {
                                                     child: TextButton(
                                                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                       onPressed: () async {
-                                                        Get.back();
+                                                        isSubmit.value = true;
+                                                        await ProfileController.checkLocalProfileResponse().then((value) async {
+                                                          if(value?.data?.contact != null) {
+                                                            await ProfileController.getUserAddressDataUpdateResponse(
+                                                              city: cityController.value.text == "" ? value?.data?.city : cityController.value.text,
+                                                              governorate: governorateController.value.text == "" ? value?.data?.governorate : governorateController.value.text,
+                                                              image: File(""),
+                                                              state: stateController.value.text == "" ? value?.data?.state : stateController.value.text,
+                                                              onSuccess: (e) async {
+                                                                Get.back();
+                                                                CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                isSubmit.value = false;
+                                                                Get.off(()=>ManageAddressScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                              },
+                                                              onFail: (e) async {
+                                                                isSubmit.value = false;
+                                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                              },
+                                                              onExceptionFail: (e) async {
+                                                                isSubmit.value = false;
+                                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                              },
+                                                            );
+                                                          }
+                                                        });
                                                       },
                                                       child: Center(
                                                         child: Text(
@@ -578,6 +646,13 @@ class ManageAddressScreenWidget extends GetxController {
                                                         ),
                                                       ),
                                                     ),
+                                                  ) : Container(
+                                                    height: 52.ht(context),
+                                                    width: 188.wt(context),
+                                                    decoration: BoxDecoration(
+                                                     color: Colors.transparent
+                                                    ),
+                                                    child: Center(child: CircularProgressIndicator(),),
                                                   ),
                       
                                                   SpacerWidget.spacerWidget(spaceWidth: 12.wt(context),),
@@ -652,7 +727,7 @@ class ManageAddressScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     } else {
@@ -663,7 +738,7 @@ class ManageAddressScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -949,7 +1024,7 @@ class ManageAddressScreenWidget extends GetxController {
                                   context: context,
                                   barrierDismissible: true,
                                   builder: (context) {
-                                    return Padding(
+                                    return Obx(()=>Padding(
                                       padding: EdgeInsets.symmetric(
                                         vertical: 190.vpmm(context),
                                         horizontal: 16.hpmm(context),
@@ -1180,7 +1255,7 @@ class ManageAddressScreenWidget extends GetxController {
                                                 children: [
 
 
-                                                  Container(
+                                                  isSubmit.value == false ? Container(
                                                     height: 48.hm(context),
                                                     width: 153.wm(context),
                                                     decoration: BoxDecoration(
@@ -1190,7 +1265,31 @@ class ManageAddressScreenWidget extends GetxController {
                                                     child: TextButton(
                                                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                       onPressed: () async {
-                                                        Get.back();
+                                                        isSubmit.value = true;
+                                                        await ProfileController.checkLocalProfileResponse().then((value) async {
+                                                          if(value?.data?.contact != null) {
+                                                            await ProfileController.getUserAddressDataUpdateResponse(
+                                                              city: cityController.value.text == "" ? value?.data?.city : cityController.value.text,
+                                                              governorate: governorateController.value.text == "" ? value?.data?.governorate : governorateController.value.text,
+                                                              image: File(""),
+                                                              state: stateController.value.text == "" ? value?.data?.state : stateController.value.text,
+                                                              onSuccess: (e) async {
+                                                                Get.back();
+                                                                CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                isSubmit.value = false;
+                                                                Get.off(()=>ManageAddressScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                              },
+                                                              onFail: (e) async {
+                                                                isSubmit.value = false;
+                                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                              },
+                                                              onExceptionFail: (e) async {
+                                                                isSubmit.value = false;
+                                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                              },
+                                                            );
+                                                          }
+                                                        });
                                                       },
                                                       child: Center(
                                                         child: Text(
@@ -1205,6 +1304,13 @@ class ManageAddressScreenWidget extends GetxController {
                                                         ),
                                                       ),
                                                     ),
+                                                  ) : Container(
+                                                    height: 48.hm(context),
+                                                    width: 153.wm(context),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.transparent,
+                                                    ),
+                                                    child: Center(child: CircularProgressIndicator(),),
                                                   ),
 
                                                   SpacerWidget.spacerWidget(spaceWidth: 12.wm(context),),
@@ -1221,6 +1327,7 @@ class ManageAddressScreenWidget extends GetxController {
                                                     child: TextButton(
                                                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                       onPressed: () async {
+                                                        isSubmit.value = false;
                                                         Get.back();
                                                       },
                                                       child: Center(
@@ -1246,7 +1353,7 @@ class ManageAddressScreenWidget extends GetxController {
                                           ),
                                         ),
                                       ),
-                                    );
+                                    ));
                                   },
                                 );
                               },
@@ -1279,7 +1386,7 @@ class ManageAddressScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     }

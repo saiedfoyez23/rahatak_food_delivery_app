@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
+import '../controller/controller.dart';
 import '../screen/screen.dart';
 
 class PersonalInformationScreenWidget extends GetxController {
@@ -12,6 +15,44 @@ class PersonalInformationScreenWidget extends GetxController {
   Rx<TextEditingController> emailController = TextEditingController().obs;
   Rx<TextEditingController> stateController = TextEditingController().obs;
   Rx<TextEditingController> cityController = TextEditingController().obs;
+  BuildContext context;
+  PersonalInformationScreenWidget({required this.context});
+  RxBool isSubmit = false.obs;
+  RxBool isLoading = false.obs;
+  RxString coverImage = "".obs;
+  RxString userName = "".obs;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await ProfileController.getUserProfileResponse(
+        onSuccess: (e) async {
+          isLoading.value = false;
+          await ProfileController.checkLocalProfileResponse().then((value) {
+            print(value?.data?.image);
+            if(value?.data != null) {
+              coverImage.value = value?.data?.image ?? "";
+              nameController.value.text = value?.data?.name ?? "";
+              phoneNumberController.value.text = value?.data?.contact ?? "";
+              emailController.value.text = value?.data?.email ?? "";
+            }
+          });
+          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      );
+    });
+  }
 
 
   Widget personalInformationScreenWidget({required BuildContext context}) {
@@ -23,7 +64,7 @@ class PersonalInformationScreenWidget extends GetxController {
           decoration: BoxDecoration(
               color: ColorUtils.white248
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -452,7 +493,8 @@ class PersonalInformationScreenWidget extends GetxController {
                                                       color: ColorUtils.gray136,
                                                     ),
                                                     filled: true,
-                                                    fillColor: ColorUtils.white255,
+                                                    enabled: false,
+                                                    fillColor: ColorUtils.white233,
                                                     contentPadding: EdgeInsets.symmetric(
                                                       horizontal: 12.hpmt(context),
                                                       vertical: 12.vpmt(context),
@@ -553,7 +595,7 @@ class PersonalInformationScreenWidget extends GetxController {
                                                   children: [
 
 
-                                                    Container(
+                                                    isSubmit.value == false ? Container(
                                                       height: 52.ht(context),
                                                       width: 188.wt(context),
                                                       decoration: BoxDecoration(
@@ -563,7 +605,31 @@ class PersonalInformationScreenWidget extends GetxController {
                                                       child: TextButton(
                                                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                         onPressed: () async {
-                                                          Get.back();
+                                                          isSubmit.value = true;
+                                                          await ProfileController.checkLocalProfileResponse().then((value) async {
+                                                            if(value?.data?.contact != null) {
+                                                              await ProfileController.getUserDataUpdateResponse(
+                                                                contact: phoneNumberController.value.text == "" ? value?.data?.name : phoneNumberController.value.text,
+                                                                name: nameController.value.text == "" ? value?.data?.name : nameController.value.text,
+                                                                image: File(""),
+                                                                email: emailController.value.text,
+                                                                onSuccess: (e) async {
+                                                                  Get.back();
+                                                                  CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                  isSubmit.value = false;
+                                                                  Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                                },
+                                                                onFail: (e) async {
+                                                                  isSubmit.value = false;
+                                                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                },
+                                                                onExceptionFail: (e) async {
+                                                                  isSubmit.value = false;
+                                                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                },
+                                                              );
+                                                            }
+                                                          });
                                                         },
                                                         child: Center(
                                                           child: Text(
@@ -578,6 +644,13 @@ class PersonalInformationScreenWidget extends GetxController {
                                                           ),
                                                         ),
                                                       ),
+                                                    ) : Container(
+                                                      height: 52.ht(context),
+                                                      width: 188.wt(context),
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.transparent
+                                                      ),
+                                                      child: Center(child: CircularProgressIndicator(),),
                                                     ),
 
                                                     SpacerWidget.spacerWidget(spaceWidth: 12.wt(context),),
@@ -652,7 +725,7 @@ class PersonalInformationScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     } else {
@@ -663,7 +736,7 @@ class PersonalInformationScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -949,7 +1022,7 @@ class PersonalInformationScreenWidget extends GetxController {
                                   context: context,
                                   barrierDismissible: true,
                                   builder: (context) {
-                                    return Padding(
+                                    return Obx(()=>Padding(
                                       padding: EdgeInsets.symmetric(
                                         vertical: 190.vpmm(context),
                                         horizontal: 16.hpmm(context),
@@ -1079,7 +1152,8 @@ class PersonalInformationScreenWidget extends GetxController {
                                                     color: ColorUtils.gray136,
                                                   ),
                                                   filled: true,
-                                                  fillColor: ColorUtils.white255,
+                                                  enabled: false,
+                                                  fillColor: ColorUtils.white233,
                                                   contentPadding: EdgeInsets.symmetric(
                                                     horizontal: 12.hpmm(context),
                                                     vertical: 12.vpmm(context),
@@ -1180,7 +1254,7 @@ class PersonalInformationScreenWidget extends GetxController {
                                                 children: [
 
 
-                                                  Container(
+                                                  isSubmit.value == false ? Container(
                                                     height: 48.hm(context),
                                                     width: 153.wm(context),
                                                     decoration: BoxDecoration(
@@ -1190,7 +1264,31 @@ class PersonalInformationScreenWidget extends GetxController {
                                                     child: TextButton(
                                                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                       onPressed: () async {
-                                                        Get.back();
+                                                        isSubmit.value = true;
+                                                        await ProfileController.checkLocalProfileResponse().then((value) async {
+                                                          if(value?.data?.contact != null) {
+                                                            await ProfileController.getUserDataUpdateResponse(
+                                                              contact: phoneNumberController.value.text == "" ? value?.data?.name : phoneNumberController.value.text,
+                                                              name: nameController.value.text == "" ? value?.data?.name : nameController.value.text,
+                                                              image: File(""),
+                                                              email: emailController.value.text,
+                                                              onSuccess: (e) async {
+                                                                Get.back();
+                                                                CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                isSubmit.value = false;
+                                                                Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                              },
+                                                              onFail: (e) async {
+                                                                isSubmit.value = false;
+                                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                              },
+                                                              onExceptionFail: (e) async {
+                                                                isSubmit.value = false;
+                                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                              },
+                                                            );
+                                                          }
+                                                        });
                                                       },
                                                       child: Center(
                                                         child: Text(
@@ -1205,6 +1303,13 @@ class PersonalInformationScreenWidget extends GetxController {
                                                         ),
                                                       ),
                                                     ),
+                                                  ) : Container(
+                                                    height: 48.hm(context),
+                                                    width: 153.wm(context),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.transparent,
+                                                    ),
+                                                    child: Center(child: CircularProgressIndicator(),),
                                                   ),
 
                                                   SpacerWidget.spacerWidget(spaceWidth: 12.wm(context),),
@@ -1221,6 +1326,7 @@ class PersonalInformationScreenWidget extends GetxController {
                                                     child: TextButton(
                                                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                       onPressed: () async {
+                                                        isSubmit.value = false;
                                                         Get.back();
                                                       },
                                                       child: Center(
@@ -1246,7 +1352,7 @@ class PersonalInformationScreenWidget extends GetxController {
                                           ),
                                         ),
                                       ),
-                                    );
+                                    ));
                                   },
                                 );
                               },
@@ -1279,7 +1385,7 @@ class PersonalInformationScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     }
