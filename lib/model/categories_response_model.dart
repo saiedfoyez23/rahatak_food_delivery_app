@@ -1,17 +1,17 @@
-class SettingDataResponseModel {
+class CategoriesResponseModel {
   var success;
   var message;
-  List<SettingDataResponse>? data;
+  List<CategoriesResponse>? data;
 
-  SettingDataResponseModel({this.success, this.message, this.data});
+  CategoriesResponseModel({this.success, this.message, this.data});
 
-  SettingDataResponseModel.fromJson(Map<String, dynamic> json) {
+  CategoriesResponseModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
     if (json['data'] != null) {
-      data = <SettingDataResponse>[];
+      data = <CategoriesResponse>[];
       json['data'].forEach((v) {
-        data!.add(new SettingDataResponse.fromJson(v));
+        data!.add(new CategoriesResponse.fromJson(v));
       });
     }
   }
@@ -27,44 +27,40 @@ class SettingDataResponseModel {
   }
 }
 
-class SettingDataResponse {
+class CategoriesResponse {
   var sId;
-  var iV;
-  var aboutUs;
+  var name;
+  var icon;
   var createdAt;
-  var privacyPolicy;
-  var termsConditions;
   var updatedAt;
+  var iV;
 
-  SettingDataResponse({
+  CategoriesResponse({
     this.sId,
-    this.iV,
-    this.aboutUs,
+    this.name,
+    this.icon,
     this.createdAt,
-    this.privacyPolicy,
-    this.termsConditions,
-    this.updatedAt
+    this.updatedAt,
+    this.iV,
   });
 
-  SettingDataResponse.fromJson(Map<String, dynamic> json) {
+  CategoriesResponse.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
-    iV = json['__v'];
-    aboutUs = json['about_us'];
+    name = json['name'];
+    icon = json['icon'];
     createdAt = json['createdAt'];
-    privacyPolicy = json['privacy_policy'];
-    termsConditions = json['terms_conditions'];
     updatedAt = json['updatedAt'];
+    iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['_id'] = this.sId;
-    data['__v'] = this.iV;
-    data['about_us'] = this.aboutUs;
+    data['name'] = this.name;
+    data['icon'] = this.icon;
     data['createdAt'] = this.createdAt;
-    data['privacy_policy'] = this.privacyPolicy;
-    data['terms_conditions'] = this.termsConditions;
     data['updatedAt'] = this.updatedAt;
+    data['__v'] = this.iV;
     return data;
   }
 }

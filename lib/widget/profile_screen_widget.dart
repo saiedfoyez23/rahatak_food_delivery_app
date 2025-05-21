@@ -542,91 +542,91 @@ class ProfileScreenWidget extends GetxController {
 
                             SpacerWidget.spacerWidget(spaceHeight: 8.ht(context)),
 
-                            SizedBox(
-                              height: 54.ht(context),
-                              width: 744.wt(context),
-                              child: TextButton(
-                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {
-                                  Get.off(()=>PaymentMethodsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                },
-                                child: Container(
-                                  height: 54.ht(context),
-                                  width: 744.wt(context),
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent
-                                  ),
-                                  child: Row(
-                                    children: [
-
-
-                                      Expanded(
-                                        child: Row(
-                                          children: [
-
-
-                                            Container(
-                                              height: 24.ht(context),
-                                              width: 24.wt(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: FittedBox(
-                                                fit: BoxFit.cover,
-                                                child: Image.asset(ImagePathUtils.paymentMethodIconImagePath),
-                                              ),
-                                            ),
-
-
-                                            SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
-
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                "Payment Methods".tr,
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 20.spt(context),
-                                                  color: ColorUtils.black33,
-                                                ),
-                                              ),
-                                            ),
-
-
-                                          ],
-                                        ),
-                                      ),
-
-
-                                      SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
-
-                                      Container(
-                                        height: 24.ht(context),
-                                        width: 24.wt(context),
-                                        decoration: BoxDecoration(
-                                          color: Colors.transparent,
-                                        ),
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Image.asset(
-                                            Get.locale.toString() == "en" ?
-                                            ImagePathUtils.arrowFilledIconImagePath :
-                                            ImagePathUtils.arrowFilledBackIconImagePath,
-                                            fit: BoxFit.cover,
-                                            alignment: Alignment.center,
-                                          ),
-                                        ),
-                                      ),
-
-
-
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                            // SizedBox(
+                            //   height: 54.ht(context),
+                            //   width: 744.wt(context),
+                            //   child: TextButton(
+                            //     style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                            //     onPressed: () async {
+                            //       Get.off(()=>PaymentMethodsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            //     },
+                            //     child: Container(
+                            //       height: 54.ht(context),
+                            //       width: 744.wt(context),
+                            //       decoration: BoxDecoration(
+                            //           color: Colors.transparent
+                            //       ),
+                            //       child: Row(
+                            //         children: [
+                            //
+                            //
+                            //           Expanded(
+                            //             child: Row(
+                            //               children: [
+                            //
+                            //
+                            //                 Container(
+                            //                   height: 24.ht(context),
+                            //                   width: 24.wt(context),
+                            //                   decoration: BoxDecoration(
+                            //                     color: Colors.transparent,
+                            //                   ),
+                            //                   child: FittedBox(
+                            //                     fit: BoxFit.cover,
+                            //                     child: Image.asset(ImagePathUtils.paymentMethodIconImagePath),
+                            //                   ),
+                            //                 ),
+                            //
+                            //
+                            //                 SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
+                            //
+                            //                 Container(
+                            //                   alignment: Alignment.centerLeft,
+                            //                   child: Text(
+                            //                     "Payment Methods".tr,
+                            //                     textAlign: TextAlign.center,
+                            //                     style: GoogleFonts.tajawal(
+                            //                       fontWeight: FontWeight.w700,
+                            //                       fontStyle: FontStyle.normal,
+                            //                       fontSize: 20.spt(context),
+                            //                       color: ColorUtils.black33,
+                            //                     ),
+                            //                   ),
+                            //                 ),
+                            //
+                            //
+                            //               ],
+                            //             ),
+                            //           ),
+                            //
+                            //
+                            //           SpacerWidget.spacerWidget(spaceWidth: 10.wt(context)),
+                            //
+                            //           Container(
+                            //             height: 24.ht(context),
+                            //             width: 24.wt(context),
+                            //             decoration: BoxDecoration(
+                            //               color: Colors.transparent,
+                            //             ),
+                            //             child: FittedBox(
+                            //               fit: BoxFit.contain,
+                            //               child: Image.asset(
+                            //                 Get.locale.toString() == "en" ?
+                            //                 ImagePathUtils.arrowFilledIconImagePath :
+                            //                 ImagePathUtils.arrowFilledBackIconImagePath,
+                            //                 fit: BoxFit.cover,
+                            //                 alignment: Alignment.center,
+                            //               ),
+                            //             ),
+                            //           ),
+                            //
+                            //
+                            //
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
 
 
                             SpacerWidget.spacerWidget(spaceHeight: 8.ht(context)),
@@ -1618,94 +1618,94 @@ class ProfileScreenWidget extends GetxController {
 
                             SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
 
-                            SizedBox(
-                              height: 54.hm(context),
-                              width: 390.wm(context),
-                              child: TextButton(
-                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {
-                                  Get.off(()=>PaymentMethodsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                },
-                                child: Container(
-                                  height: 54.hm(context),
-                                  width: 390.wm(context),
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent
-                                  ),
-                                  child: Row(
-                                    children: [
-
-
-                                      Expanded(
-                                        child: Row(
-                                          children: [
-
-
-                                            Container(
-                                              height: 24.hm(context),
-                                              width: 24.wm(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: FittedBox(
-                                                fit: BoxFit.cover,
-                                                child: Image.asset(ImagePathUtils.paymentMethodIconImagePath),
-                                              ),
-                                            ),
-
-
-                                            SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
-
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                "Payment Methods".tr,
-                                                textAlign: TextAlign.center,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 20.spm(context),
-                                                  color: ColorUtils.black33,
-                                                ),
-                                              ),
-                                            ),
-
-
-                                          ],
-                                        ),
-                                      ),
-
-
-                                      SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
-
-                                      Container(
-                                        height: 24.hm(context),
-                                        width: 24.wm(context),
-                                        decoration: BoxDecoration(
-                                          color: Colors.transparent,
-                                        ),
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: Image.asset(
-                                            Get.locale.toString() == "en" ?
-                                            ImagePathUtils.arrowFilledIconImagePath :
-                                            ImagePathUtils.arrowFilledBackIconImagePath,
-                                            fit: BoxFit.cover,
-                                            alignment: Alignment.center,
-                                          ),
-                                        ),
-                                      ),
-
-
-
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-
-
-                            SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
+                            // SizedBox(
+                            //   height: 54.hm(context),
+                            //   width: 390.wm(context),
+                            //   child: TextButton(
+                            //     style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                            //     onPressed: () async {
+                            //       Get.off(()=>PaymentMethodsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            //     },
+                            //     child: Container(
+                            //       height: 54.hm(context),
+                            //       width: 390.wm(context),
+                            //       decoration: BoxDecoration(
+                            //           color: Colors.transparent
+                            //       ),
+                            //       child: Row(
+                            //         children: [
+                            //
+                            //
+                            //           Expanded(
+                            //             child: Row(
+                            //               children: [
+                            //
+                            //
+                            //                 Container(
+                            //                   height: 24.hm(context),
+                            //                   width: 24.wm(context),
+                            //                   decoration: BoxDecoration(
+                            //                     color: Colors.transparent,
+                            //                   ),
+                            //                   child: FittedBox(
+                            //                     fit: BoxFit.cover,
+                            //                     child: Image.asset(ImagePathUtils.paymentMethodIconImagePath),
+                            //                   ),
+                            //                 ),
+                            //
+                            //
+                            //                 SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
+                            //
+                            //                 Container(
+                            //                   alignment: Alignment.centerLeft,
+                            //                   child: Text(
+                            //                     "Payment Methods".tr,
+                            //                     textAlign: TextAlign.center,
+                            //                     style: GoogleFonts.tajawal(
+                            //                       fontWeight: FontWeight.w700,
+                            //                       fontStyle: FontStyle.normal,
+                            //                       fontSize: 20.spm(context),
+                            //                       color: ColorUtils.black33,
+                            //                     ),
+                            //                   ),
+                            //                 ),
+                            //
+                            //
+                            //               ],
+                            //             ),
+                            //           ),
+                            //
+                            //
+                            //           SpacerWidget.spacerWidget(spaceWidth: 10.wm(context)),
+                            //
+                            //           Container(
+                            //             height: 24.hm(context),
+                            //             width: 24.wm(context),
+                            //             decoration: BoxDecoration(
+                            //               color: Colors.transparent,
+                            //             ),
+                            //             child: FittedBox(
+                            //               fit: BoxFit.contain,
+                            //               child: Image.asset(
+                            //                 Get.locale.toString() == "en" ?
+                            //                 ImagePathUtils.arrowFilledIconImagePath :
+                            //                 ImagePathUtils.arrowFilledBackIconImagePath,
+                            //                 fit: BoxFit.cover,
+                            //                 alignment: Alignment.center,
+                            //               ),
+                            //             ),
+                            //           ),
+                            //
+                            //
+                            //
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            //
+                            //
+                            // SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
 
                             SizedBox(
                               height: 54.hm(context),

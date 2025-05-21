@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 import '../screen/screen.dart';
@@ -8,6 +12,8 @@ import '../screen/screen.dart';
 class HelpCenterScreenWidget extends GetxController {
 
   Rx<TextEditingController> noteController = TextEditingController().obs;
+  Rx<File> imageFile = File("").obs;
+  RxBool isSubmit = false.obs;
 
   Widget helpCenterScreenWidget({required BuildContext context}) {
     if(MediaQuery.sizeOf(context).height > 1000) {
@@ -258,7 +264,19 @@ class HelpCenterScreenWidget extends GetxController {
                                     ),
                                   ),
                                   child: TextButton(
-                                    onPressed: () async {},
+                                    onPressed: () async {
+                                      FilePickerResult? result = await FilePicker.platform.pickFiles(
+                                        type: FileType.custom,
+                                        allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png', 'svg'],
+                                      );
+                                      if (result != null) {
+                                        // The user has selected a file
+                                        PlatformFile file = result.files.first;
+                                        // Do something with the file (e.g., upload it)
+                                        print('File selected: ${file.name}');
+                                        imageFile.value = File(file.path!);
+                                      }
+                                    },
                                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -270,7 +288,7 @@ class HelpCenterScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.center,
                                           child: Text(
-                                            "Add Images".tr,
+                                            imageFile.value.path == "" ? "Add Images".tr : imageFile.value.path.toString().split("/").last,
                                             textAlign: TextAlign.center,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -309,6 +327,7 @@ class HelpCenterScreenWidget extends GetxController {
 
                                 SpacerWidget.spacerWidget(spaceHeight: 19.ht(context)),
 
+                                isSubmit.value == false ?
                                 Container(
                                   height: 48.ht(context),
                                   width: 320.wt(context),
@@ -318,7 +337,36 @@ class HelpCenterScreenWidget extends GetxController {
                                   ),
                                   child: TextButton(
                                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                    onPressed: () async {},
+                                    onPressed: () async {
+                                      if(noteController.value.text == "") {
+                                        CustomSnackBar().errorCustomSnackBar(context: context, message: "Please write some note");
+                                      } else {
+                                        isSubmit.value = true;
+                                        await ProfileController.checkLocalProfileResponse().then((value) async {
+                                          if(value?.data != null) {
+                                            await HelpCenterController.getHelpCenterResponse(
+                                              name: value?.data?.name ?? "",
+                                              email: value?.data?.email ?? "",
+                                              message: noteController.value.text,
+                                              image: imageFile.value,
+                                              onSuccess: (e) async {
+                                                isSubmit.value = false;
+                                                CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                Get.off(()=>HelpCenterScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                              },
+                                              onFail: (e) async {
+                                                isSubmit.value = false;
+                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                              },
+                                              onExceptionFail: (e) async {
+                                                isSubmit.value = false;
+                                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                              },
+                                            );
+                                          }
+                                        });
+                                      }
+                                    },
                                     child: Center(
                                       child: Text(
                                         "Send Message".tr,
@@ -332,6 +380,14 @@ class HelpCenterScreenWidget extends GetxController {
                                       ),
                                     ),
                                   ),
+                                ) :
+                                Container(
+                                  height: 48.ht(context),
+                                  width: 320.wt(context),
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                  ),
+                                  child: Center(child: CircularProgressIndicator(),),
                                 ),
 
 
@@ -476,7 +532,7 @@ class HelpCenterScreenWidget extends GetxController {
         ),
       );
     } else {
-      return SafeArea(
+      return Obx(()=>SafeArea(
         child: Container(
           height: 844.hm(context),
           width: 390.wm(context),
@@ -485,22 +541,22 @@ class HelpCenterScreenWidget extends GetxController {
           ),
           child: CustomScrollView(
             slivers: [
-        
+
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
                   child: Column(
                     children: [
-        
-        
+
+
                       SpacerWidget.spacerWidget(spaceHeight: 11.hm(context)),
-        
+
                       Directionality(
                         textDirection: TextDirection.ltr,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-        
+
                             Container(
                               height: 40.hm(context),
                               width: 40.wm(context),
@@ -522,8 +578,8 @@ class HelpCenterScreenWidget extends GetxController {
                                 ),
                               ),
                             ),
-        
-        
+
+
                             Expanded(
                               child: Container(
                                 alignment: Alignment.center,
@@ -539,12 +595,12 @@ class HelpCenterScreenWidget extends GetxController {
                                 ),
                               ),
                             ),
-        
+
                           ],
                         ),
                       ),
-        
-        
+
+
                       SpacerWidget.spacerWidget(spaceHeight: 35.hm(context)),
 
 
@@ -718,7 +774,19 @@ class HelpCenterScreenWidget extends GetxController {
                                 ),
                               ),
                               child: TextButton(
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  FilePickerResult? result = await FilePicker.platform.pickFiles(
+                                    type: FileType.custom,
+                                    allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png', 'svg'],
+                                  );
+                                  if (result != null) {
+                                    // The user has selected a file
+                                    PlatformFile file = result.files.first;
+                                    // Do something with the file (e.g., upload it)
+                                    print('File selected: ${file.name}');
+                                    imageFile.value = File(file.path!);
+                                  }
+                                },
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -730,7 +798,7 @@ class HelpCenterScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        "Add Images".tr,
+                                        imageFile.value.path == "" ? "Add Images".tr : imageFile.value.path.toString().split("/").last,
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -769,6 +837,7 @@ class HelpCenterScreenWidget extends GetxController {
 
                             SpacerWidget.spacerWidget(spaceHeight: 19.hm(context)),
 
+                            isSubmit.value == false ?
                             Container(
                               height: 48.hm(context),
                               width: 320.wm(context),
@@ -778,7 +847,36 @@ class HelpCenterScreenWidget extends GetxController {
                               ),
                               child: TextButton(
                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  if(noteController.value.text == "") {
+                                    CustomSnackBar().errorCustomSnackBar(context: context, message: "Please write some note");
+                                  } else {
+                                    isSubmit.value = true;
+                                    await ProfileController.checkLocalProfileResponse().then((value) async {
+                                      if(value?.data != null) {
+                                        await HelpCenterController.getHelpCenterResponse(
+                                          name: value?.data?.name ?? "",
+                                          email: value?.data?.email ?? "",
+                                          message: noteController.value.text,
+                                          image: imageFile.value,
+                                          onSuccess: (e) async {
+                                            isSubmit.value = false;
+                                            CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                            Get.off(()=>HelpCenterScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                          },
+                                          onFail: (e) async {
+                                            isSubmit.value = false;
+                                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                          },
+                                          onExceptionFail: (e) async {
+                                            isSubmit.value = false;
+                                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                          },
+                                        );
+                                      }
+                                    });
+                                  }
+                                },
                                 child: Center(
                                   child: Text(
                                     "Send Message".tr,
@@ -792,6 +890,14 @@ class HelpCenterScreenWidget extends GetxController {
                                   ),
                                 ),
                               ),
+                            ) :
+                            Container(
+                              height: 48.hm(context),
+                              width: 320.wm(context),
+                              decoration: BoxDecoration(
+                                color: Colors.transparent
+                              ),
+                              child: Center(child: CircularProgressIndicator(),),
                             ),
 
 
@@ -913,19 +1019,19 @@ class HelpCenterScreenWidget extends GetxController {
 
 
                       SpacerWidget.spacerWidget(spaceHeight: 24.hm(context)),
-        
-        
+
+
                     ],
                   ),
                 ),
               )
-        
-        
-        
+
+
+
             ],
           ),
         ),
-      );
+      ));
     }
   }
 

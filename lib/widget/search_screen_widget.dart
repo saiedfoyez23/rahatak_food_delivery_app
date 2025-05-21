@@ -398,10 +398,9 @@ class SearchScreenWidget extends GetxController {
                                         Border.all(color: ColorUtils.blue192,width: 1) :
                                         Border.all(color: Colors.transparent,width: 1)
                                       ),
-                                      margin: EdgeInsets.only(bottom: 10.bpmm(context)),
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
                                           Container(
                                             height: 60.hm(context),

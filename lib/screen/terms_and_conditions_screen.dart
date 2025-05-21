@@ -7,11 +7,9 @@ import '../widget/widget.dart';
 class TermsAndConditionsScreen extends StatelessWidget {
   TermsAndConditionsScreen({super.key});
 
-
-  TermsAndConditionsScreenWidget termsAndConditionsScreenWidget = Get.put(TermsAndConditionsScreenWidget());
-
   @override
   Widget build(BuildContext context) {
+    TermsAndConditionsScreenWidget termsAndConditionsScreenWidget = Get.put(TermsAndConditionsScreenWidget(context: context));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) {
