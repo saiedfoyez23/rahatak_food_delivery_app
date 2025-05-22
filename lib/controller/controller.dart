@@ -7,3 +7,4 @@ export 'profile_controller.dart';
 export 'mime_type_controller.dart';
 export 'setting_controller.dart';
 export 'help_center_controller.dart';
+export 'product_controller.dart';

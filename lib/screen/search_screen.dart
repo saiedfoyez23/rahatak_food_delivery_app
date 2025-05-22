@@ -7,10 +7,9 @@ import '../widget/widget.dart';
 class SearchScreen extends StatelessWidget {
   SearchScreen({super.key});
 
-  SearchScreenWidget searchScreenWidget = Get.put(SearchScreenWidget());
-
   @override
   Widget build(BuildContext context) {
+    SearchScreenWidget searchScreenWidget = Get.put(SearchScreenWidget(context: context));
     return Scaffold(
       body: searchScreenWidget.searchScreenWidget(context: context),
       bottomNavigationBar: BottomNavigationBarWidget().bottomNavigationBarWidget(

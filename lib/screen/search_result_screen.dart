@@ -6,7 +6,8 @@ import '../utils/utils.dart';
 import '../widget/widget.dart';
 
 class SearchResultScreen extends StatelessWidget {
-  SearchResultScreen({super.key});
+  SearchResultScreen({super.key,required this.categoryId});
+  final String categoryId;
 
   SearchResultScreenWidget searchResultScreenWidget = Get.put(SearchResultScreenWidget());
 

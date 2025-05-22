@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 import 'package:rahatak_food_delivery_app/widget/widget.dart';
+import '../model/model.dart';
 
 class SearchScreenWidget extends GetxController {
+  BuildContext context;
+  SearchScreenWidget({required this.context});
 
   Rx<TextEditingController> searchController = TextEditingController().obs;
+  Rx<CategoriesResponseModel> categoriesResponseModel = CategoriesResponseModel().obs;
 
   RxList<ListImageList> listImageList = <ListImageList>[
     ListImageList(image: ImagePathUtils.extraImageList_1, name: "Burger"),
@@ -24,6 +29,36 @@ class SearchScreenWidget extends GetxController {
 
 
   RxInt bigIndex = 0.obs;
+  RxBool isLoading = false.obs;
+
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await ProductController.getCategoriesResponse(
+        onSuccess: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+          await ProductController.checkLocalCategoriesResponse().then((value) {
+            if(value?.data != null) {
+              categoriesResponseModel.value = value!;
+            }
+          });
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      );
+    });
+  }
 
   Widget searchScreenWidget({required BuildContext context}) {
     if(MediaQuery.sizeOf(context).height > 1133) {
@@ -245,217 +280,219 @@ class SearchScreenWidget extends GetxController {
     } else {
       return Obx(()=>SafeArea(
         child: Container(
-            height: 844.hm(context),
-            width: 390.wm(context),
-            decoration: BoxDecoration(
-              color: ColorUtils.white248,
-            ),
-            child: CustomScrollView(
-              slivers: [
+          height: 844.hm(context),
+          width: 390.wm(context),
+          decoration: BoxDecoration(
+            color: ColorUtils.white248,
+          ),
+          child:  isLoading.value == true ?
+          Center(child: CircularProgressIndicator(),) :
+          CustomScrollView(
+            slivers: [
 
 
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
 
 
-                      SpacerWidget.spacerWidget(spaceHeight: 20.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 20.hm(context)),
 
 
-                      Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Search".tr,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.tajawal(
-                            fontWeight: FontWeight.w700,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 16.spm(context),
-                            color: ColorUtils.black255,
-                          ),
+                    Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Search".tr,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.tajawal(
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16.spm(context),
+                          color: ColorUtils.black255,
                         ),
                       ),
+                    ),
 
-                      SpacerWidget.spacerWidget(spaceHeight: 33.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 33.hm(context)),
 
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-                        child: Column(
-                          children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                      child: Column(
+                        children: [
 
-                            TextFormField(
-                              controller: searchController.value,
-                              textAlign: TextAlign.start,
-                              cursorColor: ColorUtils.blue192,
-                              style: GoogleFonts.openSans(
+                          TextFormField(
+                            controller: searchController.value,
+                            textAlign: TextAlign.start,
+                            cursorColor: ColorUtils.blue192,
+                            style: GoogleFonts.openSans(
+                              fontSize: 16.spm(context),
+                              fontStyle: FontStyle.normal,
+                              color: ColorUtils.black51,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            cursorHeight: 20.hm(context),
+                            textAlignVertical: TextAlignVertical.top,
+                            decoration: InputDecoration(
+                              alignLabelWithHint: true,
+                              hintText: "Search for a restaurant, dish...".tr,
+                              hintStyle: GoogleFonts.openSans(
                                 fontSize: 16.spm(context),
-                                fontStyle: FontStyle.normal,
-                                color: ColorUtils.black51,
                                 fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.normal,
+                                color: ColorUtils.gray136,
                               ),
-                              cursorHeight: 20.hm(context),
-                              textAlignVertical: TextAlignVertical.top,
-                              decoration: InputDecoration(
-                                alignLabelWithHint: true,
-                                hintText: "Search for a restaurant, dish...".tr,
-                                hintStyle: GoogleFonts.openSans(
-                                  fontSize: 16.spm(context),
-                                  fontWeight: FontWeight.w400,
-                                  fontStyle: FontStyle.normal,
-                                  color: ColorUtils.gray136,
+                              filled: true,
+                              prefixIconConstraints: BoxConstraints(
+                                maxHeight: 48.hm(context),
+                                minWidth: 36.wm(context),
+                              ),
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 12.lpmm(context),
+                                  right: 10.rpmm(context),
+                                  top: 17.33.tpmm(context),
+                                  bottom: 17.33.bpmm(context),
                                 ),
-                                filled: true,
-                                prefixIconConstraints: BoxConstraints(
-                                  maxHeight: 48.hm(context),
-                                  minWidth: 36.wm(context),
-                                ),
-                                prefixIcon: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 12.lpmm(context),
-                                    right: 10.rpmm(context),
-                                    top: 17.33.tpmm(context),
-                                    bottom: 17.33.bpmm(context),
+                                child: FittedBox(
+                                  fit: BoxFit.cover,
+                                  child: Image.asset(
+                                    ImagePathUtils.searchIconImagePath,
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.center,
                                   ),
+                                ),
+                              ),
+                              suffixIcon: Container(
+                                height: 24.hm(context),
+                                width: 24.wm(context),
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 13.hpmm(context),
+                                  vertical: 13.vpmm(context),
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                ),
+                                child: TextButton(
+                                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                  onPressed: () {
+                                    Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                  },
                                   child: FittedBox(
                                     fit: BoxFit.cover,
                                     child: Image.asset(
-                                      ImagePathUtils.searchIconImagePath,
+                                      ImagePathUtils.filterIconImagePath,
                                       fit: BoxFit.cover,
                                       alignment: Alignment.center,
                                     ),
                                   ),
                                 ),
-                                suffixIcon: Container(
-                                  height: 24.hm(context),
-                                  width: 24.wm(context),
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 13.hpmm(context),
-                                    vertical: 13.vpmm(context),
-                                  ),
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent
-                                  ),
-                                  child: TextButton(
-                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                    onPressed: () {
-                                      Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                                    },
-                                    child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: Image.asset(
-                                        ImagePathUtils.filterIconImagePath,
-                                        fit: BoxFit.cover,
-                                        alignment: Alignment.center,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                fillColor: ColorUtils.white255,
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 12.hpmm(context),
-                                  vertical: 12.vpmm(context),
-                                ),
-                                constraints: BoxConstraints(
-                                  maxWidth: 358.wm(context),
-                                  maxHeight: 48.hm(context),
-                                ),
-                                border:  OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
-                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
-                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
-                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                                ),
-
+                              ),
+                              fillColor: ColorUtils.white255,
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 12.hpmm(context),
+                                vertical: 12.vpmm(context),
+                              ),
+                              constraints: BoxConstraints(
+                                maxWidth: 358.wm(context),
+                                maxHeight: 48.hm(context),
+                              ),
+                              border:  OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                                borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                                borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                                borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
                               ),
                             ),
+                          ),
 
 
-                            SpacerWidget.spacerWidget(spaceHeight: 32.hm(context)),
+                          SpacerWidget.spacerWidget(spaceHeight: 32.hm(context)),
 
-                            Wrap(
-                              children: List.generate(listImageList.length, (index) {
-                                return SizedBox(
-                                  height: 110.hm(context),
-                                  width: 80.wm(context),
-                                  child: TextButton(
-                                    onPressed: () async {
-                                      bigIndex.value = index + 1 ;
-                                    },
-                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                    child: Container(
-                                      height: 110.hm(context),
-                                      width: 80.wm(context),
-                                      decoration: BoxDecoration(
+                          Wrap(
+                            children: List.generate(categoriesResponseModel.value.data!.length, (index) {
+                              return SizedBox(
+                                height: 110.hm(context),
+                                width: 80.wm(context),
+                                child: TextButton(
+                                  onPressed: () async {
+                                    bigIndex.value = index + 1 ;
+                                    Get.off(()=>SearchResultScreen(categoryId: categoriesResponseModel.value.data![index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                  },
+                                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                  child: Container(
+                                    height: 110.hm(context),
+                                    width: 80.wm(context),
+                                    decoration: BoxDecoration(
                                         color: Colors.transparent,
                                         borderRadius: BorderRadius.circular(8.rm(context)),
                                         border: bigIndex.value == (index + 1) ?
                                         Border.all(color: ColorUtils.blue192,width: 1) :
                                         Border.all(color: Colors.transparent,width: 1)
-                                      ),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            height: 60.hm(context),
-                                            width: 60.wm(context),
-                                            decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                              borderRadius: BorderRadius.circular(8.rm(context)),
-                                            ),
-                                            child: FittedBox(
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+
+                                        Container(
+                                          height: 60.hm(context),
+                                          width: 60.wm(context),
+                                          decoration: BoxDecoration(
+                                            color: Colors.transparent,
+                                            borderRadius: BorderRadius.circular(8.rm(context)),
+                                          ),
+                                          child: FittedBox(
+                                            fit: BoxFit.fill,
+                                            child: Image.network(
+                                              categoriesResponseModel.value.data![index].icon!,
                                               fit: BoxFit.fill,
-                                              child: Image.asset(
-                                                listImageList[index].image!,
-                                                fit: BoxFit.fill,
-                                              ),
                                             ),
                                           ),
+                                        ),
 
-                                          SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
+                                        SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
 
 
-                                          Container(
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              "${listImageList[index].name}".tr,
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.tajawal(
-                                                fontWeight: FontWeight.w500,
-                                                fontStyle: FontStyle.normal,
-                                                fontSize: 16.spm(context),
-                                                color: ColorUtils.black255,
-                                              ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "${categoriesResponseModel.value.data?[index].name ?? ""}".tr,
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 16.spm(context),
+                                              color: ColorUtils.black255,
                                             ),
                                           ),
+                                        ),
 
 
-                                        ],
-                                      ),
+                                      ],
                                     ),
                                   ),
-                                );
-                              }),
-                            ),
-                          ],
-                        ),
-                      )
+                                ),
+                              );
+                            }),
+                          ),
+                        ],
+                      ),
+                    )
 
 
+                  ],
+                ),
+              )
 
-                    ],
-                  ),
-                )
 
-
-              ],
-            )
+            ],
+          ),
         ),
       ));
     }
