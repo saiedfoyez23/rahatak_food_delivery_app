@@ -8,3 +8,4 @@ export 'mime_type_controller.dart';
 export 'setting_controller.dart';
 export 'help_center_controller.dart';
 export 'product_controller.dart';
+export 'cart_controller.dart';

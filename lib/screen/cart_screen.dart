@@ -7,11 +7,10 @@ import '../widget/widget.dart';
 class CartScreen extends StatelessWidget {
   CartScreen({super.key});
 
-  CartScreenWidget cartScreenWidget = Get.put(CartScreenWidget());
-
 
   @override
   Widget build(BuildContext context) {
+    CartScreenWidget cartScreenWidget = Get.put(CartScreenWidget(context: context));
     return Scaffold(
       body: cartScreenWidget.cartScreenWidget(context: context),
       bottomNavigationBar: BottomNavigationBarWidget().bottomNavigationBarWidget(

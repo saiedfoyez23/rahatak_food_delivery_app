@@ -5,9 +5,46 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 import 'package:rahatak_food_delivery_app/widget/widget.dart';
 
+import '../controller/controller.dart';
+import '../model/model.dart';
 import '../screen/screen.dart';
 
 class FilterSearchScreenWidget extends GetxController {
+
+
+  RxInt bigIndex = 0.obs;
+  RxBool isLoading = false.obs;
+  Rx<CategoriesResponseModel> categoriesResponseModel = CategoriesResponseModel().obs;
+  BuildContext context;
+  FilterSearchScreenWidget({required this.context});
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await ProductController.getCategoriesResponse(
+        onSuccess: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+          await ProductController.checkLocalCategoriesResponse().then((value) {
+            if(value?.data != null) {
+              categoriesResponseModel.value = value!;
+            }
+          });
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      );
+    });
+  }
 
 
   RxList<ListImageList> listImageList = <ListImageList>[
@@ -38,7 +75,6 @@ class FilterSearchScreenWidget extends GetxController {
 
   RxInt bigIndex_1 = 0.obs;
   RxInt bigIndex_2 = 0.obs;
-  RxInt bigIndex = 0.obs;
 
 
   Widget filterSearchScreenWidget({required BuildContext context}) {
@@ -50,7 +86,7 @@ class FilterSearchScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -138,7 +174,7 @@ class FilterSearchScreenWidget extends GetxController {
                       
                       
                           Wrap(
-                            children: List.generate(listImageList.length, (index) {
+                            children: List.generate(categoriesResponseModel.value.data!.length, (index) {
                               return Padding(
                                 padding: EdgeInsets.only(right: 10.rpmt(context)),
                                 child: SizedBox(
@@ -172,8 +208,8 @@ class FilterSearchScreenWidget extends GetxController {
                                             ),
                                             child: FittedBox(
                                               fit: BoxFit.fill,
-                                              child: Image.asset(
-                                                listImageList[index].image!,
+                                              child: Image.network(
+                                                categoriesResponseModel.value.data![index].icon!,
                                                 fit: BoxFit.fill,
                                               ),
                                             ),
@@ -185,7 +221,7 @@ class FilterSearchScreenWidget extends GetxController {
                                           Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "${listImageList[index].name}".tr,
+                                              "${categoriesResponseModel.value.data![index].name ?? ""}".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -434,7 +470,7 @@ class FilterSearchScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     } else {
@@ -445,7 +481,7 @@ class FilterSearchScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
 
@@ -529,70 +565,65 @@ class FilterSearchScreenWidget extends GetxController {
 
 
                       Wrap(
-                        children: List.generate(listImageList.length, (index) {
-                          return Padding(
-                            padding: EdgeInsets.only(right: 10.rpmm(context)),
-                            child: SizedBox(
-                              height: 110.hm(context),
-                              width: 80.wm(context),
-                              child: TextButton(
-                                onPressed: () async {
-                                  bigIndex.value = index + 1 ;
-                                },
-                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                child: Container(
-                                  height: 110.hm(context),
-                                  width: 80.wm(context),
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.circular(8.rm(context)),
-                                      border: bigIndex.value == (index + 1) ?
-                                      Border.all(color: ColorUtils.blue192,width: 1) :
-                                      Border.all(color: Colors.transparent,width: 1)
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        height: 60.hm(context),
-                                        width: 60.wm(context),
-                                        decoration: BoxDecoration(
-                                          color: Colors.transparent,
-                                          borderRadius: BorderRadius.circular(8.rm(context)),
-                                        ),
-                                        margin: EdgeInsets.only(
-                                          right: 12.rpmm(context),
-                                        ),
-                                        child: FittedBox(
+                        children: List.generate(categoriesResponseModel.value.data!.length, (index) {
+                          return SizedBox(
+                            height: 110.hm(context),
+                            width: 80.wm(context),
+                            child: TextButton(
+                              onPressed: () async {
+                                bigIndex.value = index + 1 ;
+                              },
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              child: Container(
+                                height: 110.hm(context),
+                                width: 80.wm(context),
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(8.rm(context)),
+                                    border: bigIndex.value == (index + 1) ?
+                                    Border.all(color: ColorUtils.blue192,width: 1) :
+                                    Border.all(color: Colors.transparent,width: 1)
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+
+                                    Container(
+                                      height: 60.hm(context),
+                                      width: 60.wm(context),
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                      ),
+                                      child: FittedBox(
+                                        fit: BoxFit.fill,
+                                        child: Image.network(
+                                          categoriesResponseModel.value.data![index].icon!,
                                           fit: BoxFit.fill,
-                                          child: Image.asset(
-                                            listImageList[index].image!,
-                                            fit: BoxFit.fill,
-                                          ),
                                         ),
                                       ),
-                            
-                                      SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
-                            
-                            
-                                      Container(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          "${listImageList[index].name}".tr,
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.tajawal(
-                                            fontWeight: FontWeight.w500,
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 16.spm(context),
-                                            color: ColorUtils.black255,
-                                          ),
+                                    ),
+
+                                    SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
+
+
+                                    Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "${categoriesResponseModel.value.data?[index].name ?? ""}".tr,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.spm(context),
+                                          color: ColorUtils.black255,
                                         ),
                                       ),
-                            
-                            
-                                    ],
-                                  ),
+                                    ),
+
+
+                                  ],
                                 ),
                               ),
                             ),
@@ -821,7 +852,7 @@ class FilterSearchScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     }

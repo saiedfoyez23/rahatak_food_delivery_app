@@ -204,7 +204,7 @@ class SearchResultScreenWidget extends GetxController {
                         child: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           onPressed: () async {
-                            Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            //Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                           },
                           child: Row(
                             children: [
@@ -493,8 +493,7 @@ class SearchResultScreenWidget extends GetxController {
                   ),
                 ),
               ),
-        
-        
+
         
               SliverList(
                 delegate: SliverChildBuilderDelegate(
@@ -517,7 +516,7 @@ class SearchResultScreenWidget extends GetxController {
                         child: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           onPressed: () async {
-                            Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            //Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                           },
                           child: Row(
                             children: [

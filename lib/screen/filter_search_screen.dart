@@ -9,11 +9,9 @@ class FilterSearchScreen extends StatelessWidget {
   FilterSearchScreen({super.key});
 
 
-  FilterSearchScreenWidget filterSearchScreenWidget = Get.put(FilterSearchScreenWidget());
-
-
   @override
   Widget build(BuildContext context) {
+    FilterSearchScreenWidget filterSearchScreenWidget = Get.put(FilterSearchScreenWidget(context: context));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) async {

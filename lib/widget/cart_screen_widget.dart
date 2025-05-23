@@ -1,17 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
+import 'package:rahatak_food_delivery_app/model/model.dart';
 import 'package:rahatak_food_delivery_app/screen/order_address_screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 class CartScreenWidget extends GetxController {
 
+  RxBool isLoading = false.obs;
+  BuildContext context;
+  CartScreenWidget({required this.context});
+  Rx<CartResponseModel> cartResponseModel = CartResponseModel().obs;
+  RxDouble total = 0.0.obs;
+  RxDouble deliveryFee = 0.0.obs;
 
   RxList<CartList> cartList = <CartList>[
     CartList(index: 0,name: "Tanoor", amount: "1.900 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.pList_3),
     CartList(index: 1,name: "Chicken Fries", amount: "1.500 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.pList_1),
     CartList(index: 2,name: "Classic Burger", amount: "1.200 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.productImage_4),
   ].obs;
+
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await CartController.getCartProductResponse(
+        onSuccess: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      ).then((value) {
+        cartResponseModel.value = value;
+        value.data?.forEach((value) {
+          total.value = total.value + (value.quantity * value.price);
+        });
+      });
+    });
+  }
 
 
   Widget cartScreenWidget({required BuildContext context}) {
@@ -23,7 +60,7 @@ class CartScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: Obx(()=>CustomScrollView(
+          child: Obx(()=> isLoading.value == false ? CustomScrollView(
             slivers: [
         
         
@@ -660,7 +697,7 @@ class CartScreenWidget extends GetxController {
         
         
             ],
-          )),
+          ) : Center(child: CircularProgressIndicator(),)),
         ),
       );
     } else {
@@ -671,7 +708,7 @@ class CartScreenWidget extends GetxController {
             decoration: BoxDecoration(
               color: ColorUtils.white248,
             ),
-            child: CustomScrollView(
+            child: isLoading.value == false ? CustomScrollView(
               slivers: [
 
 
@@ -704,7 +741,7 @@ class CartScreenWidget extends GetxController {
                         Container(
                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                           child: Text(
-                            "Orders ( 5 )".tr,
+                            "${"Orders".tr} ( ${cartResponseModel.value.data?.length} )",
                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
@@ -725,7 +762,7 @@ class CartScreenWidget extends GetxController {
                             color: Colors.transparent,
                           ),
                           child: ListView.builder(
-                            itemCount: cartList.length,
+                            itemCount: cartResponseModel.value.data?.length,
                             itemBuilder: (context,int index) {
                               return Obx(()=>Container(
                                 padding: EdgeInsets.symmetric(
@@ -753,8 +790,8 @@ class CartScreenWidget extends GetxController {
                                       ),
                                       child: FittedBox(
                                         fit: BoxFit.fill,
-                                        child: Image.asset(
-                                          cartList[index].image,
+                                        child: Image.network(
+                                          cartResponseModel.value.data![index].product!.images!.first,
                                           fit: BoxFit.fill,
                                           alignment: Alignment.center,
                                         ),
@@ -773,7 +810,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].name}".tr,
+                                              "${cartResponseModel.value.data?[index].product?.name ?? ""}".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -789,7 +826,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].amount}".tr,
+                                              "${(cartResponseModel.value.data?[index].quantity * cartResponseModel.value.data?[index].price)} ${"OMR".tr}",
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -805,7 +842,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].size}".tr,
+                                              "${"Size:".tr} ${cartResponseModel.value.data?[index].size.toString().toUpperCase() ?? ""}".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -821,7 +858,7 @@ class CartScreenWidget extends GetxController {
                                           Container(
                                             alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                             child: Text(
-                                              "${cartList[index].notes}".tr,
+                                              "${"Notes:".tr} ${cartResponseModel.value.data?[index].note.toString().toUpperCase()}".tr,
                                               textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w500,
@@ -1038,7 +1075,7 @@ class CartScreenWidget extends GetxController {
                                               Container(
                                                 alignment: Alignment.center,
                                                 child: Text(
-                                                  "${cartList[index].quantity} ",
+                                                  "${cartResponseModel.value.data?[index].quantity} ",
                                                   textAlign: TextAlign.center,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w700,
@@ -1150,7 +1187,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "7.300 OMR".tr,
+                                      "${total.value} ${"OMR".tr}".tr,
                                       textAlign: TextAlign.start,
                                       style:GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1189,7 +1226,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "1.500 OMR".tr,
+                                      "${deliveryFee.value} ${"OMR".tr}".tr,
                                       textAlign: TextAlign.start,
                                       style:GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w500,
@@ -1240,7 +1277,7 @@ class CartScreenWidget extends GetxController {
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "8.800 OMR".tr,
+                                      "${(total.value + deliveryFee.value)} ${"OMR".tr}".tr,
                                       textAlign: TextAlign.start,
                                       style:GoogleFonts.tajawal(
                                         fontWeight: FontWeight.w700,
@@ -1298,7 +1335,7 @@ class CartScreenWidget extends GetxController {
 
 
               ],
-            )
+            ) : Center(child: CircularProgressIndicator(),)
         )),
       );
     }

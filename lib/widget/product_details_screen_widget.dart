@@ -1,17 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rahatak_food_delivery_app/model/model.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
+import '../controller/controller.dart';
 import '../screen/screen.dart';
 
 class ProductDetailsScreenWidget extends GetxController {
-
-
+  RxBool isLoading = false.obs;
+  RxBool isSubmit = false.obs;
   RxInt number = 0.obs;
   RxInt selectSize = 0.obs;
   RxInt quantity = 1.obs;
   Rx<TextEditingController> noteController = TextEditingController().obs;
+  String productId;
+  BuildContext context;
+  ProductDetailsScreenWidget({required this.productId,required this.context});
+  Rx<SingleProductResponseModel> singleProductResponseModel = SingleProductResponseModel().obs;
+
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await ProductController.getProductDetailsResponse(
+        productId: productId,
+        onSuccess: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      ).then((value) {
+        singleProductResponseModel.value = value;
+      });
+    });
+  }
+
+
 
 
   Widget productDetailsScreenWidget({required BuildContext context}) {
@@ -23,7 +58,7 @@ class ProductDetailsScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
               SliverToBoxAdapter(
@@ -94,10 +129,8 @@ class ProductDetailsScreenWidget extends GetxController {
                         ),
                         child: FittedBox(
                           fit: BoxFit.fill,
-                          child: Image.asset(
-                            number.value == 0 ? ImagePathUtils.productImage_1 :
-                            number.value == 1 ? ImagePathUtils.productImage_2 :
-                            ImagePathUtils.pList_1,
+                          child: Image.network(
+                            singleProductResponseModel.value.data!.images![number.value],
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -111,7 +144,7 @@ class ProductDetailsScreenWidget extends GetxController {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: List.generate(
-                            3,
+                            singleProductResponseModel.value.data!.images!.length,
                                 (index) {
                               return Container(
                                 height: 60.ht(context),
@@ -131,10 +164,8 @@ class ProductDetailsScreenWidget extends GetxController {
                                   },
                                   child: FittedBox(
                                     fit: BoxFit.cover,
-                                    child: Image.asset(
-                                      index == 0 ? ImagePathUtils.productImage_1 :
-                                      index == 1 ? ImagePathUtils.productImage_2 :
-                                      ImagePathUtils.pList_1,
+                                    child: Image.network(
+                                      singleProductResponseModel.value.data!.images![index],
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -151,31 +182,37 @@ class ProductDetailsScreenWidget extends GetxController {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
 
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Tanoor".tr,
-                              textAlign: TextAlign.start,
-                              style: GoogleFonts.tajawal(
-                                fontWeight: FontWeight.w700,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 22.spt(context),
-                                color: ColorUtils.black30,
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "${singleProductResponseModel.value.data?.name ?? ""}".tr,
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.tajawal(
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 22.spt(context),
+                                  color: ColorUtils.black30,
+                                ),
                               ),
                             ),
                           ),
 
 
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              "1.900 OMR".tr,
-                              textAlign: TextAlign.start,
-                              style: GoogleFonts.tajawal(
-                                fontWeight: FontWeight.w700,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 22.spt(context),
-                                color: ColorUtils.black30,
+                          SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                "${singleProductResponseModel.value.data?.variations?[selectSize.value].price ?? ""} OMR(${singleProductResponseModel.value.data?.variations?[selectSize.value].size.toString().toUpperCase()})".tr,
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.tajawal(
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 22.spt(context),
+                                  color: ColorUtils.black30,
+                                ),
                               ),
                             ),
                           ),
@@ -191,7 +228,7 @@ class ProductDetailsScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.".tr,
+                          "${singleProductResponseModel.value.data?.description ?? ""}".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w500,
@@ -307,7 +344,7 @@ class ProductDetailsScreenWidget extends GetxController {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: List.generate(
-                                      3,
+                                      singleProductResponseModel.value.data!.variations!.length,
                                           (index) {
                                         return Container(
                                           height: 32.ht(context),
@@ -330,7 +367,7 @@ class ProductDetailsScreenWidget extends GetxController {
                                               child: Container(
                                                 alignment: Alignment.center,
                                                 child: Text(
-                                                  index == 0 ? "SMALL".tr : index == 1 ? "MIDDLE".tr : "LARGE".tr,
+                                                  "${singleProductResponseModel.value.data?.variations?[index].size.toString().toUpperCase() ?? ""}".tr,
                                                   textAlign: TextAlign.start,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w700,
@@ -463,6 +500,7 @@ class ProductDetailsScreenWidget extends GetxController {
 
                       SpacerWidget.spacerWidget(spaceHeight: 42.ht(context),),
 
+                      isSubmit.value == false ?
                       Container(
                         height: 48.ht(context),
                         width: 300.wt(context),
@@ -473,7 +511,29 @@ class ProductDetailsScreenWidget extends GetxController {
                         child: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           onPressed: () async {
-                            Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            isSubmit.value = true;
+                            Map<String,dynamic> data = {
+                              "product": singleProductResponseModel.value.data?.sId,
+                              "quantity": quantity.value,
+                              "note": noteController.value.text,
+                              "size": singleProductResponseModel.value.data?.variations?[selectSize.value].size
+                            };
+                            print(data);
+                            await CartController.getCartResponse(
+                              data: data,
+                              onSuccess: (e) async {
+                                isSubmit.value = false;
+                                Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              onFail: (e) async {
+                                isSubmit.value = false;
+                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                              },
+                              onExceptionFail: (e) async {
+                                isSubmit.value = false;
+                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                              },
+                            );
                           },
                           child: Center(
                             child: Row(
@@ -516,6 +576,14 @@ class ProductDetailsScreenWidget extends GetxController {
                             ),
                           ),
                         ),
+                      ) :
+                      Container(
+                        height: 48.ht(context),
+                        width: 300.wt(context),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent
+                        ),
+                        child: Center(child: CircularProgressIndicator(),),
                       )
 
 
@@ -526,7 +594,7 @@ class ProductDetailsScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
       ));
     } else {
@@ -537,7 +605,7 @@ class ProductDetailsScreenWidget extends GetxController {
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
               SliverToBoxAdapter(
@@ -592,10 +660,8 @@ class ProductDetailsScreenWidget extends GetxController {
                         ),
                         child: FittedBox(
                           fit: BoxFit.fill,
-                          child: Image.asset(
-                            number.value == 0 ? ImagePathUtils.productImage_1 :
-                            number.value == 1 ? ImagePathUtils.productImage_2 :
-                            ImagePathUtils.pList_1,
+                          child: Image.network(
+                            singleProductResponseModel.value.data!.images![number.value],
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -609,7 +675,7 @@ class ProductDetailsScreenWidget extends GetxController {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: List.generate(
-                            3,
+                            singleProductResponseModel.value.data!.images!.length,
                                 (index) {
                               return Container(
                                 height: 60.hm(context),
@@ -629,10 +695,8 @@ class ProductDetailsScreenWidget extends GetxController {
                                   },
                                   child: FittedBox(
                                     fit: BoxFit.cover,
-                                    child: Image.asset(
-                                      index == 0 ? ImagePathUtils.productImage_1 :
-                                      index == 1 ? ImagePathUtils.productImage_2 :
-                                      ImagePathUtils.pList_1,
+                                    child: Image.network(
+                                      singleProductResponseModel.value.data!.images![index],
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -649,31 +713,36 @@ class ProductDetailsScreenWidget extends GetxController {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
 
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Tanoor".tr,
-                              textAlign: TextAlign.start,
-                              style: GoogleFonts.tajawal(
-                                fontWeight: FontWeight.w700,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 22.spm(context),
-                                color: ColorUtils.black30,
-                              ),
-                            ),
-                          ),
+                         Expanded(
+                           child: Container(
+                             alignment: Alignment.centerLeft,
+                             child: Text(
+                               "${singleProductResponseModel.value.data?.name ?? ""}".tr,
+                               textAlign: TextAlign.start,
+                               style: GoogleFonts.tajawal(
+                                 fontWeight: FontWeight.w700,
+                                 fontStyle: FontStyle.normal,
+                                 fontSize: 22.spm(context),
+                                 color: ColorUtils.black30,
+                               ),
+                             ),
+                           ),
+                         ),
+                          SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
 
 
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              "1.900 OMR".tr,
-                              textAlign: TextAlign.start,
-                              style: GoogleFonts.tajawal(
-                                fontWeight: FontWeight.w700,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 22.spm(context),
-                                color: ColorUtils.black30,
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                "${singleProductResponseModel.value.data?.variations?[selectSize.value].price ?? ""} OMR(${singleProductResponseModel.value.data?.variations?[selectSize.value].size.toString().toUpperCase()})".tr,
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.tajawal(
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 22.spm(context),
+                                  color: ColorUtils.black30,
+                                ),
                               ),
                             ),
                           ),
@@ -689,7 +758,7 @@ class ProductDetailsScreenWidget extends GetxController {
                       Container(
                         alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                         child: Text(
-                          "Fresh oven bread stuffed with chicken or meat shawarma with special sauces and fresh vegetables.".tr,
+                          "${singleProductResponseModel.value.data?.description ?? ""}".tr,
                           textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                           style: GoogleFonts.tajawal(
                             fontWeight: FontWeight.w500,
@@ -806,7 +875,7 @@ class ProductDetailsScreenWidget extends GetxController {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: List.generate(
-                                      3,
+                                      singleProductResponseModel.value.data!.variations!.length,
                                       (index) {
                                         return Container(
                                           height: 32.hm(context),
@@ -829,7 +898,7 @@ class ProductDetailsScreenWidget extends GetxController {
                                               child: Container(
                                                 alignment: Alignment.center,
                                                 child: Text(
-                                                  index == 0 ? "SMALL".tr : index == 1 ? "MIDDLE".tr : "LARGE".tr,
+                                                  "${singleProductResponseModel.value.data?.variations?[index].size.toString().toUpperCase() ?? ""}".tr,
                                                   textAlign: TextAlign.start,
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w700,
@@ -977,7 +1046,8 @@ class ProductDetailsScreenWidget extends GetxController {
                   ),
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context),vertical: 10.vpmm(context)),
-                  child: Container(
+                  child: isSubmit.value == false ?
+                  Container(
                     height: 48.hm(context),
                     width: 358.wm(context),
                     decoration: BoxDecoration(
@@ -987,7 +1057,29 @@ class ProductDetailsScreenWidget extends GetxController {
                     child: TextButton(
                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                       onPressed: () async {
-                        Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        isSubmit.value = true;
+                        Map<String,dynamic> data = {
+                          "product": singleProductResponseModel.value.data?.sId,
+                          "quantity": quantity.value,
+                          "note": noteController.value.text,
+                          "size": singleProductResponseModel.value.data?.variations?[selectSize.value].size
+                        };
+                        print(data);
+                        await CartController.getCartResponse(
+                          data: data,
+                          onSuccess: (e) async {
+                            isSubmit.value = false;
+                            Get.off(()=>CartScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          },
+                          onFail: (e) async {
+                            isSubmit.value = false;
+                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                          },
+                          onExceptionFail: (e) async {
+                            isSubmit.value = false;
+                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                          },
+                        );
                       },
                       child: Center(
                         child: Row(
@@ -1030,13 +1122,21 @@ class ProductDetailsScreenWidget extends GetxController {
                         ),
                       ),
                     ),
+                  ) :
+                  Container(
+                    height: 48.hm(context),
+                    width: 358.wm(context),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                    ),
+                    child: Center(child: CircularProgressIndicator(),),
                   ),
                 ),
               )
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),)
       );
     }
