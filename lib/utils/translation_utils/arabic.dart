@@ -233,7 +233,7 @@ class Arabic {
     "Resend after": "أعد الإرسال بعد ",
     "See Order details": "مشاهدة تفاصيل الطلب",
     "Order details": "تفاصيل الطلب",
-    "Quantity 2": "الكمية : 2",
+    "Quantity:": "الكمية:",
     "Help Center": "مركز المساعدة",
     "Terms and Conditions": "الشروط والأحكام",
     "Change App Language": "تغيير لغة التطبيق",

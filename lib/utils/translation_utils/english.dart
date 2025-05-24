@@ -230,7 +230,7 @@ class English {
     "Resend after": "Resend after",
     "See Order details": "See Order details",
     "Order details": "Order details",
-    "Quantity 2": "Quantity 2",
+    "Quantity:": "Quantity:",
     "Help Center": "Help Center",
     "Terms and Conditions": "Terms and Conditions",
     "Change App Language": "Change App Language",

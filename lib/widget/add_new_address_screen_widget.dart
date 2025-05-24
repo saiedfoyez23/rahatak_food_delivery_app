@@ -11,6 +11,8 @@ class AddNewAddressScreenWidget extends GetxController {
   GoogleMapController? googleMapController;
   RxDouble updatedLat = 0.0.obs;
   RxDouble updatedLong = 0.0.obs;
+  Rx<TextEditingController> nameController = TextEditingController().obs;
+  Rx<TextEditingController> phoneNumberController = TextEditingController().obs;
   Rx<TextEditingController> governorateController = TextEditingController().obs;
   Rx<TextEditingController> stateController = TextEditingController().obs;
   Rx<TextEditingController> cityController = TextEditingController().obs;
@@ -688,6 +690,138 @@ class AddNewAddressScreenWidget extends GetxController {
 
                             SpacerWidget.spacerWidget(spaceHeight: 32.hm(context),),
 
+                            Container(
+                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                              child: Text(
+                                "Name*".tr,
+                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                style: GoogleFonts.tajawal(
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16.spm(context),
+                                  color: ColorUtils.black255,
+                                ),
+                              ),
+                            ),
+
+                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                            TextFormField(
+                              controller: nameController.value,
+                              textAlign: TextAlign.start,
+                              cursorColor: ColorUtils.blue192,
+                              cursorHeight: 20.hm(context),
+                              style: GoogleFonts.tajawal(
+                                fontSize: 16.spm(context),
+                                fontStyle: FontStyle.normal,
+                                color: ColorUtils.black51,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              textAlignVertical: TextAlignVertical.center,
+                              decoration: InputDecoration(
+                                hintText: "Enter your name".tr,
+                                hintStyle: GoogleFonts.tajawal(
+                                  fontSize: 16.spm(context),
+                                  fontWeight: FontWeight.w400,
+                                  fontStyle: FontStyle.normal,
+                                  color: ColorUtils.gray136,
+                                ),
+                                filled: true,
+                                fillColor: ColorUtils.white255,
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 12.hpmm(context),
+                                  vertical: 12.vpmm(context),
+                                ),
+                                constraints: BoxConstraints(
+                                  maxWidth: 358.wm(context),
+                                  maxHeight: 48.hm(context),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.rm(context)),
+                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.rm(context)),
+                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.rm(context)),
+                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                ),
+
+                              ),
+                            ),
+
+                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                            Container(
+                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                              child: Text(
+                                "Phone Number *".tr,
+                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                style: GoogleFonts.tajawal(
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16.spm(context),
+                                  color: ColorUtils.black255,
+                                ),
+                              ),
+                            ),
+
+                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                            TextFormField(
+                              controller: phoneNumberController.value,
+                              textAlign: TextAlign.start,
+                              cursorColor: ColorUtils.blue192,
+                              cursorHeight: 20.hm(context),
+                              style: GoogleFonts.tajawal(
+                                fontSize: 16.spm(context),
+                                fontStyle: FontStyle.normal,
+                                color: ColorUtils.black51,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              textAlignVertical: TextAlignVertical.center,
+                              decoration: InputDecoration(
+                                hintText: "+88017XXXXXXXX".tr,
+                                hintStyle: GoogleFonts.tajawal(
+                                  fontSize: 16.spm(context),
+                                  fontWeight: FontWeight.w400,
+                                  fontStyle: FontStyle.normal,
+                                  color: ColorUtils.gray136,
+                                ),
+                                filled: true,
+                                fillColor: ColorUtils.white255,
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 12.hpmm(context),
+                                  vertical: 12.vpmm(context),
+                                ),
+                                constraints: BoxConstraints(
+                                  maxWidth: 358.wm(context),
+                                  maxHeight: 48.hm(context),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.rm(context)),
+                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.rm(context)),
+                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.rm(context)),
+                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                ),
+
+                              ),
+                            ),
+
+
+                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
 
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
@@ -1014,6 +1148,9 @@ class AddNewAddressScreenWidget extends GetxController {
                   child: TextButton(
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                     onPressed: () async {
+                      if(isCheckIn.value == false) {
+
+                      }
                       Get.off(()=>OrderAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                     },
                     child: Center(

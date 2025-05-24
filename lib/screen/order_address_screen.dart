@@ -5,10 +5,10 @@ import 'package:rahatak_food_delivery_app/widget/widget.dart';
 
 class OrderAddressScreen extends StatelessWidget {
   OrderAddressScreen({super.key});
-  
-  OrderAddressScreenWidget orderAddressScreenWidget = Get.put(OrderAddressScreenWidget());
+
   @override
   Widget build(BuildContext context) {
+    OrderAddressScreenWidget orderAddressScreenWidget = Get.put(OrderAddressScreenWidget(context: context));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) {
