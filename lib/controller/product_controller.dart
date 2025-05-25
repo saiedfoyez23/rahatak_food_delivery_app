@@ -87,6 +87,44 @@ class ProductController {
   }
 
 
+
+  static Future<ProductsResponseModel> getProductSearchByCategoryResponse({
+    required String search,
+    required String categoryId,
+    required Function onSuccess,
+    required Function onFail,
+    required Function onExceptionFail,
+  }) async {
+    try {
+
+      final String accessToken = await LoginController.checkLocalLoginResponse().then((value) {
+        return value?.data?.accessToken;
+      });
+
+      var response = await dio.Dio().get(
+        "${AppApiUrlController.appApiUrlController()}/products?searchTerm=${search}&category=${categoryId}",
+        options: dio.Options(
+          headers: <String,String>{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ${accessToken}',
+          },
+        ),
+      );
+      if(response.statusCode == 200 || response.statusCode == 201) {
+        onSuccess(response.data["message"]);
+        return ProductsResponseModel.fromJson(response.data);
+      } else {
+        onFail(response.data["message"]);
+        return ProductsResponseModel();
+      }
+    } on dio.DioException catch (e) {
+      onExceptionFail(e.response?.data["message"]);
+      return ProductsResponseModel();
+    }
+  }
+
+
   static Future<ProductsResponseModel> getProductResponse({
     required Function onSuccess,
     required Function onFail,
@@ -100,6 +138,42 @@ class ProductController {
 
       var response = await dio.Dio().get(
         "${AppApiUrlController.appApiUrlController()}/products",
+        options: dio.Options(
+          headers: <String,String>{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ${accessToken}',
+          },
+        ),
+      );
+      if(response.statusCode == 200 || response.statusCode == 201) {
+        onSuccess(response.data["message"]);
+        return ProductsResponseModel.fromJson(response.data);
+      } else {
+        onFail(response.data["message"]);
+        return ProductsResponseModel();
+      }
+    } on dio.DioException catch (e) {
+      onExceptionFail(e.response?.data["message"]);
+      return ProductsResponseModel();
+    }
+  }
+
+
+  static Future<ProductsResponseModel> getSearchProductResponse({
+    required String search,
+    required Function onSuccess,
+    required Function onFail,
+    required Function onExceptionFail,
+  }) async {
+    try {
+
+      final String accessToken = await LoginController.checkLocalLoginResponse().then((value) {
+        return value?.data?.accessToken;
+      });
+
+      var response = await dio.Dio().get(
+        "${AppApiUrlController.appApiUrlController()}/products?searchTerm=${search}",
         options: dio.Options(
           headers: <String,String>{
             'Accept': 'application/json',

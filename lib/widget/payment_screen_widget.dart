@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -4373,7 +4375,7 @@ class PaymentScreenWidget extends GetxController {
                                                   Container(
                                                     alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                                     child: Text(
-                                                      "${"Size:".tr} ${cartResponseModel.value.data?[index].size.toString().toUpperCase() ?? ""}".tr,
+                                                      "${"Size:".tr} ${cartResponseModel.value.data?[index].size.toString().toUpperCase().tr ?? ""}".tr,
                                                       textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                                       style: GoogleFonts.tajawal(
                                                         fontWeight: FontWeight.w500,
@@ -4477,26 +4479,46 @@ class PaymentScreenWidget extends GetxController {
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: () async {
                     isLoading.value = true;
-                    Map<String,dynamic> data = {
-                      "address_id": addressId,
-                    };
-                    print(data);
-                    await OrderController.getOrderResponse(
-                      data: data,
-                      onSuccess: (e) async {
-                        isLoading.value = false;
-                        CustomSnackBar().successCustomSnackBar(context: context, message: e);
-                        Get.off(()=>OrderTrackScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                      },
-                      onFail: (e) {
-                        isLoading.value = false;
-                        CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                      },
-                      onExceptionFail: (e) {
-                        isLoading.value = false;
-                        CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                      },
-                    );
+                    if(addressId != "") {
+                      Map<String,dynamic> data = {
+                        "address_id": addressId,
+                      };
+                      print(data);
+                      await OrderController.getOrderResponse(
+                        data: data,
+                        onSuccess: (e) async {
+                          isLoading.value = false;
+                          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                          Get.off(()=>OrderTrackScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        },
+                        onFail: (e) {
+                          isLoading.value = false;
+                          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                        },
+                        onExceptionFail: (e) {
+                          isLoading.value = false;
+                          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                        },
+                      );
+                    } else {
+                      print(jsonEncode(data));
+                      await OrderController.getOrderResponse(
+                        data: data,
+                        onSuccess: (e) async {
+                          isLoading.value = false;
+                          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                          Get.off(()=>OrderTrackScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        },
+                        onFail: (e) {
+                          isLoading.value = false;
+                          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                        },
+                        onExceptionFail: (e) {
+                          isLoading.value = false;
+                          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                        },
+                      );
+                    }
                   },
                   child: Center(
                     child: Text(

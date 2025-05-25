@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rahatak_food_delivery_app/controller/address_controller.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
 import 'package:rahatak_food_delivery_app/model/model.dart';
 import 'package:rahatak_food_delivery_app/screen/add_new_address_screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
@@ -12,9 +16,80 @@ class OrderAddressScreenWidget extends GetxController {
 
   RxString addressId = "".obs;
   RxBool isLoading = false.obs;
+  RxString governorate = "".obs;
+  RxString state = "".obs;
+  RxString city = "".obs;
+  RxString phoneNumber = "".obs;
   BuildContext context;
   Rx<AddressesResponseModel> addressesResponseModel = AddressesResponseModel().obs;
   OrderAddressScreenWidget({required this.context});
+
+  GoogleMapController? googleMapController;
+  RxDouble updatedLat = 0.0.obs;
+  RxDouble updatedLong = 0.0.obs;
+
+  Future<Position> _determinePosition() async {
+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    return position;
+  }
+
+
+  Future<void> checkLocationPermission() async {
+    Future.delayed(const Duration(milliseconds: 500),() async {
+      LocationPermission permission;
+      var checkPermission = await Geolocator.checkPermission();
+      permission = await Geolocator.requestPermission();
+      print(permission);
+      if(permission == LocationPermission.denied){
+        await checkLocationPermission();
+      }else if(permission == LocationPermission.deniedForever){
+      }else {
+        await updateCurrentLocation();
+      }
+    });
+  }
+
+  Future<void> updateCurrentLocation() async {
+    try {
+      Position position = await _determinePosition();
+      googleMapController?.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+              target: LatLng(position.latitude, position.longitude),
+              zoom: 19.151926040649414
+          ),
+        ),
+      );
+
+      updatedLat.value = position.latitude;
+      updatedLong.value = position.longitude;
+      await _getAddressFromLatLng(position.latitude, position.longitude);
+
+      print(updatedLong.value);
+      print(updatedLat.value);
+
+    } catch (e) {
+      // Handle exceptions
+    }
+  }
+
+
+  Future<void> _getAddressFromLatLng(double lat, double lng) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
+      Placemark place = placemarks[0];
+      state.value = place.country ?? "";
+      governorate.value = place.administrativeArea ?? "";
+      city.value = place.subAdministrativeArea ?? "";
+      await ProfileController.checkLocalProfileResponse().then((value) {
+        if(value != null) {
+          phoneNumber.value = value.data?.contact ?? "";
+        }
+      });
+    } catch (e) {
+      print("Place in not found");
+    }
+  }
 
   @override
   void onInit() {
@@ -22,6 +97,7 @@ class OrderAddressScreenWidget extends GetxController {
     super.onInit();
     isLoading.value = true;
     Future.delayed(Duration(seconds: 1),() async {
+      await checkLocationPermission();
       await AddressController.getAddressResponse(
         onSuccess: (e) async {
           isLoading.value = false;
@@ -540,6 +616,7 @@ class OrderAddressScreenWidget extends GetxController {
                                   border:  addressId.value == addressesResponseModel.value.data?[index].sId ? Border.all(width: 0.5,color: ColorUtils.green142) : Border.all(width: 0.5,color: ColorUtils.gray190),
                                   borderRadius: BorderRadius.circular(10.rm(context)),
                                 ),
+                                margin: EdgeInsets.only(bottom: 10.bpmm(context)),
                                 child: TextButton(
                                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                   onPressed: () async {
@@ -618,7 +695,7 @@ class OrderAddressScreenWidget extends GetxController {
                                         child: TextButton(
                                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                           onPressed: () {
-                                            Get.off(()=>EditNewAddressScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                            Get.off(()=>EditNewAddressScreen(addressId: addressesResponseModel.value.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                                           },
                                           child: FittedBox(
                                             fit: BoxFit.cover,
@@ -654,7 +731,23 @@ class OrderAddressScreenWidget extends GetxController {
                             child: TextButton(
                               style: TextButton.styleFrom(padding: EdgeInsets.zero),
                               onPressed: () async {
-                                Get.off(()=>PaymentScreen(data: {},addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                Map<String,dynamic> data = {
+                                  "address_data": {
+                                    "title": "${city.value},${governorate.value},${state.value}",
+                                    "governorate": "${governorate.value}",
+                                    "state": "${state.value}",
+                                    "city": "${city.value}",
+                                    "location": {
+                                      "coordinates": [
+                                        updatedLat.value,
+                                        updatedLong.value,
+                                      ]
+                                    },
+                                    "phone": "${phoneNumber.value}"
+                                  }
+                                };
+                                print(data);
+                                Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,

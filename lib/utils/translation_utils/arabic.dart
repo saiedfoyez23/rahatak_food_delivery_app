@@ -291,6 +291,8 @@ class Arabic {
     "Email Address": "البريد الالكتروني",
     "Phone Number": "رقم الهاتف",
     "Name": "الاسم ",
+    "Your cart is empty!": "سلتك فارغة!",
+    "It looks like you haven't added any products yet. Add your favorite meals and enjoy a delicious experience!": "يبدو أنك لم تضف أي منتجات بعد. أضف وجباتك المفضلة واستمتع بتجربة لذيذة!"
   };
 
 

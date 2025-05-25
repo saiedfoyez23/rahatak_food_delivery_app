@@ -717,6 +717,75 @@ class CartScreenWidget extends GetxController {
             slivers: [
 
 
+              cartResponseModel.value.data?.isEmpty == true ?
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 844.hm(context),
+                  width: 390.wm(context),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 36.hpmm(context)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+
+                      Container(
+                        height: 64.hm(context),
+                        width: 64.wm(context),
+                        decoration: BoxDecoration(
+                            color: Colors.transparent
+                        ),
+                        child: FittedBox(
+                          fit: BoxFit.cover,
+                          child: Image.asset(
+                            ImagePathUtils.mdiCartOffIconImagePath,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+
+                      SpacerWidget.spacerWidget(spaceHeight: 12.hm(context)),
+
+
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Your cart is empty!".tr,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.tajawal(
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 18.spm(context),
+                            color: ColorUtils.blue181,
+                            height: (35.hm(context) / 18.spm(context)),
+                          ),
+                        ),
+                      ),
+
+
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "It looks like you haven't added any products yet. Add your favorite meals and enjoy a delicious experience!".tr,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.tajawal(
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 18.spm(context),
+                            color: ColorUtils.blue181,
+                            height: (35.hm(context) / 18.spm(context)),
+                          ),
+                        ),
+                      ),
+
+
+
+                    ],
+                  ),
+                ),
+              ) :
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
@@ -847,7 +916,7 @@ class CartScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "${"Size:".tr} ${cartResponseModel.value.data?[index].size.toString().toUpperCase() ?? ""}".tr,
+                                            "${"Size:".tr} ${cartResponseModel.value.data?[index].size.toString().toUpperCase().tr ?? ""}",
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,

@@ -9,11 +9,11 @@ class SearchResultScreen extends StatelessWidget {
   SearchResultScreen({super.key,required this.categoryId});
   final String categoryId;
 
-  SearchResultScreenWidget searchResultScreenWidget = Get.put(SearchResultScreenWidget());
 
 
   @override
   Widget build(BuildContext context) {
+    SearchResultScreenWidget searchResultScreenWidget = Get.put(SearchResultScreenWidget(context: context,categoryId: categoryId));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) async {
