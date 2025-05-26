@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "713426219548",
+    "project_id": "rahatakapp",
+    "storage_bucket": "rahatakapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713426219548:android:25083a3b65201fb9d4e5d9",
+        "android_client_info": {
+          "package_name": "com.example.rahatak_food_delivery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpqqrkQzlEt51mG2s5Z_Oo1BJNgeekGkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

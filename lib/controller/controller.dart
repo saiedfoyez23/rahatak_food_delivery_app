@@ -11,3 +11,5 @@ export 'product_controller.dart';
 export 'cart_controller.dart';
 export 'address_controller.dart';
 export 'order_controller.dart';
+export 'push_notification_controller.dart';
+export 'stores_controller.dart';

@@ -24,7 +24,7 @@ class StoresResponseModel {
 
 class StoresResponse {
   List<Stores>? data;
-  Meta? meta;
+  StoresMeta? meta;
 
   StoresResponse({this.data, this.meta});
 
@@ -35,7 +35,7 @@ class StoresResponse {
         data!.add(new Stores.fromJson(v));
       });
     }
-    meta = json['meta'] != null ? new Meta.fromJson(json['meta']) : null;
+    meta = json['meta'] != null ? new StoresMeta.fromJson(json['meta']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -60,7 +60,7 @@ class Stores {
   var description;
   var isActive;
   var isDeleted;
-  Location? location;
+  StoresLocation? location;
   var ratings;
   var status;
   var updatedAt;
@@ -99,7 +99,7 @@ class Stores {
     isActive = json['is_active'];
     isDeleted = json['is_deleted'];
     location = json['location'] != null
-        ? new Location.fromJson(json['location'])
+        ? new StoresLocation.fromJson(json['location'])
         : null;
     ratings = json['ratings'];
     status = json['status'];
@@ -169,13 +169,13 @@ class Categories {
   }
 }
 
-class Location {
+class StoresLocation {
   var type;
   List<double>? coordinates;
 
-  Location({this.type, this.coordinates});
+  StoresLocation({this.type, this.coordinates});
 
-  Location.fromJson(Map<String, dynamic> json) {
+  StoresLocation.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     coordinates = json['coordinates'].cast<double>();
   }
@@ -188,12 +188,12 @@ class Location {
   }
 }
 
-class Meta {
+class StoresMeta {
   var total;
 
-  Meta({this.total});
+  StoresMeta({this.total});
 
-  Meta.fromJson(Map<String, dynamic> json) {
+  StoresMeta.fromJson(Map<String, dynamic> json) {
     total = json['total'];
   }
 

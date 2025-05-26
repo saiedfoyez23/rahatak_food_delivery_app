@@ -8,3 +8,4 @@ export 'single_product_response_model.dart';
 export 'cart_response_model.dart';
 export 'addresses_response_model.dart';
 export 'single_address_response_model.dart';
+export 'stores_response_model.dart';

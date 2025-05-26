@@ -30,6 +30,7 @@ class AddNewAddressScreenWidget extends GetxController {
   }
 
 
+
   Future<void> updateCurrentLocation() async {
     try {
       Position position = await _determinePosition();
