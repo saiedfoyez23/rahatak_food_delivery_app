@@ -492,7 +492,7 @@ class HomeScreenWidget extends GetxController {
                     child: TextButton(
                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                       onPressed: () async {
-                        Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data?.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data!.data![index].sId!,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                       },
                       child: Column(
                         children: [
@@ -554,7 +554,7 @@ class HomeScreenWidget extends GetxController {
                                       fit: BoxFit.fill,
                                       child: storesResponseModel.value.data?.data?[index].image == null ?
                                       Image.asset(
-                                        ImagePathUtils.extraImageGrid_4,
+                                        ImagePathUtils.noImageIconImagePath,
                                         fit: BoxFit.fill,
                                         alignment: Alignment.center,
                                       ) :
@@ -669,10 +669,36 @@ class HomeScreenWidget extends GetxController {
 
                                     SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
 
+                                    storesResponseModel.value.data!.data![index].location != null ?
                                     FutureBuilder(
                                         future: calculateDistanceFromCurrentLocation(
                                           storesResponseModel.value.data!.data![index].location!.coordinates!.first,
                                           storesResponseModel.value.data!.data![index].location!.coordinates!.last,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          return Row(
+                                            children: [
+                                              Container(
+                                                alignment: Alignment.centerLeft,
+                                                child: Text(
+                                                  "${snapshot.data?.ceil()} km near you".tr,
+                                                  textAlign: TextAlign.start,
+                                                  style: GoogleFonts.tajawal(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 14.spm(context),
+                                                    color: ColorUtils.black30,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                    ) :
+                                    FutureBuilder(
+                                        future: calculateDistanceFromCurrentLocation(
+                                          storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.first,
+                                          storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.last,
                                         ),
                                         builder: (context, snapshot) {
                                           return Row(
@@ -1348,7 +1374,7 @@ class HomeScreenWidget extends GetxController {
                         child: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           onPressed: () async {
-                            Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data?.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data!.data![index].sId!,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                           },
                           child: Row(
                             children: [
@@ -1410,7 +1436,7 @@ class HomeScreenWidget extends GetxController {
                                           fit: BoxFit.fill,
                                           child: storesResponseModel.value.data?.data?[index].image == null ?
                                           Image.asset(
-                                            ImagePathUtils.extraImageGrid_4,
+                                            ImagePathUtils.noImageIconImagePath,
                                             fit: BoxFit.fill,
                                             alignment: Alignment.center,
                                           ) :
@@ -1525,11 +1551,36 @@ class HomeScreenWidget extends GetxController {
 
                                         SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
 
-
+                                        storesResponseModel.value.data?.data?[index].location != null ?
                                         FutureBuilder(
                                             future: calculateDistanceFromCurrentLocation(
                                               storesResponseModel.value.data!.data![index].location!.coordinates!.first,
                                               storesResponseModel.value.data!.data![index].location!.coordinates!.last,
+                                            ),
+                                            builder: (context, snapshot) {
+                                              return Row(
+                                                children: [
+                                                  Container(
+                                                    alignment: Alignment.centerLeft,
+                                                    child: Text(
+                                                      "${snapshot.data?.ceil()} km near you".tr,
+                                                      textAlign: TextAlign.start,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 14.spm(context),
+                                                        color: ColorUtils.black30,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            }
+                                        ) :
+                                        FutureBuilder(
+                                            future: calculateDistanceFromCurrentLocation(
+                                              storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.first,
+                                              storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.last,
                                             ),
                                             builder: (context, snapshot) {
                                               return Row(

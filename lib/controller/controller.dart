@@ -13,3 +13,4 @@ export 'address_controller.dart';
 export 'order_controller.dart';
 export 'push_notification_controller.dart';
 export 'stores_controller.dart';
+export 'rating_controller.dart';

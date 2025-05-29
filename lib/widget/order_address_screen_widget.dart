@@ -752,13 +752,13 @@ class OrderAddressScreenWidget extends GetxController {
                                 Map<String,dynamic> data = {
                                   "address_data": {
                                     "title": "${city.value},${governorate.value},${state.value}",
-                                    "governorate": "${governorate.value}",
+                                    "governorate": "al-batinah",
                                     "state": "${state.value}",
                                     "city": "${city.value}",
                                     "location": {
                                       "coordinates": [
-                                        updatedLat.value,
                                         updatedLong.value,
+                                        updatedLat.value,
                                       ]
                                     },
                                     "phone": "${phoneNumber.value}"

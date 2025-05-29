@@ -863,7 +863,6 @@ class SearchScreenWidget extends GetxController {
               ),
             ),
 
-
             isSubmit.value == false ?
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -899,10 +898,13 @@ class SearchScreenWidget extends GetxController {
                               ),
                               child: FittedBox(
                                 fit: BoxFit.fill,
-                                child: Image.network(
+                                child: productsResponseModel.value.data?.data?[index].images?.isEmpty == true || productsResponseModel.value.data?.data?[index].images == null?
+                                Image.asset(
+                                  ImagePathUtils.noImageImagePath,
+                                  fit: BoxFit.fill,
+                                ) : Image.network(
                                   productsResponseModel.value.data!.data![index].images!.first,
                                   fit: BoxFit.fill,
-                                  alignment: Alignment.center,
                                 ),
                               ),
                             ),

@@ -27,7 +27,7 @@ class SingleAddressResponse {
   var sId;
   var user;
   var title;
-  var governorate;
+  List<String>? governorate;
   var state;
   var city;
   var phone;
@@ -35,19 +35,18 @@ class SingleAddressResponse {
   var updatedAt;
   var iV;
 
-  SingleAddressResponse({
-    this.location,
-    this.sId,
-    this.user,
-    this.title,
-    this.governorate,
-    this.state,
-    this.city,
-    this.phone,
-    this.createdAt,
-    this.updatedAt,
-    this.iV
-  });
+  SingleAddressResponse(
+      {this.location,
+        this.sId,
+        this.user,
+        this.title,
+        this.governorate,
+        this.state,
+        this.city,
+        this.phone,
+        this.createdAt,
+        this.updatedAt,
+        this.iV});
 
   SingleAddressResponse.fromJson(Map<String, dynamic> json) {
     location = json['location'] != null
@@ -56,7 +55,7 @@ class SingleAddressResponse {
     sId = json['_id'];
     user = json['user'];
     title = json['title'];
-    governorate = json['governorate'];
+    governorate = json['governorate'].cast<String>();
     state = json['state'];
     city = json['city'];
     phone = json['phone'];

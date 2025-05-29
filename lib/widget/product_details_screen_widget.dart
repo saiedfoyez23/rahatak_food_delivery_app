@@ -662,7 +662,12 @@ class ProductDetailsScreenWidget extends GetxController {
                         ),
                         child: FittedBox(
                           fit: BoxFit.fill,
-                          child: Image.network(
+                          child:  singleProductResponseModel.value.data?.images?.isEmpty == true || singleProductResponseModel.value.data?.images == null ?
+                          Image.asset(
+                            ImagePathUtils.noImageImagePath,
+                            fit: BoxFit.fill,
+                          ) :
+                          Image.network(
                             singleProductResponseModel.value.data!.images![number.value],
                             fit: BoxFit.fill,
                           ),

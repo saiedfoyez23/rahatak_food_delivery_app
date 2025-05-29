@@ -178,7 +178,7 @@ class OrderHistoryScreenWidget extends GetxController {
                                     child: TextButton(
                                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                       onPressed: () async {
-                                        Get.off(()=>RatingAndReviewScreen(orderId: userWiseOrderListResponseModel.value.data?.data?[index].orderId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                        Get.off(()=>RatingAndReviewScreen(orderId: userWiseOrderListResponseModel.value.data?.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                                       },
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,

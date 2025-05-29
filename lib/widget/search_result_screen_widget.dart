@@ -11,8 +11,9 @@ import '../screen/screen.dart';
 class SearchResultScreenWidget extends GetxController {
 
   BuildContext context;
-  SearchResultScreenWidget({required this.context,required this.categoryId});
+  SearchResultScreenWidget({required this.context,required this.categoryId,required this.location});
   String categoryId;
+  String location;
   Rx<TextEditingController> searchController = TextEditingController().obs;
   RxBool isLoading = false.obs;
   RxBool isSubmit = false.obs;
@@ -58,23 +59,62 @@ class SearchResultScreenWidget extends GetxController {
     super.onInit();
     isLoading.value = true;
     Future.delayed(Duration(seconds: 1),() async {
-      await ProductController.getProductByCategoryResponse(
-        categoryId: categoryId,
-        onSuccess: (e) async {
-          isLoading.value = false;
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
-        },
-        onFail: (e) async {
-          isLoading.value = false;
-          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-        },
-        onExceptionFail: (e) async {
-          isLoading.value = false;
-          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-        },
-      ).then((value) {
-        productsResponseModel.value = value;
-      });
+      if(categoryId != "" && location != '') {
+        await ProductController.getProductByCategoryLocationResponse(
+          categoryId: categoryId,
+          locationId: location,
+          onSuccess: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().successCustomSnackBar(context: context, message: e);
+          },
+          onFail: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+          },
+          onExceptionFail: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+          },
+        ).then((value) {
+          productsResponseModel.value = value;
+        });
+      } else if(categoryId != "" && location == '') {
+        await ProductController.getProductByCategoryResponse(
+          categoryId: categoryId,
+          onSuccess: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().successCustomSnackBar(context: context, message: e);
+          },
+          onFail: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+          },
+          onExceptionFail: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+          },
+        ).then((value) {
+          productsResponseModel.value = value;
+        });
+      } else if(categoryId == "" && location != '') {
+        await ProductController.getProductByLocationResponse(
+          locationId: location,
+          onSuccess: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().successCustomSnackBar(context: context, message: e);
+          },
+          onFail: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+          },
+          onExceptionFail: (e) async {
+            isLoading.value = false;
+            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+          },
+        ).then((value) {
+          productsResponseModel.value = value;
+        });
+      }
     });
   }
 
@@ -589,10 +629,13 @@ class SearchResultScreenWidget extends GetxController {
                               ),
                               child: FittedBox(
                                 fit: BoxFit.fill,
-                                child: Image.network(
+                                child: productsResponseModel.value.data?.data?[index].images?.isEmpty == true || productsResponseModel.value.data?.data?[index].images == null?
+                                Image.asset(
+                                  ImagePathUtils.noImageImagePath,
+                                  fit: BoxFit.fill,
+                                ) : Image.network(
                                   productsResponseModel.value.data!.data![index].images!.first,
                                   fit: BoxFit.fill,
-                                  alignment: Alignment.center,
                                 ),
                               ),
                             ),
@@ -728,14 +771,13 @@ class SearchResultScreenWidget extends GetxController {
                 height: 45.hm(context),
                 width: 390.wm(context),
                 decoration: BoxDecoration(
-                  color: Colors.transparent
+                    color: Colors.transparent
                 ),
                 child: Center(
                   child: CircularProgressIndicator(),
                 ),
               ),
             ),
-
 
           ],
         ) :

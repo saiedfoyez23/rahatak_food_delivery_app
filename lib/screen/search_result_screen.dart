@@ -6,14 +6,15 @@ import '../utils/utils.dart';
 import '../widget/widget.dart';
 
 class SearchResultScreen extends StatelessWidget {
-  SearchResultScreen({super.key,required this.categoryId});
+  SearchResultScreen({super.key,required this.categoryId,required this.location});
   final String categoryId;
+  final String location;
 
 
 
   @override
   Widget build(BuildContext context) {
-    SearchResultScreenWidget searchResultScreenWidget = Get.put(SearchResultScreenWidget(context: context,categoryId: categoryId));
+    SearchResultScreenWidget searchResultScreenWidget = Get.put(SearchResultScreenWidget(context: context,categoryId: categoryId,location: location));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) async {

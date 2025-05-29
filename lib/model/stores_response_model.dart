@@ -24,7 +24,7 @@ class StoresResponseModel {
 
 class StoresResponse {
   List<Stores>? data;
-  StoresMeta? meta;
+  SingleStoreMeta? meta;
 
   StoresResponse({this.data, this.meta});
 
@@ -35,7 +35,7 @@ class StoresResponse {
         data!.add(new Stores.fromJson(v));
       });
     }
-    meta = json['meta'] != null ? new StoresMeta.fromJson(json['meta']) : null;
+    meta = json['meta'] != null ? new SingleStoreMeta.fromJson(json['meta']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -60,11 +60,14 @@ class Stores {
   var description;
   var isActive;
   var isDeleted;
-  StoresLocation? location;
+  SingleLocation? location;
   var ratings;
   var status;
   var updatedAt;
+  List<WorkingHours>? workingHours;
   var image;
+  var contact;
+  List<SingleStoreLocations>? locations;
 
   Stores({
     this.sId,
@@ -80,7 +83,10 @@ class Stores {
     this.ratings,
     this.status,
     this.updatedAt,
+    this.workingHours,
     this.image,
+    this.contact,
+    this.locations
   });
 
   Stores.fromJson(Map<String, dynamic> json) {
@@ -99,12 +105,25 @@ class Stores {
     isActive = json['is_active'];
     isDeleted = json['is_deleted'];
     location = json['location'] != null
-        ? new StoresLocation.fromJson(json['location'])
+        ? new SingleLocation.fromJson(json['location'])
         : null;
     ratings = json['ratings'];
     status = json['status'];
     updatedAt = json['updatedAt'];
+    if (json['working_hours'] != null) {
+      workingHours = <WorkingHours>[];
+      json['working_hours'].forEach((v) {
+        workingHours!.add(new WorkingHours.fromJson(v));
+      });
+    }
     image = json['image'];
+    contact = json['contact'];
+    if (json['locations'] != null) {
+      locations = <SingleStoreLocations>[];
+      json['locations'].forEach((v) {
+        locations!.add(new SingleStoreLocations.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -126,7 +145,15 @@ class Stores {
     data['ratings'] = this.ratings;
     data['status'] = this.status;
     data['updatedAt'] = this.updatedAt;
+    if (this.workingHours != null) {
+      data['working_hours'] =
+          this.workingHours!.map((v) => v.toJson()).toList();
+    }
     data['image'] = this.image;
+    data['contact'] = this.contact;
+    if (this.locations != null) {
+      data['locations'] = this.locations!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
@@ -169,13 +196,13 @@ class Categories {
   }
 }
 
-class StoresLocation {
+class SingleLocation {
   var type;
   List<double>? coordinates;
 
-  StoresLocation({this.type, this.coordinates});
+  SingleLocation({this.type, this.coordinates});
 
-  StoresLocation.fromJson(Map<String, dynamic> json) {
+  SingleLocation.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     coordinates = json['coordinates'].cast<double>();
   }
@@ -188,12 +215,72 @@ class StoresLocation {
   }
 }
 
-class StoresMeta {
+class WorkingHours {
+  var from;
+  var to;
+  var sId;
+
+  WorkingHours({this.from, this.to, this.sId});
+
+  WorkingHours.fromJson(Map<String, dynamic> json) {
+    from = json['from'];
+    to = json['to'];
+    sId = json['_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['from'] = this.from;
+    data['to'] = this.to;
+    data['_id'] = this.sId;
+    return data;
+  }
+}
+
+class SingleStoreLocations {
+  var governorate;
+  var state;
+  var locationLink;
+  SingleLocation? location;
+  var sId;
+
+  SingleStoreLocations({
+    this.governorate,
+    this.state,
+    this.locationLink,
+    this.location,
+    this.sId
+  });
+
+  SingleStoreLocations.fromJson(Map<String, dynamic> json) {
+    governorate = json['governorate'];
+    state = json['state'];
+    locationLink = json['location_link'];
+    location = json['location'] != null
+        ? new SingleLocation.fromJson(json['location'])
+        : null;
+    sId = json['_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['governorate'] = this.governorate;
+    data['state'] = this.state;
+    data['location_link'] = this.locationLink;
+    if (this.location != null) {
+      data['location'] = this.location!.toJson();
+    }
+    data['_id'] = this.sId;
+    return data;
+  }
+}
+
+class SingleStoreMeta {
   var total;
 
-  StoresMeta({this.total});
+  SingleStoreMeta({this.total});
 
-  StoresMeta.fromJson(Map<String, dynamic> json) {
+  SingleStoreMeta.fromJson(Map<String, dynamic> json) {
     total = json['total'];
   }
 

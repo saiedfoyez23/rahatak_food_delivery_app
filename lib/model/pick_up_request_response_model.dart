@@ -198,13 +198,15 @@ class PickUpProduct {
   var sId;
   var name;
   List<String>? images;
+  var ratings;
 
-  PickUpProduct({this.sId, this.name, this.images});
+  PickUpProduct({this.sId, this.name, this.images, this.ratings});
 
   PickUpProduct.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     name = json['name'];
     images = json['images'].cast<String>();
+    ratings = json['ratings'];
   }
 
   Map<String, dynamic> toJson() {
@@ -212,6 +214,7 @@ class PickUpProduct {
     data['_id'] = this.sId;
     data['name'] = this.name;
     data['images'] = this.images;
+    data['ratings'] = this.ratings;
     return data;
   }
 }

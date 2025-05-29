@@ -16,7 +16,7 @@ class PaymentScreenWidget extends GetxController {
 
   RxBool isProductListShow = false.obs;
   RxBool isVisaOrMastercard = false.obs;
-  RxBool isCash = false.obs;
+  RxBool isCash = true.obs;
   RxBool isCheckIn = false.obs;
   RxBool isLoading = false.obs;
   RxBool isSubmit = false.obs;

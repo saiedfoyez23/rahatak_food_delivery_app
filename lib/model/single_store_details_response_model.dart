@@ -26,31 +26,37 @@ class SingleStoreDetailsResponse {
   var sId;
   var name;
   var iV;
-  List<StoreCategories>? categories;
+  List<SingleCategories>? categories;
+  var contact;
   var cover;
   var createdAt;
   var description;
+  var image;
   var isActive;
   var isDeleted;
-  StoreLocation? location;
+  List<SingleLocations>? locations;
   var ratings;
   var status;
   var updatedAt;
+  List<VendorWorkingHours>? workingHours;
 
   SingleStoreDetailsResponse({
     this.sId,
     this.name,
     this.iV,
     this.categories,
+    this.contact,
     this.cover,
     this.createdAt,
     this.description,
+    this.image,
     this.isActive,
     this.isDeleted,
-    this.location,
+    this.locations,
     this.ratings,
     this.status,
     this.updatedAt,
+    this.workingHours
   });
 
   SingleStoreDetailsResponse.fromJson(Map<String, dynamic> json) {
@@ -58,22 +64,33 @@ class SingleStoreDetailsResponse {
     name = json['name'];
     iV = json['__v'];
     if (json['categories'] != null) {
-      categories = <StoreCategories>[];
+      categories = <SingleCategories>[];
       json['categories'].forEach((v) {
-        categories!.add(new StoreCategories.fromJson(v));
+        categories!.add(new SingleCategories.fromJson(v));
       });
     }
+    contact = json['contact'];
     cover = json['cover'];
     createdAt = json['createdAt'];
     description = json['description'];
+    image = json['image'];
     isActive = json['is_active'];
     isDeleted = json['is_deleted'];
-    location = json['location'] != null
-        ? new StoreLocation.fromJson(json['location'])
-        : null;
+    if (json['locations'] != null) {
+      locations = <SingleLocations>[];
+      json['locations'].forEach((v) {
+        locations!.add(new SingleLocations.fromJson(v));
+      });
+    }
     ratings = json['ratings'];
     status = json['status'];
     updatedAt = json['updatedAt'];
+    if (json['working_hours'] != null) {
+      workingHours = <VendorWorkingHours>[];
+      json['working_hours'].forEach((v) {
+        workingHours!.add(new VendorWorkingHours.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -84,29 +101,35 @@ class SingleStoreDetailsResponse {
     if (this.categories != null) {
       data['categories'] = this.categories!.map((v) => v.toJson()).toList();
     }
+    data['contact'] = this.contact;
     data['cover'] = this.cover;
     data['createdAt'] = this.createdAt;
     data['description'] = this.description;
+    data['image'] = this.image;
     data['is_active'] = this.isActive;
     data['is_deleted'] = this.isDeleted;
-    if (this.location != null) {
-      data['location'] = this.location!.toJson();
+    if (this.locations != null) {
+      data['locations'] = this.locations!.map((v) => v.toJson()).toList();
     }
     data['ratings'] = this.ratings;
     data['status'] = this.status;
     data['updatedAt'] = this.updatedAt;
+    if (this.workingHours != null) {
+      data['working_hours'] =
+          this.workingHours!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
 
-class StoreCategories {
+class SingleCategories {
   var sId;
   var name;
   var icon;
 
-  StoreCategories({this.sId, this.name, this.icon});
+  SingleCategories({this.sId, this.name, this.icon});
 
-  StoreCategories.fromJson(Map<String, dynamic> json) {
+  SingleCategories.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     name = json['name'];
     icon = json['icon'];
@@ -121,13 +144,51 @@ class StoreCategories {
   }
 }
 
-class StoreLocation {
+class SingleLocations {
+  var governorate;
+  var state;
+  var locationLink;
+  SingleVendorLocation? location;
+  var sId;
+
+  SingleLocations({
+    this.governorate,
+    this.state,
+    this.locationLink,
+    this.location,
+    this.sId,
+  });
+
+  SingleLocations.fromJson(Map<String, dynamic> json) {
+    governorate = json['governorate'];
+    state = json['state'];
+    locationLink = json['location_link'];
+    location = json['location'] != null
+        ? new SingleVendorLocation.fromJson(json['location'])
+        : null;
+    sId = json['_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['governorate'] = this.governorate;
+    data['state'] = this.state;
+    data['location_link'] = this.locationLink;
+    if (this.location != null) {
+      data['location'] = this.location!.toJson();
+    }
+    data['_id'] = this.sId;
+    return data;
+  }
+}
+
+class SingleVendorLocation {
   var type;
   List<double>? coordinates;
 
-  StoreLocation({this.type, this.coordinates});
+  SingleVendorLocation({this.type, this.coordinates});
 
-  StoreLocation.fromJson(Map<String, dynamic> json) {
+  SingleVendorLocation.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     coordinates = json['coordinates'].cast<double>();
   }
@@ -136,6 +197,28 @@ class StoreLocation {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['type'] = this.type;
     data['coordinates'] = this.coordinates;
+    return data;
+  }
+}
+
+class VendorWorkingHours {
+  var from;
+  var to;
+  var sId;
+
+  VendorWorkingHours({this.from, this.to, this.sId});
+
+  VendorWorkingHours.fromJson(Map<String, dynamic> json) {
+    from = json['from'];
+    to = json['to'];
+    sId = json['_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['from'] = this.from;
+    data['to'] = this.to;
+    data['_id'] = this.sId;
     return data;
   }
 }

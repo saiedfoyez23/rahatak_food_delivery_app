@@ -14,6 +14,8 @@ class CartScreenWidget extends GetxController {
   RxBool isIncrease = false.obs;
   RxBool isDecrease = false.obs;
   RxBool isDelete = false.obs;
+  RxString productId = "".obs;
+  RxString dProductId = "".obs;
   BuildContext context;
   CartScreenWidget({required this.context});
   Rx<CartResponseModel> cartResponseModel = CartResponseModel().obs;
@@ -44,6 +46,24 @@ class CartScreenWidget extends GetxController {
         },
         onExceptionFail: (e) async {
           isLoading.value = false;
+          if(e == "jwt expired") {
+            await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+            Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+            // LoginController.getAccessTokenResponse(
+            //   onSuccess: (e) async {
+            //     isLoading.value = false;
+            //     Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+            //   },
+            //   onFail: (e) async {
+            //     isLoading.value = false;
+            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+            //   },
+            //   onExceptionFail: (e) async {
+            //     isLoading.value = false;
+            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+            //   },
+            // );
+          }
           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
         },
       ).then((value) {
@@ -902,7 +922,7 @@ class CartScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "${(cartResponseModel.value.data?[index].quantity * cartResponseModel.value.data?[index].price)} ${"OMR".tr}",
+                                            "${double.parse((cartResponseModel.value.data?[index].quantity * cartResponseModel.value.data?[index].price).toString()).toStringAsFixed(2)} ${"OMR".tr}",
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -1191,6 +1211,15 @@ class CartScreenWidget extends GetxController {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
 
+                                            productId.value == cartResponseModel.value.data?[index].sId ?
+                                            Container(
+                                              height: 30.hm(context),
+                                              width: 30.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: Center(child: CircularProgressIndicator(),),
+                                            ) :
                                             Container(
                                               height: 20.hm(context),
                                               width: 20.wm(context),
@@ -1200,20 +1229,23 @@ class CartScreenWidget extends GetxController {
                                               child: TextButton(
                                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                 onPressed: isIncrease.value == true ? null : () async {
-                                                  isIncrease.value = true;
+                                                  productId.value = cartResponseModel.value.data?[index].sId;
                                                   await CartController.getCartProductIncreaseResponse(
                                                     productId: cartResponseModel.value.data?[index].sId,
                                                     onSuccess: (e) async {
                                                       await CartController.getCartProductResponse(
                                                         onSuccess: (e) async {
+                                                          productId.value = "";
                                                           isIncrease.value = false;
                                                           CustomSnackBar().successCustomSnackBar(context: context, message: e);
                                                         },
                                                         onFail: (e) async {
+                                                          productId.value = "";
                                                           isIncrease.value = false;
                                                           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
                                                         },
                                                         onExceptionFail: (e) async {
+                                                          productId.value = "";
                                                           isIncrease.value = false;
                                                           if(e == "jwt expired") {
                                                             await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
@@ -1264,6 +1296,7 @@ class CartScreenWidget extends GetxController {
                                               ),
                                             ),
 
+
                                             Container(
                                               alignment: Alignment.center,
                                               child: Text(
@@ -1278,7 +1311,15 @@ class CartScreenWidget extends GetxController {
                                               ),
                                             ),
 
-
+                                            dProductId.value == cartResponseModel.value.data?[index].sId ?
+                                            Container(
+                                              height: 30.hm(context),
+                                              width: 30.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: Center(child: CircularProgressIndicator(),),
+                                            ) :
                                             Container(
                                               height: 20.hm(context),
                                               width: 20.wm(context),
@@ -1289,19 +1330,23 @@ class CartScreenWidget extends GetxController {
                                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                 onPressed: isDecrease.value == true ? null : () async {
                                                   isDecrease.value = true;
+                                                  dProductId.value = cartResponseModel.value.data?[index].sId;
                                                   await CartController.getCartProductDecreaseResponse(
                                                     productId: cartResponseModel.value.data?[index].sId,
                                                     onSuccess: (e) async {
                                                       await CartController.getCartProductResponse(
                                                         onSuccess: (e) async {
+                                                          dProductId.value = "";
                                                           isDecrease.value = false;
                                                           CustomSnackBar().successCustomSnackBar(context: context, message: e);
                                                         },
                                                         onFail: (e) async {
+                                                          dProductId.value = "";
                                                           isDecrease.value = false;
                                                           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
                                                         },
                                                         onExceptionFail: (e) async {
+                                                          dProductId.value = "";
                                                           isDecrease.value = false;
                                                           if(e == "jwt expired") {
                                                             await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
@@ -1430,7 +1475,7 @@ class CartScreenWidget extends GetxController {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "${total.value} ${"OMR".tr}".tr,
+                                    "${total.value.toStringAsFixed(2)} ${"OMR".tr}".tr,
                                     textAlign: TextAlign.start,
                                     style:GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -1469,7 +1514,7 @@ class CartScreenWidget extends GetxController {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "${deliveryFee.value} ${"OMR".tr}".tr,
+                                    "${deliveryFee.value.toStringAsFixed(2)} ${"OMR".tr}".tr,
                                     textAlign: TextAlign.start,
                                     style:GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -1520,7 +1565,7 @@ class CartScreenWidget extends GetxController {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "${(total.value + deliveryFee.value)} ${"OMR".tr}".tr,
+                                    "${(total.value + deliveryFee.value).toStringAsFixed(2)} ${"OMR".tr}".tr,
                                     textAlign: TextAlign.start,
                                     style:GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w700,

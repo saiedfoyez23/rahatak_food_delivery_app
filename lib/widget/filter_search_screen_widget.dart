@@ -17,6 +17,7 @@ class FilterSearchScreenWidget extends GetxController {
   Rx<CategoriesResponseModel> categoriesResponseModel = CategoriesResponseModel().obs;
   RxString categoryId = "".obs;
   BuildContext context;
+  RxString governorate = "".obs;
   FilterSearchScreenWidget({required this.context});
 
   @override
@@ -683,6 +684,26 @@ class FilterSearchScreenWidget extends GetxController {
                           child: TextButton(
                             onPressed: () async {
                               bigIndex_1.value = index + 1 ;
+                              String location = locations[index];
+                              if(location == "Muscat") {
+                                governorate.value = 'muscat';
+                              } else if(location == "Al Batinah") {
+                                governorate.value = 'al-batinah';
+                              } else if(location == "Ad Dakhiliyah") {
+                                governorate.value = 'ad-dakhiliyah';
+                              } else if(location == "Musandam") {
+                                governorate.value = 'musandam';
+                              } else if(location == "Al Buraimi") {
+                                governorate.value = 'al-buraimi';
+                              } else if(location == "Sharkia") {
+                                governorate.value = 'sharkia';
+                              } else if(location == "Al Dhahirah") {
+                                governorate.value = 'al-dhahirah';
+                              } else if(location == "Al Wusta") {
+                                governorate.value = 'al-wusta';
+                              } else if(location == "Dhofar") {
+                                governorate.value = 'dhofar';
+                              }
                             },
                             style: TextButton.styleFrom(padding: EdgeInsets.zero),
                             child: Container(
@@ -811,7 +832,7 @@ class FilterSearchScreenWidget extends GetxController {
                           child: TextButton(
                             style: TextButton.styleFrom(padding: EdgeInsets.zero),
                             onPressed: () async {
-                              Get.off(()=>SearchResultScreen(categoryId: categoryId.value,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              Get.off(()=>SearchResultScreen(categoryId: categoryId.value,location: governorate.value,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                             },
                             child: Center(
                               child: Text(

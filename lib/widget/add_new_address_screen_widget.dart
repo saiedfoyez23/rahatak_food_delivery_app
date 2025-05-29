@@ -18,16 +18,31 @@ class AddNewAddressScreenWidget extends GetxController {
   RxDouble updatedLong = 0.0.obs;
   Rx<TextEditingController> nameController = TextEditingController().obs;
   Rx<TextEditingController> phoneNumberController = TextEditingController().obs;
-  Rx<TextEditingController> governorateController = TextEditingController().obs;
+  RxString governorate = "".obs;
   Rx<TextEditingController> stateController = TextEditingController().obs;
   Rx<TextEditingController> cityController = TextEditingController().obs;
   RxBool isCheckIn = false.obs;
   RxBool isLoading = false.obs;
 
+  RxInt bigIndex_1 = 0.obs;
+
   Future<Position> _determinePosition() async {
     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     return position;
   }
+
+
+  RxList<String> locations = <String>[
+    "Muscat",
+    "Al Batinah",
+    "Ad Dakhiliyah",
+    "Musandam",
+    //"Al Buraimi",
+    "Sharkia",
+    "Al Dhahirah",
+    "Al Wusta",
+    "Dhofar",
+  ].obs;
 
 
 
@@ -848,50 +863,72 @@ class AddNewAddressScreenWidget extends GetxController {
                           SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
 
 
-                          TextFormField(
-                            controller: governorateController.value,
-                            textAlign: TextAlign.start,
-                            cursorColor: ColorUtils.blue192,
-                            cursorHeight: 20.hm(context),
-                            style: GoogleFonts.tajawal(
-                              fontSize: 16.spm(context),
-                              fontStyle: FontStyle.normal,
-                              color: ColorUtils.black51,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            textAlignVertical: TextAlignVertical.center,
-                            decoration: InputDecoration(
-                              hintText: "Enter Governorate".tr,
-                              hintStyle: GoogleFonts.tajawal(
-                                fontSize: 16.spm(context),
-                                fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.normal,
-                                color: ColorUtils.gray136,
-                              ),
-                              filled: true,
-                              fillColor: ColorUtils.white255,
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 12.hpmm(context),
-                                vertical: 12.vpmm(context),
-                              ),
-                              constraints: BoxConstraints(
-                                maxWidth: 358.wm(context),
-                                maxHeight: 48.hm(context),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.rm(context)),
-                                borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.rm(context)),
-                                borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.rm(context)),
-                                borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                              ),
+                          Wrap(
+                            children: List.generate(locations.length, (index) {
+                              return SizedBox(
+                                height: 70.hm(context),
+                                width: 110.wm(context),
+                                child: TextButton(
+                                  onPressed: () async {
+                                    bigIndex_1.value = index + 1 ;
+                                    String location = locations[index];
+                                    if(location == "Muscat") {
+                                      governorate.value = 'muscat';
+                                    } else if(location == "Al Batinah") {
+                                      governorate.value = 'al-batinah';
+                                    } else if(location == "Ad Dakhiliyah") {
+                                      governorate.value = 'ad-dakhiliyah';
+                                    } else if(location == "Musandam") {
+                                      governorate.value = 'musandam';
+                                    } else if(location == "Al Buraimi") {
+                                      governorate.value = 'al-buraimi';
+                                    } else if(location == "Sharkia") {
+                                      governorate.value = 'sharkia';
+                                    } else if(location == "Al Dhahirah") {
+                                      governorate.value = 'al-dhahirah';
+                                    } else if(location == "Al Wusta") {
+                                      governorate.value = 'al-wusta';
+                                    } else if(location == "Dhofar") {
+                                      governorate.value = 'dhofar';
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                  child: Container(
+                                    height: 70.hm(context),
+                                    width: 110.wm(context),
+                                    decoration: BoxDecoration(
+                                      color: bigIndex_1.value == (index + 1) ? ColorUtils.blue192 : Colors.transparent,
+                                      borderRadius: BorderRadius.circular(8.rm(context)),
+                                      border: Border.all(color: ColorUtils.white217,width: 1),
+                                    ),
+                                    margin: EdgeInsets.only(bottom: 10.bpmm(context),right: 10.rpmm(context)),
+                                    padding: EdgeInsets.symmetric(horizontal: 5.hpmm(context),vertical: 5.vpmm(context)),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
 
-                            ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "${locations[index]}".tr,
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spm(context),
+                                              color: bigIndex_1.value == (index + 1) ? ColorUtils.white255 : ColorUtils.black51,
+                                            ),
+                                          ),
+                                        ),
+
+
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
                           ),
 
 
@@ -1161,7 +1198,7 @@ class AddNewAddressScreenWidget extends GetxController {
                       CustomSnackBar().errorCustomSnackBar(context: context, message: "Please address title");
                     } else if(cityController.value.text == "") {
                       CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter city name");
-                    } else if(governorateController.value.text == "") {
+                    } else if(governorate.value == "") {
                       CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter governorate name");
                     } else if(stateController.value.text == "") {
                       CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter state name");
@@ -1172,13 +1209,13 @@ class AddNewAddressScreenWidget extends GetxController {
                         Map<String,dynamic> data = {
                           "address_data": {
                             "title": "${nameController.value.text}",
-                            "governorate": "${governorateController.value.text}",
+                            "governorate": "${governorate.value}",
                             "state": "${stateController.value.text}",
                             "city": "${cityController.value.text}",
                             "location": {
                               "coordinates": [
-                                updatedLat.value,
                                 updatedLong.value,
+                                updatedLat.value,
                               ]
                             },
                             "phone": "${phoneNumberController.value.text}",
@@ -1190,13 +1227,13 @@ class AddNewAddressScreenWidget extends GetxController {
                         isLoading.value = true;
                         Map<String,dynamic> data = {
                           "title": "${nameController.value.text}",
-                          "governorate": "${governorateController.value.text}",
+                          "governorate": "${governorate.value}",
                           "state": "${stateController.value.text}",
                           "city": "${cityController.value.text}",
                           "location": {
                             "coordinates": [
-                              updatedLat.value,
                               updatedLong.value,
+                              updatedLat.value,
                             ]
                           },
                           "phone": "${phoneNumberController.value.text}",
@@ -1214,6 +1251,7 @@ class AddNewAddressScreenWidget extends GetxController {
                             CustomSnackBar().errorCustomSnackBar(context: context, message: "${e}");
                           },
                           onExceptionFail: (e) async {
+                            print(e);
                             isLoading.value = false;
                             if(e == "jwt expired") {
                               await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");

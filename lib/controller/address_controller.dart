@@ -81,6 +81,7 @@ class AddressController {
         onFail(response.data["message"]);
       }
     } on dio.DioException catch (e) {
+      print(e.response?.data);
       onExceptionFail(e.response?.data["message"]);
     }
   }

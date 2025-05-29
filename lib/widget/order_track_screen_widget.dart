@@ -510,7 +510,7 @@ class OrderTrackScreenWidget extends GetxController {
                                                 Container(
                                                   alignment: Alignment.centerLeft,
                                                   child: Text(
-                                                    "${pickUpRequestResponseModel.value.data?.rider?.ratings}".tr,
+                                                    "${pickUpRequestResponseModel.value.data?.rider?.ratings ?? ""}".tr,
                                                     textAlign: TextAlign.start,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -536,7 +536,7 @@ class OrderTrackScreenWidget extends GetxController {
                                         width: 40.wm(context),
                                         child: TextButton(
                                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                          onPressed: () async {
+                                          onPressed: pickUpRequestResponseModel.value.data?.rider?.contact == null ? null : () async {
                                             final Uri launchUri = Uri(
                                               scheme: 'tel',
                                               path: "${pickUpRequestResponseModel.value.data?.rider?.contact}",

@@ -12,6 +12,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
   Rx<ProductsResponseModel> productsResponseModel = ProductsResponseModel().obs;
   String storeId;
   BuildContext context;
+  RxBool isSubmit = false.obs;
   RestaurantDetailsScreenWidget({required this.storeId,required this.context});
   RxBool isLoading = false.obs;
 
@@ -24,7 +25,8 @@ class RestaurantDetailsScreenWidget extends GetxController {
       await StoresController.getSingleStoresResponse(
         storeId: storeId,
         onSuccess: (e) async {
-          await ProductController.getProductResponse(
+          await ProductController.getProductByStoreResponse(
+            storeId: storeId,
             onSuccess: (e) async {
               isLoading.value = false;
               CustomSnackBar().successCustomSnackBar(context: context, message: e);
@@ -135,8 +137,12 @@ class RestaurantDetailsScreenWidget extends GetxController {
                               ),
                               child: FittedBox(
                                 fit: BoxFit.fill,
-                                child: Image.asset(
-                                  ImagePathUtils.restaurantImage,
+                                child: singleStoreDetailsResponseModel.value.data?.cover == null ?
+                                Image.asset(
+                                  ImagePathUtils.noImageImagePath,
+                                  fit: BoxFit.fill,
+                                ) : Image.network(
+                                  singleStoreDetailsResponseModel.value.data!.cover!,
                                   fit: BoxFit.fill,
                                 ),
                               ),
@@ -225,18 +231,20 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                           height: 35.ht(context),
                                           width: 100.wt(context),
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(10.rt(context)),
-                                                topRight: Radius.circular(10.rt(context)),
-                                              ),
-                                              color: ColorUtils.yellow160
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10.rt(context)),
+                                              topRight: Radius.circular(10.rt(context)),
+                                            ),
+                                            color: singleStoreDetailsResponseModel.value.data?.status == "crowded" ? ColorUtils.yellow160 :
+                                            singleStoreDetailsResponseModel.value.data?.status == "available" ? ColorUtils.green142 :
+                                            ColorUtils.red211,
                                           ),
                                           padding: EdgeInsets.symmetric(vertical: 2.vpmt(context),horizontal: 2.hpmt(context)),
                                           alignment: Alignment.center,
                                           child: Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "Crowded".tr,
+                                              "${singleStoreDetailsResponseModel.value.data?.status}".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -263,12 +271,15 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                 bottomRight: Radius.circular(10.rt(context)),
                                               ),
                                             ),
-                                            child: FittedBox(
+                                            child:FittedBox(
                                               fit: BoxFit.fill,
-                                              child: Image.asset(
-                                                ImagePathUtils.extraImageGrid_2,
+                                              child: singleStoreDetailsResponseModel.value.data?.image == null ?
+                                              Image.asset(
+                                                ImagePathUtils.noImageImagePath,
                                                 fit: BoxFit.fill,
-                                                alignment: Alignment.center,
+                                              ) : Image.network(
+                                                singleStoreDetailsResponseModel.value.data!.image!,
+                                                fit: BoxFit.fill,
                                               ),
                                             ),
                                           ),
@@ -294,7 +305,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Shawarmac".tr,
+                                            "${singleStoreDetailsResponseModel.value.data?.name ?? ""}".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -308,156 +319,174 @@ class RestaurantDetailsScreenWidget extends GetxController {
 
                                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
 
-                                        Container(
-                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                          child: Text(
-                                            "Shawarma, fries, burgers".tr,
-                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                            style: GoogleFonts.tajawal(
-                                              fontWeight: FontWeight.w500,
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 14.spt(context),
-                                              color: ColorUtils.gray117,
-                                            ),
-                                          ),
+                                        Row(
+                                          children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
+                                            return Container(
+                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                              child: Text(
+                                                "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}, ".tr,
+                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spt(context),
+                                                  color: ColorUtils.gray117,
+                                                ),
+                                              ),
+                                            );
+                                          }),
                                         ),
 
+
                                         SpacerWidget.spacerWidget(spaceHeight: 10.ht(context)),
+
 
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-                                                Container(
-                                                  height: 18.ht(context),
-                                                  width: 17.wt(context),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  child: FittedBox(
-                                                    fit: BoxFit.cover,
-                                                    child: Image.asset(
-                                                      ImagePathUtils.starIconImagePath,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                            Container(
+                                              height: 18.ht(context),
+                                              width: 17.wt(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.starIconImagePath,
+                                                  fit: BoxFit.cover,
                                                 ),
-
-                                                SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
-
-                                                Container(
-                                                  alignment: Alignment.centerLeft,
-                                                  child: Text(
-                                                    "3.9".tr,
-                                                    textAlign: TextAlign.start,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 14.spt(context),
-                                                      color: ColorUtils.black30,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                              ),
                                             ),
 
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
 
-                                            SpacerWidget.spacerWidget(spaceWidth: 12.wt(context)),
-
-
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-
-
-                                                Container(
-                                                  height: 18.ht(context),
-                                                  width: 17.wt(context),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  child: FittedBox(
-                                                    fit: BoxFit.cover,
-                                                    child: Image.asset(
-                                                      ImagePathUtils.locationIconImagePath,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "${singleStoreDetailsResponseModel.value.data?.ratings ?? ""}".tr,
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spt(context),
+                                                  color: ColorUtils.black30,
                                                 ),
-
-                                                SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
-
-                                                Container(
-                                                  alignment: Alignment.centerLeft,
-                                                  child: Text(
-                                                    "Muscat, Al Khoudh".tr,
-                                                    textAlign: TextAlign.start,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 14.spt(context),
-                                                      color: ColorUtils.black30,
-                                                    ),
-                                                  ),
-                                                ),
-
-
-                                              ],
+                                              ),
                                             ),
-
-
-                                            SpacerWidget.spacerWidget(spaceWidth: 12.wt(context)),
-
-
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              children: [
-
-
-                                                Container(
-                                                  height: 18.ht(context),
-                                                  width: 17.wt(context),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  child: FittedBox(
-                                                    fit: BoxFit.cover,
-                                                    child: Image.asset(
-                                                      ImagePathUtils.timeIconImagePath,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
-
-                                                Container(
-                                                  alignment: Alignment.centerLeft,
-                                                  child: Text(
-                                                    "5:00 pm -11:00 pm".tr,
-                                                    textAlign: TextAlign.start,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 14.spt(context),
-                                                      color: ColorUtils.black30,
-                                                    ),
-                                                  ),
-                                                ),
-
-
-                                              ],
-                                            ),
-
                                           ],
                                         ),
+
+
+                                        SpacerWidget.spacerWidget(spaceWidth: 12.wt(context)),
+
+
+                                        singleStoreDetailsResponseModel.value.data?.locations != null ?
+                                        Column(
+                                          children: List.generate(singleStoreDetailsResponseModel.value.data!.locations!.length, (Index) {
+                                            return Column(
+                                              children: [
+                                                SpacerWidget.spacerWidget(spaceHeight: 5.ht(context)),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+
+
+                                                    Container(
+                                                      height: 18.ht(context),
+                                                      width: 17.wt(context),
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.transparent,
+                                                      ),
+                                                      child: FittedBox(
+                                                        fit: BoxFit.cover,
+                                                        child: Image.asset(
+                                                          ImagePathUtils.locationIconImagePath,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                                    Container(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: Text(
+                                                        "${singleStoreDetailsResponseModel.value.data?.locations?[Index].governorate ?? ""}, ${singleStoreDetailsResponseModel.value.data?.locations?[Index].state ?? ""}".tr,
+                                                        textAlign: TextAlign.start,
+                                                        style: GoogleFonts.tajawal(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontStyle: FontStyle.normal,
+                                                          fontSize: 14.spt(context),
+                                                          color: ColorUtils.black30,
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+                                                  ],
+                                                ),
+                                              ],
+                                            );
+                                          }),
+                                        ) :
+                                        SpacerWidget.spacerWidget(),
+
+
+
+                                        singleStoreDetailsResponseModel.value.data?.workingHours != null ?
+                                        Column(
+                                          children: List.generate(singleStoreDetailsResponseModel.value.data!.workingHours!.length, (Index) {
+                                            return Column(
+                                              children: [
+                                                SpacerWidget.spacerWidget(spaceHeight: 5.ht(context)),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+
+
+                                                    Container(
+                                                      height: 18.ht(context),
+                                                      width: 17.wt(context),
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.transparent,
+                                                      ),
+                                                      child: FittedBox(
+                                                        fit: BoxFit.cover,
+                                                        child: Image.asset(
+                                                          ImagePathUtils.timeIconImagePath,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                                    Container(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: Text(
+                                                        "${singleStoreDetailsResponseModel.value.data?.workingHours?[Index].from} - ${singleStoreDetailsResponseModel.value.data?.workingHours?[Index].to}".tr,
+                                                        textAlign: TextAlign.start,
+                                                        style: GoogleFonts.tajawal(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontStyle: FontStyle.normal,
+                                                          fontSize: 14.spt(context),
+                                                          color: ColorUtils.black30,
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+                                                  ],
+                                                ),
+                                              ],
+                                            );
+                                          }),
+                                        ) :
+                                        SpacerWidget.spacerWidget(),
 
 
                                       ],
@@ -546,136 +575,53 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                           ],
                                         ),
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-
-                                            Container(
-                                              height: 42.ht(context),
-                                              width: 150.wt(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Burger".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spt(context),
-                                                      color: ColorUtils.black33,
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
+                                              return Container(
+                                                height: 42.ht(context),
+                                                width: 150.wt(context),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.transparent,
+                                                ),
+                                                child: TextButton(
+                                                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                  onPressed: () async {
+                                                    isSubmit.value = true;
+                                                    await ProductController.getProductByCategoryResponse(
+                                                      categoryId: singleStoreDetailsResponseModel.value.data?.categories?[Index].sId,
+                                                      onSuccess: (e) async {
+                                                        Get.back();
+                                                        isSubmit.value = false;
+                                                        CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                      },
+                                                      onFail: (e) async {
+                                                        isSubmit.value = false;
+                                                        CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                      },
+                                                      onExceptionFail: (e) async {
+                                                        isSubmit.value = false;
+                                                        CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                      },
+                                                    ).then((value) {
+                                                      productsResponseModel.value = value;
+                                                    });
+                                                  },
+                                                  child: Center(
+                                                    child: Text(
+                                                      "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}".tr,
+                                                      textAlign: TextAlign.center,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 16.spt(context),
+                                                        color: ColorUtils.black33,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 42.ht(context),
-                                              width: 150.wt(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Pasta".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spt(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 42.ht(context),
-                                              width: 150.wt(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Shawarma".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spt(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 42.ht(context),
-                                              width: 150.wt(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Fries".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spt(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 42.ht(context),
-                                              width: 150.wt(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Drinks".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spt(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-
-                                          ],
+                                              );
+                                            })
                                         ),
                                       ),
                                     );
@@ -727,7 +673,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                         onPressed: () async {
-                          //Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          Get.off(()=>ProductDetailsScreen(productId: productsResponseModel.value.data?.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                         },
                         child: Column(
                           children: [
@@ -741,10 +687,13 @@ class RestaurantDetailsScreenWidget extends GetxController {
                               ),
                               child: FittedBox(
                                 fit: BoxFit.fill,
-                                child: Image.asset(
-                                  foodDetails[index].image,
+                                child: productsResponseModel.value.data?.data?[index].images?.isEmpty == true || productsResponseModel.value.data?.data?[index].images == null?
+                                Image.asset(
+                                  ImagePathUtils.noImageImagePath,
                                   fit: BoxFit.fill,
-                                  alignment: Alignment.center,
+                                ) : Image.network(
+                                  productsResponseModel.value.data!.data![index].images!.first,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                             ),
@@ -755,7 +704,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.center : Alignment.center,
                               child: Text(
-                                foodDetails[index].name.tr,
+                                "${productsResponseModel.value.data?.data?[index].name ?? ""}".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w700,
@@ -772,7 +721,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                             Container(
                               alignment: Get.locale.toString() == "en" ? Alignment.center : Alignment.center,
                               child: Text(
-                                foodDetails[index].description.tr,
+                                "${productsResponseModel.value.data?.data?[index].description ?? ""}".tr,
                                 textAlign: Get.locale.toString() == "en" ? TextAlign.center : TextAlign.center,
                                 style: GoogleFonts.tajawal(
                                   fontWeight: FontWeight.w500,
@@ -814,7 +763,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                     Container(
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        foodDetails[index].time.tr,
+                                        "${productsResponseModel.value.data?.data?[index].timeRequired ?? ""} ${"Minutes".tr}".tr,
                                         textAlign: TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -833,7 +782,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "${foodDetails[index].amount}".tr,
+                                    "${productsResponseModel.value.data?.data?[index].variations?.first.price ?? ""} ${"OMR".tr}(${productsResponseModel.value.data?.data?[index].variations?.first.size.toString().toUpperCase().tr})",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.tajawal(
                                       fontWeight: FontWeight.w500,
@@ -859,7 +808,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                       ),
                     );
                   },
-                  itemCount: foodDetails.length,
+                  itemCount: productsResponseModel.value.data?.data?.length,
                 ),
               ),
 
@@ -919,10 +868,10 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                 fit: BoxFit.fill,
                                 child: singleStoreDetailsResponseModel.value.data?.cover == null ?
                                 Image.asset(
-                                  ImagePathUtils.restaurantImage,
+                                  ImagePathUtils.noImageImagePath,
                                   fit: BoxFit.fill,
                                 ) : Image.network(
-                                  singleStoreDetailsResponseModel.value.data?.cover,
+                                  singleStoreDetailsResponseModel.value.data!.cover!,
                                   fit: BoxFit.fill,
                                 ),
                               ),
@@ -1053,10 +1002,13 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             ),
                                             child: FittedBox(
                                               fit: BoxFit.fill,
-                                              child: Image.asset(
-                                                ImagePathUtils.extraImageGrid_2,
+                                              child: singleStoreDetailsResponseModel.value.data?.image == null ?
+                                              Image.asset(
+                                                ImagePathUtils.noImageImagePath,
                                                 fit: BoxFit.fill,
-                                                alignment: Alignment.center,
+                                              ) : Image.network(
+                                                singleStoreDetailsResponseModel.value.data!.image!,
+                                                fit: BoxFit.fill,
                                               ),
                                             ),
                                           ),
@@ -1082,7 +1034,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                           child: Text(
-                                            "Shawarmac".tr,
+                                            "${singleStoreDetailsResponseModel.value.data?.name ?? ""}".tr,
                                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
@@ -1096,19 +1048,25 @@ class RestaurantDetailsScreenWidget extends GetxController {
 
                                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
 
-                                        Container(
-                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                          child: Text(
-                                            "Shawarma, fries, burgers".tr,
-                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                            style: GoogleFonts.tajawal(
-                                              fontWeight: FontWeight.w500,
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 14.spm(context),
-                                              color: ColorUtils.gray117,
-                                            ),
-                                          ),
+                                        Row(
+                                          children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
+                                            return Container(
+                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                              child: Text(
+                                                "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}, ".tr,
+                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.gray117,
+                                                ),
+                                              ),
+                                            );
+                                          }),
                                         ),
+
+
 
                                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
 
@@ -1138,7 +1096,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "3.9".tr,
+                                                "${singleStoreDetailsResponseModel.value.data?.ratings ?? ""}".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1157,93 +1115,110 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
 
 
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
+
+                                        singleStoreDetailsResponseModel.value.data?.locations != null ?
+                                        Column(
+                                          children: List.generate(singleStoreDetailsResponseModel.value.data!.locations!.length, (Index) {
+                                            return Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
 
 
-                                            Container(
-                                              height: 18.hm(context),
-                                              width: 17.wm(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: FittedBox(
-                                                fit: BoxFit.cover,
-                                                child: Image.asset(
-                                                  ImagePathUtils.locationIconImagePath,
-                                                  fit: BoxFit.cover,
+                                                Container(
+                                                  height: 18.hm(context),
+                                                  width: 17.wm(context),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  child: FittedBox(
+                                                    fit: BoxFit.cover,
+                                                    child: Image.asset(
+                                                      ImagePathUtils.locationIconImagePath,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
 
-                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+                                                SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
 
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                "Muscat, Al Khoudh".tr,
-                                                textAlign: TextAlign.start,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 14.spm(context),
-                                                  color: ColorUtils.black30,
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${singleStoreDetailsResponseModel.value.data?.locations?[Index].governorate ?? ""}, ${singleStoreDetailsResponseModel.value.data?.locations?[Index].state ?? ""}".tr,
+                                                    textAlign: TextAlign.start,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 14.spm(context),
+                                                      color: ColorUtils.black30,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
 
 
-                                          ],
-                                        ),
+                                              ],
+                                            );
+                                          }),
+                                        ) :
+                                        SpacerWidget.spacerWidget(),
+
 
 
                                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
 
 
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
+                                        singleStoreDetailsResponseModel.value.data?.workingHours != null ?
+                                        Column(
+                                          children: List.generate(singleStoreDetailsResponseModel.value.data!.workingHours!.length, (Index) {
+                                            return Column(
+                                              children: [
+                                                SpacerWidget.spacerWidget(spaceHeight: 5.hm(context)),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
 
 
-                                            Container(
-                                              height: 18.hm(context),
-                                              width: 17.wm(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: FittedBox(
-                                                fit: BoxFit.cover,
-                                                child: Image.asset(
-                                                  ImagePathUtils.timeIconImagePath,
-                                                  fit: BoxFit.cover,
+                                                    Container(
+                                                      height: 18.hm(context),
+                                                      width: 17.wm(context),
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.transparent,
+                                                      ),
+                                                      child: FittedBox(
+                                                        fit: BoxFit.cover,
+                                                        child: Image.asset(
+                                                          ImagePathUtils.timeIconImagePath,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+
+                                                    SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                                    Container(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: Text(
+                                                        "${singleStoreDetailsResponseModel.value.data?.workingHours?[Index].from} - ${singleStoreDetailsResponseModel.value.data?.workingHours?[Index].to}".tr,
+                                                        textAlign: TextAlign.start,
+                                                        style: GoogleFonts.tajawal(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontStyle: FontStyle.normal,
+                                                          fontSize: 14.spm(context),
+                                                          color: ColorUtils.black30,
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+                                                  ],
                                                 ),
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                "5:00 pm -11:00 pm".tr,
-                                                textAlign: TextAlign.start,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 14.spm(context),
-                                                  color: ColorUtils.black30,
-                                                ),
-                                              ),
-                                            ),
-
-
-                                          ],
-                                        ),
-
-
+                                              ],
+                                            );
+                                          }),
+                                        ) :
+                                        SpacerWidget.spacerWidget(),
 
 
 
@@ -1333,10 +1308,10 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                           ],
                                         ),
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-
-                                            Container(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
+                                            return Container(
                                               height: 42.hm(context),
                                               width: 150.wm(context),
                                               decoration: BoxDecoration(
@@ -1345,11 +1320,29 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                               child: TextButton(
                                                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                 onPressed: () async {
-                                                  Get.back();
+                                                  isSubmit.value = true;
+                                                  await ProductController.getProductByCategoryResponse(
+                                                    categoryId: singleStoreDetailsResponseModel.value.data?.categories?[Index].sId,
+                                                    onSuccess: (e) async {
+                                                      Get.back();
+                                                      isSubmit.value = false;
+                                                      CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                    },
+                                                    onFail: (e) async {
+                                                      isSubmit.value = false;
+                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                    },
+                                                    onExceptionFail: (e) async {
+                                                      isSubmit.value = false;
+                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                    },
+                                                  ).then((value) {
+                                                    productsResponseModel.value = value;
+                                                  });
                                                 },
                                                 child: Center(
                                                   child: Text(
-                                                    "Burger".tr,
+                                                    "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}".tr,
                                                     textAlign: TextAlign.center,
                                                     style: GoogleFonts.tajawal(
                                                       fontWeight: FontWeight.w500,
@@ -1360,109 +1353,8 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              height: 42.hm(context),
-                                              width: 150.wm(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Pasta".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spm(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 42.hm(context),
-                                              width: 150.wm(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Shawarma".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spm(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 42.hm(context),
-                                              width: 150.wm(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Fries".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spm(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 42.hm(context),
-                                              width: 150.wm(context),
-                                              decoration: BoxDecoration(
-                                                color: Colors.transparent,
-                                              ),
-                                              child: TextButton(
-                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                onPressed: () async {
-                                                  Get.back();
-                                                },
-                                                child: Center(
-                                                  child: Text(
-                                                    "Drinks".tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 16.spm(context),
-                                                      color: ColorUtils.black33,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-
-                                          ],
+                                            );
+                                          })
                                         ),
                                       ),
                                     );
@@ -1491,6 +1383,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
               ),
 
 
+              isSubmit.value == false ?
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (context,int index) {
@@ -1512,7 +1405,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                         child: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                           onPressed: () async {
-                            // Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            Get.off(()=>ProductDetailsScreen(productId: productsResponseModel.value.data?.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                           },
                           child: Row(
                             children: [
@@ -1525,10 +1418,13 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                 ),
                                 child: FittedBox(
                                   fit: BoxFit.fill,
-                                  child: Image.asset(
-                                    foodDetails[index].image,
+                                  child: productsResponseModel.value.data?.data?[index].images?.isEmpty == true || productsResponseModel.value.data?.data?[index].images == null?
+                                  Image.asset(
+                                    ImagePathUtils.noImageImagePath,
                                     fit: BoxFit.fill,
-                                    alignment: Alignment.center,
+                                  ) : Image.network(
+                                    productsResponseModel.value.data!.data![index].images!.first,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               ),
@@ -1547,7 +1443,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        foodDetails[index].name.tr,
+                                        "${productsResponseModel.value.data?.data?[index].name ?? ""}".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w700,
@@ -1564,7 +1460,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                     Container(
                                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                       child: Text(
-                                        foodDetails[index].description.tr,
+                                        "${productsResponseModel.value.data?.data?[index].description ?? ""}".tr,
                                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
                                         style: GoogleFonts.tajawal(
                                           fontWeight: FontWeight.w500,
@@ -1606,7 +1502,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                foodDetails[index].time.tr,
+                                                "${productsResponseModel.value.data?.data?[index].timeRequired ?? ""} ${"Minutes".tr}".tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1625,7 +1521,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                         Container(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            "${foodDetails[index].amount}".tr,
+                                            "${productsResponseModel.value.data?.data?[index].variations?.first.price ?? ""} ${"OMR".tr}(${productsResponseModel.value.data?.data?[index].variations?.first.size.toString().toUpperCase().tr})",
                                             textAlign: TextAlign.start,
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
@@ -1656,7 +1552,19 @@ class RestaurantDetailsScreenWidget extends GetxController {
                       ),
                     );
                   },
-                  childCount: foodDetails.length,
+                  childCount: productsResponseModel.value.data?.data?.length,
+                ),
+              ) :
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 45.hm(context),
+                  width: 390.wm(context),
+                  decoration: BoxDecoration(
+                      color: Colors.transparent
+                  ),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
               ),
 
