@@ -47,5 +47,32 @@ class LoginController {
   }
 
 
+  static Future<void> getAccessTokenResponse({
+    required Function onSuccess,
+    required Function onFail,
+    required Function onExceptionFail,
+  }) async {
+    try {
+      var response = await Dio().get(
+        "${AppApiUrlController.appApiUrlController()}/auth/get-access-token",
+        options: Options(
+          headers: <String,String>{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+      if(response.statusCode == 200 || response.statusCode == 201) {
+        await AppLocalStorageController.setSharedPreferencesString(key: "Login", stringValue: jsonEncode(response.data));
+        onSuccess(response.data["message"]);
+      } else {
+        onFail(response.data["message"]);
+      }
+    } on DioException catch (e) {
+      onExceptionFail(e.response?.data["message"]);
+    }
+  }
+
+
 
 }

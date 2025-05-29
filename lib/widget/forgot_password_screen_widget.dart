@@ -39,8 +39,8 @@ class ForgotPasswordScreenWidget extends GetxController {
   Widget forgotPasswordScreenWidget({required BuildContext context}) {
     return SafeArea(
       child: Container(
-        height: MediaQuery.sizeOf(context).height > 1000 ? 1133.ht(context) : 844.hm(context),
-        width: MediaQuery.sizeOf(context).width > 500 ? 744.wt(context) : 390.wm(context),
+        height: 844.hm(context),
+        width: 390.wm(context),
         decoration: BoxDecoration(
           color: ColorUtils.white255,
         ),
@@ -51,17 +51,13 @@ class ForgotPasswordScreenWidget extends GetxController {
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.sizeOf(context).height > 1000 ?
-                  37.hpmt(context) :
-                  16.hpmm(context),
+                  horizontal: 16.hpmm(context),
                 ),
                 child: Column(
                   children: [
       
                     SpacerWidget.spacerWidget(
-                      spaceHeight: MediaQuery.sizeOf(context).height > 1000 ?
-                      11.ht(context) :
-                      11.hm(context),
+                      spaceHeight: 11.hm(context),
                     ),
       
       
@@ -72,8 +68,8 @@ class ForgotPasswordScreenWidget extends GetxController {
                         children: [
 
                           Container(
-                            height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
-                            width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
+                            height: 40.hm(context),
+                            width: 40.wm(context),
                             decoration: BoxDecoration(
                                 color: Colors.transparent
                             ),
@@ -98,11 +94,11 @@ class ForgotPasswordScreenWidget extends GetxController {
                     ),
 
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 339.ht(context) : 200.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 200.hm(context)),
 
 
                     Container(
-                      width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
+                      width: 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
                         "Forgot your password?".tr,
@@ -110,16 +106,16 @@ class ForgotPasswordScreenWidget extends GetxController {
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 24.spt(context) : 24.spm(context),
+                          fontSize: 24.spm(context),
                           color: ColorUtils.black33,
                         ),
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 16.ht(context) : 16.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 16.hm(context)),
 
                     Container(
-                      width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
+                      width: 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
                         "Enter your registered email address, and we will send you a link to reset your password.".tr,
@@ -127,17 +123,15 @@ class ForgotPasswordScreenWidget extends GetxController {
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.normal,
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                          fontSize: 16.spm(context),
                           color: ColorUtils.black33,
-                          height: MediaQuery.sizeOf(context).height > 1000 ?
-                          (30.ht(context) / 16.spt(context)) :
-                          (30.hm(context) / 16.spm(context))
+                          height: (30.hm(context) / 16.spm(context))
                         ),
                       ),
                     ),
 
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 32.ht(context) : 32.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 32.hm(context)),
 
 
 
@@ -145,9 +139,9 @@ class ForgotPasswordScreenWidget extends GetxController {
                       controller: emailPhoneController.value,
                       textAlign: TextAlign.start,
                       cursorColor: ColorUtils.blue192,
-                      cursorHeight: MediaQuery.sizeOf(context).height > 1000 ? 20.ht(context) : 20.hm(context),
+                      cursorHeight: 20.hm(context),
                       style: GoogleFonts.tajawal(
-                        fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                        fontSize: 16.spm(context),
                         fontStyle: FontStyle.normal,
                         color: ColorUtils.black51,
                         fontWeight: FontWeight.w400,
@@ -157,7 +151,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                       decoration: InputDecoration(
                         hintText: "Enter your email".tr,
                         hintStyle: GoogleFonts.tajawal(
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                          fontSize: 16.spm(context),
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           color: ColorUtils.gray136,
@@ -166,38 +160,38 @@ class ForgotPasswordScreenWidget extends GetxController {
                         filled: true,
                         fillColor: ColorUtils.white255,
                         contentPadding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.sizeOf(context).width > 500 ? 12.hpmt(context) : 12.hpmm(context),
-                          vertical: MediaQuery.sizeOf(context).height > 1000 ? 12.vpmt(context) : 12.vpmm(context),
+                          horizontal: 12.hpmm(context),
+                          vertical: 12.vpmm(context),
                         ),
                         constraints: BoxConstraints(
-                          maxWidth: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                          maxHeight: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
+                          maxWidth: 358.wm(context),
+                          maxHeight: 48.hm(context),
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
                         ),
 
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 36.ht(context) : 36.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 36.hm(context)),
 
 
                     Container(
-                      height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                      width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
+                      height: 48.hm(context),
+                      width: 300.wm(context),
                       decoration: BoxDecoration(
                         color: ColorUtils.blue192,
-                        borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                        borderRadius: BorderRadius.circular(8.rm(context)),
                       ),
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -211,26 +205,26 @@ class ForgotPasswordScreenWidget extends GetxController {
                               builder: (context) {
                                 return Obx(()=>Padding(
                                   padding: EdgeInsets.symmetric(
-                                    vertical: MediaQuery.sizeOf(context).height > 1000 ? 350.vpmt(context) : 230.vpmm(context),
-                                    horizontal: MediaQuery.sizeOf(context).width > 500 ? 158.hpmt(context) : 16.hpmm(context),
+                                    vertical: 230.vpmm(context),
+                                    horizontal: 16.hpmm(context),
                                   ),
                                   child: Container(
-                                    width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wm(context),
-                                    height: MediaQuery.sizeOf(context).height > 1000 ? 270.ht(context) : 314.hm(context),
+                                    width: 358.wm(context),
+                                    height: 314.hm(context),
                                     decoration: BoxDecoration(
                                       color: ColorUtils.white255,
-                                      borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 16.rt(context) : 16.rm(context)),
+                                      borderRadius: BorderRadius.circular(16.rm(context)),
                                     ),
                                     padding: EdgeInsets.symmetric(
-                                      vertical: MediaQuery.sizeOf(context).height > 1000 ? 30.vpmt(context) : 30.vpmm(context),
-                                      horizontal: MediaQuery.sizeOf(context).width > 500 ? 20.hpmt(context) : 20.hpmm(context),
+                                      vertical: 30.vpmm(context),
+                                      horizontal: 20.hpmm(context),
                                     ),
                                     child: Column(
                                       children: [
 
 
                                         Container(
-                                          width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wm(context),
+                                          width: 358.wm(context),
                                           alignment: Alignment.center,
                                           child: Text(
                                             "A reset link has been sent!".tr,
@@ -238,15 +232,15 @@ class ForgotPasswordScreenWidget extends GetxController {
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w700,
                                               fontStyle: FontStyle.normal,
-                                              fontSize: MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 18.spm(context),
+                                              fontSize: 18.spm(context),
                                               color: ColorUtils.black33,
-                                              height: MediaQuery.sizeOf(context).height > 1000 ? (35.ht(context) / 18.spt(context)) : (35.hm(context) / 18.spm(context)),
+                                              height: (35.hm(context) / 18.spm(context)),
                                             ),
                                           ),
                                         ),
 
                                         Container(
-                                          width: MediaQuery.sizeOf(context).width > 500 ? 428.wt(context) : 358.wt(context),
+                                          width: 358.wt(context),
                                           alignment: Alignment.center,
                                           child: Text(
                                             "Please check your email to create a new password.".tr,
@@ -254,23 +248,23 @@ class ForgotPasswordScreenWidget extends GetxController {
                                             style: GoogleFonts.tajawal(
                                               fontWeight: FontWeight.w500,
                                               fontStyle: FontStyle.normal,
-                                              fontSize:  MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 16.spm(context),
+                                              fontSize: 16.spm(context),
                                               color: ColorUtils.black33,
-                                              height: MediaQuery.sizeOf(context).height > 1000 ? (35.ht(context) / 18.spt(context)) : (35.hm(context) / 16.spm(context)),
+                                              height: (35.hm(context) / 16.spm(context)),
                                             ),
                                           ),
                                         ),
 
-                                        SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 18.ht(context) : 18.hm(context)),
+                                        SpacerWidget.spacerWidget(spaceHeight: 18.hm(context)),
 
 
                                         onSubmit.value == false ?
                                         Container(
-                                          height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                                          width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
+                                          height: 48.hm(context),
+                                          width: 300.wm(context),
                                           decoration: BoxDecoration(
                                             color: ColorUtils.blue192,
-                                            borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                                            borderRadius: BorderRadius.circular(8.rm(context)),
                                           ),
                                           child: TextButton(
                                             style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -842,7 +836,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
                                                   fontStyle: FontStyle.normal,
-                                                  fontSize: MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 18.spm(context),
+                                                  fontSize: 18.spm(context),
                                                   color: ColorUtils.white255,
                                                 ),
                                               ),
@@ -850,24 +844,24 @@ class ForgotPasswordScreenWidget extends GetxController {
                                           ),
                                         ) :
                                         Container(
-                                          height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                                          width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
+                                          height: 48.hm(context),
+                                          width: 300.wm(context),
                                           decoration: BoxDecoration(
                                             color: Colors.transparent,
                                           ),
                                           child: Center(child: CircularProgressIndicator(),),
                                         ),
 
-                                        SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 18.ht(context) : 18.hm(context)),
+                                        SpacerWidget.spacerWidget(spaceHeight: 18.hm(context)),
 
 
                                         Container(
-                                          height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                                          width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
+                                          height: 48.hm(context),
+                                          width: 300.wm(context),
                                           decoration: BoxDecoration(
                                             border: Border.all(color: ColorUtils.gray136,width: 1),
                                             color: ColorUtils.white255,
-                                            borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                                            borderRadius: BorderRadius.circular(8.rm(context)),
                                           ),
                                           child: TextButton(
                                             style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -881,7 +875,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w700,
                                                   fontStyle: FontStyle.normal,
-                                                  fontSize: MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 18.spm(context),
+                                                  fontSize: 18.spm(context),
                                                   color: ColorUtils.black51,
                                                 ),
                                               ),
@@ -906,7 +900,7 @@ class ForgotPasswordScreenWidget extends GetxController {
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
-                              fontSize: MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 18.spm(context),
+                              fontSize: 18.spm(context),
                               color: ColorUtils.white255,
                             ),
                           ),

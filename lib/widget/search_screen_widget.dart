@@ -838,15 +838,15 @@ class SearchScreenWidget extends GetxController {
                               maxHeight: 48.hm(context),
                             ),
                             border:  OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                              borderRadius: BorderRadius.circular(8.rm(context)),
                               borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                              borderRadius: BorderRadius.circular(8.rm(context)),
                               borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                              borderRadius: BorderRadius.circular(8.rm(context)),
                               borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
                             ),
                           ),

@@ -290,6 +290,8 @@ class English {
     "Name": "Name",
     "Your cart is empty!": "Your cart is empty!",
     "It looks like you haven't added any products yet. Add your favorite meals and enjoy a delicious experience!": "It looks like you haven't added any products yet. Add your favorite meals and enjoy a delicious experience!",
+    "Order History": "Order History",
+    "Sign out": "Sign out",
   };
 
 

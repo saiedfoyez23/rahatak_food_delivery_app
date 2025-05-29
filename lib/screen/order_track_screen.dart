@@ -7,11 +7,9 @@ import '../widget/widget.dart';
 class OrderTrackScreen extends StatelessWidget {
   OrderTrackScreen({super.key});
 
-  OrderTrackScreenWidget orderTrackScreenWidget = Get.put(OrderTrackScreenWidget());
-
-
   @override
   Widget build(BuildContext context) {
+    OrderTrackScreenWidget orderTrackScreenWidget = Get.put(OrderTrackScreenWidget(context: context));
     return Scaffold(
       body: orderTrackScreenWidget.orderTrackScreenWidget(context: context),
       bottomNavigationBar: BottomNavigationBarWidget().bottomNavigationBarWidget(

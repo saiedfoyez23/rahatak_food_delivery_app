@@ -1,10 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
+import 'package:rahatak_food_delivery_app/model/model.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
 class RestaurantDetailsScreenWidget extends GetxController {
+
+  Rx<SingleStoreDetailsResponseModel> singleStoreDetailsResponseModel = SingleStoreDetailsResponseModel().obs;
+  Rx<ProductsResponseModel> productsResponseModel = ProductsResponseModel().obs;
+  String storeId;
+  BuildContext context;
+  RestaurantDetailsScreenWidget({required this.storeId,required this.context});
+  RxBool isLoading = false.obs;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    isLoading.value = true;
+    Future.delayed(Duration(seconds: 1),() async {
+      await StoresController.getSingleStoresResponse(
+        storeId: storeId,
+        onSuccess: (e) async {
+          await ProductController.getProductResponse(
+            onSuccess: (e) async {
+              isLoading.value = false;
+              CustomSnackBar().successCustomSnackBar(context: context, message: e);
+            },
+            onFail: (e) async {
+              isLoading.value = false;
+              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+            },
+            onExceptionFail: (e) async {
+              isLoading.value = false;
+              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+            },
+          ).then((value) {
+            productsResponseModel.value = value;
+          });
+        },
+        onFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+        onExceptionFail: (e) async {
+          isLoading.value = false;
+          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+        },
+      ).then((value) {
+        singleStoreDetailsResponseModel.value = value;
+      });
+    });
+  }
+
+
 
   RxList<FoodDetails> foodDetails = <FoodDetails>[
     FoodDetails(
@@ -38,14 +89,14 @@ class RestaurantDetailsScreenWidget extends GetxController {
 
   Widget restaurantDetailsScreenWidget({required BuildContext context}) {
     if(MediaQuery.sizeOf(context).height > 1000) {
-      return SafeArea(
+      return Obx(()=>SafeArea(
         child: Container(
           height: 1133.ht(context),
           width: 744.wt(context),
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
               SliverToBoxAdapter(
@@ -816,18 +867,18 @@ class RestaurantDetailsScreenWidget extends GetxController {
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
-      );
+      ));
     } else {
-      return SafeArea(
+      return Obx(()=>SafeArea(
         child: Container(
           height: 844.hm(context),
           width: 390.wm(context),
           decoration: BoxDecoration(
             color: ColorUtils.white248,
           ),
-          child: CustomScrollView(
+          child: isLoading.value == false ? CustomScrollView(
             slivers: [
 
               SliverToBoxAdapter(
@@ -852,7 +903,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                         height: 404.hm(context),
                         width: 390.wm(context),
                         decoration: BoxDecoration(
-                          color: Colors.transparent
+                            color: Colors.transparent
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -866,8 +917,12 @@ class RestaurantDetailsScreenWidget extends GetxController {
                               ),
                               child: FittedBox(
                                 fit: BoxFit.fill,
-                                child: Image.asset(
+                                child: singleStoreDetailsResponseModel.value.data?.cover == null ?
+                                Image.asset(
                                   ImagePathUtils.restaurantImage,
+                                  fit: BoxFit.fill,
+                                ) : Image.network(
+                                  singleStoreDetailsResponseModel.value.data?.cover,
                                   fit: BoxFit.fill,
                                 ),
                               ),
@@ -960,14 +1015,16 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                               topLeft: Radius.circular(10.rm(context)),
                                               topRight: Radius.circular(10.rm(context)),
                                             ),
-                                            color: ColorUtils.yellow160
+                                            color: singleStoreDetailsResponseModel.value.data?.status == "crowded" ? ColorUtils.yellow160 :
+                                            singleStoreDetailsResponseModel.value.data?.status == "available" ? ColorUtils.green142 :
+                                            ColorUtils.red211,
                                           ),
                                           padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
                                           alignment: Alignment.center,
                                           child: Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "Crowded".tr,
+                                              "${singleStoreDetailsResponseModel.value.data?.status ?? ""}".tr,
                                               textAlign: TextAlign.center,
                                               style: GoogleFonts.tajawal(
                                                 fontWeight: FontWeight.w700,
@@ -1437,138 +1494,119 @@ class RestaurantDetailsScreenWidget extends GetxController {
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                       (context,int index) {
-                        return Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 12.hpmm(context),
-                              vertical: 12.vpmm(context),
-                            ),
-                            decoration: BoxDecoration(
-                              color: ColorUtils.white255,
-                              borderRadius: BorderRadius.circular(12.rm(context)),
-                              border: Border.all(color: ColorUtils.white217,width: 1),
-                            ),
-                            margin: EdgeInsets.only(
-                              bottom: 10.bpmm(context),
-                            ),
-                            child: TextButton(
-                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                              onPressed: () async {
-                               // Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                              },
-                              child: Row(
-                                children: [
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12.hpmm(context),
+                          vertical: 12.vpmm(context),
+                        ),
+                        decoration: BoxDecoration(
+                          color: ColorUtils.white255,
+                          borderRadius: BorderRadius.circular(12.rm(context)),
+                          border: Border.all(color: ColorUtils.white217,width: 1),
+                        ),
+                        margin: EdgeInsets.only(
+                          bottom: 10.bpmm(context),
+                        ),
+                        child: TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                          onPressed: () async {
+                            // Get.off(()=>ProductDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          },
+                          child: Row(
+                            children: [
 
-                                  Container(
-                                    height: 100.hm(context),
-                                    width: 100.wm(context),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.rm(context)),
-                                    ),
-                                    child: FittedBox(
-                                      fit: BoxFit.fill,
-                                      child: Image.asset(
-                                        foodDetails[index].image,
-                                        fit: BoxFit.fill,
-                                        alignment: Alignment.center,
+                              Container(
+                                height: 100.hm(context),
+                                width: 100.wm(context),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.rm(context)),
+                                ),
+                                child: FittedBox(
+                                  fit: BoxFit.fill,
+                                  child: Image.asset(
+                                    foodDetails[index].image,
+                                    fit: BoxFit.fill,
+                                    alignment: Alignment.center,
+                                  ),
+                                ),
+                              ),
+
+
+                              SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+
+
+                                    Container(
+                                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                      child: Text(
+                                        foodDetails[index].name.tr,
+                                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 18.spm(context),
+                                          color: ColorUtils.black30,
+                                        ),
                                       ),
                                     ),
-                                  ),
 
 
-                                  SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
 
+                                    Container(
+                                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                      child: Text(
+                                        foodDetails[index].description.tr,
+                                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.spm(context),
+                                          color: ColorUtils.gray117,
+                                        ),
+                                      ),
+                                    ),
 
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
 
 
-                                        Container(
-                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                          child: Text(
-                                            foodDetails[index].name.tr,
-                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                            style: GoogleFonts.tajawal(
-                                              fontWeight: FontWeight.w700,
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 18.spm(context),
-                                              color: ColorUtils.black30,
-                                            ),
-                                          ),
-                                        ),
-
-
-                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-                                        Container(
-                                          alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                          child: Text(
-                                            foodDetails[index].description.tr,
-                                            textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
-                                            style: GoogleFonts.tajawal(
-                                              fontWeight: FontWeight.w500,
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 14.spm(context),
-                                              color: ColorUtils.gray117,
-                                            ),
-                                          ),
-                                        ),
-
-                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
 
-
-                                            Row(
-                                              children: [
-
-                                                Container(
-                                                  height: 18.hm(context),
-                                                  width: 17.wm(context),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  child: FittedBox(
-                                                    fit: BoxFit.cover,
-                                                    child: Image.asset(
-                                                      ImagePathUtils.timeIconImagePath,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
+                                            Container(
+                                              height: 18.hm(context),
+                                              width: 17.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.timeIconImagePath,
+                                                  fit: BoxFit.cover,
                                                 ),
-
-                                                SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-
-                                                Container(
-                                                  alignment: Alignment.centerLeft,
-                                                  child: Text(
-                                                    foodDetails[index].time.tr,
-                                                    textAlign: TextAlign.start,
-                                                    style: GoogleFonts.tajawal(
-                                                      fontWeight: FontWeight.w500,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontSize: 14.spm(context),
-                                                      color: ColorUtils.black30,
-                                                    ),
-                                                  ),
-                                                ),
-
-
-                                              ],
+                                              ),
                                             ),
 
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
 
                                             Container(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                "${foodDetails[index].amount}".tr,
+                                                foodDetails[index].time.tr,
                                                 textAlign: TextAlign.start,
                                                 style: GoogleFonts.tajawal(
                                                   fontWeight: FontWeight.w500,
@@ -1580,34 +1618,53 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             ),
 
 
-
-
-
                                           ],
                                         ),
 
-                                        SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "${foodDetails[index].amount}".tr,
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spm(context),
+                                              color: ColorUtils.black30,
+                                            ),
+                                          ),
+                                        ),
+
+
+
 
 
                                       ],
                                     ),
-                                  ),
 
-                                ],
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                  ],
+                                ),
                               ),
-                            ),
+
+                            ],
                           ),
-                        );
-                      },
+                        ),
+                      ),
+                    );
+                  },
                   childCount: foodDetails.length,
                 ),
               ),
 
 
             ],
-          ),
+          ) : Center(child: CircularProgressIndicator(),),
         ),
-      );
+      ));
     }
   }
 

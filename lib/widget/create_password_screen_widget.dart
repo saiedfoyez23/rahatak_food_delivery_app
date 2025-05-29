@@ -18,8 +18,8 @@ class CreatePasswordScreenWidget extends GetxController {
   Widget createPasswordScreenWidget({required BuildContext context,required String email}) {
     return Obx(()=>SafeArea(
       child: Container(
-        height: MediaQuery.sizeOf(context).height > 1000 ? 1133.ht(context) : 844.hm(context),
-        width: MediaQuery.sizeOf(context).width > 500 ? 744.wt(context) : 390.wm(context),
+        height: 844.hm(context),
+        width: 390.wm(context),
         decoration: BoxDecoration(
           color: ColorUtils.white255,
         ),
@@ -29,18 +29,14 @@ class CreatePasswordScreenWidget extends GetxController {
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.sizeOf(context).height > 1000 ?
-                  37.hpmt(context) :
-                  16.hpmm(context),
+                  horizontal: 16.hpmm(context),
                 ),
                 child: Column(
                   children: [
 
 
                     SpacerWidget.spacerWidget(
-                      spaceHeight: MediaQuery.sizeOf(context).height > 1000 ?
-                      11.ht(context) :
-                      11.hm(context),
+                      spaceHeight: 11.hm(context),
                     ),
 
 
@@ -51,8 +47,8 @@ class CreatePasswordScreenWidget extends GetxController {
                         children: [
 
                           Container(
-                            height: MediaQuery.sizeOf(context).height > 1000 ? 40.ht(context) : 40.hm(context),
-                            width: MediaQuery.sizeOf(context).width > 500 ? 40.wt(context) : 40.wm(context),
+                            height: 40.hm(context),
+                            width: 40.wm(context),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                             ),
@@ -75,10 +71,10 @@ class CreatePasswordScreenWidget extends GetxController {
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 297.ht(context) : 169.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 169.hm(context)),
 
                     Container(
-                      width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
+                      width: 358.wm(context),
                       alignment: Alignment.center,
                       child: Text(
                         "Enter new password".tr,
@@ -86,18 +82,18 @@ class CreatePasswordScreenWidget extends GetxController {
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 24.spt(context) : 24.spm(context),
+                          fontSize: 24.spm(context),
                           color: ColorUtils.black33,
                         ),
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 36.ht(context) : 36.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 36.hm(context)),
 
 
 
                     Container(
-                      width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
+                      width: 358.wm(context),
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
                         "New Password".tr,
@@ -105,13 +101,13 @@ class CreatePasswordScreenWidget extends GetxController {
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                          fontSize: 16.spm(context),
                           color: ColorUtils.black33,
                         ),
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 12.ht(context) : 12.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 12.hm(context)),
 
                     TextFormField(
                       controller: passwordController.value,
@@ -119,18 +115,18 @@ class CreatePasswordScreenWidget extends GetxController {
                       cursorColor: ColorUtils.blue192,
                       style: obscureText.value == true ?
                       GoogleFonts.openSans(
-                        fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                        fontSize: 16.spm(context),
                         fontStyle: FontStyle.normal,
                         color: ColorUtils.black51,
                         fontWeight: FontWeight.w400,
                       ) :
                       GoogleFonts.tajawal(
-                        fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                        fontSize: 16.spm(context),
                         fontStyle: FontStyle.normal,
                         color: ColorUtils.black51,
                         fontWeight: FontWeight.w400,
                       ),
-                      cursorHeight: MediaQuery.sizeOf(context).height > 1000 ? 20.ht(context) : 20.hm(context),
+                      cursorHeight: 20.hm(context),
                       obscureText: obscureText.value,
                       textAlignVertical: TextAlignVertical.center,
                       obscuringCharacter: "*",
@@ -138,21 +134,21 @@ class CreatePasswordScreenWidget extends GetxController {
                         alignLabelWithHint: true,
                         hintText: "********",
                         hintStyle: GoogleFonts.openSans(
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                          fontSize: 16.spm(context),
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           color: ColorUtils.gray136,
                         ),
                         filled: true,
                         suffixIcon: Container(
-                          height: MediaQuery.sizeOf(context).height > 1000 ? 24.ht(context) : 24.hm(context),
-                          width: MediaQuery.sizeOf(context).width > 500 ? 24.wt(context) : 24.wm(context),
+                          height: 24.hm(context),
+                          width: 24.wm(context),
                           padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.sizeOf(context).width > 500 ? 12.hpmt(context) : 12.hpmm(context),
-                            vertical: MediaQuery.sizeOf(context).height > 1000 ? 12.vpmt(context) : 12.vpmm(context),
+                            horizontal: 12.hpmm(context),
+                            vertical: 12.vpmm(context),
                           ),
                           decoration: BoxDecoration(
-                              color: Colors.transparent
+                            color: Colors.transparent,
                           ),
                           child: TextButton(
                             style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -177,23 +173,23 @@ class CreatePasswordScreenWidget extends GetxController {
                         ),
                         fillColor: ColorUtils.white255,
                         contentPadding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.sizeOf(context).width > 500 ? 12.hpmt(context) : 12.hpmm(context),
-                          vertical: MediaQuery.sizeOf(context).height > 1000 ? 12.vpmt(context) : 12.vpmm(context),
+                          horizontal: 12.hpmm(context),
+                          vertical: 12.vpmm(context),
                         ),
                         constraints: BoxConstraints(
-                          maxWidth: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                          maxHeight: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
+                          maxWidth: 358.wm(context),
+                          maxHeight: 48.hm(context),
                         ),
                         border:  OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
                         ),
 
@@ -201,11 +197,11 @@ class CreatePasswordScreenWidget extends GetxController {
                     ),
 
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 24.ht(context) : 24.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 24.hm(context)),
 
 
                     Container(
-                      width: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
+                      width: 358.wm(context),
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
                         "Confirm Password".tr,
@@ -213,13 +209,13 @@ class CreatePasswordScreenWidget extends GetxController {
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                          fontSize: 16.spm(context),
                           color: ColorUtils.black33,
                         ),
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 12.ht(context) : 12.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 12.hm(context)),
 
 
                     TextFormField(
@@ -228,18 +224,18 @@ class CreatePasswordScreenWidget extends GetxController {
                       cursorColor: ColorUtils.blue192,
                       style: confirmObscureText.value == true ?
                       GoogleFonts.openSans(
-                        fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                        fontSize: 16.spm(context),
                         fontStyle: FontStyle.normal,
                         color: ColorUtils.black51,
                         fontWeight: FontWeight.w400,
                       ) :
                       GoogleFonts.tajawal(
-                        fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                        fontSize: 16.spm(context),
                         fontStyle: FontStyle.normal,
                         color: ColorUtils.black51,
                         fontWeight: FontWeight.w400,
                       ),
-                      cursorHeight: MediaQuery.sizeOf(context).height > 1000 ? 20.ht(context) : 20.hm(context),
+                      cursorHeight: 20.hm(context),
                       obscureText: confirmObscureText.value,
                       textAlignVertical: TextAlignVertical.center,
                       obscuringCharacter: "*",
@@ -247,18 +243,18 @@ class CreatePasswordScreenWidget extends GetxController {
                         alignLabelWithHint: true,
                         hintText: "********",
                         hintStyle: GoogleFonts.openSans(
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                          fontSize: 16.spm(context),
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           color: ColorUtils.gray136,
                         ),
                         filled: true,
                         suffixIcon: Container(
-                          height: MediaQuery.sizeOf(context).height > 1000 ? 24.ht(context) : 24.hm(context),
-                          width: MediaQuery.sizeOf(context).width > 500 ? 24.wt(context) : 24.wm(context),
+                          height: 24.hm(context),
+                          width: 24.wm(context),
                           padding: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.sizeOf(context).width > 500 ? 12.hpmt(context) : 12.hpmm(context),
-                            vertical: MediaQuery.sizeOf(context).height > 1000 ? 12.vpmt(context) : 12.vpmm(context),
+                            horizontal: 12.hpmm(context),
+                            vertical: 12.vpmm(context),
                           ),
                           decoration: BoxDecoration(
                               color: Colors.transparent
@@ -286,23 +282,23 @@ class CreatePasswordScreenWidget extends GetxController {
                         ),
                         fillColor: ColorUtils.white255,
                         contentPadding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.sizeOf(context).width > 500 ? 12.hpmt(context) : 12.hpmm(context),
-                          vertical: MediaQuery.sizeOf(context).height > 1000 ? 12.vpmt(context) : 12.vpmm(context),
+                          horizontal: 12.hpmm(context),
+                          vertical: 12.vpmm(context),
                         ),
                         constraints: BoxConstraints(
-                          maxWidth: MediaQuery.sizeOf(context).width > 500 ? 468.wt(context) : 358.wm(context),
-                          maxHeight: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
+                          maxWidth: 358.wm(context),
+                          maxHeight: 48.hm(context),
                         ),
                         border:  OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                          borderRadius: BorderRadius.circular(8.rm(context)),
                           borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
                         ),
 
@@ -311,22 +307,22 @@ class CreatePasswordScreenWidget extends GetxController {
 
 
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 36.ht(context) : 36.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 36.hm(context)),
 
 
                       isSubmit.value == true ?  Container(
-                        height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                        width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
+                        height: 48.hm(context),
+                        width: 300.wm(context),
                         decoration: BoxDecoration(
                           color: Colors.transparent,
                         ),
                         child: Center(child: CircularProgressIndicator(),),
                       ) : Container(
-                      height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                      width: MediaQuery.sizeOf(context).width > 500 ? 300.wt(context) : 300.wm(context),
+                      height: 48.hm(context),
+                      width: 300.wm(context),
                       decoration: BoxDecoration(
                         color: ColorUtils.blue192,
-                        borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                        borderRadius: BorderRadius.circular(8.rm(context)),
                       ),
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -455,7 +451,7 @@ class CreatePasswordScreenWidget extends GetxController {
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
-                              fontSize: MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 18.spm(context),
+                              fontSize: 18.spm(context),
                               color: ColorUtils.white255,
                             ),
                           ),
@@ -463,7 +459,7 @@ class CreatePasswordScreenWidget extends GetxController {
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 36.ht(context) : 36.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 36.hm(context)),
 
 
                   ],

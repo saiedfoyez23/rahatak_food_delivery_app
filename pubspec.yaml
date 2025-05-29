@@ -37,8 +37,10 @@ dependencies:
   firebase_analytics: ^11.4.6
   firebase_messaging: ^15.2.6
   geocoding:
+  url_launcher: ^6.3.1
   google_maps_flutter:
   shared_preferences: ^2.5.3
+  webview_flutter: ^4.13.0
   flutter_local_notifications: ^19.2.1
   googleapis_auth: ^2.0.0
   image_picker: ^1.1.2

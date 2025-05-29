@@ -196,6 +196,42 @@ class ProductController {
   }
 
 
+  static Future<ProductsResponseModel> getStoreWiseProductResponse({
+    required String storeId,
+    required Function onSuccess,
+    required Function onFail,
+    required Function onExceptionFail,
+  }) async {
+    try {
+
+      final String accessToken = await LoginController.checkLocalLoginResponse().then((value) {
+        return value?.data?.accessToken;
+      });
+
+      var response = await dio.Dio().get(
+        "${AppApiUrlController.appApiUrlController()}/products?store=${storeId}",
+        options: dio.Options(
+          headers: <String,String>{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ${accessToken}',
+          },
+        ),
+      );
+      if(response.statusCode == 200 || response.statusCode == 201) {
+        onSuccess(response.data["message"]);
+        return ProductsResponseModel.fromJson(response.data);
+      } else {
+        onFail(response.data["message"]);
+        return ProductsResponseModel();
+      }
+    } on dio.DioException catch (e) {
+      onExceptionFail(e.response?.data["message"]);
+      return ProductsResponseModel();
+    }
+  }
+
+
   static Future<SingleProductResponseModel> getProductDetailsResponse({
     required String productId,
     required Function onSuccess,

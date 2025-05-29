@@ -6,6 +6,8 @@ import 'package:rahatak_food_delivery_app/model/model.dart';
 import 'package:rahatak_food_delivery_app/screen/order_address_screen.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
 
+import '../screen/screen.dart';
+
 class CartScreenWidget extends GetxController {
 
   RxBool isLoading = false.obs;
@@ -1058,6 +1060,24 @@ class CartScreenWidget extends GetxController {
                                                                         },
                                                                         onExceptionFail: (e) async {
                                                                           isDelete.value = false;
+                                                                          if(e == "jwt expired") {
+                                                                            await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+                                                                            Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                                            // LoginController.getAccessTokenResponse(
+                                                                            //   onSuccess: (e) async {
+                                                                            //     isLoading.value = false;
+                                                                            //     Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                                            //   },
+                                                                            //   onFail: (e) async {
+                                                                            //     isLoading.value = false;
+                                                                            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                            //   },
+                                                                            //   onExceptionFail: (e) async {
+                                                                            //     isLoading.value = false;
+                                                                            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                            //   },
+                                                                            // );
+                                                                          }
                                                                           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
                                                                           Get.back();
                                                                         },
@@ -1195,6 +1215,24 @@ class CartScreenWidget extends GetxController {
                                                         },
                                                         onExceptionFail: (e) async {
                                                           isIncrease.value = false;
+                                                          if(e == "jwt expired") {
+                                                            await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+                                                            Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                            // LoginController.getAccessTokenResponse(
+                                                            //   onSuccess: (e) async {
+                                                            //     isLoading.value = false;
+                                                            //     Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                            //   },
+                                                            //   onFail: (e) async {
+                                                            //     isLoading.value = false;
+                                                            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                            //   },
+                                                            //   onExceptionFail: (e) async {
+                                                            //     isLoading.value = false;
+                                                            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                            //   },
+                                                            // );
+                                                          }
                                                           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
                                                         },
                                                       ).then((value) {
@@ -1265,6 +1303,24 @@ class CartScreenWidget extends GetxController {
                                                         },
                                                         onExceptionFail: (e) async {
                                                           isDecrease.value = false;
+                                                          if(e == "jwt expired") {
+                                                            await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+                                                            Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                            // LoginController.getAccessTokenResponse(
+                                                            //   onSuccess: (e) async {
+                                                            //     isLoading.value = false;
+                                                            //     Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                                            //   },
+                                                            //   onFail: (e) async {
+                                                            //     isLoading.value = false;
+                                                            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                            //   },
+                                                            //   onExceptionFail: (e) async {
+                                                            //     isLoading.value = false;
+                                                            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                            //   },
+                                                            // );
+                                                          }
                                                           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
                                                         },
                                                       ).then((value) {

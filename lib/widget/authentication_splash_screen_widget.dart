@@ -10,8 +10,8 @@ class AuthenticationSplashScreenWidget extends GetxController {
   Widget authenticationSplashScreenWidget({required BuildContext context}) {
     return SafeArea(
       child: Container(
-        height: MediaQuery.sizeOf(context).height > 1000 ? 1133.ht(context) : 844.hm(context),
-        width: MediaQuery.sizeOf(context).width > 500 ? 744.wt(context) : 390.wm(context),
+        height: 844.hm(context),
+        width: 390.wm(context),
         decoration: BoxDecoration(
           color: ColorUtils.white255,
         ),
@@ -21,18 +21,14 @@ class AuthenticationSplashScreenWidget extends GetxController {
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.sizeOf(context).height > 1000 ?
-                  37.hpmt(context) :
-                  16.hpmm(context),
+                  horizontal: 16.hpmm(context),
                 ),
                 child: Column(
                   children: [
 
 
                     SpacerWidget.spacerWidget(
-                      spaceHeight: MediaQuery.sizeOf(context).height > 1000 ?
-                      11.ht(context) :
-                      11.hm(context),
+                      spaceHeight: 11.hm(context),
                     ),
 
 
@@ -41,8 +37,8 @@ class AuthenticationSplashScreenWidget extends GetxController {
                       children: [
 
                         Container(
-                          height: MediaQuery.sizeOf(context).height > 1000 ? 28.ht(context) : 24.hm(context),
-                          width: MediaQuery.sizeOf(context).width > 500 ? 28.wt(context) : 24.wm(context),
+                          height: 24.hm(context),
+                          width: 24.wm(context),
                           decoration: BoxDecoration(
                             color: Colors.transparent
                           ),
@@ -54,21 +50,17 @@ class AuthenticationSplashScreenWidget extends GetxController {
                                 builder: (context) {
                                   return Padding(
                                     padding: EdgeInsets.only(
-                                        top: MediaQuery.sizeOf(context).height > 1000 ? 50.tpmt(context) : 45.tpmm(context),
-                                        bottom: MediaQuery.sizeOf(context).height > 1000 ? 941.tpmt(context) : 667.tpmm(context),
-                                        left: Get.locale.toString() == "en" ?
-                                        MediaQuery.sizeOf(context).width > 500 ? 37.lpmt(context) : 16.lpmm(context) :
-                                        MediaQuery.sizeOf(context).width > 500 ? 557.rpmt(context) : 232.rpmm(context),
-                                        right: Get.locale.toString() == "en" ?
-                                        MediaQuery.sizeOf(context).width > 500 ? 557.rpmt(context) : 232.rpmm(context) :
-                                        MediaQuery.sizeOf(context).width > 500 ? 37.lpmt(context) : 16.lpmm(context)
+                                        top: 45.tpmm(context),
+                                        bottom: 667.tpmm(context),
+                                        left: Get.locale.toString() == "en" ? 16.lpmm(context) : 232.rpmm(context),
+                                        right: Get.locale.toString() == "en" ? 232.rpmm(context) : 16.lpmm(context),
                                     ),
                                     child: Container(
-                                      height: MediaQuery.sizeOf(context).height > 1000 ? 88.ht(context) : 88.hm(context),
-                                      width: MediaQuery.sizeOf(context).width > 500 ? 150.wt(context) : 150.wm(context),
+                                      height: 88.hm(context),
+                                      width: 150.wm(context),
                                       decoration: BoxDecoration(
                                         color: ColorUtils.white255,
-                                        borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 10.rt(context) : 10.rm(context)),
+                                        borderRadius: BorderRadius.circular(10.rm(context)),
                                         boxShadow: [
                                           BoxShadow(
                                             blurRadius: 4,
@@ -83,8 +75,8 @@ class AuthenticationSplashScreenWidget extends GetxController {
                                         children: [
 
                                           Container(
-                                            height: MediaQuery.sizeOf(context).height > 1000 ? 42.ht(context) : 42.hm(context),
-                                            width: MediaQuery.sizeOf(context).width > 500 ? 150.wt(context) : 150.wm(context),
+                                            height: 42.hm(context),
+                                            width: 150.wm(context),
                                             decoration: BoxDecoration(
                                               color: Colors.transparent,
                                             ),
@@ -101,7 +93,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
                                                     fontStyle: FontStyle.normal,
-                                                    fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                                                    fontSize: 16.spm(context),
                                                     color: ColorUtils.black33,
                                                   ),
                                                 ),
@@ -110,8 +102,8 @@ class AuthenticationSplashScreenWidget extends GetxController {
                                           ),
 
                                           Container(
-                                            height: MediaQuery.sizeOf(context).height > 1000 ? 42.ht(context) : 42.hm(context),
-                                            width: MediaQuery.sizeOf(context).width > 500 ? 150.wt(context) : 150.wm(context),
+                                            height: 42.hm(context),
+                                            width: 150.wm(context),
                                             decoration: BoxDecoration(
                                               color: Colors.transparent,
                                             ),
@@ -128,7 +120,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                                                   style: GoogleFonts.tajawal(
                                                     fontWeight: FontWeight.w500,
                                                     fontStyle: FontStyle.normal,
-                                                    fontSize: MediaQuery.sizeOf(context).height > 1000 ? 16.spt(context) : 16.spm(context),
+                                                    fontSize: 16.spm(context),
                                                     color: ColorUtils.black33,
                                                   ),
                                                 ),
@@ -159,12 +151,12 @@ class AuthenticationSplashScreenWidget extends GetxController {
                     ),
 
                     SpacerWidget.spacerWidget(
-                      spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 277.ht(context) : 108.hm(context),
+                      spaceHeight: 108.hm(context),
                     ),
 
                     Container(
-                      height: MediaQuery.sizeOf(context).height > 1000 ? 231.ht(context) : 186.hm(context),
-                      width: MediaQuery.sizeOf(context).width > 500 ? 345.wt(context) : 187.wm(context),
+                      height: 186.hm(context),
+                      width: 187.wm(context),
                       decoration: BoxDecoration(
                         color: Colors.transparent
                       ),
@@ -179,18 +171,16 @@ class AuthenticationSplashScreenWidget extends GetxController {
 
 
                     SpacerWidget.spacerWidget(
-                      spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 71.ht(context) : 78.hm(context),
+                      spaceHeight: 78.hm(context),
                     ),
 
 
                     Container(
-                      height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                      width: MediaQuery.sizeOf(context).width > 500 ? 391.wt(context) : 300.wm(context),
+                      height: 48.hm(context),
+                      width: 300.wm(context),
                       decoration: BoxDecoration(
                         color: ColorUtils.blue192,
-                        borderRadius: BorderRadius.circular(
-                          MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context),
-                        )
+                        borderRadius: BorderRadius.circular(8.rm(context),)
                       ),
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -204,7 +194,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
-                              fontSize: MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 18.spm(context),
+                              fontSize: 18.spm(context),
                               color: ColorUtils.white255
                             ),
                           ),
@@ -213,19 +203,17 @@ class AuthenticationSplashScreenWidget extends GetxController {
                     ),
 
                     SpacerWidget.spacerWidget(
-                      spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 16.ht(context) : 16.hm(context),
+                      spaceHeight: 16.hm(context),
                     ),
 
 
                     Container(
-                      height: MediaQuery.sizeOf(context).height > 1000 ? 52.ht(context) : 48.hm(context),
-                      width: MediaQuery.sizeOf(context).width > 500 ? 391.wt(context) : 300.wm(context),
+                      height: 48.hm(context),
+                      width: 300.wm(context),
                       decoration: BoxDecoration(
                         border: Border.all(color: ColorUtils.gray136,width: 1),
                         color: ColorUtils.white255,
-                        borderRadius: BorderRadius.circular(
-                          MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context),
-                        ),
+                        borderRadius: BorderRadius.circular(8.rm(context),),
                       ),
                       child: TextButton(
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -239,7 +227,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                             style: GoogleFonts.tajawal(
                               fontWeight: FontWeight.w700,
                               fontStyle: FontStyle.normal,
-                              fontSize: MediaQuery.sizeOf(context).height > 1000 ? 18.spt(context) : 18.spm(context),
+                              fontSize: 18.spm(context),
                               color: ColorUtils.black51,
                             ),
                           ),
@@ -248,7 +236,7 @@ class AuthenticationSplashScreenWidget extends GetxController {
                     ),
 
 
-                    SpacerWidget.spacerWidget(spaceHeight:  MediaQuery.sizeOf(context).height > 1000 ? 260.ht(context) : 201.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 201.hm(context)),
 
 
                     Container(
@@ -259,13 +247,13 @@ class AuthenticationSplashScreenWidget extends GetxController {
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
-                          fontSize: MediaQuery.sizeOf(context).height > 1000 ? 14.spt(context) : 14.spm(context),
+                          fontSize: 14.spm(context),
                           color: ColorUtils.gray163,
                         ),
                       ),
                     ),
 
-                    SpacerWidget.spacerWidget(spaceHeight: MediaQuery.sizeOf(context).height > 1000 ? 8.ht(context) : 8.hm(context)),
+                    SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
 
                   ],
                 ),

@@ -112,6 +112,24 @@ class OrderAddressScreenWidget extends GetxController {
         },
         onExceptionFail: (e) async {
           isLoading.value = false;
+          if(e == "jwt expired") {
+            await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
+            Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+            // LoginController.getAccessTokenResponse(
+            //   onSuccess: (e) async {
+            //     isLoading.value = false;
+            //     Get.off(()=>ProfileScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+            //   },
+            //   onFail: (e) async {
+            //     isLoading.value = false;
+            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+            //   },
+            //   onExceptionFail: (e) async {
+            //     isLoading.value = false;
+            //     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+            //   },
+            // );
+          }
           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
         },
       );

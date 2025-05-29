@@ -27,3 +27,4 @@ export 'change_password_screen.dart';
 export 'payment_methods_screen.dart';
 export 'manage_address_screen.dart';
 export 'personal_information_screen.dart';
+export 'order_history_screen.dart';

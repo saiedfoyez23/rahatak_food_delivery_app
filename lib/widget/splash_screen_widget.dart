@@ -28,8 +28,8 @@ class SplashScreenWidget extends GetxController {
 
   Widget splashScreenWidget({required BuildContext context}) {
     return Container(
-      height: MediaQuery.sizeOf(context).height > 1000 ? 1133.ht(context) : 844.hm(context),
-      width: MediaQuery.sizeOf(context).width > 500 ? 744.wt(context) : 390.wm(context),
+      height: 844.hm(context),
+      width: 390.wm(context),
       decoration: BoxDecoration(
         color: ColorUtils.white255,
       ),
@@ -40,8 +40,8 @@ class SplashScreenWidget extends GetxController {
 
 
           Container(
-            height: MediaQuery.sizeOf(context).height > 1000 ? 319.ht(context) :229.hm(context),
-            width: MediaQuery.sizeOf(context).width > 500 ? 439.wt(context) : 229.wm(context),
+            height: 229.hm(context),
+            width: 229.wm(context),
             decoration: BoxDecoration(
               color: Colors.transparent
             ),
