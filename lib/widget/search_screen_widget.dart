@@ -900,10 +900,10 @@ class SearchScreenWidget extends GetxController {
                                 child: productsResponseModel.value.data?.data?[index].images?.isEmpty == true || productsResponseModel.value.data?.data?[index].images == null?
                                 Image.asset(
                                   ImagePathUtils.noImageImagePath,
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 ) : Image.network(
                                   productsResponseModel.value.data!.data![index].images!.first,
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),

@@ -206,8 +206,12 @@ class OrderController {
         ),
       );
       print(response.data);
-      if(response.statusCode == 200 || response.statusCode == 201) {
-        onSuccess(response.data["message"]);
+      if(response.statusCode == 200) {
+        if(response.data["success"] == true) {
+          onSuccess(response.data["message"]);
+        } else {
+          onFail(response.data["message"]);
+        }
       } else {
         onFail(response.data["message"]);
       }

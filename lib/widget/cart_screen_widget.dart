@@ -885,9 +885,14 @@ class CartScreenWidget extends GetxController {
                                     ),
                                     child: FittedBox(
                                       fit: BoxFit.fill,
-                                      child: Image.network(
+                                      child: cartResponseModel.value.data?[index].product?.images?.isEmpty == true || cartResponseModel.value.data?[index].product?.images == null ?
+                                      Image.asset(
+                                        ImagePathUtils.noImageImagePath,
+                                        fit: BoxFit.cover,
+                                      ) :
+                                      Image.network(
                                         cartResponseModel.value.data![index].product!.images!.first,
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.cover,
                                         alignment: Alignment.center,
                                       ),
                                     ),
