@@ -346,7 +346,7 @@ class OrderHistoryScreenWidget extends GetxController {
                                           ),
                                           child: FittedBox(
                                             fit: BoxFit.fill,
-                                            child: userWiseOrderListResponseModel.value.data?.data?[index].items?[Index].product?.images != null ?
+                                            child: userWiseOrderListResponseModel.value.data?.data?[index].items?[Index].product?.images != null  && userWiseOrderListResponseModel.value.data?.data?[index].items?[Index].product?.images?.isEmpty != true ?
                                             Image.network(
                                               userWiseOrderListResponseModel.value.data!.data![index].items![Index].product!.images!.first,
                                               fit: BoxFit.cover,

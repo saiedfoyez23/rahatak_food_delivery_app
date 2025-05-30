@@ -31,9 +31,11 @@ class CartController {
       if(response.statusCode == 200 || response.statusCode == 201) {
         onSuccess(response.data["message"]);
       } else {
+        print(response.data);
         onFail(response.data["message"]);
       }
     } on DioException catch (e) {
+      print(e);
       onExceptionFail(e.response?.data["message"]);
     }
   }

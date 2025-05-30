@@ -55,9 +55,9 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  await PushNotificationController.getAccessToken().then((value){
-    print(value);
-  });
+  // await PushNotificationController.getAccessToken().then((value){
+  //   print(value);
+  // });
 
   //initialize firebase messaging
 
