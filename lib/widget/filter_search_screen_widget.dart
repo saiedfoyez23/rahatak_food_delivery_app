@@ -29,7 +29,6 @@ class FilterSearchScreenWidget extends GetxController {
       await ProductController.getCategoriesResponse(
         onSuccess: (e) async {
           isLoading.value = false;
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
           await ProductController.checkLocalCategoriesResponse().then((value) {
             if(value?.data != null) {
               categoriesResponseModel.value = value!;

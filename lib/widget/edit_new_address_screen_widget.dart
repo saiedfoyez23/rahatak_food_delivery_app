@@ -110,7 +110,6 @@ class EditNewAddressScreenWidget extends GetxController {
               isCheckIn.value = true;
             }
           });
-          CustomSnackBar().successCustomSnackBar(context: context, message: "${e}");
         },
         onFail: (e) async {
           isLoading.value = false;

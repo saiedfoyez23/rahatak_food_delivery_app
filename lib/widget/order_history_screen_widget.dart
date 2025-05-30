@@ -22,7 +22,6 @@ class OrderHistoryScreenWidget extends GetxController {
       await OrderController.getUserWiseOrderList(
         onSuccess: (e) async {
           isLoading.value = false;
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;

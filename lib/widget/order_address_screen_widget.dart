@@ -104,7 +104,6 @@ class OrderAddressScreenWidget extends GetxController {
           await AddressController.checkLocalAddressesResponse().then((value) {
             addressesResponseModel.value = value!;
           });
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;

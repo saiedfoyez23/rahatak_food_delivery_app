@@ -14,3 +14,4 @@ export 'order_controller.dart';
 export 'push_notification_controller.dart';
 export 'stores_controller.dart';
 export 'rating_controller.dart';
+export 'notification_controller.dart';

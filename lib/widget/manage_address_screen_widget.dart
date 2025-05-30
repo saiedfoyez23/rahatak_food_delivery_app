@@ -24,6 +24,21 @@ class ManageAddressScreenWidget extends GetxController {
   RxString coverImage = "".obs;
   RxString userName = "".obs;
 
+  RxString governorate = "".obs;
+
+  RxList<String> locations = <String>[
+    "Muscat",
+    "Al Batinah",
+    "Ad Dakhiliyah",
+    "Musandam",
+    //"Al Buraimi",
+    "Sharkia",
+    "Al Dhahirah",
+    "Al Wusta",
+    "Dhofar",
+  ].obs;
+  RxInt bigIndex_1 = 0.obs;
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -38,11 +53,11 @@ class ManageAddressScreenWidget extends GetxController {
             if(value?.data != null) {
               coverImage.value = value?.data?.image ?? "";
               stateController.value.text = value?.data?.state ?? "";
-              governorateController.value.text = value?.data?.governorate ?? "";
+              governorate.value = value?.data?.governorate?.first ?? "";
+              governorateController.value.text = value?.data?.governorate?.first ?? "";
               cityController.value.text = value?.data?.city ?? "";
             }
           });
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;
@@ -1044,14 +1059,19 @@ class ManageAddressScreenWidget extends GetxController {
                                 context: context,
                                 barrierDismissible: true,
                                 builder: (context) {
-                                  return Obx(()=>Padding(
+                                  return Obx(()=> Container(
+                                    height: 844.hm(context),
+                                    width: 390.wm(context),
+                                    decoration: BoxDecoration(
+                                        color: Colors.transparent
+                                    ),
+                                    alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
-                                      vertical: 190.vpmm(context),
                                       horizontal: 16.hpmm(context),
                                     ),
                                     child: Container(
                                       width: 358.wm(context),
-                                      height: 510.hm(context),
+                                      height: 430.hm(context),
                                       decoration: BoxDecoration(
                                         color: ColorUtils.white255,
                                         borderRadius: BorderRadius.circular( 16.rm(context)),
@@ -1062,318 +1082,351 @@ class ManageAddressScreenWidget extends GetxController {
                                       ),
                                       child: Material(
                                         color: Colors.transparent,
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
+                                        child: CustomScrollView(
+                                          slivers: [
+
+                                            SliverToBoxAdapter(
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
 
 
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-                                            Container(
-                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                              child: Text(
-                                                "Governorate *".tr,
-                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 16.spm(context),
-                                                  color: ColorUtils.black255,
-                                                ),
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            TextFormField(
-                                              controller: governorateController.value,
-                                              textAlign: TextAlign.start,
-                                              cursorColor: ColorUtils.blue192,
-                                              cursorHeight: 20.hm(context),
-                                              style: GoogleFonts.tajawal(
-                                                fontSize: 16.spm(context),
-                                                fontStyle: FontStyle.normal,
-                                                color: ColorUtils.black51,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                              textAlignVertical: TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                hintText: "Muscat".tr,
-                                                hintStyle: GoogleFonts.tajawal(
-                                                  fontSize: 16.spm(context),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontStyle: FontStyle.normal,
-                                                  color: ColorUtils.gray136,
-                                                ),
-                                                filled: true,
-                                                fillColor: ColorUtils.white255,
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: 12.hpmm(context),
-                                                  vertical: 12.vpmm(context),
-                                                ),
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 358.wm(context),
-                                                  maxHeight: 48.hm(context),
-                                                ),
-                                                border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                enabledBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                focusedBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                                                ),
-
-                                              ),
-                                            ),
-
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            Container(
-                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                              child: Text(
-                                                "State".tr,
-                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 16.spm(context),
-                                                  color: ColorUtils.black255,
-                                                ),
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            TextFormField(
-                                              controller: stateController.value,
-                                              textAlign: TextAlign.start,
-                                              cursorColor: ColorUtils.blue192,
-                                              cursorHeight: 20.hm(context),
-                                              style: GoogleFonts.tajawal(
-                                                fontSize: 16.spm(context),
-                                                fontStyle: FontStyle.normal,
-                                                color: ColorUtils.black51,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                              textAlignVertical: TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                hintText: "Al Khoud".tr,
-                                                hintStyle: GoogleFonts.tajawal(
-                                                  fontSize: 16.spm(context),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontStyle: FontStyle.normal,
-                                                  color: ColorUtils.gray136,
-                                                ),
-                                                filled: true,
-                                                fillColor: ColorUtils.white255,
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: 12.hpmm(context),
-                                                  vertical: 12.vpmm(context),
-                                                ),
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 358.wm(context),
-                                                  maxHeight: 48.hm(context),
-                                                ),
-                                                border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                enabledBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                focusedBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                                                ),
-
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-
-                                            Container(
-                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                              child: Text(
-                                                "City".tr,
-                                                textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 16.spm(context),
-                                                  color: ColorUtils.black255,
-                                                ),
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            TextFormField(
-                                              controller: cityController.value,
-                                              textAlign: TextAlign.start,
-                                              cursorColor: ColorUtils.blue192,
-                                              cursorHeight: 20.hm(context),
-                                              style: GoogleFonts.tajawal(
-                                                fontSize: 16.spm(context),
-                                                fontStyle: FontStyle.normal,
-                                                color: ColorUtils.black51,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                              textAlignVertical: TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                hintText: "Al Khoud".tr,
-                                                hintStyle: GoogleFonts.tajawal(
-                                                  fontSize: 16.spm(context),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontStyle: FontStyle.normal,
-                                                  color: ColorUtils.gray136,
-                                                ),
-                                                filled: true,
-                                                fillColor: ColorUtils.white255,
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: 12.hpmm(context),
-                                                  vertical: 12.vpmm(context),
-                                                ),
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 358.wm(context),
-                                                  maxHeight: 48.hm(context),
-                                                ),
-                                                border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                enabledBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                focusedBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                                                ),
-
-                                              ),
-                                            ),
-
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 20.hm(context),),
-
-
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-
-
-                                                isSubmit.value == false ? Container(
-                                                  height: 48.hm(context),
-                                                  width: 153.wm(context),
-                                                  decoration: BoxDecoration(
-                                                    color: ColorUtils.blue192,
-                                                    borderRadius: BorderRadius.circular(8.rm(context),),
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+                                                  Container(
+                                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                    child: Text(
+                                                      "Governorate *".tr,
+                                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 16.spm(context),
+                                                        color: ColorUtils.black255,
+                                                      ),
+                                                    ),
                                                   ),
-                                                  child: TextButton(
-                                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                    onPressed: () async {
-                                                      isSubmit.value = true;
-                                                      await ProfileController.checkLocalProfileResponse().then((value) async {
-                                                        if(value?.data?.contact != null) {
-                                                          await ProfileController.getUserAddressDataUpdateResponse(
-                                                            city: cityController.value.text == "" ? value?.data?.city : cityController.value.text,
-                                                            governorate: governorateController.value.text == "" ? value?.data?.governorate : governorateController.value.text,
-                                                            image: File(""),
-                                                            state: stateController.value.text == "" ? value?.data?.state : stateController.value.text,
-                                                            onSuccess: (e) async {
-                                                              Get.back();
-                                                              CustomSnackBar().successCustomSnackBar(context: context, message: e);
-                                                              isSubmit.value = false;
-                                                              Get.off(()=>ManageAddressScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
-                                                            },
-                                                            onFail: (e) async {
-                                                              isSubmit.value = false;
-                                                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                            },
-                                                            onExceptionFail: (e) async {
-                                                              isSubmit.value = false;
-                                                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                            },
-                                                          );
-                                                        }
-                                                      });
-                                                    },
-                                                    child: Center(
-                                                      child: Text(
-                                                        "Save".tr,
-                                                        textAlign: TextAlign.center,
-                                                        style: GoogleFonts.tajawal(
-                                                          fontWeight: FontWeight.w700,
-                                                          fontStyle: FontStyle.normal,
-                                                          fontSize: 18.spm(context),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  Wrap(
+                                                    children: List.generate(locations.length, (index) {
+                                                      return SizedBox(
+                                                        height: 70.hm(context),
+                                                        width: 110.wm(context),
+                                                        child: TextButton(
+                                                          onPressed: () async {
+                                                            bigIndex_1.value = index + 1 ;
+                                                            String location = locations[index];
+                                                            if(location == "Muscat") {
+                                                              governorate.value = 'muscat';
+                                                            } else if(location == "Al Batinah") {
+                                                              governorate.value = 'al-batinah';
+                                                            } else if(location == "Ad Dakhiliyah") {
+                                                              governorate.value = 'ad-dakhiliyah';
+                                                            } else if(location == "Musandam") {
+                                                              governorate.value = 'musandam';
+                                                            } else if(location == "Al Buraimi") {
+                                                              governorate.value = 'al-buraimi';
+                                                            } else if(location == "Sharkia") {
+                                                              governorate.value = 'sharkia';
+                                                            } else if(location == "Al Dhahirah") {
+                                                              governorate.value = 'al-dhahirah';
+                                                            } else if(location == "Al Wusta") {
+                                                              governorate.value = 'al-wusta';
+                                                            } else if(location == "Dhofar") {
+                                                              governorate.value = 'dhofar';
+                                                            }
+                                                          },
+                                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                          child: Container(
+                                                            height: 70.hm(context),
+                                                            width: 110.wm(context),
+                                                            decoration: BoxDecoration(
+                                                              color: bigIndex_1.value == (index + 1) ? ColorUtils.blue192 : Colors.transparent,
+                                                              borderRadius: BorderRadius.circular(8.rm(context)),
+                                                              border: Border.all(color: ColorUtils.white217,width: 1),
+                                                            ),
+                                                            margin: EdgeInsets.only(bottom: 10.bpmm(context),right: 10.rpmm(context)),
+                                                            padding: EdgeInsets.symmetric(horizontal: 5.hpmm(context),vertical: 5.vpmm(context)),
+                                                            child: Column(
+                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                                              children: [
+
+                                                                Container(
+                                                                  alignment: Alignment.center,
+                                                                  child: Text(
+                                                                    "${locations[index]}".tr,
+                                                                    textAlign: TextAlign.center,
+                                                                    style: GoogleFonts.tajawal(
+                                                                      fontWeight: FontWeight.w700,
+                                                                      fontStyle: FontStyle.normal,
+                                                                      fontSize: 14.spm(context),
+                                                                      color: bigIndex_1.value == (index + 1) ? ColorUtils.white255 : ColorUtils.black51,
+                                                                    ),
+                                                                  ),
+                                                                ),
+
+
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }),
+                                                  ),
+
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  Container(
+                                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                    child: Text(
+                                                      "State".tr,
+                                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 16.spm(context),
+                                                        color: ColorUtils.black255,
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  TextFormField(
+                                                    controller: stateController.value,
+                                                    textAlign: TextAlign.start,
+                                                    cursorColor: ColorUtils.blue192,
+                                                    cursorHeight: 20.hm(context),
+                                                    style: GoogleFonts.tajawal(
+                                                      fontSize: 16.spm(context),
+                                                      fontStyle: FontStyle.normal,
+                                                      color: ColorUtils.black51,
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                    textAlignVertical: TextAlignVertical.center,
+                                                    decoration: InputDecoration(
+                                                      hintText: "Al Khoud".tr,
+                                                      hintStyle: GoogleFonts.tajawal(
+                                                        fontSize: 16.spm(context),
+                                                        fontWeight: FontWeight.w400,
+                                                        fontStyle: FontStyle.normal,
+                                                        color: ColorUtils.gray136,
+                                                      ),
+                                                      filled: true,
+                                                      fillColor: ColorUtils.white255,
+                                                      contentPadding: EdgeInsets.symmetric(
+                                                        horizontal: 12.hpmm(context),
+                                                        vertical: 12.vpmm(context),
+                                                      ),
+                                                      constraints: BoxConstraints(
+                                                        maxWidth: 358.wm(context),
+                                                        maxHeight: 48.hm(context),
+                                                      ),
+                                                      border: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      enabledBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      focusedBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                                      ),
+
+                                                    ),
+                                                  ),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+
+                                                  Container(
+                                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                    child: Text(
+                                                      "City".tr,
+                                                      textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 16.spm(context),
+                                                        color: ColorUtils.black255,
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  TextFormField(
+                                                    controller: cityController.value,
+                                                    textAlign: TextAlign.start,
+                                                    cursorColor: ColorUtils.blue192,
+                                                    cursorHeight: 20.hm(context),
+                                                    style: GoogleFonts.tajawal(
+                                                      fontSize: 16.spm(context),
+                                                      fontStyle: FontStyle.normal,
+                                                      color: ColorUtils.black51,
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                    textAlignVertical: TextAlignVertical.center,
+                                                    decoration: InputDecoration(
+                                                      hintText: "Al Khoud".tr,
+                                                      hintStyle: GoogleFonts.tajawal(
+                                                        fontSize: 16.spm(context),
+                                                        fontWeight: FontWeight.w400,
+                                                        fontStyle: FontStyle.normal,
+                                                        color: ColorUtils.gray136,
+                                                      ),
+                                                      filled: true,
+                                                      fillColor: ColorUtils.white255,
+                                                      contentPadding: EdgeInsets.symmetric(
+                                                        horizontal: 12.hpmm(context),
+                                                        vertical: 12.vpmm(context),
+                                                      ),
+                                                      constraints: BoxConstraints(
+                                                        maxWidth: 358.wm(context),
+                                                        maxHeight: 48.hm(context),
+                                                      ),
+                                                      border: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      enabledBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      focusedBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                                      ),
+
+                                                    ),
+                                                  ),
+
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 20.hm(context),),
+
+
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+
+
+                                                      isSubmit.value == false ? Container(
+                                                        height: 48.hm(context),
+                                                        width: 153.wm(context),
+                                                        decoration: BoxDecoration(
+                                                          color: ColorUtils.blue192,
+                                                          borderRadius: BorderRadius.circular(8.rm(context),),
+                                                        ),
+                                                        child: TextButton(
+                                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                          onPressed: () async {
+                                                            isSubmit.value = true;
+                                                            await ProfileController.checkLocalProfileResponse().then((value) async {
+                                                              if(value?.data?.contact != null) {
+                                                                await ProfileController.getUserAddressDataUpdateResponse(
+                                                                  city: cityController.value.text == "" ? value?.data?.city : cityController.value.text,
+                                                                  governorate: governorateController.value.text == "" ? value!.data!.governorate!.first : governorate.value,
+                                                                  image: File(""),
+                                                                  state: stateController.value.text == "" ? value?.data?.state : stateController.value.text,
+                                                                  onSuccess: (e) async {
+                                                                    Get.back();
+                                                                    CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                    isSubmit.value = false;
+                                                                    Get.off(()=>ManageAddressScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                                  },
+                                                                  onFail: (e) async {
+                                                                    isSubmit.value = false;
+                                                                    CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                  },
+                                                                  onExceptionFail: (e) async {
+                                                                    isSubmit.value = false;
+                                                                    CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                  },
+                                                                );
+                                                              }
+                                                            });
+                                                          },
+                                                          child: Center(
+                                                            child: Text(
+                                                              "Save".tr,
+                                                              textAlign: TextAlign.center,
+                                                              style: GoogleFonts.tajawal(
+                                                                fontWeight: FontWeight.w700,
+                                                                fontStyle: FontStyle.normal,
+                                                                fontSize: 18.spm(context),
+                                                                color: ColorUtils.white255,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ) : Container(
+                                                        height: 48.hm(context),
+                                                        width: 153.wm(context),
+                                                        decoration: BoxDecoration(
+                                                          color: Colors.transparent,
+                                                        ),
+                                                        child: Center(child: CircularProgressIndicator(),),
+                                                      ),
+
+                                                      SpacerWidget.spacerWidget(spaceWidth: 12.wm(context),),
+
+
+                                                      Container(
+                                                        height: 48.hm(context),
+                                                        width: 153.wm(context),
+                                                        decoration: BoxDecoration(
+                                                          border: Border.all(color: ColorUtils.gray136,width: 1),
                                                           color: ColorUtils.white255,
+                                                          borderRadius: BorderRadius.circular(8.rm(context),),
+                                                        ),
+                                                        child: TextButton(
+                                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                          onPressed: () async {
+                                                            isSubmit.value = false;
+                                                            Get.back();
+                                                          },
+                                                          child: Center(
+                                                            child: Text(
+                                                              "Cancel".tr,
+                                                              textAlign: TextAlign.center,
+                                                              style: GoogleFonts.tajawal(
+                                                                fontWeight: FontWeight.w700,
+                                                                fontStyle: FontStyle.normal,
+                                                                fontSize: 18.spm(context),
+                                                                color: ColorUtils.black51,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
+
+
+                                                    ],
                                                   ),
-                                                ) : Container(
-                                                  height: 48.hm(context),
-                                                  width: 153.wm(context),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  child: Center(child: CircularProgressIndicator(),),
-                                                ),
 
-                                                SpacerWidget.spacerWidget(spaceWidth: 12.wm(context),),
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
 
-
-                                                Container(
-                                                  height: 48.hm(context),
-                                                  width: 153.wm(context),
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(color: ColorUtils.gray136,width: 1),
-                                                    color: ColorUtils.white255,
-                                                    borderRadius: BorderRadius.circular(8.rm(context),),
-                                                  ),
-                                                  child: TextButton(
-                                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                    onPressed: () async {
-                                                      isSubmit.value = false;
-                                                      Get.back();
-                                                    },
-                                                    child: Center(
-                                                      child: Text(
-                                                        "Cancel".tr,
-                                                        textAlign: TextAlign.center,
-                                                        style: GoogleFonts.tajawal(
-                                                          fontWeight: FontWeight.w700,
-                                                          fontStyle: FontStyle.normal,
-                                                          fontSize: 18.spm(context),
-                                                          color: ColorUtils.black51,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-
-
-                                              ],
+                                                ],
+                                              ),
                                             )
 
+
                                           ],
-                                        ),
+                                        )
                                       ),
                                     ),
-                                  ));
+                                  ),);
                                 },
                               );
                             },

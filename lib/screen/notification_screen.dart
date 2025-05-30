@@ -5,12 +5,10 @@ import 'package:rahatak_food_delivery_app/widget/widget.dart';
 
 class NotificationScreen extends StatelessWidget {
   NotificationScreen({super.key});
-  
-  NotificationScreenWidget notificationScreenWidget = Get.put(NotificationScreenWidget());
-  
-  
+
   @override
   Widget build(BuildContext context) {
+    NotificationScreenWidget notificationScreenWidget = Get.put(NotificationScreenWidget(context: context));
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (canPop,onPopInvoked) {

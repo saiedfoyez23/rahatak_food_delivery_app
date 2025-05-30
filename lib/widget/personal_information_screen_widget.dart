@@ -40,7 +40,6 @@ class PersonalInformationScreenWidget extends GetxController {
               emailController.value.text = value?.data?.email ?? "";
             }
           });
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;
@@ -1042,14 +1041,19 @@ class PersonalInformationScreenWidget extends GetxController {
                                 context: context,
                                 barrierDismissible: true,
                                 builder: (context) {
-                                  return Obx(()=>Padding(
+                                  return Obx(()=> Container(
+                                    height: 844.hm(context),
+                                    width: 390.wm(context),
+                                    decoration: BoxDecoration(
+                                        color: Colors.transparent
+                                    ),
+                                    alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
-                                      vertical: 190.vpmm(context),
                                       horizontal: 16.hpmm(context),
                                     ),
                                     child: Container(
                                       width: 358.wm(context),
-                                      height: 510.hm(context),
+                                      height: 430.hm(context),
                                       decoration: BoxDecoration(
                                         color: ColorUtils.white255,
                                         borderRadius: BorderRadius.circular( 16.rm(context)),
@@ -1060,319 +1064,329 @@ class PersonalInformationScreenWidget extends GetxController {
                                       ),
                                       child: Material(
                                         color: Colors.transparent,
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
+                                        child: CustomScrollView(
+                                          slivers: [
+
+                                            SliverToBoxAdapter(
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
 
 
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-                                            Container(
-                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                              child: Text(
-                                                "Name".tr,
-                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 16.spm(context),
-                                                  color: ColorUtils.black255,
-                                                ),
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            TextFormField(
-                                              controller: nameController.value,
-                                              textAlign: TextAlign.start,
-                                              cursorColor: ColorUtils.blue192,
-                                              cursorHeight: 20.hm(context),
-                                              style: GoogleFonts.tajawal(
-                                                fontSize: 16.spm(context),
-                                                fontStyle: FontStyle.normal,
-                                                color: ColorUtils.black51,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                              textAlignVertical: TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                hintText: "Mohammed".tr,
-                                                hintStyle: GoogleFonts.tajawal(
-                                                  fontSize: 16.spm(context),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontStyle: FontStyle.normal,
-                                                  color: ColorUtils.gray136,
-                                                ),
-                                                filled: true,
-                                                fillColor: ColorUtils.white255,
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: 12.hpmm(context),
-                                                  vertical: 12.vpmm(context),
-                                                ),
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 358.wm(context),
-                                                  maxHeight: 48.hm(context),
-                                                ),
-                                                border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                enabledBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                focusedBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                                                ),
-
-                                              ),
-                                            ),
-
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            Container(
-                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                              child: Text(
-                                                "Email Address".tr,
-                                                textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 16.spm(context),
-                                                  color: ColorUtils.black255,
-                                                ),
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            TextFormField(
-                                              controller: emailController.value,
-                                              textAlign: TextAlign.start,
-                                              cursorColor: ColorUtils.blue192,
-                                              cursorHeight: 20.hm(context),
-                                              style: GoogleFonts.tajawal(
-                                                fontSize: 16.spm(context),
-                                                fontStyle: FontStyle.normal,
-                                                color: ColorUtils.black51,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                              textAlignVertical: TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                hintText: "moha.ali@gmail.com".tr,
-                                                hintStyle: GoogleFonts.tajawal(
-                                                  fontSize: 16.spm(context),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontStyle: FontStyle.normal,
-                                                  color: ColorUtils.gray136,
-                                                ),
-                                                filled: true,
-                                                enabled: false,
-                                                fillColor: ColorUtils.white233,
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: 12.hpmm(context),
-                                                  vertical: 12.vpmm(context),
-                                                ),
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 358.wm(context),
-                                                  maxHeight: 48.hm(context),
-                                                ),
-                                                border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                enabledBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                focusedBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                                                ),
-
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-
-                                            Container(
-                                              alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                              child: Text(
-                                                "Phone Number".tr,
-                                                textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                                style: GoogleFonts.tajawal(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontSize: 16.spm(context),
-                                                  color: ColorUtils.black255,
-                                                ),
-                                              ),
-                                            ),
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
-
-
-                                            TextFormField(
-                                              controller: phoneNumberController.value,
-                                              textAlign: TextAlign.start,
-                                              cursorColor: ColorUtils.blue192,
-                                              cursorHeight: 20.hm(context),
-                                              style: GoogleFonts.tajawal(
-                                                fontSize: 16.spm(context),
-                                                fontStyle: FontStyle.normal,
-                                                color: ColorUtils.black51,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                              textAlignVertical: TextAlignVertical.center,
-                                              decoration: InputDecoration(
-                                                hintText: "+968 91234567".tr,
-                                                hintStyle: GoogleFonts.tajawal(
-                                                  fontSize: 16.spm(context),
-                                                  fontWeight: FontWeight.w400,
-                                                  fontStyle: FontStyle.normal,
-                                                  color: ColorUtils.gray136,
-                                                ),
-                                                filled: true,
-                                                fillColor: ColorUtils.white255,
-                                                contentPadding: EdgeInsets.symmetric(
-                                                  horizontal: 12.hpmm(context),
-                                                  vertical: 12.vpmm(context),
-                                                ),
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 358.wm(context),
-                                                  maxHeight: 48.hm(context),
-                                                ),
-                                                border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                enabledBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                                                ),
-                                                focusedBorder: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(8.rm(context)),
-                                                  borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                                                ),
-
-                                              ),
-                                            ),
-
-
-                                            SpacerWidget.spacerWidget(spaceHeight: 20.hm(context),),
-
-
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-
-
-                                                isSubmit.value == false ? Container(
-                                                  height: 48.hm(context),
-                                                  width: 153.wm(context),
-                                                  decoration: BoxDecoration(
-                                                    color: ColorUtils.blue192,
-                                                    borderRadius: BorderRadius.circular(8.rm(context),),
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+                                                  Container(
+                                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                    child: Text(
+                                                      "Name".tr,
+                                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 16.spm(context),
+                                                        color: ColorUtils.black255,
+                                                      ),
+                                                    ),
                                                   ),
-                                                  child: TextButton(
-                                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                    onPressed: () async {
-                                                      isSubmit.value = true;
-                                                      await ProfileController.checkLocalProfileResponse().then((value) async {
-                                                        if(value?.data?.contact != null) {
-                                                          await ProfileController.getUserDataUpdateResponse(
-                                                            contact: phoneNumberController.value.text == "" ? value?.data?.name : phoneNumberController.value.text,
-                                                            name: nameController.value.text == "" ? value?.data?.name : nameController.value.text,
-                                                            image: File(""),
-                                                            email: emailController.value.text,
-                                                            onSuccess: (e) async {
-                                                              Get.back();
-                                                              CustomSnackBar().successCustomSnackBar(context: context, message: e);
-                                                              isSubmit.value = false;
-                                                              Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
-                                                            },
-                                                            onFail: (e) async {
-                                                              isSubmit.value = false;
-                                                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                            },
-                                                            onExceptionFail: (e) async {
-                                                              isSubmit.value = false;
-                                                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                            },
-                                                          );
-                                                        }
-                                                      });
-                                                    },
-                                                    child: Center(
-                                                      child: Text(
-                                                        "Save".tr,
-                                                        textAlign: TextAlign.center,
-                                                        style: GoogleFonts.tajawal(
-                                                          fontWeight: FontWeight.w700,
-                                                          fontStyle: FontStyle.normal,
-                                                          fontSize: 18.spm(context),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  TextFormField(
+                                                    controller: nameController.value,
+                                                    textAlign: TextAlign.start,
+                                                    cursorColor: ColorUtils.blue192,
+                                                    cursorHeight: 20.hm(context),
+                                                    style: GoogleFonts.tajawal(
+                                                      fontSize: 16.spm(context),
+                                                      fontStyle: FontStyle.normal,
+                                                      color: ColorUtils.black51,
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                    textAlignVertical: TextAlignVertical.center,
+                                                    decoration: InputDecoration(
+                                                      hintText: "Mohammed".tr,
+                                                      hintStyle: GoogleFonts.tajawal(
+                                                        fontSize: 16.spm(context),
+                                                        fontWeight: FontWeight.w400,
+                                                        fontStyle: FontStyle.normal,
+                                                        color: ColorUtils.gray136,
+                                                      ),
+                                                      filled: true,
+                                                      fillColor: ColorUtils.white255,
+                                                      contentPadding: EdgeInsets.symmetric(
+                                                        horizontal: 12.hpmm(context),
+                                                        vertical: 12.vpmm(context),
+                                                      ),
+                                                      constraints: BoxConstraints(
+                                                        maxWidth: 358.wm(context),
+                                                        maxHeight: 48.hm(context),
+                                                      ),
+                                                      border: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      enabledBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      focusedBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                                      ),
+
+                                                    ),
+                                                  ),
+
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  Container(
+                                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                    child: Text(
+                                                      "Email Address".tr,
+                                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 16.spm(context),
+                                                        color: ColorUtils.black255,
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  TextFormField(
+                                                    controller: emailController.value,
+                                                    textAlign: TextAlign.start,
+                                                    cursorColor: ColorUtils.blue192,
+                                                    cursorHeight: 20.hm(context),
+                                                    style: GoogleFonts.tajawal(
+                                                      fontSize: 16.spm(context),
+                                                      fontStyle: FontStyle.normal,
+                                                      color: ColorUtils.black51,
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                    textAlignVertical: TextAlignVertical.center,
+                                                    decoration: InputDecoration(
+                                                      hintText: "moha.ali@gmail.com".tr,
+                                                      hintStyle: GoogleFonts.tajawal(
+                                                        fontSize: 16.spm(context),
+                                                        fontWeight: FontWeight.w400,
+                                                        fontStyle: FontStyle.normal,
+                                                        color: ColorUtils.gray136,
+                                                      ),
+                                                      filled: true,
+                                                      enabled: false,
+                                                      fillColor: ColorUtils.white233,
+                                                      contentPadding: EdgeInsets.symmetric(
+                                                        horizontal: 12.hpmm(context),
+                                                        vertical: 12.vpmm(context),
+                                                      ),
+                                                      constraints: BoxConstraints(
+                                                        maxWidth: 358.wm(context),
+                                                        maxHeight: 48.hm(context),
+                                                      ),
+                                                      border: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      enabledBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      focusedBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                                      ),
+
+                                                    ),
+                                                  ),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+
+                                                  Container(
+                                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                                    child: Text(
+                                                      "Phone Number".tr,
+                                                      textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                                      style: GoogleFonts.tajawal(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontStyle: FontStyle.normal,
+                                                        fontSize: 16.spm(context),
+                                                        color: ColorUtils.black255,
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
+
+
+                                                  TextFormField(
+                                                    controller: phoneNumberController.value,
+                                                    textAlign: TextAlign.start,
+                                                    cursorColor: ColorUtils.blue192,
+                                                    cursorHeight: 20.hm(context),
+                                                    style: GoogleFonts.tajawal(
+                                                      fontSize: 16.spm(context),
+                                                      fontStyle: FontStyle.normal,
+                                                      color: ColorUtils.black51,
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                    textAlignVertical: TextAlignVertical.center,
+                                                    decoration: InputDecoration(
+                                                      hintText: "+968 91234567".tr,
+                                                      hintStyle: GoogleFonts.tajawal(
+                                                        fontSize: 16.spm(context),
+                                                        fontWeight: FontWeight.w400,
+                                                        fontStyle: FontStyle.normal,
+                                                        color: ColorUtils.gray136,
+                                                      ),
+                                                      filled: true,
+                                                      fillColor: ColorUtils.white255,
+                                                      contentPadding: EdgeInsets.symmetric(
+                                                        horizontal: 12.hpmm(context),
+                                                        vertical: 12.vpmm(context),
+                                                      ),
+                                                      constraints: BoxConstraints(
+                                                        maxWidth: 358.wm(context),
+                                                        maxHeight: 48.hm(context),
+                                                      ),
+                                                      border: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      enabledBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                                                      ),
+                                                      focusedBorder: OutlineInputBorder(
+                                                        borderRadius: BorderRadius.circular(8.rm(context)),
+                                                        borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                                                      ),
+
+                                                    ),
+                                                  ),
+
+
+                                                  SpacerWidget.spacerWidget(spaceHeight: 20.hm(context),),
+
+
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+
+
+                                                      isSubmit.value == false ? Container(
+                                                        height: 48.hm(context),
+                                                        width: 153.wm(context),
+                                                        decoration: BoxDecoration(
+                                                          color: ColorUtils.blue192,
+                                                          borderRadius: BorderRadius.circular(8.rm(context),),
+                                                        ),
+                                                        child: TextButton(
+                                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                          onPressed: () async {
+                                                            isSubmit.value = true;
+                                                            await ProfileController.checkLocalProfileResponse().then((value) async {
+                                                              if(value?.data?.contact != null) {
+                                                                await ProfileController.getUserDataUpdateResponse(
+                                                                  contact: phoneNumberController.value.text == "" ? value?.data?.name : phoneNumberController.value.text,
+                                                                  name: nameController.value.text == "" ? value?.data?.name : nameController.value.text,
+                                                                  image: File(""),
+                                                                  email: emailController.value.text,
+                                                                  onSuccess: (e) async {
+                                                                    Get.back();
+                                                                    CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                    isSubmit.value = false;
+                                                                    Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                                  },
+                                                                  onFail: (e) async {
+                                                                    isSubmit.value = false;
+                                                                    CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                  },
+                                                                  onExceptionFail: (e) async {
+                                                                    isSubmit.value = false;
+                                                                    CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                  },
+                                                                );
+                                                              }
+                                                            });
+                                                          },
+                                                          child: Center(
+                                                            child: Text(
+                                                              "Save".tr,
+                                                              textAlign: TextAlign.center,
+                                                              style: GoogleFonts.tajawal(
+                                                                fontWeight: FontWeight.w700,
+                                                                fontStyle: FontStyle.normal,
+                                                                fontSize: 18.spm(context),
+                                                                color: ColorUtils.white255,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ) : Container(
+                                                        height: 48.hm(context),
+                                                        width: 153.wm(context),
+                                                        decoration: BoxDecoration(
+                                                          color: Colors.transparent,
+                                                        ),
+                                                        child: Center(child: CircularProgressIndicator(),),
+                                                      ),
+
+                                                      SpacerWidget.spacerWidget(spaceWidth: 12.wm(context),),
+
+
+                                                      Container(
+                                                        height: 48.hm(context),
+                                                        width: 153.wm(context),
+                                                        decoration: BoxDecoration(
+                                                          border: Border.all(color: ColorUtils.gray136,width: 1),
                                                           color: ColorUtils.white255,
+                                                          borderRadius: BorderRadius.circular(8.rm(context),),
+                                                        ),
+                                                        child: TextButton(
+                                                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                          onPressed: () async {
+                                                            isSubmit.value = false;
+                                                            Get.back();
+                                                          },
+                                                          child: Center(
+                                                            child: Text(
+                                                              "Cancel".tr,
+                                                              textAlign: TextAlign.center,
+                                                              style: GoogleFonts.tajawal(
+                                                                fontWeight: FontWeight.w700,
+                                                                fontStyle: FontStyle.normal,
+                                                                fontSize: 18.spm(context),
+                                                                color: ColorUtils.black51,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
+
+
+                                                    ],
                                                   ),
-                                                ) : Container(
-                                                  height: 48.hm(context),
-                                                  width: 153.wm(context),
-                                                  decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  child: Center(child: CircularProgressIndicator(),),
-                                                ),
 
-                                                SpacerWidget.spacerWidget(spaceWidth: 12.wm(context),),
+                                                  SpacerWidget.spacerWidget(spaceHeight: 12.hm(context),),
 
-
-                                                Container(
-                                                  height: 48.hm(context),
-                                                  width: 153.wm(context),
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(color: ColorUtils.gray136,width: 1),
-                                                    color: ColorUtils.white255,
-                                                    borderRadius: BorderRadius.circular(8.rm(context),),
-                                                  ),
-                                                  child: TextButton(
-                                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                    onPressed: () async {
-                                                      isSubmit.value = false;
-                                                      Get.back();
-                                                    },
-                                                    child: Center(
-                                                      child: Text(
-                                                        "Cancel".tr,
-                                                        textAlign: TextAlign.center,
-                                                        style: GoogleFonts.tajawal(
-                                                          fontWeight: FontWeight.w700,
-                                                          fontStyle: FontStyle.normal,
-                                                          fontSize: 18.spm(context),
-                                                          color: ColorUtils.black51,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-
-
-                                              ],
+                                                ],
+                                              ),
                                             )
 
                                           ],
-                                        ),
+                                        )
                                       ),
                                     ),
-                                  ));
+                                  ),);
                                 },
                               );
                             },

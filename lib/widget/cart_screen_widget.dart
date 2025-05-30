@@ -38,7 +38,6 @@ class CartScreenWidget extends GetxController {
       await CartController.getCartProductResponse(
         onSuccess: (e) async {
           isLoading.value = false;
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;
@@ -1070,7 +1069,6 @@ class CartScreenWidget extends GetxController {
                                                                       await CartController.getCartProductResponse(
                                                                         onSuccess: (e) async {
                                                                           isDelete.value = false;
-                                                                          CustomSnackBar().successCustomSnackBar(context: context, message: e);
                                                                           Get.back();
                                                                         },
                                                                         onFail: (e) async {
@@ -1237,7 +1235,6 @@ class CartScreenWidget extends GetxController {
                                                         onSuccess: (e) async {
                                                           productId.value = "";
                                                           isIncrease.value = false;
-                                                          CustomSnackBar().successCustomSnackBar(context: context, message: e);
                                                         },
                                                         onFail: (e) async {
                                                           productId.value = "";
@@ -1338,7 +1335,6 @@ class CartScreenWidget extends GetxController {
                                                         onSuccess: (e) async {
                                                           dProductId.value = "";
                                                           isDecrease.value = false;
-                                                          CustomSnackBar().successCustomSnackBar(context: context, message: e);
                                                         },
                                                         onFail: (e) async {
                                                           dProductId.value = "";

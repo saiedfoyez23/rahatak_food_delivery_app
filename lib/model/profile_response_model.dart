@@ -1,6 +1,6 @@
 class ProfileResponseModel {
-  bool? success;
-  String? message;
+  var success;
+  var message;
   ProfileResponse? data;
 
   ProfileResponseModel({this.success, this.message, this.data});
@@ -29,7 +29,7 @@ class ProfileResponse {
   var city;
   var contact;
   var createdAt;
-  var governorate;
+  List<String>? governorate;
   var image;
   var isActive;
   var isDeleted;
@@ -50,7 +50,7 @@ class ProfileResponse {
     this.isDeleted,
     this.name,
     this.state,
-    this.updatedAt
+    this.updatedAt,
   });
 
   ProfileResponse.fromJson(Map<String, dynamic> json) {
@@ -60,7 +60,7 @@ class ProfileResponse {
     city = json['city'];
     contact = json['contact'];
     createdAt = json['createdAt'];
-    governorate = json['governorate'];
+    governorate = json['governorate'].cast<String>();
     image = json['image'];
     isActive = json['is_active'];
     isDeleted = json['is_deleted'];

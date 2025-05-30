@@ -30,7 +30,6 @@ class ProductDetailsScreenWidget extends GetxController {
         productId: productId,
         onSuccess: (e) async {
           isLoading.value = false;
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;

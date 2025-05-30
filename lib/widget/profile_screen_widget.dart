@@ -33,7 +33,6 @@ class ProfileScreenWidget extends GetxController {
               userName.value = value?.data?.name ?? "";
             }
           });
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;

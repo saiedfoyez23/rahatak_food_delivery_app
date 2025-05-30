@@ -65,7 +65,6 @@ class SearchResultScreenWidget extends GetxController {
           locationId: location,
           onSuccess: (e) async {
             isLoading.value = false;
-            CustomSnackBar().successCustomSnackBar(context: context, message: e);
           },
           onFail: (e) async {
             isLoading.value = false;
@@ -83,7 +82,6 @@ class SearchResultScreenWidget extends GetxController {
           categoryId: categoryId,
           onSuccess: (e) async {
             isLoading.value = false;
-            CustomSnackBar().successCustomSnackBar(context: context, message: e);
           },
           onFail: (e) async {
             isLoading.value = false;
@@ -101,7 +99,6 @@ class SearchResultScreenWidget extends GetxController {
           locationId: location,
           onSuccess: (e) async {
             isLoading.value = false;
-            CustomSnackBar().successCustomSnackBar(context: context, message: e);
           },
           onFail: (e) async {
             isLoading.value = false;

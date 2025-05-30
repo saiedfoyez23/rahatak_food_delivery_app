@@ -33,7 +33,6 @@ class RatingAndReviewScreenWidget extends GetxController {
             CustomSnackBar().errorCustomSnackBar(context: context, message: "The Order status is ${status}.It is not delivered");
             Get.off(()=>OrderHistoryScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
           }
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;

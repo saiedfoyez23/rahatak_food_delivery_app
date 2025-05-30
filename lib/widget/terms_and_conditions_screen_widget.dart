@@ -29,7 +29,6 @@ class TermsAndConditionsScreenWidget extends GetxController {
               settingDataResponseModel.value = value!;
             }
           });
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
         },
         onFail: (e) async {
           isLoading.value = false;

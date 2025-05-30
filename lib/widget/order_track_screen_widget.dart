@@ -78,9 +78,7 @@ class OrderTrackScreenWidget extends GetxController {
     isLoading.value = true;
     Future.delayed(const Duration(seconds: 1),() async {
       await OrderController.getUserWiseOrderList(
-        onSuccess: (e) async {
-          CustomSnackBar().successCustomSnackBar(context: context, message: e);
-        },
+        onSuccess: (e) async {},
         onFail: (e) async {
           isLoading.value = false;
           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
@@ -115,7 +113,6 @@ class OrderTrackScreenWidget extends GetxController {
             orderId: value.data!.data!.first.sId,
             onSuccess: (e) async {
               isLoading.value = false;
-              CustomSnackBar().successCustomSnackBar(context: context, message: e);
             },
             onFail: (e) async {
               isLoading.value = false;
