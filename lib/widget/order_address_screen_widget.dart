@@ -952,7 +952,11 @@ class OrderAddressScreenWidget extends GetxController {
                 child: TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: () async {
-                    Get.off(()=>PaymentScreen(data: {},addressString: addressId.value,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                    if(addressId.value == "") {
+                      CustomSnackBar().errorCustomSnackBar(context: context, message: "Please Select Order Address");
+                    } else {
+                      Get.off(()=>PaymentScreen(data: {},addressString: addressId.value,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                    }
                   },
                   child: Center(
                     child: Text(
