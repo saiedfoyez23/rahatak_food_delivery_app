@@ -188,5 +188,36 @@ class OrderController {
   }
 
 
+  static Future<void> getPaymentRequest({
+    required String url,
+    required Function onSuccess,
+    required Function onFail,
+    required Function onExceptionFail,
+  }) async {
+    try {
+
+      var response = await Dio().get(
+        url,
+        options: Options(
+          headers: <String,String>{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+      print(response.data);
+      if(response.statusCode == 200 || response.statusCode == 201) {
+        onSuccess(response.data["message"]);
+      } else {
+        onFail(response.data["message"]);
+      }
+    } on DioException catch (e) {
+      print(e);
+      onExceptionFail(e.response?.data);
+    }
+  }
+
+
+
 
 }

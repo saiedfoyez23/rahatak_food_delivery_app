@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rahatak_food_delivery_app/controller/controller.dart';
 import 'package:rahatak_food_delivery_app/screen/home_screen.dart';
 import 'package:rahatak_food_delivery_app/screen/payment_screen.dart';
 import 'package:rahatak_food_delivery_app/screen/screen.dart';
@@ -32,21 +33,32 @@ class _OrderPaymentScreenState extends State<OrderPaymentScreen> {
           onPageFinished: (String url) {
             // Page loaded
             print('Page finished loading: $url');
-            if(url.contains("https://oman.paymob.com/unifiedcheckout/payment-status/?payment_token=") == true) {
-              Future.delayed(Duration(seconds: 5),() async {
-                _handlePaymentResult(url);
-              });
-            }
           },
           onWebResourceError: (WebResourceError error) {
             // Handle errors
             print('Error: ${error.description}');
           },
-          onNavigationRequest: (NavigationRequest request) {
-            // Handle redirects or specific URLs (e.g., success/failure callbacks)
+          onNavigationRequest: (NavigationRequest request) async {
+            print("${request.url}");
+            //Handle redirects or specific URLs (e.g., success/failure callbacks)
             if (request.url.contains('success') || request.url.contains('failure')) {
               // Handle payment result
-              _handlePaymentResult(request.url);
+              //_handlePaymentResult(request.url);
+              await OrderController.getPaymentRequest(
+                url: request.url,
+                onSuccess: (e) async {
+                  CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                  _successPage();
+                },
+                onFail: (e) async {
+                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                  _failedPage();
+                },
+                onExceptionFail: (e) async {
+                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                  _failedPage();
+                },
+              );
               return NavigationDecision.prevent; // Prevent navigation in WebView
             }
             return NavigationDecision.navigate;
@@ -57,8 +69,13 @@ class _OrderPaymentScreenState extends State<OrderPaymentScreen> {
   }
 
   // Handle payment result based on redirect URL
-  void _handlePaymentResult(String url) {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>OrderTrackScreen()));
+  void _successPage() {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentSuccessScreen()));
+  }
+
+
+  void _failedPage() {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>PaymentFailedScreen()));
   }
 
 

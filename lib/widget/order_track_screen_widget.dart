@@ -108,7 +108,8 @@ class OrderTrackScreenWidget extends GetxController {
           CustomSnackBar().errorCustomSnackBar(context: context, message: e);
         },
       ).then((value) async {
-        if(value.data?.data != null) {
+        print(value.data?.data?.isEmpty);
+        if(value.data?.data != null && value.data?.data?.isNotEmpty == true) {
           orderId.value = value.data!.data!.first.orderId;
           await OrderController.getOrderPickUpRequest(
             orderId: value.data!.data!.first.sId,
@@ -144,9 +145,11 @@ class OrderTrackScreenWidget extends GetxController {
             },
           ).then((value) async {
             pickUpRequestResponseModel.value = value;
-            await checkLocationPermission(lat: value.data!.deliveryLocation!.location!.coordinates!.first,long: value.data!.deliveryLocation!.location!.coordinates!.last);
+            print(pickUpRequestResponseModel.value.data?.status);
+            await checkLocationPermission(lat: value.data!.deliveryLocation!.location!.coordinates!.last,long: value.data!.deliveryLocation!.location!.coordinates!.first);
           });
         } else {
+          isLoading.value = false;
           pickUpRequestResponseModel.value = PickUpRequestResponseModel();
         }
       });
@@ -337,7 +340,8 @@ class OrderTrackScreenWidget extends GetxController {
         decoration: BoxDecoration(
           color: ColorUtils.white248,
         ),
-        child: isLoading.value == false ? Stack(
+        child: isLoading.value == false && pickUpRequestResponseModel.value.data != null ?
+        Stack(
           children: [
 
             SizedBox(
@@ -1061,7 +1065,75 @@ class OrderTrackScreenWidget extends GetxController {
 
 
           ],
-        ) : Center(child: CircularProgressIndicator(),),
+        ) :
+        isLoading.value == false && pickUpRequestResponseModel.value.data == null ?
+        Container(
+          height: 844.hm(context),
+          width: 390.wm(context),
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 36.hpmm(context)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              Container(
+                height: 64.hm(context),
+                width: 64.wm(context),
+                decoration: BoxDecoration(
+                    color: Colors.transparent
+                ),
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: Image.asset(
+                    ImagePathUtils.orderTrackIconImagePath,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+
+              SpacerWidget.spacerWidget(spaceHeight: 12.hm(context)),
+
+
+              Container(
+                alignment: Alignment.center,
+                child: Text(
+                  "There are currently no orders to track.".tr,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.tajawal(
+                    fontWeight: FontWeight.w700,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18.spm(context),
+                    color: ColorUtils.blue181,
+                    height: (35.hm(context) / 18.spm(context)),
+                  ),
+                ),
+              ),
+
+
+              Container(
+                alignment: Alignment.center,
+                child: Text(
+                  "When you place an order, you'll be able to track its status here, step by step.".tr,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.tajawal(
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18.spm(context),
+                    color: ColorUtils.blue181,
+                    height: (35.hm(context) / 18.spm(context)),
+                  ),
+                ),
+              ),
+
+
+
+            ],
+          ),
+        ) :
+        Center(child: CircularProgressIndicator(),),
       ),
     ));
   }

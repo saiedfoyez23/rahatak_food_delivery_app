@@ -28,3 +28,5 @@ export 'payment_methods_screen_widget.dart';
 export 'manage_address_screen_widget.dart';
 export 'personal_information_screen_widget.dart';
 export 'order_history_screen_widget.dart';
+export 'payment_failed_screen_widget.dart';
+export 'payment_success_screen_widget.dart';

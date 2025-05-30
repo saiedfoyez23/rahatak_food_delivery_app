@@ -303,6 +303,8 @@ class Arabic {
     "It looks like you haven't added any products yet. Add your favorite meals and enjoy a delicious experience!": "يبدو أنك لم تضف أي منتجات بعد. أضف وجباتك المفضلة واستمتع بتجربة لذيذة!",
     "Order History": "تاريخ الطلب",
     "Sign out": "تسجيل الخروج",
+    "There are currently no orders to track.": "لا توجد طلبات لتتبعها حاليًا",
+    "When you place an order, you'll be able to track its status here, step by step.": "عند طلبك، ستتمكن من متابعة حالة الطلب هنا خطوة بخطوة.",
   };
 
 

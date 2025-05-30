@@ -300,6 +300,8 @@ class English {
     "It looks like you haven't added any products yet. Add your favorite meals and enjoy a delicious experience!": "It looks like you haven't added any products yet. Add your favorite meals and enjoy a delicious experience!",
     "Order History": "Order History",
     "Sign out": "Sign out",
+    "There are currently no orders to track.": "There are currently no orders to track.",
+    "When you place an order, you'll be able to track its status here, step by step.": "When you place an order, you'll be able to track its status here, step by step.",
   };
 
 
