@@ -333,6 +333,8 @@ class CreatePasswordScreenWidget extends GetxController {
                             CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter the confirm password");
                           } else if(passwordController.value.text != confirmPasswordController.value.text) {
                             CustomSnackBar().errorCustomSnackBar(context: context, message: "Password is not match");
+                          } else if(passwordController.value.text.toString().length < 8) {
+                            CustomSnackBar().errorCustomSnackBar(context: context, message: "The password should be more than 8 characters");
                           } else {
                             isSubmit.value = true;
                             Map<String,dynamic> data = {

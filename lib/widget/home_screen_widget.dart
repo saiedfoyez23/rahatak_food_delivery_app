@@ -204,550 +204,557 @@ class HomeScreenWidget extends GetxController {
         decoration: BoxDecoration(
           color: ColorUtils.white248,
         ),
-        child: isLoading.value == false ? CustomScrollView(
-          slivers: [
+        child: isLoading.value == false ?
+        RefreshIndicator(
+          onRefresh: () async {
+            Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+          },
+          child: CustomScrollView(
+            slivers: [
 
-            SliverAppBar(
-              expandedHeight: 97.ht(context),
-              collapsedHeight: 97.ht(context),
-              primary: true,
-              pinned: true,
-              automaticallyImplyLeading: false,
-              floating: false,
-              flexibleSpace: Container(
-                height: 142.ht(context),
-                width: 744.wt(context),
-                decoration: BoxDecoration(
-                    color: ColorUtils.white255
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+              SliverAppBar(
+                expandedHeight: 97.ht(context),
+                collapsedHeight: 97.ht(context),
+                primary: true,
+                pinned: true,
+                automaticallyImplyLeading: false,
+                floating: false,
+                flexibleSpace: Container(
+                  height: 142.ht(context),
+                  width: 744.wt(context),
+                  decoration: BoxDecoration(
+                      color: ColorUtils.white255
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
 
-                    SpacerWidget.spacerWidget(spaceHeight: 65.ht(context)),
+                      SpacerWidget.spacerWidget(spaceHeight: 65.ht(context)),
 
-                    Row(
-                      children: [
-
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-
-
-                              Container(
-                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
-                                child: Text(
-                                  "${"Hello".tr}, ${userName.value}",
-                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                  style: GoogleFonts.tajawal(
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 14.spt(context),
-                                    color: ColorUtils.black33,
-                                  ),
-                                ),
-                              ),
-
-
-                              Container(
-                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
-                                child: Text(
-                                  "What do you want to eat today?".tr,
-                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                  style: GoogleFonts.tajawal(
-                                    fontWeight: FontWeight.w700,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.spt(context),
-                                    color: ColorUtils.blue192,
-                                  ),
-                                ),
-                              ),
-
-
-
-
-                            ],
-                          ),
-                        ),
-
-                        Container(
-                          height: 28.ht(context),
-                          width: 28.wt(context),
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {
-                              Get.off(()=>NotificationScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                            },
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: Image.asset(
-                                ImagePathUtils.notificationIconImagePath,
-                                fit: BoxFit.cover,
-                                alignment: Alignment.center,
-                              ),
-                            ),
-                          ),
-                        ),
-
-
-                      ],
-                    ),
-
-
-                  ],
-                ),
-              ),
-            ),
-
-
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
-                child: Column(
-                  children: [
-
-                    SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
-
-
-                    TextFormField(
-                      controller: searchController.value,
-                      textAlign: TextAlign.start,
-                      cursorColor: ColorUtils.blue192,
-                      style: GoogleFonts.openSans(
-                        fontSize: 16.spt(context),
-                        fontStyle: FontStyle.normal,
-                        color: ColorUtils.black51,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      cursorHeight: 20.ht(context),
-                      textAlignVertical: TextAlignVertical.top,
-                      onChanged: (value) async {
-                        isSubmit.value = true;
-                        await StoresController.getSearchStoresResponse(
-                          search: value,
-                          onSuccess: (e) async {
-                            isSubmit.value = false;
-                          },
-                          onFail: (e) async {
-                            isSubmit.value = false;
-                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                          },
-                          onExceptionFail: (e) async {
-                            isSubmit.value = false;
-                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                          },
-                        ).then((value) {
-                          storesResponseModel.value = value;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        alignLabelWithHint: true,
-                        hintText: "Search for a restaurant, dish...".tr,
-                        hintStyle: GoogleFonts.openSans(
-                          fontSize: 16.spt(context),
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          color: ColorUtils.gray136,
-                        ),
-                        filled: true,
-                        prefixIconConstraints: BoxConstraints(
-                          maxHeight: 48.ht(context),
-                          minWidth: 36.wt(context),
-                        ),
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.only(
-                              left: 12.lpmt(context),
-                              right: 10.rpmt(context),
-                              top: 17.33.tpmt(context),
-                              bottom: 17.33.bpmt(context)
-                          ),
-                          child: FittedBox(
-                            fit: BoxFit.cover,
-                            child: Image.asset(
-                              ImagePathUtils.searchIconImagePath,
-                              fit: BoxFit.cover,
-                              alignment: Alignment.center,
-                            ),
-                          ),
-                        ),
-                        suffixIcon: Container(
-                          height: 24.ht(context),
-                          width: 24.wt(context),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 13.hpmt(context),
-                            vertical: 13.vpmt(context),
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.transparent
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {
-                              Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                            },
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: Image.asset(
-                                ImagePathUtils.filterIconImagePath,
-                                fit: BoxFit.cover,
-                                alignment: Alignment.center,
-                              ),
-                            ),
-                          ),
-                        ),
-                        fillColor: ColorUtils.white255,
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 12.hpmt(context),
-                          vertical: 12.vpmt(context),
-                        ),
-                        constraints: BoxConstraints(
-                          maxWidth: 589.wt(context),
-                          maxHeight: 52.ht(context),
-                        ),
-                        border:  OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.rt(context)),
-                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.rt(context)),
-                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.rt(context)),
-                          borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                        ),
-
-                      ),
-                    ),
-
-                    SpacerWidget.spacerWidget(spaceHeight: 36.ht(context)),
-
-
-                  ],
-                ),
-              ),
-            ),
-
-
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
-                child: Column(
-                  children: [
-
-                    Container(
-                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                      child: Text(
-                        "All Restaurants".tr,
-                        textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
-                        style: GoogleFonts.tajawal(
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 20.spt(context),
-                          color: ColorUtils.black30,
-                        ),
-                      ),
-                    ),
-
-                    SpacerWidget.spacerWidget(spaceHeight: 18.ht(context)),
-
-
-                  ],
-                ),
-              ),
-            ),
-
-
-
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
-              sliver: SliverGrid.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 17.ht(context),
-                  mainAxisSpacing: 12.wt(context),
-                  childAspectRatio: 188.wt(context) / 216.ht(context),
-                ),
-                itemBuilder: (context, int index) {
-                  return Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 9.hpmt(context),
-                      vertical: 15.vpmt(context),
-                    ),
-                    decoration: BoxDecoration(
-                      color: ColorUtils.white255,
-                      border: Border.all(color: ColorUtils.white217,width: 1),
-                      borderRadius: BorderRadius.circular(12.rm(context)),
-                    ),
-                    margin: EdgeInsets.only(
-                      bottom: 17.bpmm(context),
-                    ),
-                    child: TextButton(
-                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                      onPressed: () async {
-                        Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data!.data![index].sId!,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                      },
-                      child: Column(
+                      Row(
                         children: [
-
-                          Container(
-                            height: 108.hm(context),
-                            width: 100.wm(context),
-                            decoration: BoxDecoration(
-                                color: Colors.transparent
-                            ),
-                            child: Column(
-                              children: [
-
-                                Container(
-                                  height: 35.hm(context),
-                                  width: 100.wm(context),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(10.rm(context)),
-                                      topRight: Radius.circular(10.rm(context)),
-                                    ),
-                                    color: storesResponseModel.value.data?.data?[index].status == "crowded" ? ColorUtils.yellow160 :
-                                    storesResponseModel.value.data?.data?[index].status == "available" ? ColorUtils.green142 :
-                                    ColorUtils.red211,
-                                  ),
-                                  padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "${storesResponseModel.value.data?.data?[index].status ?? ""}".tr,
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 12.spm(context),
-                                        color: ColorUtils.white255,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-
-                                Expanded(
-                                  child: Container(
-                                    height: 73.hm(context),
-                                    width: 100.wm(context),
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                        left: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                        bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                      ),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.rm(context)),
-                                        bottomRight: Radius.circular(10.rm(context)),
-                                      ),
-                                    ),
-                                    child:  FittedBox(
-                                      fit: BoxFit.fill,
-                                      child: storesResponseModel.value.data?.data?[index].image == null ?
-                                      Image.asset(
-                                        ImagePathUtils.noImageIconImagePath,
-                                        fit: BoxFit.fill,
-                                        alignment: Alignment.center,
-                                      ) :
-                                      Image.network(
-                                        storesResponseModel.value.data?.data?[index].image ?? "",
-                                        fit: BoxFit.fill,
-                                        alignment: Alignment.center,
-                                      ),
-                                    ),
-                                  ),
-                                )
-
-
-
-
-                              ],
-                            ),
-                          ),
-
-                          SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
-
 
                           Expanded(
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
 
 
                                 Container(
-                                  alignment: Alignment.center,
+                                  alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
                                   child: Text(
-                                    "${storesResponseModel.value.data?.data?[index].name ?? ""}".tr,
-                                    textAlign: TextAlign.center,
+                                    "${"Hello".tr}, ${userName.value}",
+                                    textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                     style: GoogleFonts.tajawal(
-                                      fontWeight: FontWeight.w700,
+                                      fontWeight: FontWeight.w500,
                                       fontStyle: FontStyle.normal,
-                                      fontSize: 18.spt(context),
-                                      color: ColorUtils.black30,
+                                      fontSize: 14.spt(context),
+                                      color: ColorUtils.black33,
                                     ),
                                   ),
                                 ),
 
 
-                                SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
-
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-
-
-                                    Container(
-                                      height: 18.ht(context),
-                                      width: 17.wt(context),
-                                      decoration: BoxDecoration(
-                                        color: Colors.transparent,
-                                      ),
-                                      child: FittedBox(
-                                        fit: BoxFit.cover,
-                                        child: Image.asset(
-                                          ImagePathUtils.starIconImagePath,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
+                                Container(
+                                  alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
+                                  child: Text(
+                                    "What do you want to eat today?".tr,
+                                    textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w700,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 18.spt(context),
+                                      color: ColorUtils.blue192,
                                     ),
-
-                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
-
-                                    Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        "${storesResponseModel.value.data?.data?[index].ratings}".tr,
-                                        textAlign: TextAlign.start,
-                                        style: GoogleFonts.tajawal(
-                                          fontWeight: FontWeight.w500,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 14.spt(context),
-                                          color: ColorUtils.black30,
-                                        ),
-                                      ),
-                                    ),
-
-
-                                  ],
+                                  ),
                                 ),
-
-
-                                SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
-
-
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-
-
-                                    Container(
-                                      height: 18.ht(context),
-                                      width: 17.wt(context),
-                                      decoration: BoxDecoration(
-                                        color: Colors.transparent,
-                                      ),
-                                      child: FittedBox(
-                                        fit: BoxFit.cover,
-                                        child: Image.asset(
-                                          ImagePathUtils.locationIconImagePath,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-
-                                    SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
-
-                                    storesResponseModel.value.data!.data![index].location != null ?
-                                    FutureBuilder(
-                                        future: calculateDistanceFromCurrentLocation(
-                                          storesResponseModel.value.data!.data![index].location!.coordinates!.first,
-                                          storesResponseModel.value.data!.data![index].location!.coordinates!.last,
-                                        ),
-                                        builder: (context, snapshot) {
-                                          return Row(
-                                            children: [
-                                              Container(
-                                                alignment: Alignment.centerLeft,
-                                                child: Text(
-                                                  "${snapshot.data?.ceil()} km near you".tr,
-                                                  textAlign: TextAlign.start,
-                                                  style: GoogleFonts.tajawal(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontStyle: FontStyle.normal,
-                                                    fontSize: 14.spm(context),
-                                                    color: ColorUtils.black30,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        }
-                                    ) :
-                                    FutureBuilder(
-                                        future: calculateDistanceFromCurrentLocation(
-                                          storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.first,
-                                          storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.last,
-                                        ),
-                                        builder: (context, snapshot) {
-                                          return Row(
-                                            children: [
-                                              Container(
-                                                alignment: Alignment.centerLeft,
-                                                child: Text(
-                                                  "${snapshot.data?.ceil()} km near you".tr,
-                                                  textAlign: TextAlign.start,
-                                                  style: GoogleFonts.tajawal(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontStyle: FontStyle.normal,
-                                                    fontSize: 14.spm(context),
-                                                    color: ColorUtils.black30,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        }
-                                    ),
-
-
-                                  ],
-                                ),
-
 
 
 
 
                               ],
                             ),
-                          )
+                          ),
+
+                          Container(
+                            height: 28.ht(context),
+                            width: 28.wt(context),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                Get.off(()=>NotificationScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image.asset(
+                                  ImagePathUtils.notificationIconImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                ),
+                              ),
+                            ),
+                          ),
 
 
                         ],
                       ),
-                    ),
-                  );
-                },
-                itemCount: storesResponseModel.value.data?.data?.length,
+
+
+                    ],
+                  ),
+                ),
               ),
-            ),
+
+
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+                  child: Column(
+                    children: [
+
+                      SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+
+                      TextFormField(
+                        controller: searchController.value,
+                        textAlign: TextAlign.start,
+                        cursorColor: ColorUtils.blue192,
+                        style: GoogleFonts.openSans(
+                          fontSize: 16.spt(context),
+                          fontStyle: FontStyle.normal,
+                          color: ColorUtils.black51,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        cursorHeight: 20.ht(context),
+                        textAlignVertical: TextAlignVertical.top,
+                        onChanged: (value) async {
+                          isSubmit.value = true;
+                          await StoresController.getSearchStoresResponse(
+                            search: value,
+                            onSuccess: (e) async {
+                              isSubmit.value = false;
+                            },
+                            onFail: (e) async {
+                              isSubmit.value = false;
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                            },
+                            onExceptionFail: (e) async {
+                              isSubmit.value = false;
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                            },
+                          ).then((value) {
+                            storesResponseModel.value = value;
+                          });
+                        },
+                        decoration: InputDecoration(
+                          alignLabelWithHint: true,
+                          hintText: "Search for a restaurant, dish...".tr,
+                          hintStyle: GoogleFonts.openSans(
+                            fontSize: 16.spt(context),
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            color: ColorUtils.gray136,
+                          ),
+                          filled: true,
+                          prefixIconConstraints: BoxConstraints(
+                            maxHeight: 48.ht(context),
+                            minWidth: 36.wt(context),
+                          ),
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.only(
+                                left: 12.lpmt(context),
+                                right: 10.rpmt(context),
+                                top: 17.33.tpmt(context),
+                                bottom: 17.33.bpmt(context)
+                            ),
+                            child: FittedBox(
+                              fit: BoxFit.cover,
+                              child: Image.asset(
+                                ImagePathUtils.searchIconImagePath,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.center,
+                              ),
+                            ),
+                          ),
+                          suffixIcon: Container(
+                            height: 24.ht(context),
+                            width: 24.wt(context),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 13.hpmt(context),
+                              vertical: 13.vpmt(context),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.transparent
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image.asset(
+                                  ImagePathUtils.filterIconImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                ),
+                              ),
+                            ),
+                          ),
+                          fillColor: ColorUtils.white255,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 12.hpmt(context),
+                            vertical: 12.vpmt(context),
+                          ),
+                          constraints: BoxConstraints(
+                            maxWidth: 589.wt(context),
+                            maxHeight: 52.ht(context),
+                          ),
+                          border:  OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.rt(context)),
+                            borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.rt(context)),
+                            borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.rt(context)),
+                            borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                          ),
+
+                        ),
+                      ),
+
+                      SpacerWidget.spacerWidget(spaceHeight: 36.ht(context)),
+
+
+                    ],
+                  ),
+                ),
+              ),
+
+
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+                  child: Column(
+                    children: [
+
+                      Container(
+                        alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                        child: Text(
+                          "All Restaurants".tr,
+                          textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
+                          style: GoogleFonts.tajawal(
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 20.spt(context),
+                            color: ColorUtils.black30,
+                          ),
+                        ),
+                      ),
+
+                      SpacerWidget.spacerWidget(spaceHeight: 18.ht(context)),
+
+
+                    ],
+                  ),
+                ),
+              ),
+
+
+
+              SliverPadding(
+                padding: EdgeInsets.symmetric(horizontal: 79.hpmt(context)),
+                sliver: SliverGrid.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 17.ht(context),
+                    mainAxisSpacing: 12.wt(context),
+                    childAspectRatio: 188.wt(context) / 216.ht(context),
+                  ),
+                  itemBuilder: (context, int index) {
+                    return Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 9.hpmt(context),
+                        vertical: 15.vpmt(context),
+                      ),
+                      decoration: BoxDecoration(
+                        color: ColorUtils.white255,
+                        border: Border.all(color: ColorUtils.white217,width: 1),
+                        borderRadius: BorderRadius.circular(12.rm(context)),
+                      ),
+                      margin: EdgeInsets.only(
+                        bottom: 17.bpmm(context),
+                      ),
+                      child: TextButton(
+                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        onPressed: () async {
+                          Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data!.data![index].sId!,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        },
+                        child: Column(
+                          children: [
+
+                            Container(
+                              height: 108.hm(context),
+                              width: 100.wm(context),
+                              decoration: BoxDecoration(
+                                  color: Colors.transparent
+                              ),
+                              child: Column(
+                                children: [
+
+                                  Container(
+                                    height: 35.hm(context),
+                                    width: 100.wm(context),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10.rm(context)),
+                                        topRight: Radius.circular(10.rm(context)),
+                                      ),
+                                      color: storesResponseModel.value.data?.data?[index].status == "crowded" ? ColorUtils.yellow160 :
+                                      storesResponseModel.value.data?.data?[index].status == "available" ? ColorUtils.green142 :
+                                      ColorUtils.red211,
+                                    ),
+                                    padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "${storesResponseModel.value.data?.data?[index].status ?? ""}".tr,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 12.spm(context),
+                                          color: ColorUtils.white255,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  Expanded(
+                                    child: Container(
+                                      height: 73.hm(context),
+                                      width: 100.wm(context),
+                                      decoration: BoxDecoration(
+                                        border: Border(
+                                          right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                          left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                          bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                        ),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.rm(context)),
+                                          bottomRight: Radius.circular(10.rm(context)),
+                                        ),
+                                      ),
+                                      child:  FittedBox(
+                                        fit: BoxFit.fill,
+                                        child: storesResponseModel.value.data?.data?[index].image == null ?
+                                        Image.asset(
+                                          ImagePathUtils.noImageIconImagePath,
+                                          fit: BoxFit.fill,
+                                          alignment: Alignment.center,
+                                        ) :
+                                        Image.network(
+                                          storesResponseModel.value.data?.data?[index].image ?? "",
+                                          fit: BoxFit.fill,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+
+
+
+
+                                ],
+                              ),
+                            ),
+
+                            SpacerWidget.spacerWidget(spaceWidth: 15.ht(context)),
+
+
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${storesResponseModel.value.data?.data?[index].name ?? ""}".tr,
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.tajawal(
+                                        fontWeight: FontWeight.w700,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 18.spt(context),
+                                        color: ColorUtils.black30,
+                                      ),
+                                    ),
+                                  ),
+
+
+                                  SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+
+
+                                      Container(
+                                        height: 18.ht(context),
+                                        width: 17.wt(context),
+                                        decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                        ),
+                                        child: FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Image.asset(
+                                            ImagePathUtils.starIconImagePath,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+
+                                      SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                      Container(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "${storesResponseModel.value.data?.data?[index].ratings}".tr,
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.tajawal(
+                                            fontWeight: FontWeight.w500,
+                                            fontStyle: FontStyle.normal,
+                                            fontSize: 14.spt(context),
+                                            color: ColorUtils.black30,
+                                          ),
+                                        ),
+                                      ),
+
+
+                                    ],
+                                  ),
+
+
+                                  SpacerWidget.spacerWidget(spaceHeight: 15.ht(context)),
+
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+
+
+                                      Container(
+                                        height: 18.ht(context),
+                                        width: 17.wt(context),
+                                        decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                        ),
+                                        child: FittedBox(
+                                          fit: BoxFit.cover,
+                                          child: Image.asset(
+                                            ImagePathUtils.locationIconImagePath,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+
+                                      SpacerWidget.spacerWidget(spaceWidth: 8.wt(context)),
+
+                                      storesResponseModel.value.data!.data![index].location != null ?
+                                      FutureBuilder(
+                                          future: calculateDistanceFromCurrentLocation(
+                                            storesResponseModel.value.data!.data![index].location!.coordinates!.first,
+                                            storesResponseModel.value.data!.data![index].location!.coordinates!.last,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            return Row(
+                                              children: [
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${snapshot.data?.ceil()} km near you".tr,
+                                                    textAlign: TextAlign.start,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 14.spm(context),
+                                                      color: ColorUtils.black30,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                      ) :
+                                      FutureBuilder(
+                                          future: calculateDistanceFromCurrentLocation(
+                                            storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.first,
+                                            storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.last,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            return Row(
+                                              children: [
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${snapshot.data?.ceil()} km near you".tr,
+                                                    textAlign: TextAlign.start,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 14.spm(context),
+                                                      color: ColorUtils.black30,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                      ),
+
+
+                                    ],
+                                  ),
 
 
 
 
 
-          ],
-        ) : Center(child: CircularProgressIndicator(),),
+                                ],
+                              ),
+                            )
+
+
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  itemCount: storesResponseModel.value.data?.data?.length,
+                ),
+              ),
+
+
+
+
+
+            ],
+          ),
+        ) :
+        Center(child: CircularProgressIndicator(),),
       ));
     } else {
       return Obx(()=>Container(
@@ -756,889 +763,896 @@ class HomeScreenWidget extends GetxController {
         decoration: BoxDecoration(
           color: ColorUtils.white248,
         ),
-        child: isLoading.value == false ? CustomScrollView(
-          slivers: [
+        child: isLoading.value == false ?
+        RefreshIndicator(
+          onRefresh: () async {
+            Get.off(()=>HomeScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+          },
+          child: CustomScrollView(
+            slivers: [
 
 
-            SliverAppBar(
-              expandedHeight: 180.hm(context),
-              collapsedHeight: 180.hm(context),
-              primary: true,
-              pinned: true,
-              automaticallyImplyLeading: false,
-              floating: false,
-              flexibleSpace: Container(
-                height: 210.hm(context),
-                width: 390.wm(context),
-                decoration: BoxDecoration(
-                    color: ColorUtils.white255
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+              SliverAppBar(
+                expandedHeight: 180.hm(context),
+                collapsedHeight: 180.hm(context),
+                primary: true,
+                pinned: true,
+                automaticallyImplyLeading: false,
+                floating: false,
+                flexibleSpace: Container(
+                  height: 210.hm(context),
+                  width: 390.wm(context),
+                  decoration: BoxDecoration(
+                      color: ColorUtils.white255
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
 
-                    SpacerWidget.spacerWidget(spaceHeight: 76.hm(context)),
+                      SpacerWidget.spacerWidget(spaceHeight: 76.hm(context)),
 
-                    Row(
-                      children: [
+                      Row(
+                        children: [
 
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
 
 
-                              Container(
-                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
-                                child: Text(
-                                  "${"Hello".tr}, ${userName.value}".tr,
-                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                  style: GoogleFonts.tajawal(
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 14.spm(context),
-                                    color: ColorUtils.black33,
+                                Container(
+                                  alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
+                                  child: Text(
+                                    "${"Hello".tr}, ${userName.value}".tr,
+                                    textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 14.spm(context),
+                                      color: ColorUtils.black33,
+                                    ),
                                   ),
                                 ),
-                              ),
 
 
-                              Container(
-                                alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
-                                child: Text(
-                                  "What do you want to eat today?".tr,
-                                  textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                  style: GoogleFonts.tajawal(
-                                    fontWeight: FontWeight.w700,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 18.spm(context),
-                                    color: ColorUtils.blue192,
+                                Container(
+                                  alignment: Get.locale.toString() == "en" ? Alignment.centerLeft :  Alignment.centerRight,
+                                  child: Text(
+                                    "What do you want to eat today?".tr,
+                                    textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                    style: GoogleFonts.tajawal(
+                                      fontWeight: FontWeight.w700,
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 18.spm(context),
+                                      color: ColorUtils.blue192,
+                                    ),
                                   ),
                                 ),
-                              ),
 
 
 
 
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
 
-                        Container(
-                          height: 28.hm(context),
-                          width: 28.wm(context),
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {
-                              Get.off(()=>NotificationScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                            },
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: Image.asset(
-                                ImagePathUtils.notificationIconImagePath,
+                          Container(
+                            height: 28.hm(context),
+                            width: 28.wm(context),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                Get.off(()=>NotificationScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              child: FittedBox(
                                 fit: BoxFit.cover,
-                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  ImagePathUtils.notificationIconImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
+                                ),
                               ),
                             ),
                           ),
-                        ),
 
 
-                      ],
-                    ),
-
-                    SpacerWidget.spacerWidget(spaceHeight: 27.hm(context)),
-
-
-                    TextFormField(
-                      controller: searchController.value,
-                      textAlign: TextAlign.start,
-                      cursorColor: ColorUtils.blue192,
-                      style: GoogleFonts.openSans(
-                        fontSize: 16.spm(context),
-                        fontStyle: FontStyle.normal,
-                        color: ColorUtils.black51,
-                        fontWeight: FontWeight.w400,
+                        ],
                       ),
-                      cursorHeight: 20.hm(context),
-                      textAlignVertical: TextAlignVertical.top,
-                      onChanged: (value) async {
-                        isSubmit.value = true;
-                        await StoresController.getSearchStoresResponse(
-                          search: value,
-                          onSuccess: (e) async {
-                            isSubmit.value = false;
-                          },
-                          onFail: (e) async {
-                            isSubmit.value = false;
-                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                          },
-                          onExceptionFail: (e) async {
-                            isSubmit.value = false;
-                            CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                          },
-                        ).then((value) {
-                          storesResponseModel.value = value;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        alignLabelWithHint: true,
-                        hintText: "Search for a restaurant, dish...".tr,
-                        hintStyle: GoogleFonts.openSans(
+
+                      SpacerWidget.spacerWidget(spaceHeight: 27.hm(context)),
+
+
+                      TextFormField(
+                        controller: searchController.value,
+                        textAlign: TextAlign.start,
+                        cursorColor: ColorUtils.blue192,
+                        style: GoogleFonts.openSans(
                           fontSize: 16.spm(context),
-                          fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
-                          color: ColorUtils.gray136,
+                          color: ColorUtils.black51,
+                          fontWeight: FontWeight.w400,
                         ),
-                        filled: true,
-                        prefixIconConstraints: BoxConstraints(
-                          maxHeight: 48.hm(context),
-                          minWidth: 36.wm(context),
-                        ),
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.only(
-                            left: 12.lpmm(context),
-                            right: 10.rpmm(context),
-                            top: 17.33.tpmm(context),
-                            bottom: 17.33.bpmm(context),
-                          ),
-                          child: FittedBox(
-                            fit: BoxFit.cover,
-                            child: Image.asset(
-                              ImagePathUtils.searchIconImagePath,
-                              fit: BoxFit.cover,
-                              alignment: Alignment.center,
-                            ),
-                          ),
-                        ),
-                        suffixIcon: Container(
-                          height: 24.hm(context),
-                          width: 24.wm(context),
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 13.hpmm(context),
-                            vertical: 13.vpmm(context),
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.transparent
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                            onPressed: () {
-                              Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        cursorHeight: 20.hm(context),
+                        textAlignVertical: TextAlignVertical.top,
+                        onChanged: (value) async {
+                          isSubmit.value = true;
+                          await StoresController.getSearchStoresResponse(
+                            search: value,
+                            onSuccess: (e) async {
+                              isSubmit.value = false;
                             },
+                            onFail: (e) async {
+                              isSubmit.value = false;
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                            },
+                            onExceptionFail: (e) async {
+                              isSubmit.value = false;
+                              CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                            },
+                          ).then((value) {
+                            storesResponseModel.value = value;
+                          });
+                        },
+                        decoration: InputDecoration(
+                          alignLabelWithHint: true,
+                          hintText: "Search for a restaurant, dish...".tr,
+                          hintStyle: GoogleFonts.openSans(
+                            fontSize: 16.spm(context),
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            color: ColorUtils.gray136,
+                          ),
+                          filled: true,
+                          prefixIconConstraints: BoxConstraints(
+                            maxHeight: 48.hm(context),
+                            minWidth: 36.wm(context),
+                          ),
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.only(
+                              left: 12.lpmm(context),
+                              right: 10.rpmm(context),
+                              top: 17.33.tpmm(context),
+                              bottom: 17.33.bpmm(context),
+                            ),
                             child: FittedBox(
                               fit: BoxFit.cover,
                               child: Image.asset(
-                                ImagePathUtils.filterIconImagePath,
+                                ImagePathUtils.searchIconImagePath,
                                 fit: BoxFit.cover,
                                 alignment: Alignment.center,
                               ),
                             ),
                           ),
-                        ),
-                        fillColor: ColorUtils.white255,
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 12.hpmm(context),
-                          vertical: 12.vpmm(context),
-                        ),
-                        constraints: BoxConstraints(
-                          maxWidth: 358.wm(context),
-                          maxHeight: 48.hm(context),
-                        ),
-                        border:  OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
-                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
-                          borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
-                          borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                        ),
-
-                      ),
-                    ),
-
-
-
-                  ],
-                ),
-              ),
-            ),
-
-
-
-            // SliverToBoxAdapter(
-            //   child: Padding(
-            //     padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-            //     child: Column(
-            //       children: [
-            //
-            //         SpacerWidget.spacerWidget(spaceHeight: 21.hm(context)),
-            //
-            //
-            //         Container(
-            //           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-            //           child: Text(
-            //             "Top Rated Restaurants".tr,
-            //             textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
-            //             style: GoogleFonts.tajawal(
-            //               fontWeight: FontWeight.w700,
-            //               fontStyle: FontStyle.normal,
-            //               fontSize: 20.spm(context),
-            //               color: ColorUtils.black30,
-            //             ),
-            //           ),
-            //         ),
-            //
-            //         SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
-            //
-            //
-            //
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            //
-            //
-            // SliverList(
-            //     delegate: SliverChildBuilderDelegate(
-            //           (context,int index) {
-            //         return Padding(
-            //           padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-            //           child: Container(
-            //             padding: EdgeInsets.symmetric(
-            //               horizontal: 9.hpmm(context),
-            //               vertical: 15.vpmm(context),
-            //             ),
-            //             decoration: BoxDecoration(
-            //               color: ColorUtils.white255,
-            //               border: Border.all(color: ColorUtils.white217,width: 1),
-            //               borderRadius: BorderRadius.circular(12.rm(context)),
-            //             ),
-            //             margin: EdgeInsets.only(
-            //               bottom: 17.bpmm(context),
-            //             ),
-            //             child: TextButton(
-            //               style: TextButton.styleFrom(
-            //                 padding: EdgeInsets.zero,
-            //               ),
-            //               onPressed: () async {
-            //                 Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-            //               },
-            //               child: Row(
-            //                 children: [
-            //
-            //                   Container(
-            //                     height: 108.hm(context),
-            //                     width: 100.wm(context),
-            //                     decoration: BoxDecoration(
-            //                         color: Colors.transparent
-            //                     ),
-            //                     child: Column(
-            //                       children: [
-            //
-            //                         Container(
-            //                           height: 35.hm(context),
-            //                           width: 100.wm(context),
-            //                           decoration: BoxDecoration(
-            //                             borderRadius: BorderRadius.only(
-            //                               topLeft: Radius.circular(10.rm(context)),
-            //                               topRight: Radius.circular(10.rm(context)),
-            //                             ),
-            //                             color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
-            //                             firstImageList[index].status == "Available" ? ColorUtils.green142 :
-            //                             ColorUtils.red211,
-            //                           ),
-            //                           padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
-            //                           alignment: Alignment.center,
-            //                           child: Container(
-            //                             alignment: Alignment.center,
-            //                             child: Text(
-            //                               "${firstImageList[index].status}".tr,
-            //                               textAlign: TextAlign.center,
-            //                               style: GoogleFonts.tajawal(
-            //                                 fontWeight: FontWeight.w700,
-            //                                 fontStyle: FontStyle.normal,
-            //                                 fontSize: 12.spm(context),
-            //                                 color: ColorUtils.white255,
-            //                               ),
-            //                             ),
-            //                           ),
-            //                         ),
-            //
-            //                         Expanded(
-            //                           child: Container(
-            //                             height: 73.hm(context),
-            //                             width: 100.wm(context),
-            //                             decoration: BoxDecoration(
-            //                               border: Border(
-            //                                 right: BorderSide(color: ColorUtils.white217,width: 0.5),
-            //                                 left: BorderSide(color: ColorUtils.white217,width: 0.5),
-            //                                 bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
-            //                               ),
-            //                               borderRadius: BorderRadius.only(
-            //                                 bottomLeft: Radius.circular(10.rm(context)),
-            //                                 bottomRight: Radius.circular(10.rm(context)),
-            //                               ),
-            //                             ),
-            //                             child: FittedBox(
-            //                               fit: BoxFit.fill,
-            //                               child: Image.asset(
-            //                                 firstImageList[index].image!,
-            //                                 fit: BoxFit.fill,
-            //                                 alignment: Alignment.center,
-            //                               ),
-            //                             ),
-            //                           ),
-            //                         )
-            //
-            //
-            //
-            //
-            //                       ],
-            //                     ),
-            //                   ),
-            //
-            //                   SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
-            //
-            //
-            //                   Expanded(
-            //                     child: Column(
-            //                       mainAxisAlignment: MainAxisAlignment.center,
-            //                       crossAxisAlignment: CrossAxisAlignment.start,
-            //                       children: [
-            //
-            //
-            //                         Container(
-            //                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-            //                           child: Text(
-            //                             "${firstImageList[index].restaurant}".tr,
-            //                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-            //                             style: GoogleFonts.tajawal(
-            //                               fontWeight: FontWeight.w700,
-            //                               fontStyle: FontStyle.normal,
-            //                               fontSize: 18.spm(context),
-            //                               color: ColorUtils.black30,
-            //                             ),
-            //                           ),
-            //                         ),
-            //
-            //
-            //                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-            //
-            //                         Row(
-            //                           mainAxisAlignment: MainAxisAlignment.start,
-            //                           crossAxisAlignment: CrossAxisAlignment.center,
-            //                           children: [
-            //
-            //
-            //                             Container(
-            //                               height: 18.hm(context),
-            //                               width: 17.wm(context),
-            //                               decoration: BoxDecoration(
-            //                                 color: Colors.transparent,
-            //                               ),
-            //                               child: FittedBox(
-            //                                 fit: BoxFit.cover,
-            //                                 child: Image.asset(
-            //                                   ImagePathUtils.starIconImagePath,
-            //                                   fit: BoxFit.cover,
-            //                                 ),
-            //                               ),
-            //                             ),
-            //
-            //                             SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-            //
-            //                             Container(
-            //                               alignment: Alignment.centerLeft,
-            //                               child: Text(
-            //                                 "${firstImageList[index].rating}".tr,
-            //                                 textAlign: TextAlign.start,
-            //                                 style: GoogleFonts.tajawal(
-            //                                   fontWeight: FontWeight.w500,
-            //                                   fontStyle: FontStyle.normal,
-            //                                   fontSize: 14.spm(context),
-            //                                   color: ColorUtils.black30,
-            //                                 ),
-            //                               ),
-            //                             ),
-            //
-            //
-            //                           ],
-            //                         ),
-            //
-            //
-            //                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-            //
-            //
-            //                         Row(
-            //                           mainAxisAlignment: MainAxisAlignment.start,
-            //                           crossAxisAlignment: CrossAxisAlignment.center,
-            //                           children: [
-            //
-            //
-            //                             Container(
-            //                               height: 18.hm(context),
-            //                               width: 17.wm(context),
-            //                               decoration: BoxDecoration(
-            //                                 color: Colors.transparent,
-            //                               ),
-            //                               child: FittedBox(
-            //                                 fit: BoxFit.cover,
-            //                                 child: Image.asset(
-            //                                   ImagePathUtils.locationIconImagePath,
-            //                                   fit: BoxFit.cover,
-            //                                 ),
-            //                               ),
-            //                             ),
-            //
-            //                             SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-            //
-            //                             Container(
-            //                               alignment: Alignment.centerLeft,
-            //                               child: Text(
-            //                                 "${firstImageList[index].address}".tr,
-            //                                 textAlign: TextAlign.start,
-            //                                 style: GoogleFonts.tajawal(
-            //                                   fontWeight: FontWeight.w500,
-            //                                   fontStyle: FontStyle.normal,
-            //                                   fontSize: 14.spm(context),
-            //                                   color: ColorUtils.black30,
-            //                                 ),
-            //                               ),
-            //                             ),
-            //
-            //
-            //                           ],
-            //                         ),
-            //
-            //
-            //
-            //
-            //
-            //                       ],
-            //                     ),
-            //                   )
-            //
-            //
-            //                 ],
-            //               ),
-            //             ),
-            //           ),
-            //         );
-            //       },
-            //       childCount: firstImageList.length,
-            //     )
-            // ),
-
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-                child: Column(
-                  children: [
-
-                    SpacerWidget.spacerWidget(spaceHeight: 16.hm(context)),
-
-                    Container(
-                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                      child: Text(
-                        "All Restaurant".tr,
-                        textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
-                        style: GoogleFonts.tajawal(
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 20.spm(context),
-                          color: ColorUtils.black30,
-                        ),
-                      ),
-                    ),
-
-                    SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
-
-
-
-                  ],
-                ),
-              ),
-            ),
-
-
-            // SliverToBoxAdapter(
-            //   child: Padding(
-            //     padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-            //     child: Column(
-            //       children: [
-            //
-            //         SpacerWidget.spacerWidget(spaceHeight: 16.hm(context)),
-            //
-            //         Container(
-            //           height: 97.hm(context),
-            //           width: 390.wm(context),
-            //           decoration: BoxDecoration(
-            //               color: Colors.transparent
-            //           ),
-            //           child: ListView.builder(
-            //             scrollDirection: Axis.horizontal,
-            //             itemCount: listImageList.length,
-            //             itemBuilder: (context,int index) {
-            //               return Container(
-            //                 width: 80.wm(context),
-            //                 alignment: Alignment.center,
-            //                 child: Column(
-            //                   mainAxisAlignment: MainAxisAlignment.center,
-            //                   crossAxisAlignment: CrossAxisAlignment.center,
-            //                   children: [
-            //                     Container(
-            //                       height: 60.hm(context),
-            //                       width: 60.wm(context),
-            //                       decoration: BoxDecoration(
-            //                         color: Colors.transparent,
-            //                         borderRadius: BorderRadius.circular(8.rm(context)),
-            //                       ),
-            //                       margin: EdgeInsets.only(
-            //                         right: 12.rpmm(context),
-            //                       ),
-            //                       child: FittedBox(
-            //                         fit: BoxFit.fill,
-            //                         child: Image.asset(
-            //                           listImageList[index].image!,
-            //                           fit: BoxFit.fill,
-            //                         ),
-            //                       ),
-            //                     ),
-            //
-            //                     SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
-            //
-            //                     Expanded(
-            //                       child: Container(
-            //                         alignment: Alignment.topCenter,
-            //                         child: Text(
-            //                           "${listImageList[index].name}".tr,
-            //                           textAlign: TextAlign.center,
-            //                           style: GoogleFonts.tajawal(
-            //                             fontWeight: FontWeight.w500,
-            //                             fontStyle: FontStyle.normal,
-            //                             fontSize: 16.spm(context),
-            //                             color: ColorUtils.black255,
-            //                           ),
-            //                         ),
-            //                       ),
-            //                     ),
-            //
-            //
-            //                   ],
-            //                 ),
-            //               );
-            //             },
-            //           ),
-            //         ),
-            //
-            //         SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
-            //
-            //
-            //
-            //       ],
-            //     ),
-            //   ),
-            // ),
-
-
-            isSubmit.value == false ?
-            SliverList(
-                delegate: SliverChildBuilderDelegate(
-                      (context,int index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 9.hpmm(context),
-                          vertical: 15.vpmm(context),
-                        ),
-                        decoration: BoxDecoration(
-                          color: ColorUtils.white255,
-                          border: Border.all(color: ColorUtils.white217,width: 1),
-                          borderRadius: BorderRadius.circular(12.rm(context)),
-                        ),
-                        margin: EdgeInsets.only(
-                          bottom: 17.bpmm(context),
-                        ),
-                        child: TextButton(
-                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                          onPressed: () async {
-                            Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data!.data![index].sId!,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                          },
-                          child: Row(
-                            children: [
-
-                              Container(
-                                height: 108.hm(context),
-                                width: 100.wm(context),
-                                decoration: BoxDecoration(
-                                    color: Colors.transparent
+                          suffixIcon: Container(
+                            height: 24.hm(context),
+                            width: 24.wm(context),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 13.hpmm(context),
+                              vertical: 13.vpmm(context),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.transparent
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              onPressed: () {
+                                Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                              },
+                              child: FittedBox(
+                                fit: BoxFit.cover,
+                                child: Image.asset(
+                                  ImagePathUtils.filterIconImagePath,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.center,
                                 ),
-                                child: Column(
-                                  children: [
+                              ),
+                            ),
+                          ),
+                          fillColor: ColorUtils.white255,
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 12.hpmm(context),
+                            vertical: 12.vpmm(context),
+                          ),
+                          constraints: BoxConstraints(
+                            maxWidth: 358.wm(context),
+                            maxHeight: 48.hm(context),
+                          ),
+                          border:  OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                            borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                            borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(MediaQuery.sizeOf(context).height > 1000 ? 8.rt(context) : 8.rm(context)),
+                            borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
+                          ),
 
-                                    Container(
-                                      height: 35.hm(context),
-                                      width: 100.wm(context),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10.rm(context)),
-                                          topRight: Radius.circular(10.rm(context)),
+                        ),
+                      ),
+
+
+
+                    ],
+                  ),
+                ),
+              ),
+
+
+
+              // SliverToBoxAdapter(
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+              //     child: Column(
+              //       children: [
+              //
+              //         SpacerWidget.spacerWidget(spaceHeight: 21.hm(context)),
+              //
+              //
+              //         Container(
+              //           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+              //           child: Text(
+              //             "Top Rated Restaurants".tr,
+              //             textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
+              //             style: GoogleFonts.tajawal(
+              //               fontWeight: FontWeight.w700,
+              //               fontStyle: FontStyle.normal,
+              //               fontSize: 20.spm(context),
+              //               color: ColorUtils.black30,
+              //             ),
+              //           ),
+              //         ),
+              //
+              //         SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
+              //
+              //
+              //
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              //
+              //
+              // SliverList(
+              //     delegate: SliverChildBuilderDelegate(
+              //           (context,int index) {
+              //         return Padding(
+              //           padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+              //           child: Container(
+              //             padding: EdgeInsets.symmetric(
+              //               horizontal: 9.hpmm(context),
+              //               vertical: 15.vpmm(context),
+              //             ),
+              //             decoration: BoxDecoration(
+              //               color: ColorUtils.white255,
+              //               border: Border.all(color: ColorUtils.white217,width: 1),
+              //               borderRadius: BorderRadius.circular(12.rm(context)),
+              //             ),
+              //             margin: EdgeInsets.only(
+              //               bottom: 17.bpmm(context),
+              //             ),
+              //             child: TextButton(
+              //               style: TextButton.styleFrom(
+              //                 padding: EdgeInsets.zero,
+              //               ),
+              //               onPressed: () async {
+              //                 Get.off(()=>RestaurantDetailsScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+              //               },
+              //               child: Row(
+              //                 children: [
+              //
+              //                   Container(
+              //                     height: 108.hm(context),
+              //                     width: 100.wm(context),
+              //                     decoration: BoxDecoration(
+              //                         color: Colors.transparent
+              //                     ),
+              //                     child: Column(
+              //                       children: [
+              //
+              //                         Container(
+              //                           height: 35.hm(context),
+              //                           width: 100.wm(context),
+              //                           decoration: BoxDecoration(
+              //                             borderRadius: BorderRadius.only(
+              //                               topLeft: Radius.circular(10.rm(context)),
+              //                               topRight: Radius.circular(10.rm(context)),
+              //                             ),
+              //                             color: firstImageList[index].status == "Crowded" ? ColorUtils.yellow160 :
+              //                             firstImageList[index].status == "Available" ? ColorUtils.green142 :
+              //                             ColorUtils.red211,
+              //                           ),
+              //                           padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
+              //                           alignment: Alignment.center,
+              //                           child: Container(
+              //                             alignment: Alignment.center,
+              //                             child: Text(
+              //                               "${firstImageList[index].status}".tr,
+              //                               textAlign: TextAlign.center,
+              //                               style: GoogleFonts.tajawal(
+              //                                 fontWeight: FontWeight.w700,
+              //                                 fontStyle: FontStyle.normal,
+              //                                 fontSize: 12.spm(context),
+              //                                 color: ColorUtils.white255,
+              //                               ),
+              //                             ),
+              //                           ),
+              //                         ),
+              //
+              //                         Expanded(
+              //                           child: Container(
+              //                             height: 73.hm(context),
+              //                             width: 100.wm(context),
+              //                             decoration: BoxDecoration(
+              //                               border: Border(
+              //                                 right: BorderSide(color: ColorUtils.white217,width: 0.5),
+              //                                 left: BorderSide(color: ColorUtils.white217,width: 0.5),
+              //                                 bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+              //                               ),
+              //                               borderRadius: BorderRadius.only(
+              //                                 bottomLeft: Radius.circular(10.rm(context)),
+              //                                 bottomRight: Radius.circular(10.rm(context)),
+              //                               ),
+              //                             ),
+              //                             child: FittedBox(
+              //                               fit: BoxFit.fill,
+              //                               child: Image.asset(
+              //                                 firstImageList[index].image!,
+              //                                 fit: BoxFit.fill,
+              //                                 alignment: Alignment.center,
+              //                               ),
+              //                             ),
+              //                           ),
+              //                         )
+              //
+              //
+              //
+              //
+              //                       ],
+              //                     ),
+              //                   ),
+              //
+              //                   SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+              //
+              //
+              //                   Expanded(
+              //                     child: Column(
+              //                       mainAxisAlignment: MainAxisAlignment.center,
+              //                       crossAxisAlignment: CrossAxisAlignment.start,
+              //                       children: [
+              //
+              //
+              //                         Container(
+              //                           alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+              //                           child: Text(
+              //                             "${firstImageList[index].restaurant}".tr,
+              //                             textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+              //                             style: GoogleFonts.tajawal(
+              //                               fontWeight: FontWeight.w700,
+              //                               fontStyle: FontStyle.normal,
+              //                               fontSize: 18.spm(context),
+              //                               color: ColorUtils.black30,
+              //                             ),
+              //                           ),
+              //                         ),
+              //
+              //
+              //                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+              //
+              //                         Row(
+              //                           mainAxisAlignment: MainAxisAlignment.start,
+              //                           crossAxisAlignment: CrossAxisAlignment.center,
+              //                           children: [
+              //
+              //
+              //                             Container(
+              //                               height: 18.hm(context),
+              //                               width: 17.wm(context),
+              //                               decoration: BoxDecoration(
+              //                                 color: Colors.transparent,
+              //                               ),
+              //                               child: FittedBox(
+              //                                 fit: BoxFit.cover,
+              //                                 child: Image.asset(
+              //                                   ImagePathUtils.starIconImagePath,
+              //                                   fit: BoxFit.cover,
+              //                                 ),
+              //                               ),
+              //                             ),
+              //
+              //                             SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+              //
+              //                             Container(
+              //                               alignment: Alignment.centerLeft,
+              //                               child: Text(
+              //                                 "${firstImageList[index].rating}".tr,
+              //                                 textAlign: TextAlign.start,
+              //                                 style: GoogleFonts.tajawal(
+              //                                   fontWeight: FontWeight.w500,
+              //                                   fontStyle: FontStyle.normal,
+              //                                   fontSize: 14.spm(context),
+              //                                   color: ColorUtils.black30,
+              //                                 ),
+              //                               ),
+              //                             ),
+              //
+              //
+              //                           ],
+              //                         ),
+              //
+              //
+              //                         SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+              //
+              //
+              //                         Row(
+              //                           mainAxisAlignment: MainAxisAlignment.start,
+              //                           crossAxisAlignment: CrossAxisAlignment.center,
+              //                           children: [
+              //
+              //
+              //                             Container(
+              //                               height: 18.hm(context),
+              //                               width: 17.wm(context),
+              //                               decoration: BoxDecoration(
+              //                                 color: Colors.transparent,
+              //                               ),
+              //                               child: FittedBox(
+              //                                 fit: BoxFit.cover,
+              //                                 child: Image.asset(
+              //                                   ImagePathUtils.locationIconImagePath,
+              //                                   fit: BoxFit.cover,
+              //                                 ),
+              //                               ),
+              //                             ),
+              //
+              //                             SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+              //
+              //                             Container(
+              //                               alignment: Alignment.centerLeft,
+              //                               child: Text(
+              //                                 "${firstImageList[index].address}".tr,
+              //                                 textAlign: TextAlign.start,
+              //                                 style: GoogleFonts.tajawal(
+              //                                   fontWeight: FontWeight.w500,
+              //                                   fontStyle: FontStyle.normal,
+              //                                   fontSize: 14.spm(context),
+              //                                   color: ColorUtils.black30,
+              //                                 ),
+              //                               ),
+              //                             ),
+              //
+              //
+              //                           ],
+              //                         ),
+              //
+              //
+              //
+              //
+              //
+              //                       ],
+              //                     ),
+              //                   )
+              //
+              //
+              //                 ],
+              //               ),
+              //             ),
+              //           ),
+              //         );
+              //       },
+              //       childCount: firstImageList.length,
+              //     )
+              // ),
+
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                  child: Column(
+                    children: [
+
+                      SpacerWidget.spacerWidget(spaceHeight: 16.hm(context)),
+
+                      Container(
+                        alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                        child: Text(
+                          "All Restaurant".tr,
+                          textAlign: Get.locale.toString() == "en" ?  TextAlign.start : TextAlign.end,
+                          style: GoogleFonts.tajawal(
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 20.spm(context),
+                            color: ColorUtils.black30,
+                          ),
+                        ),
+                      ),
+
+                      SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
+
+
+
+                    ],
+                  ),
+                ),
+              ),
+
+
+              // SliverToBoxAdapter(
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+              //     child: Column(
+              //       children: [
+              //
+              //         SpacerWidget.spacerWidget(spaceHeight: 16.hm(context)),
+              //
+              //         Container(
+              //           height: 97.hm(context),
+              //           width: 390.wm(context),
+              //           decoration: BoxDecoration(
+              //               color: Colors.transparent
+              //           ),
+              //           child: ListView.builder(
+              //             scrollDirection: Axis.horizontal,
+              //             itemCount: listImageList.length,
+              //             itemBuilder: (context,int index) {
+              //               return Container(
+              //                 width: 80.wm(context),
+              //                 alignment: Alignment.center,
+              //                 child: Column(
+              //                   mainAxisAlignment: MainAxisAlignment.center,
+              //                   crossAxisAlignment: CrossAxisAlignment.center,
+              //                   children: [
+              //                     Container(
+              //                       height: 60.hm(context),
+              //                       width: 60.wm(context),
+              //                       decoration: BoxDecoration(
+              //                         color: Colors.transparent,
+              //                         borderRadius: BorderRadius.circular(8.rm(context)),
+              //                       ),
+              //                       margin: EdgeInsets.only(
+              //                         right: 12.rpmm(context),
+              //                       ),
+              //                       child: FittedBox(
+              //                         fit: BoxFit.fill,
+              //                         child: Image.asset(
+              //                           listImageList[index].image!,
+              //                           fit: BoxFit.fill,
+              //                         ),
+              //                       ),
+              //                     ),
+              //
+              //                     SpacerWidget.spacerWidget(spaceHeight: 8.hm(context)),
+              //
+              //                     Expanded(
+              //                       child: Container(
+              //                         alignment: Alignment.topCenter,
+              //                         child: Text(
+              //                           "${listImageList[index].name}".tr,
+              //                           textAlign: TextAlign.center,
+              //                           style: GoogleFonts.tajawal(
+              //                             fontWeight: FontWeight.w500,
+              //                             fontStyle: FontStyle.normal,
+              //                             fontSize: 16.spm(context),
+              //                             color: ColorUtils.black255,
+              //                           ),
+              //                         ),
+              //                       ),
+              //                     ),
+              //
+              //
+              //                   ],
+              //                 ),
+              //               );
+              //             },
+              //           ),
+              //         ),
+              //
+              //         SpacerWidget.spacerWidget(spaceHeight: 17.hm(context)),
+              //
+              //
+              //
+              //       ],
+              //     ),
+              //   ),
+              // ),
+
+
+              isSubmit.value == false ?
+              SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                        (context,int index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 9.hpmm(context),
+                            vertical: 15.vpmm(context),
+                          ),
+                          decoration: BoxDecoration(
+                            color: ColorUtils.white255,
+                            border: Border.all(color: ColorUtils.white217,width: 1),
+                            borderRadius: BorderRadius.circular(12.rm(context)),
+                          ),
+                          margin: EdgeInsets.only(
+                            bottom: 17.bpmm(context),
+                          ),
+                          child: TextButton(
+                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                            onPressed: () async {
+                              Get.off(()=>RestaurantDetailsScreen(storeId: storesResponseModel.value.data!.data![index].sId!,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            },
+                            child: Row(
+                              children: [
+
+                                Container(
+                                  height: 108.hm(context),
+                                  width: 100.wm(context),
+                                  decoration: BoxDecoration(
+                                      color: Colors.transparent
+                                  ),
+                                  child: Column(
+                                    children: [
+
+                                      Container(
+                                        height: 35.hm(context),
+                                        width: 100.wm(context),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10.rm(context)),
+                                            topRight: Radius.circular(10.rm(context)),
+                                          ),
+                                          color: storesResponseModel.value.data?.data?[index].status == "crowded" ? ColorUtils.yellow160 :
+                                          storesResponseModel.value.data?.data?[index].status == "available" ? ColorUtils.green142 :
+                                          ColorUtils.red211,
                                         ),
-                                        color: storesResponseModel.value.data?.data?[index].status == "crowded" ? ColorUtils.yellow160 :
-                                        storesResponseModel.value.data?.data?[index].status == "available" ? ColorUtils.green142 :
-                                        ColorUtils.red211,
-                                      ),
-                                      padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
-                                      alignment: Alignment.center,
-                                      child: Container(
+                                        padding: EdgeInsets.symmetric(vertical: 2.vpmm(context),horizontal: 2.hpmm(context)),
                                         alignment: Alignment.center,
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "${storesResponseModel.value.data?.data?[index].status ?? ""}".tr,
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w700,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 12.spm(context),
+                                              color: ColorUtils.white255,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+
+                                      Expanded(
+                                        child: Container(
+                                          height: 73.hm(context),
+                                          width: 100.wm(context),
+                                          decoration: BoxDecoration(
+                                            border: Border(
+                                              right: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                              left: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                              bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+                                            ),
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(10.rm(context)),
+                                              bottomRight: Radius.circular(10.rm(context)),
+                                            ),
+                                          ),
+                                          child: FittedBox(
+                                            fit: BoxFit.fill,
+                                            child: storesResponseModel.value.data?.data?[index].image == null ?
+                                            Image.asset(
+                                              ImagePathUtils.noImageIconImagePath,
+                                              fit: BoxFit.fill,
+                                              alignment: Alignment.center,
+                                            ) :
+                                            Image.network(
+                                              storesResponseModel.value.data?.data?[index].image ?? "",
+                                              fit: BoxFit.fill,
+                                              alignment: Alignment.center,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+
+
+
+
+                                    ],
+                                  ),
+                                ),
+
+                                SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+
+
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+
+
+                                      Container(
+                                        alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                                         child: Text(
-                                          "${storesResponseModel.value.data?.data?[index].status ?? ""}".tr,
-                                          textAlign: TextAlign.center,
+                                          "${storesResponseModel.value.data?.data?[index].name ?? ""}".tr,
+                                          textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                                           style: GoogleFonts.tajawal(
                                             fontWeight: FontWeight.w700,
                                             fontStyle: FontStyle.normal,
-                                            fontSize: 12.spm(context),
-                                            color: ColorUtils.white255,
+                                            fontSize: 18.spm(context),
+                                            color: ColorUtils.black30,
                                           ),
                                         ),
                                       ),
-                                    ),
 
-                                    Expanded(
-                                      child: Container(
-                                        height: 73.hm(context),
-                                        width: 100.wm(context),
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            right: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                            left: BorderSide(color: ColorUtils.white217,width: 0.5),
-                                            bottom: BorderSide(color: ColorUtils.white217,width: 0.5),
+
+                                      SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+
+
+                                          Container(
+                                            height: 18.hm(context),
+                                            width: 17.wm(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                ImagePathUtils.starIconImagePath,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
                                           ),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(10.rm(context)),
-                                            bottomRight: Radius.circular(10.rm(context)),
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                          Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              "${storesResponseModel.value.data?.data?[index].ratings ?? ""}".tr,
+                                              textAlign: TextAlign.start,
+                                              style: GoogleFonts.tajawal(
+                                                fontWeight: FontWeight.w500,
+                                                fontStyle: FontStyle.normal,
+                                                fontSize: 14.spm(context),
+                                                color: ColorUtils.black30,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                        child: FittedBox(
-                                          fit: BoxFit.fill,
-                                          child: storesResponseModel.value.data?.data?[index].image == null ?
-                                          Image.asset(
-                                            ImagePathUtils.noImageIconImagePath,
-                                            fit: BoxFit.fill,
-                                            alignment: Alignment.center,
+
+
+                                        ],
+                                      ),
+
+
+                                      SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+
+
+                                          Container(
+                                            height: 18.hm(context),
+                                            width: 17.wm(context),
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.cover,
+                                              child: Image.asset(
+                                                ImagePathUtils.locationIconImagePath,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+
+                                          SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+
+                                          storesResponseModel.value.data?.data?[index].location != null ?
+                                          FutureBuilder(
+                                              future: calculateDistanceFromCurrentLocation(
+                                                storesResponseModel.value.data!.data![index].location!.coordinates!.first,
+                                                storesResponseModel.value.data!.data![index].location!.coordinates!.last,
+                                              ),
+                                              builder: (context, snapshot) {
+                                                return Row(
+                                                  children: [
+                                                    Container(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: Text(
+                                                        "${snapshot.data?.ceil()} km near you".tr,
+                                                        textAlign: TextAlign.start,
+                                                        style: GoogleFonts.tajawal(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontStyle: FontStyle.normal,
+                                                          fontSize: 14.spm(context),
+                                                          color: ColorUtils.black30,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                );
+                                              }
                                           ) :
-                                          Image.network(
-                                            storesResponseModel.value.data?.data?[index].image ?? "",
-                                            fit: BoxFit.fill,
-                                            alignment: Alignment.center,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-
-
-
-
-                                  ],
-                                ),
-                              ),
-
-                              SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
-
-
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-
-
-                                    Container(
-                                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                      child: Text(
-                                        "${storesResponseModel.value.data?.data?[index].name ?? ""}".tr,
-                                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                        style: GoogleFonts.tajawal(
-                                          fontWeight: FontWeight.w700,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 18.spm(context),
-                                          color: ColorUtils.black30,
-                                        ),
-                                      ),
-                                    ),
-
-
-                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-
-
-                                        Container(
-                                          height: 18.hm(context),
-                                          width: 17.wm(context),
-                                          decoration: BoxDecoration(
-                                            color: Colors.transparent,
-                                          ),
-                                          child: FittedBox(
-                                            fit: BoxFit.cover,
-                                            child: Image.asset(
-                                              ImagePathUtils.starIconImagePath,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-
-                                        SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-
-                                        Container(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "${storesResponseModel.value.data?.data?[index].ratings ?? ""}".tr,
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.tajawal(
-                                              fontWeight: FontWeight.w500,
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 14.spm(context),
-                                              color: ColorUtils.black30,
-                                            ),
-                                          ),
-                                        ),
-
-
-                                      ],
-                                    ),
-
-
-                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-
-
-                                        Container(
-                                          height: 18.hm(context),
-                                          width: 17.wm(context),
-                                          decoration: BoxDecoration(
-                                            color: Colors.transparent,
-                                          ),
-                                          child: FittedBox(
-                                            fit: BoxFit.cover,
-                                            child: Image.asset(
-                                              ImagePathUtils.locationIconImagePath,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-
-                                        SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-
-                                        storesResponseModel.value.data?.data?[index].location != null ?
-                                        FutureBuilder(
-                                            future: calculateDistanceFromCurrentLocation(
-                                              storesResponseModel.value.data!.data![index].location!.coordinates!.first,
-                                              storesResponseModel.value.data!.data![index].location!.coordinates!.last,
-                                            ),
-                                            builder: (context, snapshot) {
-                                              return Row(
-                                                children: [
-                                                  Container(
-                                                    alignment: Alignment.centerLeft,
-                                                    child: Text(
-                                                      "${snapshot.data?.ceil()} km near you".tr,
-                                                      textAlign: TextAlign.start,
-                                                      style: GoogleFonts.tajawal(
-                                                        fontWeight: FontWeight.w500,
-                                                        fontStyle: FontStyle.normal,
-                                                        fontSize: 14.spm(context),
-                                                        color: ColorUtils.black30,
+                                          FutureBuilder(
+                                              future: calculateDistanceFromCurrentLocation(
+                                                storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.first,
+                                                storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.last,
+                                              ),
+                                              builder: (context, snapshot) {
+                                                return Row(
+                                                  children: [
+                                                    Container(
+                                                      alignment: Alignment.centerLeft,
+                                                      child: Text(
+                                                        "${snapshot.data?.ceil()} km near you".tr,
+                                                        textAlign: TextAlign.start,
+                                                        style: GoogleFonts.tajawal(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontStyle: FontStyle.normal,
+                                                          fontSize: 14.spm(context),
+                                                          color: ColorUtils.black30,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
-                                              );
-                                            }
-                                        ) :
-                                        FutureBuilder(
-                                            future: calculateDistanceFromCurrentLocation(
-                                              storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.first,
-                                              storesResponseModel.value.data!.data![index].locations!.first.location!.coordinates!.last,
-                                            ),
-                                            builder: (context, snapshot) {
-                                              return Row(
-                                                children: [
-                                                  Container(
-                                                    alignment: Alignment.centerLeft,
-                                                    child: Text(
-                                                      "${snapshot.data?.ceil()} km near you".tr,
-                                                      textAlign: TextAlign.start,
-                                                      style: GoogleFonts.tajawal(
-                                                        fontWeight: FontWeight.w500,
-                                                        fontStyle: FontStyle.normal,
-                                                        fontSize: 14.spm(context),
-                                                        color: ColorUtils.black30,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
-                                            }
-                                        ),
+                                                  ],
+                                                );
+                                              }
+                                          ),
 
-                                      ],
-                                    ),
+                                        ],
+                                      ),
 
 
 
 
 
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
 
 
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
-                  childCount: storesResponseModel.value.data?.data?.length,
-                )
-            ) :
-            SliverToBoxAdapter(
-              child: Container(
-                height: 45.hm(context),
-                width: 390.wm(context),
-                decoration: BoxDecoration(
-                    color: Colors.transparent
-                ),
-                child: Center(
-                  child: CircularProgressIndicator(),
+                      );
+                    },
+                    childCount: storesResponseModel.value.data?.data?.length,
+                  )
+              ) :
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 45.hm(context),
+                  width: 390.wm(context),
+                  decoration: BoxDecoration(
+                      color: Colors.transparent
+                  ),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
               ),
-            ),
 
 
-          ],
-        ) : Center(child: CircularProgressIndicator(),),
+            ],
+          ),
+        ) :
+        Center(child: CircularProgressIndicator(),),
       ));
     }
   }

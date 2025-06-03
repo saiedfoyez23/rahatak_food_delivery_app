@@ -630,7 +630,7 @@ class OrderAddressScreenWidget extends GetxController {
                               return Container(
                                 padding: EdgeInsets.symmetric(vertical: 10.vpmm(context),horizontal: 10.hpmm(context)),
                                 decoration: BoxDecoration(
-                                  border:  addressId.value == addressesResponseModel.value.data?[index].sId ? Border.all(width: 0.5,color: ColorUtils.green142) : Border.all(width: 0.5,color: ColorUtils.gray190),
+                                  border:  addressId.value == addressesResponseModel.value.data?[index].sId ? Border.all(width: 2,color: ColorUtils.green142) : Border.all(width: 0.5,color: ColorUtils.gray190),
                                   borderRadius: BorderRadius.circular(10.rm(context)),
                                 ),
                                 margin: EdgeInsets.only(bottom: 10.bpmm(context)),

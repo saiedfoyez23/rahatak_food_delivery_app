@@ -750,7 +750,7 @@ class FilterSearchScreenWidget extends GetxController {
                     Container(
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "working hours",
+                        "Working hours",
                         textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,

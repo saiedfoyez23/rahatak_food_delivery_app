@@ -1304,15 +1304,20 @@ class PersonalInformationScreenWidget extends GetxController {
                                                                     Get.back();
                                                                     CustomSnackBar().successCustomSnackBar(context: context, message: e);
                                                                     isSubmit.value = false;
+                                                                    Get.delete<PersonalInformationScreenWidget>(force: true);
                                                                     Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
                                                                   },
                                                                   onFail: (e) async {
                                                                     isSubmit.value = false;
                                                                     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    Get.delete<PersonalInformationScreenWidget>(force: true);
+                                                                    Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
                                                                   },
                                                                   onExceptionFail: (e) async {
                                                                     isSubmit.value = false;
                                                                     CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                    Get.delete<PersonalInformationScreenWidget>(force: true);
+                                                                    Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
                                                                   },
                                                                 );
                                                               }

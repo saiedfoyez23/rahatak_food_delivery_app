@@ -708,347 +708,352 @@ class SearchScreenWidget extends GetxController {
         ),
         child:  isLoading.value == true ?
         Center(child: CircularProgressIndicator(),) :
-        CustomScrollView(
-          slivers: [
-
-
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-
-
-                  SpacerWidget.spacerWidget(spaceHeight: 20.hm(context)),
-
-
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Search".tr,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.tajawal(
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 16.spm(context),
-                        color: ColorUtils.black255,
+        RefreshIndicator(
+          onRefresh: () async {
+            Get.off(()=>SearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+          },
+          child: CustomScrollView(
+            slivers: [
+          
+          
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+          
+          
+                    SpacerWidget.spacerWidget(spaceHeight: 20.hm(context)),
+          
+          
+                    Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Search".tr,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.tajawal(
+                          fontWeight: FontWeight.w700,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16.spm(context),
+                          color: ColorUtils.black255,
+                        ),
                       ),
                     ),
-                  ),
-
-                  SpacerWidget.spacerWidget(spaceHeight: 33.hm(context)),
-
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-                    child: Column(
-                      children: [
-
-                        TextFormField(
-                          controller: searchController.value,
-                          textAlign: TextAlign.start,
-                          cursorColor: ColorUtils.blue192,
-                          style: GoogleFonts.openSans(
-                            fontSize: 16.spm(context),
-                            fontStyle: FontStyle.normal,
-                            color: ColorUtils.black51,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          cursorHeight: 20.hm(context),
-                          textAlignVertical: TextAlignVertical.top,
-                          onChanged: (value) async {
-                            isSubmit.value = true;
-                            await ProductController.getSearchProductResponse(
-                              search: value,
-                              onSuccess: (e) async {
-                                isSubmit.value = false;
-                              },
-                              onFail: (e) async {
-                                isSubmit.value = false;
-                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                              },
-                              onExceptionFail: (e) async {
-                                isSubmit.value = false;
-                                CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                              },
-                            ).then((value) {
-                              productsResponseModel.value = value;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            alignLabelWithHint: true,
-                            hintText: "Search for a restaurant, dish...".tr,
-                            hintStyle: GoogleFonts.openSans(
+          
+                    SpacerWidget.spacerWidget(spaceHeight: 33.hm(context)),
+          
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                      child: Column(
+                        children: [
+          
+                          TextFormField(
+                            controller: searchController.value,
+                            textAlign: TextAlign.start,
+                            cursorColor: ColorUtils.blue192,
+                            style: GoogleFonts.openSans(
                               fontSize: 16.spm(context),
-                              fontWeight: FontWeight.w400,
                               fontStyle: FontStyle.normal,
-                              color: ColorUtils.gray136,
+                              color: ColorUtils.black51,
+                              fontWeight: FontWeight.w400,
                             ),
-                            filled: true,
-                            prefixIconConstraints: BoxConstraints(
-                              maxHeight: 48.hm(context),
-                              minWidth: 36.wm(context),
-                            ),
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.only(
-                                left: 12.lpmm(context),
-                                right: 10.rpmm(context),
-                                top: 17.33.tpmm(context),
-                                bottom: 17.33.bpmm(context),
-                              ),
-                              child: FittedBox(
-                                fit: BoxFit.cover,
-                                child: Image.asset(
-                                  ImagePathUtils.searchIconImagePath,
-                                  fit: BoxFit.cover,
-                                  alignment: Alignment.center,
-                                ),
-                              ),
-                            ),
-                            suffixIcon: Container(
-                              height: 24.hm(context),
-                              width: 24.wm(context),
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 13.hpmm(context),
-                                vertical: 13.vpmm(context),
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                              ),
-                              child: TextButton(
-                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                onPressed: () {
-                                  Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                            cursorHeight: 20.hm(context),
+                            textAlignVertical: TextAlignVertical.top,
+                            onChanged: (value) async {
+                              isSubmit.value = true;
+                              await ProductController.getSearchProductResponse(
+                                search: value,
+                                onSuccess: (e) async {
+                                  isSubmit.value = false;
                                 },
+                                onFail: (e) async {
+                                  isSubmit.value = false;
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                },
+                                onExceptionFail: (e) async {
+                                  isSubmit.value = false;
+                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                },
+                              ).then((value) {
+                                productsResponseModel.value = value;
+                              });
+                            },
+                            decoration: InputDecoration(
+                              alignLabelWithHint: true,
+                              hintText: "Search for a restaurant, dish...".tr,
+                              hintStyle: GoogleFonts.openSans(
+                                fontSize: 16.spm(context),
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.normal,
+                                color: ColorUtils.gray136,
+                              ),
+                              filled: true,
+                              prefixIconConstraints: BoxConstraints(
+                                maxHeight: 48.hm(context),
+                                minWidth: 36.wm(context),
+                              ),
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 12.lpmm(context),
+                                  right: 10.rpmm(context),
+                                  top: 17.33.tpmm(context),
+                                  bottom: 17.33.bpmm(context),
+                                ),
                                 child: FittedBox(
                                   fit: BoxFit.cover,
                                   child: Image.asset(
-                                    ImagePathUtils.filterIconImagePath,
+                                    ImagePathUtils.searchIconImagePath,
                                     fit: BoxFit.cover,
                                     alignment: Alignment.center,
                                   ),
                                 ),
                               ),
-                            ),
-                            fillColor: ColorUtils.white255,
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 12.hpmm(context),
-                              vertical: 12.vpmm(context),
-                            ),
-                            constraints: BoxConstraints(
-                              maxWidth: 358.wm(context),
-                              maxHeight: 48.hm(context),
-                            ),
-                            border:  OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.rm(context)),
-                              borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.rm(context)),
-                              borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8.rm(context)),
-                              borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
-                            ),
-                          ),
-                        ),
-
-
-                        SpacerWidget.spacerWidget(spaceHeight: 32.hm(context)),
-                      ],
-                    ),
-                  )
-
-
-                ],
-              ),
-            ),
-
-            isSubmit.value == false ?
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                    (context,int index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 12.hpmm(context),
-                        vertical: 12.vpmm(context),
-                      ),
-                      decoration: BoxDecoration(
-                        color: ColorUtils.white255,
-                        borderRadius: BorderRadius.circular(12.rm(context)),
-                        border: Border.all(color: ColorUtils.white217,width: 1),
-                      ),
-                      margin: EdgeInsets.only(
-                        bottom: 10.bpmm(context),
-                      ),
-                      child: TextButton(
-                        style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                        onPressed: () async {
-                          Get.off(()=>ProductDetailsScreen(productId: productsResponseModel.value.data?.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                        },
-                        child: Row(
-                          children: [
-
-                            Container(
-                              height: 100.hm(context),
-                              width: 100.wm(context),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.rm(context)),
-                              ),
-                              child: FittedBox(
-                                fit: BoxFit.fill,
-                                child: productsResponseModel.value.data?.data?[index].images?.isEmpty == true || productsResponseModel.value.data?.data?[index].images == null?
-                                Image.asset(
-                                  ImagePathUtils.noImageImagePath,
-                                  fit: BoxFit.cover,
-                                ) : Image.network(
-                                  productsResponseModel.value.data!.data![index].images!.first,
-                                  fit: BoxFit.cover,
+                              suffixIcon: Container(
+                                height: 24.hm(context),
+                                width: 24.wm(context),
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 13.hpmm(context),
+                                  vertical: 13.vpmm(context),
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                ),
+                                child: TextButton(
+                                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                  onPressed: () {
+                                    Get.off(()=>FilterSearchScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                  },
+                                  child: FittedBox(
+                                    fit: BoxFit.cover,
+                                    child: Image.asset(
+                                      ImagePathUtils.filterIconImagePath,
+                                      fit: BoxFit.cover,
+                                      alignment: Alignment.center,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-
-
-                            SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
-
-
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-
-
-                                  Container(
-                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                    child: Text(
-                                      "${productsResponseModel.value.data?.data?[index].name ?? ""}".tr,
-                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w700,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 18.spm(context),
-                                        color: ColorUtils.black30,
-                                      ),
-                                    ),
-                                  ),
-
-
-                                  SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-                                  Container(
-                                    alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
-                                    child: Text(
-                                      "${productsResponseModel.value.data?.data?[index].description ?? ""}".tr,
-                                      textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
-                                      style: GoogleFonts.tajawal(
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 14.spm(context),
-                                        color: ColorUtils.gray117,
-                                      ),
-                                    ),
-                                  ),
-
-                                  SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-
-
-                                      Row(
-                                        children: [
-
-                                          Container(
-                                            height: 18.hm(context),
-                                            width: 17.wm(context),
-                                            decoration: BoxDecoration(
-                                              color: Colors.transparent,
-                                            ),
-                                            child: FittedBox(
-                                              fit: BoxFit.cover,
-                                              child: Image.asset(
-                                                ImagePathUtils.timeIconImagePath,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-
-                                          SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
-
-                                          Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              "${productsResponseModel.value.data?.data?[index].timeRequired ?? ""} ${"Minutes".tr}".tr,
-                                              textAlign: TextAlign.start,
-                                              style: GoogleFonts.tajawal(
-                                                fontWeight: FontWeight.w500,
-                                                fontStyle: FontStyle.normal,
-                                                fontSize: 14.spm(context),
-                                                color: ColorUtils.black30,
-                                              ),
-                                            ),
-                                          ),
-
-
-                                        ],
-                                      ),
-
-
-                                      Container(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "${productsResponseModel.value.data?.data?[index].variations?.first.price ?? ""} ${"OMR".tr}(${productsResponseModel.value.data?.data?[index].variations?.first.size.toString().toUpperCase().tr})",
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.tajawal(
-                                            fontWeight: FontWeight.w500,
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 14.spm(context),
-                                            color: ColorUtils.black30,
-                                          ),
-                                        ),
-                                      ),
-
-
-
-
-
-                                    ],
-                                  ),
-
-                                  SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
-
-
-                                ],
+                              fillColor: ColorUtils.white255,
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 12.hpmm(context),
+                                vertical: 12.vpmm(context),
+                              ),
+                              constraints: BoxConstraints(
+                                maxWidth: 358.wm(context),
+                                maxHeight: 48.hm(context),
+                              ),
+                              border:  OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.rm(context)),
+                                borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.rm(context)),
+                                borderSide: BorderSide(color: ColorUtils.gray163,width: 1),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.rm(context)),
+                                borderSide: BorderSide(color: ColorUtils.blue192,width: 1),
                               ),
                             ),
-
-                          ],
+                          ),
+          
+          
+                          SpacerWidget.spacerWidget(spaceHeight: 32.hm(context)),
+                        ],
+                      ),
+                    )
+          
+          
+                  ],
+                ),
+              ),
+          
+              isSubmit.value == false ?
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (context,int index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.hpmm(context)),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12.hpmm(context),
+                          vertical: 12.vpmm(context),
+                        ),
+                        decoration: BoxDecoration(
+                          color: ColorUtils.white255,
+                          borderRadius: BorderRadius.circular(12.rm(context)),
+                          border: Border.all(color: ColorUtils.white217,width: 1),
+                        ),
+                        margin: EdgeInsets.only(
+                          bottom: 10.bpmm(context),
+                        ),
+                        child: TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                          onPressed: () async {
+                            Get.off(()=>ProductDetailsScreen(productId: productsResponseModel.value.data?.data?[index].sId,),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                          },
+                          child: Row(
+                            children: [
+          
+                              Container(
+                                height: 100.hm(context),
+                                width: 100.wm(context),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.rm(context)),
+                                ),
+                                child: FittedBox(
+                                  fit: BoxFit.fill,
+                                  child: productsResponseModel.value.data?.data?[index].images?.isEmpty == true || productsResponseModel.value.data?.data?[index].images == null?
+                                  Image.asset(
+                                    ImagePathUtils.noImageImagePath,
+                                    fit: BoxFit.cover,
+                                  ) : Image.network(
+                                    productsResponseModel.value.data!.data![index].images!.first,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+          
+          
+                              SpacerWidget.spacerWidget(spaceWidth: 12.wm(context)),
+          
+          
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+          
+          
+                                    Container(
+                                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                      child: Text(
+                                        "${productsResponseModel.value.data?.data?[index].name ?? ""}".tr,
+                                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 18.spm(context),
+                                          color: ColorUtils.black30,
+                                        ),
+                                      ),
+                                    ),
+          
+          
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+          
+                                    Container(
+                                      alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
+                                      child: Text(
+                                        "${productsResponseModel.value.data?.data?[index].description ?? ""}".tr,
+                                        textAlign: Get.locale.toString() == "en" ? TextAlign.start : TextAlign.start,
+                                        style: GoogleFonts.tajawal(
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 14.spm(context),
+                                          color: ColorUtils.gray117,
+                                        ),
+                                      ),
+                                    ),
+          
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+          
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+          
+          
+                                        Row(
+                                          children: [
+          
+                                            Container(
+                                              height: 18.hm(context),
+                                              width: 17.wm(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Image.asset(
+                                                  ImagePathUtils.timeIconImagePath,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+          
+                                            SpacerWidget.spacerWidget(spaceWidth: 8.wm(context)),
+          
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "${productsResponseModel.value.data?.data?[index].timeRequired ?? ""} ${"Minutes".tr}".tr,
+                                                textAlign: TextAlign.start,
+                                                style: GoogleFonts.tajawal(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 14.spm(context),
+                                                  color: ColorUtils.black30,
+                                                ),
+                                              ),
+                                            ),
+          
+          
+                                          ],
+                                        ),
+          
+          
+                                        Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "${productsResponseModel.value.data?.data?[index].variations?.first.price ?? ""} ${"OMR".tr}(${productsResponseModel.value.data?.data?[index].variations?.first.size.toString().toUpperCase().tr})",
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.tajawal(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 14.spm(context),
+                                              color: ColorUtils.black30,
+                                            ),
+                                          ),
+                                        ),
+          
+          
+          
+          
+          
+                                      ],
+                                    ),
+          
+                                    SpacerWidget.spacerWidget(spaceHeight: 10.hm(context)),
+          
+          
+                                  ],
+                                ),
+                              ),
+          
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                childCount: productsResponseModel.value.data?.data?.length,
-              ),
-            ) :
-            SliverToBoxAdapter(
-              child: Container(
-                height: 45.hm(context),
-                width: 390.wm(context),
-                decoration: BoxDecoration(
-                    color: Colors.transparent
+                    );
+                  },
+                  childCount: productsResponseModel.value.data?.data?.length,
                 ),
-                child: Center(
-                  child: CircularProgressIndicator(),
+              ) :
+              SliverToBoxAdapter(
+                child: Container(
+                  height: 45.hm(context),
+                  width: 390.wm(context),
+                  decoration: BoxDecoration(
+                      color: Colors.transparent
+                  ),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
               ),
-            ),
-
-
-          ],
+          
+          
+            ],
+          ),
         ),
       ),
     ));

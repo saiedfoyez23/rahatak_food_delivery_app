@@ -20,7 +20,7 @@ class CartScreenWidget extends GetxController {
   CartScreenWidget({required this.context});
   Rx<CartResponseModel> cartResponseModel = CartResponseModel().obs;
   RxDouble total = 0.0.obs;
-  RxDouble deliveryFee = 0.0.obs;
+  RxDouble deliveryFee = 1.0.obs;
 
   RxList<CartList> cartList = <CartList>[
     CartList(index: 0,name: "Tanoor", amount: "1.900 OMR", size: "Size: Medium", notes: "Notes: Spicy", quantity: "1", image: ImagePathUtils.pList_3),

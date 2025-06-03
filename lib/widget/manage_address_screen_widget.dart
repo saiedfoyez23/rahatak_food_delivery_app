@@ -1336,7 +1336,9 @@ class ManageAddressScreenWidget extends GetxController {
                                                               if(value?.data?.contact != null) {
                                                                 await ProfileController.getUserAddressDataUpdateResponse(
                                                                   city: cityController.value.text == "" ? value?.data?.city : cityController.value.text,
-                                                                  governorate: governorateController.value.text == "" ? value!.data!.governorate!.first : governorate.value,
+                                                                  governorate: governorateController.value.text == ""  || value!.data?.governorate == null ?
+                                                                  governorate.value : governorateController.value.text == "" ?
+                                                                  value.data!.governorate!.first : governorate.value,
                                                                   image: File(""),
                                                                   state: stateController.value.text == "" ? value?.data?.state : stateController.value.text,
                                                                   onSuccess: (e) async {

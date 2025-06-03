@@ -734,7 +734,7 @@ class OrderTrackScreenWidget extends GetxController {
                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
 
-                                                      pickUpRequestResponseModel.value.data?.status == "requesting" ||
+                                                      pickUpRequestResponseModel.value.data?.status == "pending" ||
                                                           pickUpRequestResponseModel.value.data?.status == "received" ||
                                                           pickUpRequestResponseModel.value.data?.status == "processing" ||
                                                           pickUpRequestResponseModel.value.data?.status == "ongoing"||

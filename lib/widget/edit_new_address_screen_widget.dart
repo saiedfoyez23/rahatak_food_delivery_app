@@ -855,7 +855,7 @@ class EditNewAddressScreenWidget extends GetxController {
                             ),
                             textAlignVertical: TextAlignVertical.center,
                             decoration: InputDecoration(
-                              hintText: "+88017XXXXXXXX".tr,
+                              hintText: "+968 XXXXXXXX".tr,
                               hintStyle: GoogleFonts.tajawal(
                                 fontSize: 16.spm(context),
                                 fontWeight: FontWeight.w400,

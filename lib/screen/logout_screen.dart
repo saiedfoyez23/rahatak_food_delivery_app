@@ -19,14 +19,14 @@ class LogoutScreen extends StatelessWidget {
       },
       child: Scaffold(
         body: logoutScreenWidget.logoutScreenWidget(context: context),
-        bottomNavigationBar: BottomNavigationBarWidget().bottomNavigationBarWidget(
-          context: context,
-          isHomeFocus: false,
-          isSearchFocus: false,
-          isTrackOrderFocus: false,
-          isCartFocus: false,
-          isProfileFocus: true,
-        ),
+        // bottomNavigationBar: BottomNavigationBarWidget().bottomNavigationBarWidget(
+        //   context: context,
+        //   isHomeFocus: false,
+        //   isSearchFocus: false,
+        //   isTrackOrderFocus: false,
+        //   isCartFocus: false,
+        //   isProfileFocus: true,
+        // ),
       ),
     );
   }
