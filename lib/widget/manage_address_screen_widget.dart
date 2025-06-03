@@ -53,8 +53,8 @@ class ManageAddressScreenWidget extends GetxController {
             if(value?.data != null) {
               coverImage.value = value?.data?.image ?? "";
               stateController.value.text = value?.data?.state ?? "";
-              governorate.value = value?.data?.governorate?.first ?? "";
-              governorateController.value.text = value?.data?.governorate?.first ?? "";
+              governorate.value = value?.data?.governorate == null ? "" : value!.data?.governorate?.isEmpty == true ? "" : value.data!.governorate!.first ;
+              governorateController.value.text = value?.data?.governorate == null ? "" : value!.data?.governorate?.isEmpty == true ? "" : value.data!.governorate!.first ;
               cityController.value.text = value?.data?.city ?? "";
             }
           });
@@ -1339,8 +1339,9 @@ class ManageAddressScreenWidget extends GetxController {
                                                                   governorate: governorateController.value.text == ""  || value!.data?.governorate == null ?
                                                                   governorate.value : governorateController.value.text == "" ?
                                                                   value.data!.governorate!.first : governorate.value,
-                                                                  image: File(""),
-                                                                  state: stateController.value.text == "" ? value?.data?.state : stateController.value.text,
+                                                                  name: value!.data!.name,
+                                                                  contact: value.data!.contact,
+                                                                  state: stateController.value.text == "" ? value.data?.state : stateController.value.text,
                                                                   onSuccess: (e) async {
                                                                     Get.back();
                                                                     CustomSnackBar().successCustomSnackBar(context: context, message: e);

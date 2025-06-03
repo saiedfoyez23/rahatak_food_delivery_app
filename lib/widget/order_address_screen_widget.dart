@@ -80,7 +80,7 @@ class OrderAddressScreenWidget extends GetxController {
       Placemark place = placemarks[0];
       state.value = place.country ?? "";
       governorate.value = place.administrativeArea ?? "";
-      city.value = place.subAdministrativeArea ?? "";
+      city.value = place.locality ?? "";
       await ProfileController.checkLocalProfileResponse().then((value) {
         if(value != null) {
           phoneNumber.value = value.data?.contact ?? "";
@@ -748,23 +748,187 @@ class OrderAddressScreenWidget extends GetxController {
                             child: TextButton(
                               style: TextButton.styleFrom(padding: EdgeInsets.zero),
                               onPressed: () async {
-                                Map<String,dynamic> data = {
-                                  "address_data": {
-                                    "title": "${city.value},${governorate.value},${state.value}",
-                                    "governorate": "al-batinah",
-                                    "state": "${state.value}",
-                                    "city": "${city.value}",
-                                    "location": {
-                                      "coordinates": [
-                                        updatedLong.value,
-                                        updatedLat.value,
-                                      ]
-                                    },
-                                    "phone": "${phoneNumber.value}"
-                                  }
-                                };
-                                print(data);
-                                Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                if(governorate.value == "Muscat Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "muscat",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else if(governorate.value == "Al Batinah South Governorate" || governorate.value == "Al Batinah North Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "al-batinah",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else if(governorate.value == "Ad Dakhiliyah ‍Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "ad-dakhiliyah",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else if(governorate.value == "Musandam Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "musandam",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else if(governorate.value == "Al Buraimi Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "al-buraimi",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else if(governorate.value == "Ash Sharqiyah South Governorate" || governorate.value == "Ash Sharqiyah North Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "sharkia",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else if(governorate.value == "Ad Dhahirah Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "al-dhahirah",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else if(governorate.value == "Al Wusta Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "al-wusta",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                }  else if(governorate.value == "Dhofar Governorate") {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "${city.value},${governorate.value},${state.value}",
+                                      "governorate": "dhofar",
+                                      "state": "${state.value}",
+                                      "city": "${city.value}",
+                                      "location": {
+                                        "coordinates": [
+                                          updatedLong.value,
+                                          updatedLat.value,
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                } else {
+                                  Map<String,dynamic> data = {
+                                    "address_data": {
+                                      "title": "Muscat",
+                                      "governorate": "muscat",
+                                      "state": "oman",
+                                      "city": "muscat",
+                                      "location": {
+                                        "coordinates": [
+                                          58.374559,
+                                          23.576667
+                                        ]
+                                      },
+                                      "phone": "${phoneNumber.value}"
+                                    }
+                                  };
+                                  print(data);
+                                  Get.off(()=>PaymentScreen(data: data,addressString: "",),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                                }
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,

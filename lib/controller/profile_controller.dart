@@ -67,16 +67,8 @@ class ProfileController {
       String? mimeTypeImage = image.path == "" ? "" : CustomMimeType.getMimeType(image.path);
       print(image.path);
 
-      Map<String,dynamic> data = {
-        "name": name,
-      };
-
-      print(jsonEncode(data));
-
-
 
       dio.FormData formData = dio.FormData.fromMap({
-        "data": jsonEncode(data),
         "image": image.path != "" ? await dio.MultipartFile.fromFile(image.path,filename: image.path.split('/').last,contentType: dio.DioMediaType(mimeTypeImage.split('/').first,mimeTypeImage.split('/').last)) : "",
       });
 
@@ -84,7 +76,7 @@ class ProfileController {
 
 
       var response = await dio.Dio().put(
-        "${AppApiUrlController.appApiUrlController()}/users",
+        "${AppApiUrlController.appApiUrlController()}/users/image",
         data: formData,
         options: dio.Options(headers: <String, String>{
           'Content-Type': 'multipart/form-data',
@@ -105,10 +97,8 @@ class ProfileController {
 
 
   static Future<void> getUserDataUpdateResponse({
-    required String name,
-    required String email,
     required String contact,
-    required File image,
+    required String name,
     required Function onSuccess,
     required Function onFail,
     required Function onExceptionFail
@@ -119,32 +109,19 @@ class ProfileController {
         return value?.data?.accessToken;
       });
 
-      String? mimeTypeImage = image.path == "" ? "" : CustomMimeType.getMimeType(image.path);
-      print(image.path);
-
       Map<String,dynamic> data = {
-        "name": name,
-        "email": email,
         "contact": contact,
+        "name": name
       };
-
       print(jsonEncode(data));
-
-
-
-      dio.FormData formData = dio.FormData.fromMap({
-        "data": jsonEncode(data),
-        "image": image.path != "" ? await dio.MultipartFile.fromFile(image.path,filename: image.path.split('/').last,contentType: dio.DioMediaType(mimeTypeImage.split('/').first,mimeTypeImage.split('/').last)) : "",
-      });
-
-
 
 
       var response = await dio.Dio().put(
         "${AppApiUrlController.appApiUrlController()}/users",
-        data: formData,
+        data: jsonEncode(data),
         options: dio.Options(headers: <String, String>{
-          'Content-Type': 'multipart/form-data',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
           'Authorization': 'Bearer ${accessToken}'
         }),
       );
@@ -166,7 +143,8 @@ class ProfileController {
     required String city,
     required String governorate,
     required String state,
-    required File image,
+    required String contact,
+    required String name,
     required Function onSuccess,
     required Function onFail,
     required Function onExceptionFail
@@ -177,32 +155,22 @@ class ProfileController {
         return value?.data?.accessToken;
       });
 
-      String? mimeTypeImage = image.path == "" ? "" : CustomMimeType.getMimeType(image.path);
-      print(image.path);
 
       Map<String,dynamic> data = {
         "city": city,
+        "contact": contact,
         "governorate": governorate,
-        "state": state,
+        "name": name,
+        "state": state
       };
-
       print(jsonEncode(data));
-
-
-
-      dio.FormData formData = dio.FormData.fromMap({
-        "data": jsonEncode(data),
-        "image": image.path != "" ? await dio.MultipartFile.fromFile(image.path,filename: image.path.split('/').last,contentType: dio.DioMediaType(mimeTypeImage.split('/').first,mimeTypeImage.split('/').last)) : "",
-      });
-
-
-
 
       var response = await dio.Dio().put(
         "${AppApiUrlController.appApiUrlController()}/users",
-        data: formData,
+        data: jsonEncode(data),
         options: dio.Options(headers: <String, String>{
-          'Content-Type': 'multipart/form-data',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
           'Authorization': 'Bearer ${accessToken}'
         }),
       );

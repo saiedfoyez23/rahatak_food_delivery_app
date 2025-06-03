@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/controller/controller.dart';
@@ -363,6 +364,9 @@ class RegistrationScreenWidget extends GetxController {
                         color: ColorUtils.black51,
                         fontWeight: FontWeight.w400,
                       ),
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(13),
+                      ],
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
                         hintText: "Enter your phone number".tr,
@@ -610,6 +614,8 @@ class RegistrationScreenWidget extends GetxController {
                             CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter your email");
                           } else if(phoneNumberController.value.text == "") {
                             CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter your phone number");
+                          } else if(phoneNumberController.value.text.toString().substring(0,4).contains("+968") == false) {
+                            CustomSnackBar().errorCustomSnackBar(context: context, message: "please enter a valid oman number with country code");
                           } else if(passwordController.value.text == "") {
                             CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter your password");
                           } else {

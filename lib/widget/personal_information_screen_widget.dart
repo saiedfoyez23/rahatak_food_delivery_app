@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rahatak_food_delivery_app/utils/utils.dart';
@@ -1238,6 +1239,9 @@ class PersonalInformationScreenWidget extends GetxController {
                                                       color: ColorUtils.black51,
                                                       fontWeight: FontWeight.w400,
                                                     ),
+                                                    inputFormatters: [
+                                                      LengthLimitingTextInputFormatter(13),
+                                                    ],
                                                     textAlignVertical: TextAlignVertical.center,
                                                     decoration: InputDecoration(
                                                       hintText: "+968 91234567".tr,
@@ -1292,36 +1296,38 @@ class PersonalInformationScreenWidget extends GetxController {
                                                         child: TextButton(
                                                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                           onPressed: () async {
-                                                            isSubmit.value = true;
-                                                            await ProfileController.checkLocalProfileResponse().then((value) async {
-                                                              if(value?.data?.contact != null) {
-                                                                await ProfileController.getUserDataUpdateResponse(
-                                                                  contact: phoneNumberController.value.text == "" ? value?.data?.name : phoneNumberController.value.text,
-                                                                  name: nameController.value.text == "" ? value?.data?.name : nameController.value.text,
-                                                                  image: File(""),
-                                                                  email: emailController.value.text,
-                                                                  onSuccess: (e) async {
-                                                                    Get.back();
-                                                                    CustomSnackBar().successCustomSnackBar(context: context, message: e);
-                                                                    isSubmit.value = false;
-                                                                    Get.delete<PersonalInformationScreenWidget>(force: true);
-                                                                    Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
-                                                                  },
-                                                                  onFail: (e) async {
-                                                                    isSubmit.value = false;
-                                                                    CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                                    Get.delete<PersonalInformationScreenWidget>(force: true);
-                                                                    Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
-                                                                  },
-                                                                  onExceptionFail: (e) async {
-                                                                    isSubmit.value = false;
-                                                                    CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                                    Get.delete<PersonalInformationScreenWidget>(force: true);
-                                                                    Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
-                                                                  },
-                                                                );
-                                                              }
-                                                            });
+                                                            if(phoneNumberController.value.text.toString().substring(0,4).contains("+968") == false) {
+                                                              CustomSnackBar().errorCustomSnackBar(context: context, message: "please enter a valid oman number with country code");
+                                                            } else {
+                                                              isSubmit.value = true;
+                                                              await ProfileController.checkLocalProfileResponse().then((value) async {
+                                                                if(value?.data?.contact != null) {
+                                                                  await ProfileController.getUserDataUpdateResponse(
+                                                                    contact: phoneNumberController.value.text == "" ? value?.data?.contact : phoneNumberController.value.text,
+                                                                    name: nameController.value.text == "" ? value?.data?.name : nameController.value.text,
+                                                                    onSuccess: (e) async {
+                                                                      Get.back();
+                                                                      CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                      isSubmit.value = false;
+                                                                      Get.delete<PersonalInformationScreenWidget>(force: true);
+                                                                      Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                                    },
+                                                                    onFail: (e) async {
+                                                                      isSubmit.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                      Get.delete<PersonalInformationScreenWidget>(force: true);
+                                                                      Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                                    },
+                                                                    onExceptionFail: (e) async {
+                                                                      isSubmit.value = false;
+                                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                      Get.delete<PersonalInformationScreenWidget>(force: true);
+                                                                      Get.off(()=>PersonalInformationScreen(),preventDuplicates: false,duration: Duration(milliseconds: 300),transition: Transition.fadeIn);
+                                                                    },
+                                                                  );
+                                                                }
+                                                              });
+                                                            }
                                                           },
                                                           child: Center(
                                                             child: Text(

@@ -2192,8 +2192,8 @@ class ProfileScreenWidget extends GetxController {
                       style: TextButton.styleFrom(padding: EdgeInsets.zero),
                       onPressed: () async {
                         await AppLocalStorageController.getSharedPreferencesRemove(key: "Login");
-                        //Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
-                        Get.off(()=>LogoutScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        Get.off(()=>LoginScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
+                        //Get.off(()=>LogoutScreen(),duration: Duration(milliseconds: 300),transition: Transition.fadeIn,preventDuplicates: false);
                       },
                       child: Center(
                         child: Text(

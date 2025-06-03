@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -807,6 +808,9 @@ class AddNewAddressScreenWidget extends GetxController {
                               color: ColorUtils.black51,
                               fontWeight: FontWeight.w400,
                             ),
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(13),
+                            ],
                             textAlignVertical: TextAlignVertical.center,
                             decoration: InputDecoration(
                               hintText: "+968 XXXXXXXX".tr,
@@ -1203,7 +1207,9 @@ class AddNewAddressScreenWidget extends GetxController {
                     } else if(stateController.value.text == "") {
                       CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter state name");
                     } else if(phoneNumberController.value.text == "") {
-                      CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter phone number");
+                      CustomSnackBar().errorCustomSnackBar(context: context, message: "Please enter your phone number");
+                    } else if(phoneNumberController.value.text.toString().substring(0,4).contains("+968") == false) {
+                      CustomSnackBar().errorCustomSnackBar(context: context, message: "please enter a valid oman number with country code");
                     } else {
                       if(isCheckIn.value == false) {
                         Map<String,dynamic> data = {
