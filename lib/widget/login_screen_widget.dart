@@ -207,7 +207,7 @@ class LoginScreenWidget extends GetxController {
                       width: 358.wm(context),
                       alignment: Get.locale.toString() == "en" ? Alignment.centerLeft : Alignment.centerRight,
                       child: Text(
-                        "Email/Phone Number".tr,
+                        "Email Address".tr,
                         textAlign:  Get.locale.toString() == "en" ? TextAlign.start : TextAlign.end,
                         style: GoogleFonts.tajawal(
                           fontWeight: FontWeight.w700,

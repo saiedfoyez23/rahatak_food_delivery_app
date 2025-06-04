@@ -574,53 +574,101 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                           ],
                                         ),
                                         child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
-                                              return Container(
-                                                height: 42.ht(context),
-                                                width: 150.wt(context),
-                                                decoration: BoxDecoration(
-                                                  color: Colors.transparent,
-                                                ),
-                                                child: TextButton(
-                                                  style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                                                  onPressed: () async {
-                                                    isSubmit.value = true;
-                                                    await ProductController.getProductByCategoryResponse(
-                                                      categoryId: singleStoreDetailsResponseModel.value.data?.categories?[Index].sId,
-                                                      onSuccess: (e) async {
-                                                        Get.back();
-                                                        isSubmit.value = false;
-                                                        CustomSnackBar().successCustomSnackBar(context: context, message: e);
-                                                      },
-                                                      onFail: (e) async {
-                                                        isSubmit.value = false;
-                                                        CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                      },
-                                                      onExceptionFail: (e) async {
-                                                        isSubmit.value = false;
-                                                        CustomSnackBar().errorCustomSnackBar(context: context, message: e);
-                                                      },
-                                                    ).then((value) {
-                                                      productsResponseModel.value = value;
-                                                    });
-                                                  },
-                                                  child: Center(
-                                                    child: Text(
-                                                      "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}".tr,
-                                                      textAlign: TextAlign.center,
-                                                      style: GoogleFonts.tajawal(
-                                                        fontWeight: FontWeight.w500,
-                                                        fontStyle: FontStyle.normal,
-                                                        fontSize: 16.spt(context),
-                                                        color: ColorUtils.black33,
-                                                      ),
+                                          children: [
+
+                                            Container(
+                                              height: 42.ht(context),
+                                              width: 150.wt(context),
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                              ),
+                                              child: TextButton(
+                                                style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                onPressed: () async {
+                                                  isSubmit.value = true;
+                                                  await ProductController.getProductByStoreResponse(
+                                                    storeId: storeId,
+                                                    onSuccess: (e) async {
+                                                      Get.back();
+                                                      isSubmit.value = false;
+                                                    },
+                                                    onFail: (e) async {
+                                                      isSubmit.value = false;
+                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                    },
+                                                    onExceptionFail: (e) async {
+                                                      isSubmit.value = false;
+                                                      CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                    },
+                                                  ).then((value) {
+                                                    productsResponseModel.value = value;
+                                                  });
+                                                },
+                                                child: Center(
+                                                  child: Text(
+                                                    "All".tr,
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.tajawal(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontSize: 16.spt(context),
+                                                      color: ColorUtils.black33,
                                                     ),
                                                   ),
                                                 ),
-                                              );
-                                            })
+                                              ),
+                                            ),
+
+                                            Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
+                                                return Container(
+                                                  height: 42.ht(context),
+                                                  width: 150.wt(context),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.transparent,
+                                                  ),
+                                                  child: TextButton(
+                                                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                    onPressed: () async {
+                                                      isSubmit.value = true;
+                                                      await ProductController.getProductByCategoryResponse(
+                                                        categoryId: singleStoreDetailsResponseModel.value.data?.categories?[Index].sId,
+                                                        onSuccess: (e) async {
+                                                          Get.back();
+                                                          isSubmit.value = false;
+                                                          CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                        },
+                                                        onFail: (e) async {
+                                                          isSubmit.value = false;
+                                                          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                        },
+                                                        onExceptionFail: (e) async {
+                                                          isSubmit.value = false;
+                                                          CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                        },
+                                                        ).then((value) {
+                                                          productsResponseModel.value = value;
+                                                        });
+                                                      },
+                                                      child: Center(
+                                                        child: Text(
+                                                          "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}".tr,
+                                                          textAlign: TextAlign.center,
+                                                          style: GoogleFonts.tajawal(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontStyle: FontStyle.normal,
+                                                            fontSize: 16.spt(context),
+                                                            color: ColorUtils.black33,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                              }),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     );
@@ -1329,10 +1377,8 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                             slivers: [
                                               SliverToBoxAdapter(
                                                 child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
-                                                    return Container(
+                                                  children: [
+                                                    Container(
                                                       height: 42.hm(context),
                                                       width: 150.wm(context),
                                                       decoration: BoxDecoration(
@@ -1342,12 +1388,11 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
                                                         onPressed: () async {
                                                           isSubmit.value = true;
-                                                          await ProductController.getProductByCategoryResponse(
-                                                            categoryId: singleStoreDetailsResponseModel.value.data?.categories?[Index].sId,
+                                                          await ProductController.getProductByStoreResponse(
+                                                            storeId: storeId,
                                                             onSuccess: (e) async {
                                                               Get.back();
                                                               isSubmit.value = false;
-                                                              CustomSnackBar().successCustomSnackBar(context: context, message: e);
                                                             },
                                                             onFail: (e) async {
                                                               isSubmit.value = false;
@@ -1363,7 +1408,7 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                         },
                                                         child: Center(
                                                           child: Text(
-                                                            "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}".tr,
+                                                            "All".tr,
                                                             textAlign: TextAlign.center,
                                                             style: GoogleFonts.tajawal(
                                                               fontWeight: FontWeight.w500,
@@ -1374,8 +1419,57 @@ class RestaurantDetailsScreenWidget extends GetxController {
                                                           ),
                                                         ),
                                                       ),
-                                                    );
-                                                  })
+                                                    ),
+                                                    Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      children: List.generate(singleStoreDetailsResponseModel.value.data!.categories!.length, (Index) {
+                                                        return Container(
+                                                          height: 42.hm(context),
+                                                          width: 150.wm(context),
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.transparent,
+                                                          ),
+                                                          child: TextButton(
+                                                            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                                                            onPressed: () async {
+                                                              isSubmit.value = true;
+                                                              await ProductController.getProductByCategoryResponse(
+                                                                categoryId: singleStoreDetailsResponseModel.value.data?.categories?[Index].sId,
+                                                                onSuccess: (e) async {
+                                                                  Get.back();
+                                                                  isSubmit.value = false;
+                                                                  CustomSnackBar().successCustomSnackBar(context: context, message: e);
+                                                                },
+                                                                onFail: (e) async {
+                                                                  isSubmit.value = false;
+                                                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                },
+                                                                onExceptionFail: (e) async {
+                                                                  isSubmit.value = false;
+                                                                  CustomSnackBar().errorCustomSnackBar(context: context, message: e);
+                                                                },
+                                                              ).then((value) {
+                                                                productsResponseModel.value = value;
+                                                              });
+                                                            },
+                                                            child: Center(
+                                                              child: Text(
+                                                                "${singleStoreDetailsResponseModel.value.data?.categories?[Index].name ?? ""}".tr,
+                                                                textAlign: TextAlign.center,
+                                                                style: GoogleFonts.tajawal(
+                                                                  fontWeight: FontWeight.w500,
+                                                                  fontStyle: FontStyle.normal,
+                                                                  fontSize: 16.spm(context),
+                                                                  color: ColorUtils.black33,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      })
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
                                             ],
